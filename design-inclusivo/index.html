@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design Inclusivo Gamificado — Laura Menezes</title>
+  <meta name="description" content="Estudo de caso: design de um aplicativo gamificado para aprendizado inclusivo de LIBRAS, do Trabalho de Conclusão de Curso em Design da UFU." />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="page-design-inclusivo">
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="../index.html#inicio" class="site-header__brand" aria-label="Início — Laura Menezes">
+        <img src="../assets/images/avatar-laura.png" alt="Foto de perfil de Laura Menezes" class="site-header__avatar" width="48" height="48" />
+        <div class="site-header__brand-text">
+          <span class="site-header__name">Laura Menezes</span>
+          <span class="site-header__role">Designer Estratégica</span>
+        </div>
+      </a>
+
+      <nav aria-label="Navegação principal">
+        <ul class="site-nav__list" id="mobileNav">
+          <li><a href="../index.html#inicio" class="site-nav__link">Início</a></li>
+          <li><a href="../index.html#projetos" class="site-nav__link">Projetos</a></li>
+          <li><a href="../index.html#sobre" class="site-nav__link">Sobre</a></li>
+          <li><a href="../index.html#contato" class="site-nav__link">Contato</a></li>
+          <li class="site-nav__extra">
+            <a href="https://wa.me/5534996358519" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+              Entre em contato
+              <span class="btn__icon"><img src="../assets/icons/icone-whatsapp.svg" alt="" /></span>
+            </a>
+            <ul class="social-list">
+              <li>
+                <a href="mailto:lauramenesantos@gmail.com" class="social-btn social-btn--figma social-btn--gmail" aria-label="Enviar e-mail">
+                  <span class="social-btn__icon">
+                    <img src="../assets/icons/icone-mail-default.svg" alt="" class="social-btn__icon-default" />
+                    <img src="../assets/icons/icone-mail-hover.svg" alt="" class="social-btn__icon-hover" />
+                    <img src="../assets/icons/icone-mail-active.svg" alt="" class="social-btn__icon-active" />
+                  </span>
+                  <span>Gmail</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.behance.net/lauramenezes11" class="social-btn social-btn--figma social-btn--behance" aria-label="Ver Behance" target="_blank" rel="noopener noreferrer">
+                  <span class="social-btn__icon">
+                    <img src="../assets/icons/icone-behance-default.svg" alt="" class="social-btn__icon-default" />
+                    <img src="../assets/icons/icone-behance-hover.svg" alt="" class="social-btn__icon-hover" />
+                    <img src="../assets/icons/icone-behance-active.svg" alt="" class="social-btn__icon-active" />
+                  </span>
+                  <span>Behance</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/lauramenesantos" class="social-btn social-btn--figma social-btn--linkedin" aria-label="Ver LinkedIn" target="_blank" rel="noopener noreferrer">
+                  <span class="social-btn__icon">
+                    <img src="../assets/icons/icone-linkedin-default.svg" alt="" class="social-btn__icon-default" />
+                    <img src="../assets/icons/icone-linkedin-hover.svg" alt="" class="social-btn__icon-hover" />
+                    <img src="../assets/icons/icone-linkedin-active.svg" alt="" class="social-btn__icon-active" />
+                  </span>
+                  <span>Linkedin</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="site-header__extras">
+        <div class="lang-toggle" role="group" aria-label="Selecionar idioma">
+          <button type="button" class="lang-toggle__code" data-lang="pt" aria-pressed="true">PT</button>
+          <span class="lang-toggle__switch">
+            <span class="lang-toggle__flags">
+              <img src="../assets/icons/flag-br.svg" alt="" class="lang-toggle__flag" />
+              <img src="../assets/icons/flag-us.svg" alt="" class="lang-toggle__flag" />
+            </span>
+          </span>
+          <button type="button" class="lang-toggle__code lang-toggle__code--muted" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+
+        <span class="header-divider" aria-hidden="true"></span>
+
+        <a href="https://drive.google.com/file/d/1AGe-b_nQhDxEAYTrQIS7VQOFnR9d0iju/view?usp=sharing" class="resume-link" target="_blank" rel="noopener noreferrer">
+          <span class="resume-link__icon">
+            <img src="../assets/icons/icone-seta-vermais.svg" alt="" />
+          </span>
+          Currículo
+        </a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="cs-layout">
+
+      <aside class="cs-sidebar">
+        <div class="cs-sidebar__top">
+          <a href="../index.html#projetos" class="cs-sidebar__back" aria-label="Voltar para projetos">
+            <img src="../assets/icons/icone-seta-voltar.svg" alt="" />
+          </a>
+        </div>
+
+        <nav class="cs-sidebar__nav" aria-label="Navegação do estudo de caso">
+          <a href="#introducao" class="cs-sidebar__link">Introdução<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#contexto" class="cs-sidebar__link">Contexto<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#pesquisa" class="cs-sidebar__link">Descobrir<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#definir" class="cs-sidebar__link">Definir<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#desenvolver" class="cs-sidebar__link">Desenvolver<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#entregar" class="cs-sidebar__link">Entregar<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#resultado" class="cs-sidebar__link">Resultado<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#proximos-passos" class="cs-sidebar__link">Próximos passos<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#aprendizados" class="cs-sidebar__link">Aprendizados<span class="cs-sidebar__link-dot"></span></a>
+        </nav>
+
+        <div class="cs-sidebar__contact">
+          <p class="cs-sidebar__contact-title">Vamos conversar?</p>
+          <p class="cs-sidebar__contact-text">Estou aberta a novas oportunidades e desafios</p>
+          <a href="https://wa.me/5534996358519" class="btn btn--outline" target="_blank" rel="noopener noreferrer">
+            Entre em contato
+            <span class="btn__icon"><img src="../assets/icons/icone-whatsapp-outline-design-inclusivo.svg" alt="" /></span>
+          </a>
+        </div>
+      </aside>
+
+      <article class="cs-content">
+
+        <section id="introducao">
+          <span class="cs-eyebrow">DESIGN INCLUSIVO GAMIFICADO - Desenvolvido em 2025</span>
+          <h1 class="cs-h1">“Brincar é a maneira favorita do<br />nosso cérebro aprender.” <span class="cs-h1__cite">- Diane Ackerman</span></h1>
+          <p class="cs-lead">
+            Nina é um <span class="cs-highlight">aplicativo gamificado de aprendizado de LIBRAS para pessoas ouvintes</span>.<br />
+            A proposta é criar condições para que o aprendizado vire hábito. Com pesquisa real, processo completo e
+            protótipo interativo, o projeto nasceu como Trabalho de Conclusão de Curso de Bacharelado em Design da
+            Universidade Federal de Uberlândia.
+          </p>
+
+          <div class="cs-panel">
+            <img src="../assets/images/cs-di-intro-panel.png" alt="Cinco telas do aplicativo Nina: login, apresentação da personagem, escolha do horário de estudo, customização do personagem e tela inicial" loading="lazy" />
+          </div>
+          <div class="cs-proto-cta">
+            <a href="https://www.figma.com/proto/9oMSmoagdLA4rjdPjp5cEP/Nina_LIBRAS_TCC?node-id=11152-6555&p=f&t=zYasOgKr5JOGPlFG-1&scaling=scale-down&content-scaling=fixed&page-id=11087%3A3900&starting-point-node-id=11152%3A6555&show-proto-sidebar=1" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+              Navegar no protótipo
+              <span class="btn__icon"><img src="../assets/icons/icone-seta-vermais-white.svg" alt="" /></span>
+            </a>
+          </div>
+        </section>
+
+        <section class="cs-section" id="contexto">
+          <button type="button" class="cs-section__header" aria-expanded="false">
+            <span class="cs-eyebrow">CONTEXTO</span>
+            <h2 class="cs-h2">LIBRAS é reconhecida por lei desde 2002,<br />a comunicação ainda depende de improviso.</h2>
+            <span class="cs-section__chevron" aria-hidden="true"></span>
+          </button>
+          <div class="cs-section__body">
+          <p class="cs-p">
+            A Língua Brasileira de Sinais (LIBRAS) foi oficializada por lei, mas a comunicação entre surdos e
+            ouvintes ainda enfrenta barreiras. Isso limita o acesso a serviços básicos, gera isolamento da
+            comunidade surda e dependência de intérpretes em situações simples. A pesquisa realizada mostrou que
+            o interesse dos ouvintes em aprender LIBRAS existe. O que falta é uma forma de aprendizado possível
+            de manter.
+          </p>
+
+          <div class="cs-panel">
+            <img
+              src="../assets/images/cs-di-contexto-stats.png"
+              alt="Público-alvo: adultos ouvintes de nível iniciante ou básico. Objetivo: tornar o aprendizado de LIBRAS acessível e contínuo. Abordagem: gamificação aplicada ao aprendizado de língua. Situação: TCC em design desenvolvido em 3 meses."
+              loading="lazy"
+            />
+          </div>
+
+          <span class="cs-eyebrow">A METODOLOGIA</span>
+          <h3 class="cs-h2">O Double Diamond estrutura o processo,<br />o Design Thinking orienta a condução.</h3>
+          <p class="cs-p">
+            O processo seguiu o Double Diamond como estrutura, organizado em quatro etapas que alternam momentos
+            de divergência e convergência: Descobrir, Definir, Desenvolver e Entregar. Dentro dessa estrutura,
+            foi adotado o Design Thinking, com foco centrado no usuário e nas necessidades humanas.
+          </p>
+          <div class="cs-panel">
+            <img src="../assets/images/cs-di-panel-01.png" alt="Diagrama do Double Diamond: descobrir, definir, desenvolver e entregar" loading="lazy" />
+          </div>
+          </div>
+        </section>
+
+        <section class="cs-section" id="pesquisa">
+          <button type="button" class="cs-section__header" aria-expanded="false">
+            <span class="cs-eyebrow">DESCOBRIR</span>
+            <h2 class="cs-h2">Compreender os usuários, suas necessidades e dificuldades.</h2>
+            <span class="cs-section__chevron" aria-hidden="true"></span>
+          </button>
+          <div class="cs-section__body">
+          <p class="cs-p">
+            Foi feita a compreensão do problema antes de propor qualquer solução, por meio de pesquisas e da
+            aproximação com os usuários, foram identificadas suas necessidades, dificuldades e comportamentos,
+            evitando que as decisões fossem baseadas apenas em suposições.
+          </p>
+
+          <h3 class="cs-h3">Desk Research</h3>
+          <p class="cs-p">
+            A pesquisa bibliográfica sobre Libras, comunidade surda, aprendizagem visual-espacial e gamificação
+            foi essencial para compreender a estrutura da língua antes de projetar. Quatro achados principais
+            guiaram o projeto: Libras é visual-espacial; aprender exige repetição e contexto; a gamificação deve
+            apoiar objetivos pedagógicos; e os sinais precisam seguir critérios claros de padronização.
+          </p>
+          <div class="cs-panel">
+            <img
+              src="../assets/images/cs-di-deskresearch-stats.png"
+              alt="1. 5 parâmetros: língua visual-espacial e possui parâmetros linguísticos. 2. Aprendizado: a aprendizagem de línguas exige repetição, contexto e feedback. 3. Gamificação: reforça objetivos pedagógicos baseados na gramática da língua. 4. Variações: os sinais precisam seguir critérios claros de padronização."
+              loading="lazy"
+            />
+          </div>
+
+          <h3 class="cs-h3">Pesquisas</h3>
+          <p class="cs-p">
+            Foram desenvolvidas duas pesquisas remotas via formulário: uma com estudantes para entender suas
+            necessidades e barreiras no aprendizado de LIBRAS, e outra com professores para mapear desafios de
+            ensino e oportunidades de aprimorar o processo de aprendizagem.
+          </p>
+
+          <p class="cs-h4">Formulário com estudantes</p>
+          <p class="cs-p">
+            50 respostas coletadas, sendo 37 válidas. As 13 desconsideradas eram de pessoas sem contato com
+            LIBRAS, fora do escopo da pesquisa, que buscava entender as barreiras de quem já tentou aprender.
+          </p>
+          <div class="cs-panel">
+            <img
+              src="../assets/images/cs-di-studentsurvey-stats.png"
+              alt="73% possuem nível básico ou iniciante na língua. 28% apontam lembrar dos sinais como uma das principais dificuldades. 26% preferem aprender por meio de prática ativa. 24% preferem jogos divertidos e envolventes. 20% gostariam de ampliar o vocabulário por meio do jogo. 28% nunca utilizaram aplicativos para aprender LIBRAS."
+              loading="lazy"
+            />
+          </div>
+          <div class="cs-proto-cta">
+            <a href="https://drive.google.com/file/d/1DdwlShu-26P2P4jotWbPDjcVZrKAqW7s/view?usp=sharing" class="btn btn--outline" target="_blank" rel="noopener">
+              Ver pesquisa
+              <span class="btn__icon">
+                <img src="../assets/icons/icone-seta-vermais-outline-design-inclusivo.svg" alt="" class="btn__icon-default" />
+                <img src="../assets/icons/icone-seta-vermais-outline-design-inclusivo-hover.svg" alt="" class="btn__icon-hover" />
+                <img src="../assets/icons/icone-seta-vermais-outline-design-inclusivo-active.svg" alt="" class="btn__icon-active" />
+              </span>
+            </a>
+          </div>
+
+          <p class="cs-h4">Formulário com professores</p>
+          <p class="cs-p">
+            10 professores. 10 respostas válidas. Os dados reforçaram o que os estudantes já tinham apontado e
+            trouxeram a perspectiva de quem observa o problema de fora.
+          </p>
+          <div class="cs-learn-list">
+            <div class="cs-learn-card">
+              <p class="cs-learn-card__title">Principais dificuldades dos alunos segundo os professores</p>
+              <p class="cs-learn-card__text">Lembrar os sinais, aprender sozinho por falta de alguém para praticar, manter constância nos estudos e encontrar materiais visuais claros e confiáveis.</p>
+            </div>
+            <div class="cs-learn-card">
+              <p class="cs-learn-card__title">O que mais ajuda no aprendizado</p>
+              <p class="cs-learn-card__text">Jogos com desafios e recompensas, prática ativa com repetição e exercícios, e vídeos com demonstrações dos sinais.</p>
+            </div>
+            <div class="cs-learn-card">
+              <p class="cs-learn-card__title">Problema nos materiais didáticos existentes</p>
+              <p class="cs-learn-card__text">Sinais mal ilustrados ou confusos e falta de clareza no movimento das mãos.</p>
+            </div>
+          </div>
+          <div class="cs-proto-cta" style="margin-top: 16px;">
+            <a href="https://drive.google.com/file/d/1DdwlShu-26P2P4jotWbPDjcVZrKAqW7s/view?usp=sharing" class="btn btn--outline" target="_blank" rel="noopener">
+              Ver pesquisa
+              <span class="btn__icon">
+                <img src="../assets/icons/icone-seta-vermais-outline-design-inclusivo.svg" alt="" class="btn__icon-default" />
+                <img src="../assets/icons/icone-seta-vermais-outline-design-inclusivo-hover.svg" alt="" class="btn__icon-hover" />
+                <img src="../assets/icons/icone-seta-vermais-outline-design-inclusivo-active.svg" alt="" class="btn__icon-active" />
+              </span>
+            </a>
+          </div>
+
+          <h3 class="cs-h3">Personas</h3>
+          <p class="cs-p">
+            Três personas foram construídas a partir dos dados da pesquisa, representando diferentes motivações
+            para aprender Libras. Isso permitiu considerar expectativas e objetivos distintos, garantindo que a
+            solução atendesse a diferentes perfis de usuários.
+          </p>
+
+          <h4 class="cs-persona-title">Persona 1</h4>
+          <div class="cs-panel">
+            <img
+              src="../assets/images/cs-di-persona-1.png"
+              alt="Ana Silva, 18–24 anos, iniciante em Libras, aprende por vídeos na internet por curiosidade/hobby. Citação: “Tenho curiosidade em aprender Libras, mas só continuo quando o conteúdo é rápido, visual e fácil de entender.” Objetivos: aprender sinais, ampliar o vocabulário e entender os movimentos das mãos. Dificuldades: memorização, compreensão dos movimentos e encontrar materiais claros e confiáveis. Comportamento: prefere jogos simples e visualmente agradáveis, desiste de experiências lentas, confusas ou pouco envolventes."
+              loading="lazy"
+            />
+          </div>
+
+          <h4 class="cs-persona-title">Persona 2</h4>
+          <div class="cs-panel">
+            <img
+              src="../assets/images/cs-di-persona-2.png"
+              alt="Bruno Ferreira, 18–24 anos, nível básico em Libras, aprende na escola/faculdade por obrigatoriedade. Citação: “Aprendo Libras porque é uma exigência do curso, então o jogo precisa tornar essa obrigação mais leve e motivadora.” Objetivo: ampliar o vocabulário, ganhar confiança e consolidar o aprendizado da disciplina. Dificuldades: memorizar os sinais e manter a constância. Comportamento: prefere demonstrações visuais e prática ativa, engaja com recompensas e sensação de progresso e desiste de experiências confusas ou pouco envolventes."
+              loading="lazy"
+            />
+          </div>
+
+          <h4 class="cs-persona-title">Persona 3</h4>
+          <div class="cs-panel">
+            <img
+              src="../assets/images/cs-di-persona-3.png"
+              alt="Mariana Costa, 25–34 anos, iniciante em Libras, aprende com amigos e familiares por inclusão social. Citação: “Quero aprender Libras para me comunicar melhor com pessoas próximas, mas preciso de algo leve, visual e útil no dia a dia.” Objetivo: aprender sinais, entender a estrutura da Libras e conhecer a cultura e a comunidade surda. Dificuldades: memorizar, diferenciar sinais semelhantes e praticar sem alguém para acompanhar. Comportamento: prefere vídeos e situações contextualizadas, engaja com experiências visuais, simples e envolventes e desiste de jogos longos, complexos ou pouco interessantes."
+              loading="lazy"
+            />
+          </div>
+          </div>
+        </section>
+
+        <section class="cs-section" id="definir">
+          <button type="button" class="cs-section__header" aria-expanded="false">
+            <span class="cs-eyebrow">DEFINIR</span>
+            <h2 class="cs-h2">Identificar prioridades e direcionar a solução.</h2>
+            <span class="cs-section__chevron" aria-hidden="true"></span>
+          </button>
+          <div class="cs-section__body">
+          <p class="cs-p">
+            Os dados coletados na descoberta são analisados e organizados para identificar os principais
+            problemas e oportunidades. Esse processo transforma informações dispersas em um direcionamento
+            claro, garantindo que a solução responda às necessidades mais relevantes dos usuários.
+          </p>
+
+          <h3 class="cs-h3">JTBD - Jobs To Be Done</h3>
+          <p class="cs-p">
+            Ferramenta usada para entender o que os usuários buscam ao aprender Libras. Foram identificados três
+            perfis: aprender do zero de forma estruturada, manter a constância e revisar o conteúdo aprendido.
+            Entender esses objetivos evita criar funcionalidades que não atendem às necessidades reais.
+          </p>
+          <div class="cs-panel">
+            <img
+              src="../assets/images/cs-di-jtbd-grid.png"
+              alt="Persona: aprendiz iniciante motivado por inclusão, quer aprender Libras do zero, mas não sabe por onde começar, tem medo de errar e busca um aprendizado leve e significativo que se adapte à sua rotina. Job Funcional: aprender e consolidar conhecimentos básicos de LIBRAS de forma estruturada e progressiva. Dor/Problema: conteúdos dispersos, dificuldade em manter a constância, medo de errar e um aprendizado tradicional pouco engajador. Job Social: posicionar-se como uma pessoa inclusiva e preparada para interações básicas com pessoas surdas. Solução/Resultado Funcional: aplicativo gamificado, progressão por níveis, microlições, feedbacks construtivos e aprendizado contextualizado. Job Emocional: sentir-se capaz e seguro durante o processo de aprendizagem. Proposta de Valor Chave: oferecer uma experiência contextualizada e envolvente de aprendizagem de LIBRAS que permita ao usuário evoluir com segurança, constância e propósito inclusivo."
+              loading="lazy"
+            />
+          </div>
+
+          <h3 class="cs-h3">5W2H</h3>
+          <p class="cs-p">
+            Estruturou o problema em sete perguntas, revelando um contexto de adultos ouvintes iniciantes que
+            estudam pelo celular em momentos curtos, sem estímulos regulares para manter o hábito. Essa análise
+            garantiu uma compreensão completa do problema antes da ideação.
+          </p>
+          <div class="cs-panel">
+            <img src="../assets/images/cs-di-5w2h-panel.png" alt="Quadro 5W2H: What - dificuldade em memorizar sinais e manter a constância; Why - Libras exige repetição; Where - pelo celular no cotidiano; When - ao longo da rotina diária; Who - adultos ouvintes iniciantes ou básicos em Libras" loading="lazy" />
+          </div>
+
+          <h3 class="cs-h3">HMW - How Might We</h3>
+          <p class="cs-p">
+            Os problemas identificados foram transformados em três perguntas abertas que guiaram a ideação. A
+            técnica HMW transforma desafios em oportunidades, direcionando o projeto para possibilidades de
+            solução.
+          </p>
+
+          <p class="cs-h4">Como poderíamos apoiar pessoas ouvintes iniciantes em LIBRAS a manter a constância nos estudos, mesmo dispondo de curtos períodos de tempo?</p>
+          <p class="cs-p">
+            Essa pergunta, focada em manter a constância com pouco tempo, revelou a necessidade de sessões
+            curtas, notificações personalizáveis e um personagem que incentive a atenção diária, com
+            penalidades leves para motivar sem frustrar.
+          </p>
+          <div class="cs-panel">
+            <img
+              src="../assets/images/cs-di-hmw-panel-1.png"
+              alt="Recompensa por constância. Ativação por controle de voz. Estudo fragmentado. Penalidade leve por ausência. “Modo rápido” para dias corridos. Sessões de prática de 3 a 5 minutos. Lembretes. Microdesafios diários."
+              loading="lazy"
+            />
+          </div>
+
+          <p class="cs-h4">Como poderíamos apoiar a prática recorrente de sinais já estudados, reduzindo o esquecimento e o tempo gasto para retomar conteúdos?</p>
+          <p class="cs-p">
+            Essa pergunta, focada em prática complementar, revelou a necessidade de sessões curtas,<br />
+            notificações personalizáveis e um personagem que incentive a prática diária, com penalidades<br />
+            leves para motivar sem frustrar.
+          </p>
+          <div class="cs-panel">
+            <img
+              src="../assets/images/cs-di-hmw-panel-2.png"
+              alt="Prática afeta estado do personagem. Revisão relâmpago. Prática de pares mínimos. Conversas em tempo real (IA). Repetição espaçada. Comparação visual (IA). Ênfase separada por parâmetro. Biblioteca pessoal. Animações em diferentes velocidades."
+              loading="lazy"
+            />
+          </div>
+
+          <p class="cs-h4">Como poderíamos apoiar a motivação dos usuários durante o processo de aprendizagem de LIBRAS, evitando o abandono mesmo quando o progresso é gradual?</p>
+          <p class="cs-p">
+            Essa pergunta, focada em motivação e engajamento, revelou a necessidade de recompensas visíveis,
+            conquistas e evolução do personagem que valorizem o progresso, mesmo em pequenas interações.
+          </p>
+          <div class="cs-panel">
+            <img
+              src="../assets/images/cs-di-hmw-panel-3.png"
+              alt="Personalização como recompensa. Marcos de progresso. Comparação com o eu do passado. Metas pequenas e alcançáveis. Feedback motivador. Evolução do personagem. Incentivos em dias difíceis. Reações emocionais do personagem. Visualização do progresso."
+              loading="lazy"
+            />
+          </div>
+          <p class="cs-p">
+            Algumas ideias foram descartadas nessa etapa por complexidade técnica ou risco de sobrecarga
+            cognitiva, mas ficaram registradas para versões futuras.
+          </p>
+          </div>
+        </section>
+
+        <section class="cs-section" id="desenvolver">
+          <button type="button" class="cs-section__header" aria-expanded="false">
+            <span class="cs-eyebrow">DESENVOLVER</span>
+            <h2 class="cs-h2">Transformar ideias em soluções que respondam às necessidades dos usuários.</h2>
+            <span class="cs-section__chevron" aria-hidden="true"></span>
+          </button>
+          <div class="cs-section__body">
+          <p class="cs-p">
+            As oportunidades identificadas foram transformadas em ideias e soluções, exploradas e refinadas com
+            foco na experiência do usuário.
+          </p>
+
+          <h3 class="cs-h3">Análise de similares</h3>
+          <p class="cs-p">
+            Foram analisados dois grupos: apps de ensino de idiomas e jogos de simulação de cuidado, cada um
+            contribuindo com elementos para a solução. A análise de jogos de cuidado foi essencial porque o
+            desafio era também manter o engajamento e a constância, não apenas ensinar o conteúdo.
+          </p>
+          <div class="cs-panel">
+            <img
+              src="../assets/images/cs-di-compare-table.png"
+              alt="Tabela de análise de similares. Duolingo: ensino de idiomas, sistema de níveis/recompensas/desafios, interatividade alta, ícones/animações/feedback visual, estrutura de progressão e motivação. Hand Talk: ensino e tradução em LIBRAS, trilhas estruturadas e atividades, interatividade média, avatar 3D tradutor de sinais, organização do aprendizado em módulos. Loodus: interação educacional, mecânica simples de recompensa, interatividade média, personagem interativo, mecânica de solicitação ao usuário. Tamagotchi: simulação de cuidado virtual, sistema de responsabilidade e evolução, interatividade média, personagem interativo, mecânica de cuidado e responsabilidade. Pou: jogo casual de cuidado virtual, recompensas e atividades, interatividade alta, personagem simples e interativo, mecânica de cuidado e responsabilidade. The Sims: simulação de vida, progressão e gerenciamento de necessidades, interatividade alta, ambiente e personagens simulados, sistema de evolução e responsabilidade."
+              loading="lazy"
+            />
+          </div>
+
+          <h3 class="cs-h3">Sketch</h3>
+          <p class="cs-p">
+            Primeiros esboços da mecânica e dos fluxos principais. O conceito do jogo de cuidado com três
+            ambientes (quarto, cozinha e sala) começou a tomar forma. Os esboços permitiram explorar ideias
+            rapidamente antes de construir as telas.
+          </p>
+          <div class="cs-panel">
+            <img src="../assets/images/cs-di-sketch-panel.png" alt="Esboços em papel do conceito do jogo de cuidado, mostrando os ambientes do quarto e da cozinha" loading="lazy" />
+          </div>
+
+          <h3 class="cs-h3">Flowchart</h3>
+          <p class="cs-p">
+            Foi criado um fluxograma com todas as funcionalidades previstas. Após analisar o tempo disponível, o
+            escopo foi reduzido e um segundo fluxo foi criado, focado no onboarding e suas interações. O primeiro
+            definiu o escopo e as prioridades; o segundo detalhou a funcionalidade desenvolvida no TCC e orientou
+            as próximas etapas.
+          </p>
+          <div class="cs-cta-group">
+            <div class="cs-cta-block">
+              <p class="cs-h4 cs-h4--center">Flowchart de todo o sistema</p>
+              <a href="https://mermaid.ai/d/e63c695a-bbfa-4141-8520-343eda28eee9" target="_blank" rel="noopener" class="btn btn--outline btn--full">
+                Ver fluxograma
+                <span class="btn__icon">
+                  <img src="../assets/icons/icone-seta-vermais-outline-design-inclusivo.svg" alt="" class="btn__icon-default" />
+                  <img src="../assets/icons/icone-seta-vermais-outline-design-inclusivo-hover.svg" alt="" class="btn__icon-hover" />
+                  <img src="../assets/icons/icone-seta-vermais-outline-design-inclusivo-active.svg" alt="" class="btn__icon-active" />
+                </span>
+              </a>
+            </div>
+            <div class="cs-cta-block">
+              <p class="cs-h4 cs-h4--center">Flowchart do onboarding</p>
+              <a href="https://mermaid.ai/d/633fb593-578e-4af3-a826-0214748d666a" target="_blank" rel="noopener" class="btn btn--outline btn--full">
+                Ver fluxograma
+                <span class="btn__icon">
+                  <img src="../assets/icons/icone-seta-vermais-outline-design-inclusivo.svg" alt="" class="btn__icon-default" />
+                  <img src="../assets/icons/icone-seta-vermais-outline-design-inclusivo-hover.svg" alt="" class="btn__icon-hover" />
+                  <img src="../assets/icons/icone-seta-vermais-outline-design-inclusivo-active.svg" alt="" class="btn__icon-active" />
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <h3 class="cs-h3">Matriz de Eisenhower</h3>
+          <p class="cs-p">
+            Com o escopo maior que o tempo disponível, a Matriz de Eisenhower organizou as funcionalidades por
+            urgência e importância. O onboarding foi priorizado por permitir compreender a lógica do jogo como um
+            todo, enquanto ranking, pagamentos e correção por IA ficaram para versões futuras. A categorização
+            considerou o que era essencial para essa compreensão dentro do prazo disponível.
+          </p>
+          <div class="cs-panel">
+            <img
+              src="../assets/images/cs-di-eisenhower-matrix.png"
+              alt="Matriz de Eisenhower. Importante e urgente: Login, Avaliação Inicial, Definir Rotina de Estudo, Introdução ao Onboarding, Onboarding da Quarto, Onboarding da Cozinha, Onboarding da Sala, Encerramento do Onboarding. Importante e não urgente: Cadastro, Permissões de Uso, Tela de Abertura (Splash), Configurações Gerais, Feedback e Acompanhamento, Animação real de sinais de LIBRAS. Não importante e urgente: Configurações de acessibilidade, Notificações push, Mini-jogo totalmente funcional, Funcionamento do sistema premium, Execução real de exercícios de LIBRAS. Não importante e não urgente: Ranking entre usuários, Sistema de pagamento, Modo demo (visitante), Modo escuro."
+              loading="lazy"
+            />
+          </div>
+
+          <h3 class="cs-h3">Crazy 8</h3>
+          <p class="cs-p">
+            Foi utilizado para explorar rapidamente diferentes soluções para a mesma necessidade, gerando oito
+            ideias em poucos minutos. A técnica amplia as possibilidades e evita a fixação na primeira solução,
+            permitindo comparar alternativas antes de definir o caminho a seguir.
+          </p>
+          <div class="cs-panel">
+            <img src="../assets/images/cs-di-crazy8-panel.gif" alt="Construção progressiva dos esboços de Crazy 8 do onboarding: Login, Tempo disponível, Nivelamento, Horário, Personalização e Introdução" loading="lazy" />
+          </div>
+
+          <h3 class="cs-h3">Wireframes</h3>
+          <p class="cs-p">
+            Os sketches do Crazy 8 foram evoluídos para wireframes de média fidelidade, validando os fluxos e a
+            estrutura das telas antes da identidade visual. Separar experiência e estética permitiu focar
+            primeiro na solução do problema.
+          </p>
+          <div class="cs-panel">
+            <img
+              src="../assets/images/cs-di-wireframes-media.gif"
+              alt="Galeria animada dos wireframes de média fidelidade: onboarding (Login, Nivelamento, Definição de Tempo, Definição de Horário, Personagem 1, Personagem 2, Introdução), status/quarto, cadernos e minijogos, cartas de revisão e trilha de conhecimento"
+              loading="lazy"
+            />
+          </div>
+          </div>
+        </section>
+
+        <section class="cs-section" id="entregar">
+          <button type="button" class="cs-section__header" aria-expanded="false">
+            <span class="cs-eyebrow">ENTREGAR</span>
+            <h2 class="cs-h2">Transformar as soluções desenvolvidas em uma experiência funcional e validada.</h2>
+            <span class="cs-section__chevron" aria-hidden="true"></span>
+          </button>
+          <div class="cs-section__body">
+          <p class="cs-p">
+            Antes dos wireframes de alta fidelidade, foram definidas as decisões estéticas: nome, cores,
+            tipografia e tom de voz. Essa base garantiu consistência visual antes da construção das telas.
+          </p>
+
+          <h3 class="cs-h3">Direção visual e identidade</h3>
+
+          <p class="cs-h4">Tom de voz</p>
+          <p class="cs-p">
+            Em um aplicativo educacional, a comunicação influencia a percepção sobre erros e progressos,
+            reduzindo frustrações e incentivando a continuidade dos estudos, por isso o tom foi definido como
+            acolhedor, encorajador, respeitoso e acessível, criando uma experiência mais confortável e
+            motivadora.
+          </p>
+          <div class="cs-panel">
+            <img src="../assets/images/cs-di-tomdevoz-panel.png" alt="Escala de tom de voz: acolhedor/hostil, crítico/encorajador, respeitoso/discriminatório, humano/impessoal, inacessível/acessível" loading="lazy" />
+          </div>
+
+          <p class="cs-h4">Nome</p>
+          <p class="cs-p">
+            O nome Nina vem de “ninar”, que carrega cuidado e acolhimento, e também é um nome pessoal,
+            reforçando que existe um personagem real para cuidar. O vínculo afetivo com o personagem sustenta o
+            engajamento. O nome contribui para tornar esse vínculo mais humano desde o primeiro contato.
+          </p>
+
+          <p class="cs-h4">Cores com nomes semânticos</p>
+          <p class="cs-p">
+            Orgulho e Respeito representam a comunidade surda; Felicidade, Energia e Alimentação, os estados do
+            personagem; Erro, Contraste e Legibilidade, as funções. Os tokens foram nomeados por intenção,
+            permitindo que seus nomes continuem fazendo sentido mesmo com mudanças na paleta.
+          </p>
+          <div class="cs-panel">
+            <img src="../assets/images/cs-di-cores-panel.png" alt="Paleta de cores com nomes semânticos: orgulho, respeito, felicidade, alimentação, energia, erro, contraste e legibilidade" loading="lazy" />
+          </div>
+
+          <p class="cs-h4">Tipografia</p>
+          <p class="cs-p">
+            A família Poppins foi escolhida pela construção geométrica e bordas arredondadas, que garantem
+            legibilidade e transmitem leveza. Uma única família tipográfica também simplifica a implementação e
+            mantém a consistência visual do produto.
+          </p>
+          <div class="cs-panel">
+            <img src="../assets/images/cs-di-tipografia-panel.png" alt="Escala tipográfica com títulos e corpo de texto em Poppins" loading="lazy" />
+          </div>
+
+          <p class="cs-h4">Logotipo</p>
+          <p class="cs-p">
+            O logotipo combina Manrope personalizada e Poppins, criando uma identidade legível, amigável e
+            acolhedora, com o primeiro “N” estilizado para representar o movimento das mãos na comunicação em
+            Libras.
+          </p>
+          <div class="cs-panel">
+            <img src="../assets/images/cs-di-logotipo-panel.png" alt="Variações do logotipo Nina — aprenda LIBRAS jogando — em três cores" loading="lazy" />
+          </div>
+
+          <p class="cs-h4">Biblioteca de componentes variáveis e estilos</p>
+          <p class="cs-p">
+            Foi criada uma biblioteca de componentes e variáveis no Figma. Ela estabelece padrões visuais,
+            garante consistência e cria uma base para a evolução futura do design system.
+          </p>
+          <div class="cs-panel">
+            <img src="../assets/images/cs-di-biblioteca-panel.png" alt="Biblioteca de componentes e variáveis no Figma com botões, tokens de cor e ícone de flashcard" loading="lazy" />
+          </div>
+
+          <p class="cs-h4">Personagem</p>
+          <p class="cs-p">
+            O personagem foi desenvolvido em estilo Flat 3D, combinando simplicidade e profundidade para criar
+            uma aparência amigável. Suas mãos possuem proporções maiores para facilitar a visualização dos
+            sinais e reforçar seu papel pedagógico. O avatar pode ser parcialmente personalizado, aumentando a
+            identificação e o engajamento, com restrições no rosto para preservar as expressões faciais,
+            fundamentais para a comunicação em LIBRAS.
+          </p>
+          <div class="cs-panel">
+            <img src="../assets/images/cs-di-personagem-panel.png" alt="Personagem Nina em estilo Flat 3D em três poses: pensativa, acenando e apontando o relógio" loading="lazy" />
+          </div>
+          </div>
+        </section>
+
+        <section class="cs-section" id="resultado">
+          <button type="button" class="cs-section__header" aria-expanded="false">
+            <span class="cs-eyebrow">RESULTADO</span>
+            <h2 class="cs-h2">Transformando pesquisa em experiência.</h2>
+            <span class="cs-section__chevron" aria-hidden="true"></span>
+          </button>
+          <div class="cs-section__body">
+          <p class="cs-p">
+            Com os aprendizados da pesquisa como base, as principais decisões do projeto ganharam forma em um
+            protótipo interativo do onboarding. Aqui, a Nina deixa de ser apenas uma ideia e se transforma em
+            uma experiência gamificada para o aprendizado de LIBRAS.
+          </p>
+
+          <p class="cs-h4">Wireframes de alta fidelidade</p>
+          <p class="cs-p">
+            Com os wireframes de alta fidelidade, foi criado um protótipo interativo que simula a navegação do
+            aplicativo. O fluxo vai da abertura ao fim do onboarding, quando o usuário conhece a Nina, entende
+            o jogo e configura sua rotina de estudos.
+          </p>
+          <div class="cs-panel">
+            <img src="../assets/images/cs-di-wireframes-alta-panel.png" alt="Cinco telas do protótipo de alta fidelidade do onboarding: login, boas-vindas à Nina, configuração de horário de estudos, seleção de características do personagem e perfil da Nina" loading="lazy" />
+          </div>
+          <div class="cs-proto-cta">
+            <a href="https://www.figma.com/proto/9oMSmoagdLA4rjdPjp5cEP/Nina_LIBRAS_TCC?node-id=11152-6555&p=f&t=zYasOgKr5JOGPlFG-1&scaling=scale-down&content-scaling=fixed&page-id=11087%3A3900&starting-point-node-id=11152%3A6555&show-proto-sidebar=1" target="_blank" rel="noopener" class="btn btn--primary">
+              Navegar no protótipo
+              <span class="btn__icon"><img src="../assets/icons/icone-seta-vermais-white.svg" alt="" /></span>
+            </a>
+          </div>
+
+          <p class="cs-h4">Comparação</p>
+          <p class="cs-p">
+            A comparação entre os sketches do Crazy 8, os wireframes de média fidelidade e os wireframes de
+            alta fidelidade evidencia a evolução gradual da tela de login, desde a exploração inicial de
+            ideias até sua consolidação visual.
+          </p>
+          <div class="cs-panel">
+            <img src="../assets/images/cs-di-comparacao-panel.png" alt="Evolução da tela de login em três etapas: sketches do Crazy 8, wireframe de média fidelidade e tela final de alta fidelidade" loading="lazy" />
+          </div>
+          </div>
+        </section>
+
+        <section class="cs-section" id="proximos-passos">
+          <button type="button" class="cs-section__header" aria-expanded="false">
+            <span class="cs-eyebrow">PRÓXIMOS PASSOS</span>
+            <h2 class="cs-h2">O protótipo é o começo, não o fim.</h2>
+            <span class="cs-section__chevron" aria-hidden="true"></span>
+          </button>
+          <div class="cs-section__body">
+          <p class="cs-p">
+            Nesta etapa, as interfaces foram refinadas para representar o mais fielmente possível o
+            resultado final do aplicativo. O protótipo do onboarding demonstra o funcionamento do jogo e
+            permite avaliar a experiência completa do usuário.
+          </p>
+
+          <div class="cs-learn-list">
+            <div class="cs-learn-card">
+              <p class="cs-learn-card__title">Testes com usuários reais</p>
+              <p class="cs-learn-card__text">Validar usabilidade, compreensão da mecânica e aceitação da proposta com pessoas ouvintes interessadas em aprender LIBRAS.</p>
+            </div>
+            <div class="cs-learn-card">
+              <p class="cs-learn-card__title">Validação com a comunidade surda</p>
+              <p class="cs-learn-card__text">Garantir que a representação da língua e da cultura surda no app seja adequada e respeitosa. Professores de LIBRAS precisam fazer parte desse processo.</p>
+            </div>
+            <div class="cs-learn-card">
+              <p class="cs-learn-card__title">Expandir o protótipo</p>
+              <p class="cs-learn-card__text">Desenvolver os fluxos além do onboarding: minigames completos, trilha de conhecimento, baralho de memorização e sistema de animações dos sinais.</p>
+            </div>
+            <div class="cs-learn-card">
+              <p class="cs-learn-card__title">Refinar com base nos testes</p>
+              <p class="cs-learn-card__text">Ajustar fluxos, mecânicas e conteúdos a partir dos testes. A hipótese inicial é que o excesso de elementos e informações pode gerar sobrecarga cognitiva e reduzir o foco no personagem.</p>
+            </div>
+            <div class="cs-learn-card">
+              <p class="cs-learn-card__title">Garantir a acessibilidade</p>
+              <p class="cs-learn-card__text">Aplicação das diretrizes WCAG, ajustes tipográficos para baixa visão e estruturação técnica da interface.</p>
+            </div>
+          </div>
+          </div>
+        </section>
+
+        <section class="cs-section" id="aprendizados">
+          <button type="button" class="cs-section__header" aria-expanded="false">
+            <span class="cs-eyebrow">APRENDIZADOS</span>
+            <h2 class="cs-h2">O que esse projeto<br />me ensinou de verdade?</h2>
+            <span class="cs-section__chevron" aria-hidden="true"></span>
+          </button>
+          <div class="cs-section__body">
+          <div class="cs-learn-list">
+            <div class="cs-learn-card">
+              <p class="cs-learn-card__title">O processo pode levar a lugares inesperados</p>
+              <p class="cs-learn-card__text">O projeto começou sem definir se a solução seria física ou digital, apenas com o objetivo de contribuir para o aprendizado de LIBRAS. A solução final surgiu ao longo do processo de pesquisa e design, e não de uma ideia pré-definida.</p>
+            </div>
+            <div class="cs-learn-card">
+              <p class="cs-learn-card__title">Pesquisa é de extrema importância</p>
+              <p class="cs-learn-card__text">As cartas de revisão não faziam parte do plano inicial. Surgiram a partir da pesquisa, que identificou a memorização como um dos principais obstáculos ao aprendizado. Sem esses dados, essa decisão provavelmente não teria sido tomada.</p>
+            </div>
+            <div class="cs-learn-card">
+              <p class="cs-learn-card__title">Hipóteses precisam ser testadas</p>
+              <p class="cs-learn-card__text">Tudo que foi construído aqui é hipótese, com base em dados. O próximo passo mais importante é testar com usuários reais e descobrir o que não funciona.</p>
+            </div>
+          </div>
+
+          <p class="cs-thanks">Obrigada por ler até aqui :)</p>
+          </div>
+        </section>
+
+      </article>
+    </div>
+
+    <!-- VAMOS CONVERSAR -->
+    <section class="section" id="contato" aria-labelledby="contato-titulo">
+      <div class="container">
+        <div class="contact">
+          <h2 class="contact__title" id="contato-titulo">Vamos conversar?</h2>
+          <p class="contact__text">Gostou do meu trabalho? Estou aberta a oportunidades e adoraria conhecer novos desafios.</p>
+
+          <div class="contact__cta">
+            <a href="https://wa.me/5534996358519" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+              Entre em contato
+              <span class="btn__icon"><img src="../assets/icons/icone-whatsapp.svg" alt="" /></span>
+            </a>
+          </div>
+
+          <ul class="social-list">
+            <li>
+              <a href="mailto:lauramenesantos@gmail.com" class="social-btn social-btn--figma social-btn--gmail" aria-label="Enviar e-mail">
+                <span class="social-btn__icon">
+                  <img src="../assets/icons/icone-mail-default-design-inclusivo.svg" alt="" class="social-btn__icon-default" />
+                  <img src="../assets/icons/icone-mail-hover-design-inclusivo.svg" alt="" class="social-btn__icon-hover" />
+                  <img src="../assets/icons/icone-mail-active-design-inclusivo.svg" alt="" class="social-btn__icon-active" />
+                </span>
+                <span>Gmail</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.behance.net/lauramenezes11" class="social-btn social-btn--figma social-btn--behance" aria-label="Ver Behance" target="_blank" rel="noopener noreferrer">
+                <span class="social-btn__icon">
+                  <img src="../assets/icons/icone-behance-default-design-inclusivo.svg" alt="" class="social-btn__icon-default" />
+                  <img src="../assets/icons/icone-behance-hover-design-inclusivo.svg" alt="" class="social-btn__icon-hover" />
+                  <img src="../assets/icons/icone-behance-active-design-inclusivo.svg" alt="" class="social-btn__icon-active" />
+                </span>
+                <span>Behance</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/lauramenesantos" class="social-btn social-btn--figma social-btn--linkedin" aria-label="Ver LinkedIn" target="_blank" rel="noopener noreferrer">
+                <span class="social-btn__icon">
+                  <img src="../assets/icons/icone-linkedin-default-design-inclusivo.svg" alt="" class="social-btn__icon-default" />
+                  <img src="../assets/icons/icone-linkedin-hover-design-inclusivo.svg" alt="" class="social-btn__icon-hover" />
+                  <img src="../assets/icons/icone-linkedin-active-design-inclusivo.svg" alt="" class="social-btn__icon-active" />
+                </span>
+                <span>Linkedin</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJETOS RECOMENDADOS -->
+    <section class="section" aria-labelledby="projetos-titulo">
+      <div class="container">
+        <h2 class="section__title" id="projetos-titulo">Projetos recomendados</h2>
+
+        <div class="project-grid">
+          <a class="project-card project-card--design-system" href="../design-system/index.html">
+            <div class="project-card__hover-media" aria-hidden="true">
+              <img src="../assets/images/projeto-design-system-hover.png" alt="" loading="lazy" />
+            </div>
+            <div class="project-card__media">
+              <img src="../assets/images/projeto-design-system.png" alt="Prévia do projeto Design System" loading="lazy" />
+            </div>
+            <div class="project-card__info">
+              <h3 class="project-card__title">Design System</h3>
+              <p class="project-card__desc">Escala e padronização de um sistema de gestão de ativos industriais</p>
+            </div>
+            <div class="project-card__tags">
+              <span class="tag tag--primary">Escalabilidade</span>
+              <span class="tag tag--primary">B2B Industrial</span>
+            </div>
+            <span class="project-card__arrow" aria-hidden="true">
+              <img src="../assets/icons/icone-seta-proximo.svg" alt="" />
+            </span>
+          </a>
+
+          <div class="project-card project-card--design-inclusivo" aria-current="page">
+            <div class="project-card__hover-media" aria-hidden="true">
+              <img src="../assets/images/projeto-design-inclusivo-hover.png" alt="" loading="lazy" />
+            </div>
+            <div class="project-card__media">
+              <img src="../assets/images/projeto-design-inclusivo.png" alt="Prévia do projeto Design Inclusivo Gamificado" loading="lazy" />
+            </div>
+            <div class="project-card__info">
+              <h3 class="project-card__title">Design Inclusivo Gamificado</h3>
+              <p class="project-card__desc">Design de um aplicativo gamificado para aprendizado inclusivo de LIBRAS</p>
+            </div>
+            <div class="project-card__tags">
+              <span class="tag tag--secondary">Gamificação</span>
+              <span class="tag tag--secondary">Mobile First</span>
+            </div>
+            <span class="project-card__arrow" aria-hidden="true">
+              <img src="../assets/icons/icone-seta-proximo.svg" alt="" />
+            </span>
+          </div>
+
+          <a class="project-card project-card--programacao-criativa" href="../programacao-criativa/index.html">
+            <div class="project-card__hover-media" aria-hidden="true">
+              <img src="../assets/images/projeto-programacao-criativa-hover.png" alt="" loading="lazy" />
+            </div>
+            <div class="project-card__media">
+              <img src="../assets/images/projeto-programacao-criativa.png" alt="Prévia do projeto Programação Criativa" loading="lazy" />
+            </div>
+            <div class="project-card__info">
+              <h3 class="project-card__title">Programação Criativa</h3>
+              <p class="project-card__desc">Compreensão de como decisões de design se traduzem em código</p>
+            </div>
+            <div class="project-card__tags">
+              <span class="tag tag--accent">JavaScript</span>
+              <span class="tag tag--accent">Interatividade</span>
+            </div>
+            <span class="project-card__arrow" aria-hidden="true">
+              <img src="../assets/icons/icone-seta-proximo.svg" alt="" />
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p class="site-footer__text">lauramenesantos@gmail.com&nbsp;&nbsp;|&nbsp;(34) 9.9635-8519</p>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

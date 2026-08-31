@@ -1,0 +1,3730 @@
+/* =========================================================
+   Laura Menezes — Portfólio
+   style.css — reprodução fiel do design no Figma
+   ========================================================= */
+
+/* ---------- Fontes ---------- */
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap');
+/* pesos 600/700 adicionados: vários rótulos usam Inter Semi Bold (600, ex.:
+   .cs-panel-group__label, .cs-swatch-cycle__label, .cs-theme-cycle__heading)
+   e sem o peso exato importado o navegador renderizava com o peso mais
+   próximo disponível (500), mais fino que o Figma. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,400&display=swap');
+/* Figma node 6159:4576 (legenda do painel Contexto, Design System): a legenda
+   usa Permanent Marker (fonte manuscrita), não Inter itálico — sem essa
+   importação o navegador caía para itálico de Inter, tipografia diferente
+   do Figma. */
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+/* ---------- Design tokens (extraídos do Figma) ---------- */
+:root {
+  --color-primary: #2a8985;
+  --color-secondary: #c42557;
+  --color-secondary-alt: #cb406c;
+  --color-accent: #e19b25;
+  --color-tertiary: #e7a22d;
+
+  --neutral-dark-01: #191919;
+  --neutral-dark-02: #242424;
+  --neutral-dark-04: #3b3b3b;
+  --neutral-dark-05: #4a4a4a;
+  --neutral-dark-07: #8a8a8a;
+  --neutral-black: #000000;
+
+  --neutral-light-01: #fefefe;
+  --neutral-light-01-alt: #fafbfc;
+  --neutral-light-03: #f5f5f5;
+  --neutral-light-04: #eaeaea;
+  --neutral-light-05: #dddddd;
+  --neutral-light-07: #b8b8b8;
+
+  --font-heading: 'Satoshi', 'Satoshi Variable', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --container-max: 1440px;
+  --container-padding: 124px;
+  --header-height: 80px;
+
+  --gap-cards: 30px;
+  --radius-card: 24px;
+  --radius-img: 16px;
+  --radius-btn: 8px;
+}
+
+/* ---------- Reset básico ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Necessário para o "width:100vw" do body abaixo não criar uma barra de
+     rolagem horizontal (100vw inclui a faixa da scrollbar vertical). */
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--neutral-dark-01);
+  background-color: var(--neutral-light-01);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  /* Em telas com scrollbar "clássica" (Windows/Linux), "width:100%" ficaria
+     ~15-17px menor que os 1440px de referência do Figma, pois a scrollbar
+     rouba espaço do viewport — o suficiente para os grids de 3 cards
+     (377px × 3 + gaps = 1191px, quase sem folga) quebrarem para 2+1. Usar
+     100vw (que ignora a scrollbar) devolve esse espaço para o .container. */
+  width: 100vw;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Botões ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 20px 16px 24px;
+  border-radius: var(--radius-btn);
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 14px;
+  height: 56px;
+  white-space: nowrap;
+}
+
+/* Ciclo de cores documentado no Style Guide (Botões):
+   Default = teal · Hover = pink · Click = orange — vale para
+   Primary (background) e Secundary/outline (borda + texto). */
+.btn--outline {
+  border: 1.5px solid var(--color-primary);
+  color: var(--color-primary);
+  background: transparent;
+  height: 40px;
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.btn--outline:hover,
+.btn--outline:focus-visible {
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+.btn--outline:active {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.btn--primary {
+  background-color: var(--color-primary);
+  color: var(--neutral-light-01-alt);
+  transition: background-color 0.25s ease;
+}
+
+.btn--primary:hover,
+.btn--primary:focus-visible {
+  background-color: var(--color-secondary);
+}
+
+.btn--primary:active {
+  background-color: var(--color-accent);
+}
+
+.btn--muted {
+  background-color: var(--neutral-light-07);
+  color: var(--neutral-light-01-alt);
+}
+
+.btn--dark {
+  background-color: var(--neutral-dark-07);
+  color: var(--neutral-light-01-alt);
+  transition: background-color 0.25s ease;
+}
+
+.btn--dark:hover,
+.btn--dark:focus-visible {
+  background-color: var(--neutral-dark-05);
+}
+
+.btn[disabled] {
+  cursor: not-allowed;
+}
+
+.btn--full {
+  width: 100%;
+  justify-content: center;
+}
+
+.btn--muted strong {
+  font-family: var(--font-heading);
+  font-weight: 900;
+}
+
+/* Troca do ícone (não é só recolorir): stroke próprio para cada estado. */
+.btn__icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.btn__icon img {
+  position: absolute;
+  inset: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.btn__icon-default {
+  transition: opacity 0.25s ease;
+}
+
+.btn__icon-hover,
+.btn__icon-active {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+/* Hover/click diretamente sobre o botão (ex.: CTA do hero) */
+.btn--outline:hover .btn__icon-default,
+.btn--outline:focus-visible .btn__icon-default,
+.btn--outline:active .btn__icon-default {
+  opacity: 0;
+}
+
+.btn--outline:hover .btn__icon-hover,
+.btn--outline:focus-visible .btn__icon-hover {
+  opacity: 1;
+}
+
+.btn--outline:active .btn__icon-hover {
+  opacity: 0;
+}
+
+.btn--outline:active .btn__icon-active {
+  opacity: 1;
+}
+
+/* Hover/click propagado do card inteiro (cards de "Pensamento por trás do design") */
+.thought-card:hover .btn__icon-default,
+.thought-card:focus-visible .btn__icon-default,
+.thought-card:active .btn__icon-default {
+  opacity: 0;
+}
+
+.thought-card:hover .btn__icon-hover,
+.thought-card:focus-visible .btn__icon-hover {
+  opacity: 1;
+}
+
+.thought-card:active .btn__icon-hover {
+  opacity: 0;
+}
+
+.thought-card:active .btn__icon-active {
+  opacity: 1;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-height);
+  background-color: var(--neutral-light-03);
+  display: flex;
+  align-items: center;
+}
+
+.site-header__inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: var(--container-padding);
+}
+
+.site-header__brand {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.site-header__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.site-header__brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.site-header__name {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.1;
+  color: var(--neutral-dark-01);
+}
+
+.site-header__role {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--neutral-dark-01);
+}
+
+.site-nav__list {
+  display: flex;
+  align-items: center;
+  gap: 72px;
+  font-size: 16px;
+}
+
+/* Bloco extra (botão de contato + redes sociais) só existe dentro do menu
+   dropdown mobile — esta <li> não deve aparecer na barra horizontal do
+   desktop, então fica escondida por padrão e só é revelada dentro do
+   breakpoint mobile abaixo. */
+.site-nav__extra {
+  display: none;
+}
+
+.site-nav__link {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--neutral-dark-01);
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.site-nav__link:hover {
+  color: var(--color-primary);
+}
+
+.site-nav__link[aria-current="page"] {
+  font-weight: 700;
+}
+
+.site-header__extras {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.lang-toggle__code {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0.32px;
+  color: var(--neutral-dark-02);
+  transition: opacity 0.2s ease;
+}
+
+.lang-toggle__code--muted {
+  font-weight: 500;
+  opacity: 0.6;
+}
+
+.lang-toggle__code:hover {
+  opacity: 0.8;
+}
+
+.lang-toggle__switch {
+  display: inline-flex;
+  align-items: center;
+  width: 40px;
+  height: 20px;
+  padding: 2px 3px;
+  border-radius: 12px;
+  background-color: var(--neutral-light-05);
+  border: none;
+}
+
+.lang-toggle__flags {
+  display: flex;
+  gap: 2px;
+}
+
+.lang-toggle__flag {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.header-divider {
+  width: 1px;
+  height: 23.5px;
+  background-color: var(--neutral-light-05);
+}
+
+.resume-link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--neutral-dark-01);
+  transition: opacity 0.2s ease;
+}
+
+.resume-link:hover {
+  opacity: 0.7;
+}
+
+.resume-link__icon {
+  width: 20px;
+  height: 20px;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+}
+
+.nav-toggle span {
+  /* Mesma espessura dos ícones outline do site (stroke-width:1.5 num
+     viewBox de 20px, ex. assets/icons/icone-seta-vermais.svg) — era 2px
+     (depois 3px), mais grosso que a linguagem visual dos outros ícones. */
+  width: 24px;
+  height: 1.5px;
+  flex-shrink: 0;
+  border-radius: 1px;
+  background-color: var(--neutral-dark-01);
+  transition: transform 0.25s ease, opacity 0.2s ease;
+  transform-origin: center;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  /* Fica "grudada" no header (sticky) e as seções seguintes vão cobrindo-a
+     conforme o usuário rola a página — ver comentário em "main > section"
+     mais abaixo para os detalhes desse efeito de sobreposição. */
+  position: sticky;
+  top: var(--header-height);
+  z-index: 0;
+  background-color: var(--neutral-light-01);
+  overflow: hidden;
+  text-align: center;
+  /* Hero ocupa toda a altura disponível abaixo do header (100vh − header).
+     display:flex + justify-content:flex-start "sobe" o conteúdo, encostando
+     no padding-top (a distância fixa até a navegação) em vez de
+     centralizar — a folga que sobrar (telas altas) fica só embaixo.
+     box-sizing:border-box garante que o padding entre no cálculo do
+     min-height, e não seja somado a ele. */
+  box-sizing: border-box;
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  /* padding-top zerado: a distância pedida (-38px, ou seja, sobrepondo o
+     menu) não é um padding válido — o ajuste fica no margin-top negativo
+     de .hero__wordmark (ver ali), que "puxa" a wordmark pra cima do topo
+     do .hero. Como o .hero tem overflow:hidden, essa fatia de 38px (que é
+     majoritariamente o leading vazio acima do "P", não o glifo em si)
+     fica recortada, e o menu (acima, com fundo sólido e z-index maior)
+     cobre o que sobrar. Sem padding-bottom reservado — como o conteúdo
+     está ancorado no topo (flex-start) em vez de centralizado, a folga
+     (quando sobra) fica só embaixo. */
+  padding-top: 0;
+  /* Largura do wordmark compartilhada com .hero__tagline (ver comentário lá) —
+     limitada por três tetos: tamanho-alvo (1053px), largura da viewport
+     (94vw) e, o novo termo, a ALTURA da viewport (calc em vh) — este
+     último garante que o conteúdo inteiro da hero (wordmark + tagline),
+     somado ao padding-top, caiba na tela inicial sem rolagem em janelas
+     baixas (ex.: notebooks 1366x768). Constante calibrada empiricamente
+     via medição real (preview_eval); não precisou mudar quando o
+     padding-top caiu de 76px pra 38px porque isso só libera MAIS espaço
+     (a sobra vira folga no rodapé do hero), nunca aperta o encaixe. */
+  --hero-wordmark-w: min(1053px, 94vw, calc(121.15vh - 198px));
+}
+
+.hero__wordmark {
+  position: relative;
+  width: var(--hero-wordmark-w);
+  aspect-ratio: 881 / 782;
+  margin-inline: auto;
+  /* Sobrepõe sob o menu — ver comentário do padding-top em .hero. -38px é o
+     valor pedido, mas fixo em px ele quebra em telas pequenas: o wordmark
+     encolhe (--hero-wordmark-w cai bastante, ex. ~352px no mobile) e os
+     mesmos 38px passam a cortar conteúdo REAL (a foto ficava ~20px cortada
+     pelo header, e até o glifo "P" chegava a ser tocado) — não só o leading
+     vazio, como acontece nos tamanhos grandes. Por isso a sobreposição é
+     proporcional a --hero-wordmark-w, com 1053px (o teto do wordmark em
+     telas grandes) como referência: no teto dá exatamente -38px (o valor
+     pedido, confirmado seguro por medição real); em wordmarks menores o
+     corte encolhe na mesma proporção, o que mantém a foto e a tinta do
+     texto sempre fora da faixa cortada pelo header. */
+  margin-top: calc(var(--hero-wordmark-w) * -38 / 1053);
+  container-type: inline-size;
+  container-name: wordmark;
+}
+
+.hero__word {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 900;
+  color: var(--color-primary);
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+/* tamanhos/posições calculados a partir do frame do Figma (881x782):
+   PORT: font 332px (top:0); FÓLIO: font 304px (top:326px, 41.69%) */
+.hero__word--top {
+  font-size: clamp(48px, 37.68cqw, 332px);
+  /* SEM margin-top negativo aqui. No Figma (fonte: home_full_raw.tsx, node
+     6090:2736) o "PORT" fica na posição natural da caixa de linha — top:0
+     dentro do frame 881x782, sem nenhum ajuste para "colar" o glifo no
+     topo. O espaço/leading que sobra acima do "P" faz parte do desenho
+     original; um margin-top negativo (usado antes p/ economizar altura)
+     deslocava o glifo pra cima e alterava a distância real
+     PORT→foto→FÓLIO em relação ao Figma. Removido para manter a proporção
+     idêntica à do Figma — o encolhimento continua proporcional porque tudo
+     escala junto com --hero-wordmark-w (aspect-ratio do .hero__wordmark). */
+}
+
+.hero__word--bottom {
+  top: 41.69%;
+  font-size: clamp(44px, 34.51cqw, 304px);
+}
+
+.hero__photo {
+  position: absolute;
+  left: 11.69%;
+  top: 15.22%;
+  width: 59.48%;
+  height: 69.18%;
+  overflow: hidden;
+}
+
+.hero__photo img {
+  position: absolute;
+  left: -9.45%;
+  top: -13.59%;
+  width: 109.47%;
+  height: 162.73%;
+  max-width: none;
+}
+
+/* Quebra pedida especificamente pro mobile ("design é estratégia," /
+   "estética é consequência.") — no desktop o texto é bem mais largo
+   (max-width:848px) e quebra sozinho num ponto diferente, então este
+   <br> fica escondido lá e só aparece dentro do breakpoint mobile
+   abaixo. */
+.hero__tagline-break {
+  display: none;
+}
+
+.hero__tagline {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-weight: 400;
+  /* Antes era clamp(18px, 3vw, 32px) — baseado só na LARGURA da viewport,
+     então não acompanhava o encolhimento do wordmark quando é a ALTURA da
+     tela que fica pequena (--hero-wordmark-w com termo em vh). Resultado:
+     a legenda ficava "grande demais" perto de um wordmark encolhido, quebrando
+     a proporção visual. Agora a fonte é proporcional ao --hero-wordmark-w
+     (mesma escala do wordmark, razão do Figma: 32px de fonte para 881px de
+     wordmark), com o mesmo piso/teto de legibilidade (18px/32px) de antes. */
+  font-size: clamp(18px, calc(var(--hero-wordmark-w) * 32 / 881), 32px);
+  line-height: 1.1;
+  color: var(--neutral-dark-01);
+  max-width: 848px;
+  margin-inline: auto;
+  /* Figma: topo da tagline (734px) fica 90px ACIMA da borda inferior do
+     wordmark (824px) — o espaço "extra" visto antes era o leading invisível
+     da line-height:1.5 do "FÓLIO" (332/304px). Escala junto com o wordmark
+     (--hero-wordmark-w, definida em .hero) para se manter proporcional
+     tanto em telas mais estreitas quanto em telas mais baixas. */
+  margin-top: calc(var(--hero-wordmark-w) * -90 / 881);
+}
+
+/* Figma (node 6211:3166): topo do botão (803px) fica 34px abaixo da base da
+   caixa de linha da tagline (top 734 + line-height 1.1*32≈35,2 ≈ 769px).
+   Escala com --hero-wordmark-w pelo mesmo motivo da tagline acima. */
+.hero__cta {
+  margin-top: calc(var(--hero-wordmark-w) * 34 / 881);
+}
+
+/* ---------- Interação de rolagem do protótipo (Figma) ----------
+   No protótipo do Figma a camada "Início" (.hero) tem o comportamento de
+   scroll "Position: Sticky" — ela fica fixa no topo (abaixo do header) e as
+   seções seguintes, por virem depois no documento e serem "positioned" com
+   fundo opaco, avançam por cima dela conforme a página rola, tampando-a
+   pouco a pouco. Nenhuma das duas coisas funciona sem a outra: a .hero
+   precisa ficar com z-index mais baixo, e as seções seguintes precisam de
+   position+z-index maior E de um fundo sólido (senão o fundo do body, que
+   fica ATRÁS da .hero na pilha de empilhamento, apareceria nos "vãos" e a
+   .hero continuaria visível por baixo). */
+main > section {
+  position: relative;
+  z-index: 1;
+  background-color: var(--neutral-light-01);
+}
+
+.site-footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Seções gerais ---------- */
+.section {
+  padding-block: 72px;
+}
+
+.section--muted {
+  background-color: var(--neutral-light-03);
+  /* "O pensamento por trás do design" — padding interno próprio
+     (pt-104/pb-115), diferente do padding-block:72 genérico das outras
+     .section. O gap de 112px até a seção anterior (Trajetória) NÃO fica
+     aqui — ver comentário em #trajetoria abaixo: ele é resolvido como
+     padding-bottom da seção anterior (branca), para o fundo cinza desta
+     seção continuar começando exatamente na mesma posição do Figma, sem
+     "crescer" para cima. */
+  padding-top: 104px;
+  padding-bottom: 115px;
+}
+
+.section--muted .section__title {
+  /* Figma: gap-[32px] entre título e lista de cards nesta seção
+     (as demais seções usam 20px, ver .section__title abaixo). */
+  margin-bottom: 32px;
+}
+
+.section__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 40px;
+  text-align: center;
+  color: var(--neutral-dark-01);
+  margin-bottom: 20px;
+}
+
+.section__intro {
+  text-align: center;
+  max-width: 1191px;
+  margin-inline: auto;
+}
+
+.section__footer-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+/* Projetos recomendados: Figma só define pt-[72px] no wrapper (já herdado
+   de .section); o gap de 112px até "Sobre mim" (seção cinza) vira
+   padding-bottom AQUI (seção branca), e não margin-top/padding-top em
+   .sobre-mim — assim o fundo quase-branco (--neutral-light-01, o mesmo da
+   .hero) cobre o vão sem "esticar" o cinza da seção seguinte para cima
+   (o que mudaria a posição em que o cinza começa em relação ao Figma).
+   Ver comentário em "Interação de rolagem do protótipo" mais acima sobre
+   por que isso precisa ser padding (pintado) e não margin (sem fundo). */
+#projetos {
+  padding-bottom: 112px;
+}
+
+/* Trajetória profissional (seção branca): sem padding próprio no Figma —
+   os dois gaps de 112px que a cercam (depois de "Sobre mim", cinza, e antes
+   de "O pensamento...", também cinza) viram padding-top/padding-bottom
+   AQUI, pelo mesmo motivo do comentário em #projetos acima — mantém as
+   seções cinzas vizinhas com o fundo delas começando/terminando no mesmo
+   lugar do Figma, e preenche os vãos com o quase-branco desta seção. */
+#trajetoria {
+  padding-top: 112px;
+  padding-bottom: 112px;
+}
+
+/* Vamos conversar / Contato: sem padding próprio no Figma; 112px antes
+   (gap padrão) e 116px depois (pb-[116px] do wrapper, antes do rodapé).
+   Também em padding (não margin) pelo mesmo motivo acima. */
+#contato {
+  padding-top: 112px;
+  padding-bottom: 116px;
+}
+
+/* ---------- Cards de projeto ---------- */
+.project-grid {
+  display: flex;
+  gap: var(--gap-cards);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.project-card {
+  position: relative;
+  width: 377px;
+  padding: 24px;
+  border-radius: var(--radius-card);
+  background-color: var(--neutral-light-01);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+  transition: background-color 0.25s ease;
+}
+
+.project-card:hover,
+.project-card:focus-visible,
+.project-card:active {
+  background-color: var(--neutral-light-03);
+}
+
+.project-card--design-system { --project-accent: var(--color-primary); }
+.project-card--design-inclusivo { --project-accent: var(--color-secondary); }
+.project-card--programacao-criativa { --project-accent: var(--color-accent); }
+
+/* Camada de hover/clique — reproduz a variante "Variant2" do Figma
+   (composição com as imagens extras "em leque" atrás do mockup principal). */
+.project-card__hover-media {
+  position: absolute;
+  inset: 0;
+  aspect-ratio: 377 / 360;
+  height: auto;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 1;
+}
+
+.project-card__hover-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform: scale(1.06);
+  transform-origin: 50% 0%;
+}
+
+.project-card:hover .project-card__hover-media,
+.project-card:focus-visible .project-card__hover-media,
+.project-card:active .project-card__hover-media {
+  opacity: 1;
+}
+
+.project-card__media {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 329px;
+  border-radius: var(--radius-img);
+  overflow: hidden;
+  background-color: var(--neutral-light-03);
+  transition: opacity 0.25s ease;
+}
+
+.project-card:hover .project-card__media,
+.project-card:focus-visible .project-card__media,
+.project-card:active .project-card__media {
+  opacity: 0;
+}
+
+.project-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-card__info {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 290px;
+  max-width: 100%;
+}
+
+.project-card__title {
+  /* No Figma o texto do título tem largura própria (327px), maior que a
+     coluna de 290px do restante do card (.project-card__info) — por isso
+     "Design Inclusivo Gamificado" não pode ser esticado/quebrado pelo
+     align-items:stretch padrão do flex column do pai; ele deve manter sua
+     largura de conteúdo (shrink-to-fit) e ficar em uma linha só. */
+  align-self: flex-start;
+  white-space: nowrap;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0.48px;
+  color: var(--neutral-dark-02);
+  transition: color 0.25s ease;
+}
+
+.project-card:hover .project-card__title,
+.project-card:focus-visible .project-card__title,
+.project-card:active .project-card__title {
+  color: #000000;
+}
+
+.project-card__desc {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--neutral-dark-04);
+}
+
+.project-card__tags {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 290px;
+  max-width: 100%;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid currentColor;
+  border-radius: 13.5px;
+  font-size: 12px;
+  font-family: var(--font-body);
+}
+
+.tag--primary { color: var(--color-primary); }
+.tag--secondary { color: var(--color-secondary); }
+.tag--accent { color: var(--color-accent); }
+
+.project-card__arrow {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  /* Seta sempre no estado ativo (cor de destaque do card), não só no hover. */
+  background-color: var(--project-accent, var(--color-primary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-card__arrow img {
+  transform: rotate(-90deg);
+  width: 24px;
+  height: 9px;
+  filter: brightness(0) invert(1);
+}
+
+/* ---------- Sobre mim ---------- */
+.sobre-mim {
+  position: relative;
+  background-color: var(--neutral-light-03);
+  overflow: visible;
+  /* gap-[112px] do Figma entre "Projetos recomendados" e "Sobre mim" — vira
+     padding-bottom de #projetos (seção branca anterior), não margin-top
+     nem padding-top aqui, para o fundo cinza desta seção não "crescer"
+     para cima e continuar começando exatamente onde o Figma define. */
+}
+
+.sobre-mim__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding: 138px var(--container-padding);
+  position: relative;
+  /* Referenciada pela foto (ver @media 1201-1439px abaixo) para garantir
+     que as duas colunas nunca se sobreponham, em vez de duas larguras
+     fixas independentes calculadas às cegas. */
+  --sobre-mim-content-width: 712px;
+  /* Garante espaço para a foto absoluta (851x625, top:-89px) caber sem ser
+     cortada: o texto sozinho (~188px) não preenche as 625px do Figma. */
+  min-height: 536px;
+}
+
+.sobre-mim__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  max-width: var(--sobre-mim-content-width);
+}
+
+.sobre-mim__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.1;
+  color: var(--neutral-dark-01);
+}
+
+.sobre-mim__text {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 20px;
+  color: var(--neutral-black);
+  max-width: 578px;
+}
+
+.sobre-mim__photo {
+  position: absolute;
+  top: -89px;
+  /* A foto sangra até a borda do container (ignora o container-padding),
+     igual ao Figma — por isso "right: 0" e não "var(--container-padding)". */
+  right: 0;
+  bottom: 0;
+  width: 851px;
+  height: 625px;
+  /* 851x625 é o tamanho real do frame renderizado pelo Figma para este nó
+     (get_screenshot/download_assets confirmam 851x625, não os 871x625 do
+     bounding box de metadata) — bate exatamente com a proporção 1702x1250
+     do PNG exportado (2x), então object-fit:cover não corta mais nada. */
+}
+
+.sobre-mim__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom;
+}
+
+/* ---------- Trajetória ---------- */
+.timeline-card {
+  /* Figma: o conteúdo interno do card (após o padding) mede 329px — o card
+     inteiro (border-box) é 329 + 24 (padding esquerdo) + 24 (padding
+     direito) = 377px, igual à largura dos project-card. Com 329px como
+     largura TOTAL (bug anterior), a área útil de texto ficava só 281px,
+     forçando "UX/UI e Product Designer" a quebrar linha. */
+  width: 377px;
+  height: 453px;
+  border-radius: var(--radius-card);
+  background-color: var(--neutral-light-03);
+  padding: 24px 24px 28px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.timeline-card__face {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  right: 24px;
+  bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+  transition: opacity 0.25s ease;
+}
+
+.timeline-card__face--default {
+  opacity: 1;
+}
+
+.timeline-card__face--hover {
+  opacity: 0;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.timeline-card:hover .timeline-card__face--default,
+.timeline-card:focus-visible .timeline-card__face--default,
+.timeline-card.is-active .timeline-card__face--default {
+  opacity: 0;
+}
+
+.timeline-card:hover .timeline-card__face--hover,
+.timeline-card:focus-visible .timeline-card__face--hover,
+.timeline-card.is-active .timeline-card__face--hover {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.timeline-card__visual {
+  /* Figma: a grade de fotos é quadrada (329x329, igual à largura do card) —
+     com 242px de altura (retangular) o object-fit:cover cortava a fileira
+     de cima e a de baixo da grade. */
+  width: 100%;
+  height: 329px;
+  border-radius: var(--radius-img);
+  overflow: hidden;
+  background-color: var(--neutral-light-01);
+}
+
+.timeline-card__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.timeline-card__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.timeline-card__text--centered {
+  text-align: center;
+  align-items: center;
+}
+
+.timeline-card__role {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 30px;
+  color: var(--neutral-dark-02);
+  letter-spacing: 0.48px;
+}
+
+.timeline-card__company {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--neutral-dark-04);
+}
+
+.timeline-card__company strong {
+  font-weight: 500;
+}
+
+.timeline-card__company span {
+  font-weight: 300;
+}
+
+.timeline-card__skills {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.timeline-card__skills li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--neutral-dark-04);
+}
+
+.timeline-card--ux-researcher { --timeline-accent: var(--color-primary); }
+.timeline-card--designer-full-stack { --timeline-accent: var(--color-secondary); }
+.timeline-card--product-designer { --timeline-accent: var(--color-accent); }
+
+.timeline-card__skills li::before {
+  content: '';
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--timeline-accent, var(--color-secondary));
+}
+
+/* Seta que sinaliza "toque para ver mais" nos cards de trajetória —
+   equivalente ao .project-card__arrow dos cases, mas só existe no mobile
+   (ver media query): no desktop quem revela o verso do card é o :hover,
+   que não existe em telas de toque, então o mobile precisa de um convite
+   visual explícito. Reaproveita --timeline-accent (a mesma cor da bolinha
+   da lista de skills) para diferenciar os 3 cards. */
+.timeline-card__arrow {
+  display: none;
+}
+
+/* ---------- Pensamentos / blog cards ---------- */
+.thoughts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 1192px;
+  margin-inline: auto;
+}
+
+.thought-card {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  background-color: var(--neutral-light-03);
+  border-radius: var(--radius-card);
+  padding: 24px 24px 28px;
+  transition: background-color 0.25s ease;
+}
+
+.thought-card:hover,
+.thought-card:focus-visible,
+.thought-card:active {
+  background-color: var(--neutral-light-04);
+}
+
+.thought-card:hover .btn--outline,
+.thought-card:focus-visible .btn--outline {
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+.thought-card:active .btn--outline {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.thought-card__thumb {
+  width: 243px;
+  height: 136px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thought-card__thumb--teal { background-color: var(--color-primary); }
+.thought-card__thumb--pink { background-color: var(--color-secondary-alt); }
+.thought-card__thumb--orange { background-color: var(--color-accent); }
+
+.thought-card__thumb img {
+  width: 40px;
+  height: 40px;
+}
+
+.thought-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  flex: 1;
+}
+
+.thought-card__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.thought-card__title {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0.48px;
+  color: var(--neutral-dark-02);
+}
+
+.thought-card__excerpt {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--neutral-dark-04);
+}
+
+/* ---------- Contato ---------- */
+.contact {
+  text-align: center;
+  max-width: 602px;
+  margin-inline: auto;
+}
+
+.contact__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.contact__text {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 1.5;
+  color: var(--neutral-black);
+}
+
+.contact__cta {
+  margin-top: 24px;
+}
+
+.social-list {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.social-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+}
+
+.social-btn:hover,
+.social-btn:focus-visible {
+  opacity: 0.85;
+}
+
+.social-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.social-btn--gmail { background-color: var(--color-secondary); }
+.social-btn--behance { background-color: var(--color-accent); }
+.social-btn--linkedin { background-color: var(--color-primary); }
+
+/* Figma-accurate contact button (index.html "Vamos conversar" section) —
+   no Figma (node 6165:5817) esses botões não têm nenhum background, só o
+   ícone colorido + o rótulo abaixo. */
+.social-btn--figma {
+  background-color: transparent;
+  flex-direction: column;
+  gap: 0;
+  color: var(--color-primary);
+  transition: color 0.2s ease;
+}
+
+.social-btn--figma:hover,
+.social-btn--figma:focus-visible {
+  color: var(--color-secondary);
+  opacity: 1;
+}
+
+.social-btn--figma:active {
+  color: var(--color-accent);
+}
+
+.social-btn__icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.social-btn__icon img {
+  position: absolute;
+  inset: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.social-btn__icon-default {
+  transition: opacity 0.2s ease;
+}
+
+.social-btn__icon-hover,
+.social-btn__icon-active {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.social-btn--figma:hover .social-btn__icon-default,
+.social-btn--figma:focus-visible .social-btn__icon-default,
+.social-btn--figma:active .social-btn__icon-default {
+  opacity: 0;
+}
+
+.social-btn--figma:hover .social-btn__icon-hover,
+.social-btn--figma:focus-visible .social-btn__icon-hover {
+  opacity: 1;
+}
+
+.social-btn--figma:active .social-btn__icon-hover {
+  opacity: 0;
+}
+
+.social-btn--figma:active .social-btn__icon-active {
+  opacity: 1;
+}
+
+.social-btn--figma span {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 8px;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  height: 80px;
+  background-color: var(--neutral-light-03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.site-footer__text {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 28px;
+  color: var(--neutral-black);
+}
+
+/* ---------- Páginas de estudo de caso ---------- */
+.cs-header-crumb {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--neutral-light-07);
+}
+
+.cs-header-crumb strong {
+  color: var(--neutral-dark-01);
+  font-weight: 500;
+}
+
+.cs-layout {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 64px;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding: 56px var(--container-padding) 96px;
+}
+
+.cs-sidebar {
+  position: sticky;
+  top: calc(var(--header-height) + 32px);
+  width: 220px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-height: calc(100vh - var(--header-height) - 64px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+}
+
+.cs-sidebar__top {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cs-sidebar__back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: var(--neutral-light-05);
+  flex-shrink: 0;
+  transition: background-color 0.2s ease;
+}
+
+.cs-sidebar__back:hover,
+.cs-sidebar__back:focus-visible {
+  background-color: var(--neutral-light-07);
+}
+
+.cs-sidebar__back img {
+  width: 20px;
+  height: 20px;
+}
+
+.cs-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.cs-sidebar__link {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 300;
+  color: var(--neutral-dark-04);
+  transition: color 0.2s ease;
+}
+
+.cs-sidebar__link:hover,
+.cs-sidebar__link.is-active,
+.cs-sidebar__link:focus-visible {
+  color: var(--neutral-dark-02);
+  font-weight: 500;
+}
+
+.cs-sidebar__link:focus-visible .cs-sidebar__link-dot,
+.cs-sidebar__link.is-active .cs-sidebar__link-dot {
+  background-color: var(--neutral-dark-02);
+}
+
+.cs-sidebar__contact {
+  background-color: var(--neutral-light-03);
+  border-radius: var(--radius-card);
+  padding: 24px;
+}
+
+.cs-sidebar__contact-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.cs-sidebar__contact-text {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--neutral-dark-01);
+  margin-bottom: 24px;
+}
+
+/* ---------- Sidebar redesenhada p/ Figma 6211:2788 (Design System) ---------- */
+/* Aplicada também em .page-design-inclusivo e .page-programacao-criativa por
+   decisão explícita do usuário (unificar o estilo de sidebar entre TODOS os
+   estudos de caso), mesmo o Figma do Design Inclusivo mostrando originalmente
+   um formato mais simples. */
+.page-design-system .cs-sidebar,
+.page-design-inclusivo .cs-sidebar,
+.page-programacao-criativa .cs-sidebar {
+  width: 254px;
+  gap: 24px;
+  position: fixed;
+  /* Centralizada no espaço ABAIXO do header (que é sticky/top:0 e fica
+     sempre visível), não no viewport inteiro — assim o espaço vazio entre
+     o header e o topo da sidebar fica igual ao espaço entre o fim da
+     sidebar e o fim da tela. */
+  top: calc(50% + (var(--header-height) / 2));
+  left: calc(max((100vw - var(--container-max)) / 2, 0px) + var(--container-padding));
+  transform: translateY(-50%);
+  max-height: none;
+  overflow: visible;
+}
+
+/* position: fixed tira a sidebar do fluxo do .cs-layout (flex), então o
+   conteúdo precisa compensar manualmente o espaço que ela ocupava
+   (largura 254px + gap 64px original do flex). */
+.page-design-system .cs-content,
+.page-design-inclusivo .cs-content,
+.page-programacao-criativa .cs-content {
+  margin-left: 318px;
+}
+
+/* A sidebar deve ficar fixa/centralizada apenas enquanto houver conteúdo
+   suficiente abaixo dela — ao chegar perto do "Obrigada por ler até aqui",
+   initSidebarStop() (script.js) adiciona .is-stopped e define --sidebar-stop-top
+   inline, trocando para position:absolute (ancorada em .cs-layout, que agora é
+   position:relative) para que a sidebar "solte" do viewport e pare ali, em vez
+   de continuar fixa e sobrepor o rodapé do case. O containing block do
+   position:absolute é a padding-box de .cs-layout (borda interna, ANTES do
+   padding-left), por isso left precisa ser var(--container-padding) — e não
+   0 — para cair exatamente na mesma coluna horizontal onde a sidebar fica
+   quando em fixed (cujo cálculo já soma esse padding). Com left:0 a sidebar
+   pulava 124px para a esquerda ao virar "is-stopped". */
+/* Media query própria (mesmo breakpoint de 1200px do layout mobile
+   empilhado, ver "Responsividade" mais abaixo) para garantir que esta regra
+   nunca vença a sidebar estática do mobile por especificidade, mesmo que o
+   JS ainda não tenha removido a classe .is-stopped a tempo de um resize. */
+@media (min-width: 1201px) {
+  .page-design-system .cs-sidebar.is-stopped,
+  .page-design-inclusivo .cs-sidebar.is-stopped,
+  .page-programacao-criativa .cs-sidebar.is-stopped {
+    position: absolute;
+    top: var(--sidebar-stop-top, 0px);
+    left: var(--container-padding);
+    transform: none;
+  }
+}
+
+.page-design-system .cs-sidebar__back,
+.page-design-inclusivo .cs-sidebar__back,
+.page-programacao-criativa .cs-sidebar__back {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.page-design-system .cs-sidebar__back img,
+.page-design-inclusivo .cs-sidebar__back img,
+.page-programacao-criativa .cs-sidebar__back img {
+  width: 14px;
+  height: 14px;
+}
+
+.page-design-system .cs-sidebar__back,
+.page-design-system .cs-sidebar__back:hover,
+.page-design-system .cs-sidebar__back:focus-visible {
+  background-color: var(--color-primary);
+}
+
+.page-design-inclusivo .cs-sidebar__back,
+.page-design-inclusivo .cs-sidebar__back:hover,
+.page-design-inclusivo .cs-sidebar__back:focus-visible {
+  background-color: var(--color-secondary-alt);
+}
+
+.page-programacao-criativa .cs-sidebar__back,
+.page-programacao-criativa .cs-sidebar__back:hover,
+.page-programacao-criativa .cs-sidebar__back:focus-visible {
+  background-color: var(--color-accent);
+}
+
+.page-design-system .cs-sidebar__nav,
+.page-design-inclusivo .cs-sidebar__nav,
+.page-programacao-criativa .cs-sidebar__nav {
+  align-items: flex-end;
+  gap: 4px;
+  margin-top: 0;
+}
+
+.page-design-system .cs-sidebar__link,
+.page-design-inclusivo .cs-sidebar__link,
+.page-programacao-criativa .cs-sidebar__link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  text-align: right;
+}
+
+.page-design-system .cs-sidebar__link-dot,
+.page-design-inclusivo .cs-sidebar__link-dot,
+.page-programacao-criativa .cs-sidebar__link-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: var(--neutral-light-05);
+  flex-shrink: 0;
+  transition: background-color 0.2s ease;
+}
+
+.page-design-system .cs-sidebar__link:hover {
+  color: var(--color-primary);
+}
+
+.page-design-inclusivo .cs-sidebar__link:hover {
+  color: var(--color-secondary-alt);
+}
+
+.page-programacao-criativa .cs-sidebar__link:hover {
+  color: var(--color-accent);
+}
+
+.page-design-system .cs-sidebar__link:hover .cs-sidebar__link-dot {
+  background-color: var(--color-primary);
+}
+
+.page-design-inclusivo .cs-sidebar__link:hover .cs-sidebar__link-dot {
+  background-color: var(--color-secondary-alt);
+}
+
+.page-programacao-criativa .cs-sidebar__link:hover .cs-sidebar__link-dot {
+  background-color: var(--color-accent);
+}
+
+/* Especificidade explícita por página (igual às regras de :hover acima) pra
+   garantir que o bullet fique 242424 no :focus-visible e quando a seção
+   correspondente está selecionada (.is-active, aplicada via scroll-spy em
+   script.js), sem depender de herdar a regra genérica lá de cima. */
+.page-design-system .cs-sidebar__link:focus-visible .cs-sidebar__link-dot,
+.page-design-inclusivo .cs-sidebar__link:focus-visible .cs-sidebar__link-dot,
+.page-programacao-criativa .cs-sidebar__link:focus-visible .cs-sidebar__link-dot,
+.page-design-system .cs-sidebar__link.is-active .cs-sidebar__link-dot,
+.page-design-inclusivo .cs-sidebar__link.is-active .cs-sidebar__link-dot,
+.page-programacao-criativa .cs-sidebar__link.is-active .cs-sidebar__link-dot {
+  background-color: var(--neutral-dark-02);
+}
+
+.page-design-system .cs-sidebar__contact,
+.page-design-inclusivo .cs-sidebar__contact,
+.page-programacao-criativa .cs-sidebar__contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 204px;
+  align-self: flex-end;
+  padding: 24px;
+  border-radius: 13px;
+}
+
+/* Agrupamento intencional: título + texto ficam próximos (4px, lidos como um
+   único bloco de mensagem) e o botão vem logo em seguida (12px), próximo o
+   bastante pra não parecer um elemento solto dentro do card. */
+.page-design-system .cs-sidebar__contact-title,
+.page-design-inclusivo .cs-sidebar__contact-title,
+.page-programacao-criativa .cs-sidebar__contact-title {
+  white-space: nowrap;
+  font-size: 19px;
+  margin-bottom: 4px;
+}
+
+.page-design-system .cs-sidebar__contact-text,
+.page-design-inclusivo .cs-sidebar__contact-text,
+.page-programacao-criativa .cs-sidebar__contact-text {
+  max-width: 165px;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.page-design-system .cs-sidebar__contact .btn,
+.page-design-inclusivo .cs-sidebar__contact .btn,
+.page-programacao-criativa .cs-sidebar__contact .btn {
+  width: 100%;
+  justify-content: center;
+  height: 32px;
+  padding: 13px 16px 13px 19px;
+  font-size: 11px;
+}
+
+/* Ciclo de cores de TODOS os botões (.btn--outline / .btn--primary) de cada
+   estudo de caso: a mesma trinca teal/pink/orange gira de posição por página
+   (default → hover/focus → click), por pedido explícito do usuário. Isso
+   substitui a cor única fixa que o botão de contato da sidebar tinha antes,
+   fazendo-o participar do mesmo ciclo dos demais botões da página. */
+.page-design-system .btn--outline {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.page-design-system .btn--outline:hover,
+.page-design-system .btn--outline:focus-visible {
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+.page-design-system .btn--outline:active {
+  border-color: var(--color-tertiary);
+  color: var(--color-tertiary);
+}
+
+.page-design-system .btn--primary {
+  background-color: var(--color-primary);
+}
+
+.page-design-system .btn--primary:hover,
+.page-design-system .btn--primary:focus-visible {
+  background-color: var(--color-secondary);
+}
+
+.page-design-system .btn--primary:active {
+  background-color: var(--color-tertiary);
+}
+
+.page-design-inclusivo .btn--outline {
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+.page-design-inclusivo .btn--outline:hover,
+.page-design-inclusivo .btn--outline:focus-visible {
+  border-color: var(--color-tertiary);
+  color: var(--color-tertiary);
+}
+
+.page-design-inclusivo .btn--outline:active {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.page-design-inclusivo .btn--primary {
+  background-color: var(--color-secondary);
+}
+
+.page-design-inclusivo .btn--primary:hover,
+.page-design-inclusivo .btn--primary:focus-visible {
+  background-color: var(--color-tertiary);
+}
+
+.page-design-inclusivo .btn--primary:active {
+  background-color: var(--color-primary);
+}
+
+.page-programacao-criativa .btn--outline {
+  border-color: var(--color-tertiary);
+  color: var(--color-tertiary);
+}
+
+.page-programacao-criativa .btn--outline:hover,
+.page-programacao-criativa .btn--outline:focus-visible {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.page-programacao-criativa .btn--outline:active {
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+.page-programacao-criativa .btn--primary {
+  background-color: var(--color-tertiary);
+}
+
+.page-programacao-criativa .btn--primary:hover,
+.page-programacao-criativa .btn--primary:focus-visible {
+  background-color: var(--color-primary);
+}
+
+.page-programacao-criativa .btn--primary:active {
+  background-color: var(--color-secondary);
+}
+
+/* #contato (Programação Criativa): rótulos "Gmail"/"Behance"/"Linkedin"
+   seguem o mesmo ciclo amarelo (default) → verde/teal (hover) → rosa
+   (active) dos botões da página, em vez do teal/rosa/laranja padrão —
+   acompanha as variantes de ícone -programacao-criativa.svg criadas para
+   esta página. */
+.page-programacao-criativa .social-btn--figma {
+  color: var(--color-tertiary);
+}
+
+.page-programacao-criativa .social-btn--figma:hover,
+.page-programacao-criativa .social-btn--figma:focus-visible {
+  color: var(--color-primary);
+}
+
+.page-programacao-criativa .social-btn--figma:active {
+  color: var(--color-secondary);
+}
+
+/* #contato (Design Inclusivo): rótulos "Gmail"/"Behance"/"Linkedin" seguem
+   o mesmo ciclo rosa (default) → laranja (hover) → teal (active) dos
+   botões da página, em vez do teal/rosa/laranja padrão — acompanha as
+   variantes de ícone -design-inclusivo.svg criadas para esta página. */
+.page-design-inclusivo .social-btn--figma {
+  color: var(--color-secondary);
+}
+
+.page-design-inclusivo .social-btn--figma:hover,
+.page-design-inclusivo .social-btn--figma:focus-visible {
+  color: var(--color-tertiary);
+}
+
+.page-design-inclusivo .social-btn--figma:active {
+  color: var(--color-primary);
+}
+
+.page-design-system .cs-sidebar__contact .btn__icon,
+.page-design-system .cs-sidebar__contact .btn__icon img,
+.page-design-inclusivo .cs-sidebar__contact .btn__icon,
+.page-design-inclusivo .cs-sidebar__contact .btn__icon img,
+.page-programacao-criativa .cs-sidebar__contact .btn__icon,
+.page-programacao-criativa .cs-sidebar__contact .btn__icon img {
+  width: 16px;
+  height: 16px;
+}
+
+/* Nas páginas de estudo de caso, #contato é seguido por "Projetos
+   recomendados" (não pelo rodapé, como na Home) — por isso usa o padding
+   do próprio frame "Vamos conversar" do Figma (node 6165:5817) em vez do
+   padding:112px/116px calibrado para o contexto da Home (comentário acima,
+   "antes do rodapé"). Nesse frame o fundo cinza tem 427px de altura, com o
+   conteúdo (título+texto+botões) começando em top:72px e terminando ~72px
+   antes do fim do fundo — ou seja, o espaçamento é simétrico (72px em
+   cima e embaixo), com uma faixa cinza visível após os botões, não só
+   alguns pixels. O gap até o título de "Projetos recomendados" vem do
+   padding-top:72px padrão de ".section", já usado nas demais seções. */
+.page-design-system #contato,
+.page-design-inclusivo #contato,
+.page-programacao-criativa #contato {
+  background-color: var(--neutral-light-03);
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+/* Página Design Inclusivo: cor de destaque do texto (.cs-highlight /
+   .cs-lead strong) é a secundária (rosa #c42557, Figma node 6193:2568),
+   diferente da primária (teal) usada por padrão nas outras páginas de
+   estudo de caso — reflete --project-accent do card na Home. */
+.page-design-inclusivo .cs-highlight,
+.page-design-inclusivo .cs-lead strong {
+  color: var(--color-secondary);
+}
+
+/* Página Programação Criativa: cor de destaque do texto (.cs-highlight /
+   .cs-lead strong) é a de acento (âmbar #e19b25, Figma node 6280:9467),
+   mesma reservada para este projeto via --project-accent no card da Home. */
+.page-programacao-criativa .cs-highlight,
+.page-programacao-criativa .cs-lead strong {
+  color: var(--color-accent);
+}
+
+/* Alguns cartões cs-info-card têm leading-[20px] no Figma (ex.: node 6193:2629
+   do #contexto e o grid de "Desk Research" do #pesquisa), diferente do
+   leading-[28px] padrão usado pelos demais cs-info-card (Design System e os
+   grids de estatística do #pesquisa). Modificador em vez de escopo de página,
+   já que a mesma página usa os dois valores em blocos diferentes. */
+.cs-info-card__value--tight {
+  line-height: 20px;
+}
+
+.cs-content {
+  flex: 1;
+  min-width: 0;
+  max-width: 832px;
+}
+
+.cs-eyebrow {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: 0.32px;
+  color: var(--neutral-dark-04);
+  margin-bottom: 16px;
+}
+
+.cs-h1 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 1;
+  /* Figma (node 6193:2567): tracking -2.24px num H1 de 56px = -0.04em.
+     Em vez de fixar em px, uso em para a compressão continuar proporcional
+     quando o H1 encolhe no breakpoint mobile (34px, ver @media 700px). */
+  letter-spacing: -0.04em;
+  color: var(--neutral-dark-02);
+  margin-bottom: 24px;
+}
+
+/* Citação (ex.: "- Diane Ackerman" em #introducao): texto avulso, mais leve
+   e menor que o H1, na mesma linha logo após a frase — não faz parte do
+   peso/tamanho do título. Reseta o letter-spacing herdado do H1. */
+.cs-h1__cite {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: normal;
+  color: var(--neutral-dark-02);
+}
+
+.cs-lead {
+  font-family: var(--font-body);
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 300;
+  color: var(--neutral-dark-04);
+  margin-bottom: 24px;
+}
+
+.cs-lead strong,
+.cs-highlight {
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+.cs-cta-row {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+/* Modificador para CTA row com um único botão centralizado na seção
+   (ex.: "Ver resultado" na Introdução do case Programação Criativa). */
+.cs-cta-row--center {
+  justify-content: center;
+  width: 100%;
+}
+
+/* Os dois CTAs de #introducao/#resultado (Programação Criativa) usam o
+   outline no mesmo h-[56px] do botão sólido ao lado (Figma nodes 6297:12144
+   e 6297:12200) — diferente do .btn--outline padrão (40px) usado em
+   contextos como o cs-sidebar__contact. */
+.cs-cta-row .btn--outline {
+  height: 56px;
+  width: 209px;
+  justify-content: center;
+}
+
+/* Botão "Navegar no protótipo" logo abaixo de um .cs-panel (ex.:
+   #introducao) — centralizado, sem margin própria: o gap de 24px até o
+   painel vem do margin-bottom do .cs-panel (margin-block:24px) via colapso
+   de margens; o espaço até a seção seguinte vem do margin-top do
+   .cs-section seguinte. */
+.cs-proto-cta {
+  display: flex;
+  justify-content: center;
+}
+
+.cs-section {
+  margin-top: 64px;
+  scroll-margin-top: calc(var(--header-height) + 32px);
+}
+
+/* Programação Criativa usa 76px de gap entre seções no Figma (nodes
+   6280:9524, 6285:10569, 6280:9575, 6280:9778, 6280:9938, 6280:9967),
+   diferente do 64px padrão usado pelos outros dois cases. Escopado à
+   página para não alterar design-system nem design-inclusivo. */
+.page-programacao-criativa .cs-section {
+  margin-top: 76px;
+}
+
+#introducao {
+  scroll-margin-top: calc(var(--header-height) + 32px);
+}
+
+/* ---------- Case study: seções recolhíveis (mobile) ----------
+   .cs-section__header envolve o eyebrow+h2 originais (sem alterar a
+   aparência deles) e .cs-section__body envolve o resto do conteúdo da
+   seção — ambos vêm do HTML. No desktop o botão é resetado para parecer
+   texto normal e o corpo fica sempre visível (display:block, o padrão de
+   um <div>); só dentro do breakpoint mobile abaixo é que ele vira de fato
+   um acordeão. #introducao não tem esse wrapper: continua sempre aberta. */
+.cs-section__header {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: default;
+}
+
+.cs-section__chevron {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .cs-section__header {
+    position: relative;
+    cursor: pointer;
+    padding-right: 44px;
+  }
+
+  .cs-section__chevron {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--neutral-light-03);
+    transition: background-color 0.2s ease, transform 0.25s ease;
+  }
+
+  .cs-section__chevron::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid var(--neutral-dark-02);
+    border-bottom: 2px solid var(--neutral-dark-02);
+    transform: rotate(45deg) translate(-1px, -1px);
+  }
+
+  .cs-section.is-open .cs-section__chevron {
+    transform: rotate(180deg);
+  }
+
+  .cs-section__body {
+    display: none;
+  }
+
+  .cs-section.is-open .cs-section__body {
+    display: block;
+    margin-top: 24px;
+  }
+}
+
+.cs-h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.1;
+  color: var(--neutral-dark-02);
+  margin-bottom: 16px;
+}
+
+/* #resultado do Design System (Figma node 6159:4854): grupo eyebrow+h2
+   tem gap-16 interno (já coberto pelo margin-bottom padrão do .cs-h2),
+   mas o gap até o parágrafo seguinte é maior, 24px — por isso um override
+   local em vez de mudar o .cs-h2 padrão usado nas outras seções do case.
+   Escopado por classe de página (não só #resultado) porque as outras
+   páginas de case também têm uma seção #resultado, mas com estrutura e
+   espaçamento diferentes que não devem ser afetados. */
+.page-design-system #resultado .cs-h2 {
+  margin-bottom: 24px;
+}
+
+.cs-h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.1;
+  color: var(--neutral-dark-02);
+  margin-bottom: 12px;
+  margin-top: 28px;
+}
+
+/* Subtítulo intermediário (20px) — ex.: "Formulário com estudantes" dentro
+   de #pesquisa (Figma node 6211:3389), um nível abaixo do cs-h3 (24px). */
+.cs-h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.1;
+  color: var(--neutral-dark-02);
+  margin-bottom: 12px;
+  margin-top: 24px;
+}
+
+/* Título "Persona N" (#descobrir, Figma node 6193:2871): mesmo estilo do
+   cs-h3 (Satoshi Bold 24px) usado para "Personas", mas sem o margin-top de
+   28px — o espaçamento até o cartão cinza vem do margin-top:24px do
+   .cs-panel seguinte (colapso de margens), igual ao gap do Figma. */
+.cs-persona-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.1;
+  color: var(--neutral-dark-02);
+  margin: 0;
+}
+
+.cs-p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 300;
+  color: var(--neutral-dark-04);
+  margin-bottom: 16px;
+}
+
+.cs-p--tight {
+  line-height: 24px;
+}
+
+/* Parágrafo em itálico (ex.: intro de #construcao em Programação Criativa,
+   Figma node 6280:9783: font-['Inter:Italic'] ... italic). */
+.cs-p--italic {
+  font-style: italic;
+}
+
+.cs-panel {
+  background-color: var(--neutral-light-03);
+  border-radius: var(--radius-card);
+  padding: 0;
+  margin-block: 24px;
+  overflow: hidden;
+}
+
+.cs-panel img {
+  width: 100%;
+  border-radius: var(--radius-card);
+  display: block;
+  cursor: zoom-in;
+}
+
+.cs-panel--dark {
+  background-color: var(--neutral-dark-01);
+}
+
+/* "Janela" recortada do gif de demonstração nas etapas 4-9 de #construcao
+   (Programação Criativa): no Figma cada etapa mostra só um recorte
+   241x353 do gif completo (1138x580), com um --crop-left diferente por
+   etapa selecionando qual faixa horizontal aparece — top/width/height do
+   recorte são os mesmos em todas (Figma nodes 6285:10989 a 6293:11557).
+   Sem isso o gif aparecia esticado preenchendo o painel inteiro. */
+.cs-demo-window {
+  position: relative;
+  width: 241px;
+  height: 353px;
+  margin: 58px auto 57px;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+
+.cs-demo-window img {
+  position: absolute;
+  top: -8.36%;
+  left: var(--crop-left, 0);
+  width: 335.83%;
+  height: 116.85%;
+  max-width: none;
+  border-radius: 0;
+}
+
+/* ETAPA 7: retângulo escuro sobreposto ao recorte (Figma node 6313:12350),
+   máscara sobre um trecho do gif que não deve aparecer nessa etapa. */
+.cs-demo-window--mask::after {
+  content: '';
+  position: absolute;
+  left: 51.45%;
+  top: 48.16%;
+  width: 48.55%;
+  height: 25.5%;
+  background-color: #3c1217;
+}
+
+/* Painel "Entendendo a obra" (#obra, Programação Criativa — Figma node
+   6285:10605): foto à esquerda + lista de anotações manuscrita à direita,
+   posicionadas em % sobre o cartão 832x468, igual ao padrão já usado em
+   .cs-context-panel (Design System). */
+.cs-obra-panel {
+  position: relative;
+  aspect-ratio: 832 / 468;
+}
+
+.cs-obra-panel .cs-obra-panel__img {
+  position: absolute;
+  left: 3.85%;
+  top: 6.2%;
+  width: 28.73%;
+  height: 87.39%;
+  border-radius: 16px;
+  object-fit: cover;
+  cursor: zoom-in;
+}
+
+.cs-obra-panel__caption {
+  position: absolute;
+  left: 34.5%;
+  top: 12.18%;
+  width: 51.68%;
+}
+
+.cs-obra-panel__caption-title,
+.cs-obra-panel__caption li {
+  font-family: 'Permanent Marker', cursive;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 24px;
+  color: var(--neutral-dark-07);
+}
+
+.cs-obra-panel__caption-title {
+  margin-bottom: 4px;
+}
+
+.cs-obra-panel__caption ul {
+  list-style: disc;
+  padding-left: 18px;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .cs-obra-panel {
+    aspect-ratio: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .cs-obra-panel .cs-obra-panel__img {
+    position: static;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 239 / 409;
+  }
+
+  .cs-obra-panel__caption {
+    position: static;
+    width: 100%;
+  }
+}
+
+.cs-panel--narrow img {
+  max-width: 360px;
+  margin-inline: auto;
+}
+
+/* Screenshots do protótipo interativo (#construcao, Programação Criativa)
+   têm proporções/enquadramento variados entre si; o painel Figma é sempre
+   832x468 com a captura centralizada, então recorta com object-fit em vez
+   de esticar a imagem. */
+.cs-panel--preview {
+  aspect-ratio: 832 / 468;
+}
+
+.cs-panel--preview img {
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
+}
+
+/* Cartão cinza compartilhado do painel "Resultado" (Figma node 6163:4937,
+   832x856 dentro do frame pai 6159:4853): ao contrário do que se pensava
+   antes, esse painel TEM um fundo compartilhado (#f5f5f5, cantos 24px)
+   por trás dos dois grupos de telas, com padding assimétrico replicando
+   o frame do Figma. As imagens dentro do cartão não têm canto arredondado
+   próprio (0), só o cartão externo é arredondado. */
+.cs-resultado-card {
+  background-color: var(--neutral-light-03);
+  border-radius: var(--radius-card);
+  padding: 64px 27px 99px 21px;
+  /* Figma (node 6159:4853): gap-[40px] entre o cabeçalho (eyebrow+h2+p) e
+     o card — maior que o margin-bottom:16px padrão do .cs-p, por isso
+     definido explicitamente em vez de depender do colapso de margens. */
+  margin-top: 40px;
+  margin-bottom: 24px;
+}
+
+/* Grade de imagens divididas por interface (Resultado, Design System) —
+   cada tela exportada como imagem individual em vez de um único flatten,
+   para permitir zoom/lightbox por interface. Sem margin própria: o gap de
+   8px até o label (Figma node 6163:4941, flex-col gap-[8px]) vem do
+   margin-bottom do .cs-panel-group__label, e o espaço até o card (topo/
+   fundo) e entre grupos vem do padding do .cs-resultado-card e do
+   margin-top do .cs-panel-group + .cs-panel-group — um margin-block aqui
+   colidiria (margin collapse) com esses valores e resultava em 24px em
+   vez dos 8px pretendidos entre label e grade. */
+/* Figma node 6163:4943: a grade tem 616.421px de largura dentro de um
+   conteúdo de 784px (784-21-27 de padding) — ou seja, não ocupa 100% da
+   largura do card, e sim ~78.625%, centralizada. Reproduzir em 100% de
+   largura deixava cada imagem cerca de 26% maior que no Figma. */
+.cs-panel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: 78.625%;
+  margin-inline: auto;
+}
+
+.cs-panel-grid .cs-panel {
+  margin-block: 0;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.cs-panel-grid .cs-panel img {
+  border-radius: 0;
+}
+
+.cs-panel-group + .cs-panel-group {
+  margin-top: 32px;
+}
+
+/* Figma node 6163:4942: Inter Semi Bold 16px/28px, centralizado, cor
+   neutral-dark-02 (#242424) — não neutral-dark-04, mais claro. */
+.cs-panel-group__label {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  text-align: center;
+  color: var(--neutral-dark-02);
+  margin: 0 0 8px;
+}
+
+/* Painel "Contexto" (Figma node 6159:4567) — ao contrário do Resultado,
+   aqui as 3 telas ficam sobrepostas em um único cartão cinza de cantos
+   arredondados (Rectangle 7 no Figma), com a legenda dentro do cartão.
+   Layout replicado via posicionamento absoluto em porcentagem, calculado
+   a partir das coordenadas relativas do Figma (painel de 832x468). */
+.cs-context-panel {
+  position: relative;
+  aspect-ratio: 832 / 468;
+  background-color: var(--neutral-light-03);
+  border-radius: var(--radius-card);
+  margin-block: 24px;
+}
+
+.cs-context-panel__img {
+  position: absolute;
+  left: 7.81%;
+  top: 33.12%;
+  width: 26.8%;
+  height: 33.97%;
+  border-radius: 0;
+  object-fit: cover;
+  cursor: zoom-in;
+}
+
+.cs-context-panel__img:nth-child(2) {
+  left: 36.54%;
+}
+
+.cs-context-panel__img:nth-child(3) {
+  left: 65.26%;
+}
+
+/* Figma node 6159:4576: font-['Permanent_Marker:Regular'], 16px/28px,
+   not-italic, cor neutral-dark-07 (#8a8a8a) — não neutral-dark-04. */
+.cs-context-panel__caption {
+  position: absolute;
+  left: 26.68%;
+  top: 73.29%;
+  width: 47.72%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+  font-family: 'Permanent Marker', cursive;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--neutral-dark-07);
+}
+
+.cs-context-panel__caption img {
+  width: 20px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+/* Abaixo de ~640px o texto da legenda quebra em mais linhas do que cabe
+   na faixa reservada (top:73.29%) e vaza para fora do cartão arredondado
+   — nessa largura o card muda para um fluxo normal (flex-wrap), em vez
+   de posicionamento absoluto preso à proporção 832x468 do Figma. */
+@media (max-width: 640px) {
+  .cs-context-panel {
+    aspect-ratio: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    gap: 8px;
+    padding: 16px;
+  }
+
+  .cs-context-panel__img {
+    position: static;
+    flex: 0 1 30%;
+    width: 30%;
+    min-width: 0;
+    height: auto;
+    aspect-ratio: 223 / 159;
+  }
+
+  .cs-context-panel__img:nth-child(2),
+  .cs-context-panel__img:nth-child(3) {
+    left: auto;
+  }
+
+  .cs-context-panel__caption {
+    position: static;
+    flex: 1 1 100%;
+    width: auto;
+    margin-top: 4px;
+  }
+
+  /* Painel "Resultado" (.cs-resultado-card): padding assimétrico do Figma
+     (64/27/99/21) é proporcional ao frame de 832px, então em telas
+     pequenas ele encolhe para um respiro simétrico simples; a grade 3x2
+     também cai para 2 colunas para as telas não ficarem minúsculas. */
+  .cs-resultado-card {
+    padding: 24px 16px;
+  }
+
+  .cs-panel-grid {
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+  }
+}
+
+/* Cabeçalho de seção centralizado — usado nos blocos de CTA do Flowchart
+   (#desenvolver, Figma node 6248:5296/6251:5962), onde o .cs-h4 precisa
+   ficar centralizado em vez do alinhamento padrão à esquerda. */
+.cs-h4--center {
+  text-align: center;
+}
+
+/* Blocos de CTA "Ver fluxograma" (#desenvolver, Figma node 6248:5294) —
+   título centralizado + .btn.btn--outline.btn--full existente. */
+.cs-cta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-block: 24px;
+}
+
+.cs-cta-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.cs-stats-panel {
+  background-color: var(--neutral-light-03);
+  border-radius: var(--radius-card);
+  padding: 32px;
+  margin-block: 24px;
+}
+
+/* Moldura cinza do bloco Projeto/Objetivo/Abordagem/Situação (#contexto,
+   Programação Criativa — Figma node 6280:9543): 832x468 no Figma, com o
+   grid de 2x2 (312px de altura) centralizado por padding de 78px em cima
+   e embaixo — 468 - 2*78 = 312, bate exato com a altura do conteúdo. */
+.cs-contexto-info {
+  background-color: var(--neutral-light-03);
+  border-radius: var(--radius-card);
+  padding: 78px 0;
+  display: flex;
+  justify-content: center;
+  margin-block: 24px;
+}
+
+.cs-info-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.cs-info-card {
+  flex: 0 0 338px;
+  width: 338px;
+  height: 152px;
+  background-color: var(--neutral-light-01);
+  border-radius: 8px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+}
+
+.cs-info-card__num {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 100px;
+  line-height: 150px;
+  color: var(--neutral-light-05);
+  flex-shrink: 0;
+}
+
+.cs-info-card__num-ghost {
+  position: absolute;
+  left: 122px;
+  top: 0;
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 100px;
+  line-height: 150px;
+  color: var(--neutral-light-03);
+  pointer-events: none;
+  user-select: none;
+}
+
+.cs-info-card__text {
+  display: flex;
+  flex-direction: column;
+  width: 168px;
+}
+
+/* Card "Objetivo" (#contexto, Programação Criativa — Figma node 6280:9554):
+   bloco de texto mais largo (248px) que os outros 3 cards (168px), para a
+   descrição quebrar em 2 linhas como no Figma em vez de 3. */
+.cs-info-card__text--wide {
+  width: 248px;
+}
+
+.cs-info-card__label {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--neutral-dark-05);
+}
+
+.cs-info-card__value {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--neutral-dark-05);
+}
+
+.cs-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-block: 24px;
+}
+
+.cs-stat {
+  background-color: var(--neutral-light-03);
+  border-radius: var(--radius-img);
+  text-align: center;
+  padding: 20px 12px;
+}
+
+.cs-stat__num {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 32px;
+  color: var(--color-primary);
+}
+
+.cs-stat__label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--neutral-dark-04);
+}
+
+.cs-learn-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.cs-learn-card {
+  background-color: var(--neutral-light-03);
+  border-radius: var(--radius-img);
+  padding: 32px;
+}
+
+.cs-learn-card__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  color: var(--neutral-dark-02);
+}
+
+.cs-learn-card__text {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 300;
+  color: var(--neutral-dark-05);
+}
+
+/* Card "Simplificar é uma decisão, não uma derrota" (#aprendizados, Figma
+   node 6280:9995): parágrafo bem mais estreito (558px) que os outros
+   cards (~728-761px), quebrando em 2 linhas em vez de ficar numa linha só
+   esticada pela largura total do card. */
+.cs-learn-card__text--narrow {
+  max-width: 558px;
+}
+
+/* Cartões de #aprendizados (Programação Criativa) usam texto 20px no Figma
+   (node 6280:9980 e irmãos), diferente do 16px padrão usado pelos cartões
+   de #restricoes (mesmo componente .cs-learn-card). */
+.cs-learn-card__text--lg {
+  font-size: 20px;
+}
+
+/* Caixa "Aprendizado técnico / Aprendizado de processo" que fecha cada
+   ETAPA de #construcao (Programação Criativa, ex.: Figma node 6285:10893).
+   Confirmado no Figma (node 6280:9778) que este painel usa o MESMO
+   neutral-light-03 (#f5f5f5) do .cs-panel padrão — não há distinção de cor
+   entre os quadrados de imagem e o callout de aprendizado. */
+.cs-insight-panel {
+  background-color: var(--neutral-light-03);
+  border-radius: var(--radius-card);
+  padding: 40px 38px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 24px;
+}
+
+.cs-insight-panel p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 300;
+  color: var(--neutral-dark-01);
+}
+
+/* Ritmo vertical entre ETAPAs de #construcao: 40px no Figma (gap do
+   container que empilha os 9 blocos de etapa, node 6280:9778) — maior que
+   o margin-top padrão do .cs-h3 (28px), então reforça quando o h3 vem
+   logo depois do callout da etapa anterior. */
+.cs-insight-panel + .cs-h3 {
+  margin-top: 40px;
+}
+
+.cs-impact-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.cs-impact-card {
+  background-color: var(--neutral-light-03);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.cs-impact-card__text {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 300;
+  color: var(--neutral-dark-04);
+}
+
+/* Figma node 6115:5712 (frame completo da página): medindo a altura dos
+   glifos com descendente ("p" em "por") deste texto contra a altura do
+   mesmo tipo de glifo nos títulos dos cartões de #aprendizados (20px,
+   .cs-learn-card__title), a proporção (~30px vs ~19px) aponta para 32px
+   no Figma — bem maior que os 16px usados antes aqui. */
+.cs-thanks {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 32px;
+  margin-top: 56px;
+  color: var(--neutral-dark-04);
+}
+
+.cs-swatch-panel {
+  background-color: var(--neutral-light-03);
+  border-radius: var(--radius-card);
+  padding: 32px;
+  margin-block: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 832 / 468;
+}
+
+.cs-swatch-panel.is-zoomable {
+  cursor: zoom-in;
+}
+
+.cs-swatch-cycle__label {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--neutral-dark-02);
+  text-align: right;
+  align-self: center;
+  transition: opacity 0.2s ease;
+}
+
+.cs-swatch-cycle.is-fading .cs-swatch-cycle__label,
+.cs-swatch-cycle.is-fading [data-cycle-grid],
+.cs-theme-cycle.is-fading {
+  opacity: 0;
+}
+
+.cs-color-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-block: 24px;
+  transition: opacity 0.2s ease;
+}
+
+.cs-swatch-panel .cs-color-grid {
+  width: 100%;
+  max-width: 625px;
+  margin-block: 0;
+}
+
+.cs-color-swatch {
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--neutral-light-01);
+  box-shadow: 4px 4px 8px 0 rgba(36, 36, 36, 0.25);
+}
+
+.cs-swatch-panel .cs-color-swatch {
+  aspect-ratio: 160 / 156;
+}
+
+.cs-color-swatch__block {
+  height: 80px;
+  transition: background-color 0.2s ease;
+}
+
+.cs-color-swatch__meta {
+  padding: 8px 12px 12px;
+}
+
+.cs-color-swatch__name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  color: var(--neutral-dark-02);
+}
+
+.cs-color-swatch__hex {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 24px;
+  color: var(--neutral-dark-04);
+  margin-top: 4px;
+  transition: color 0.2s ease;
+}
+
+.cs-theme-cycle {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  transition: opacity 0.2s ease;
+}
+
+.cs-theme-cycle__col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 138.25px;
+}
+
+.cs-theme-cycle__heading {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--neutral-dark-02);
+  text-align: center;
+}
+
+.cs-theme-cycle__col .cs-color-swatch {
+  width: 100%;
+}
+
+.cs-token-panel {
+  background-color: var(--neutral-light-03);
+  border-radius: var(--radius-card);
+  padding: 32px;
+  margin-block: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 832 / 468;
+}
+
+.cs-token-panel.is-zoomable {
+  cursor: zoom-in;
+}
+
+.cs-token-row {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 620px;
+}
+
+/* Figma node 6211:3032: os 6 rótulos NÃO são distribuídos com espaçamento
+   igual (justify-content:space-between) — são textos com largura própria
+   posicionados em offsets fixos (ml 0/131/225/311/413/521 de um contêiner
+   de 620px), cada um terminando perto da borda direita do pill correspondente
+   abaixo. space-between forçava um espaçamento artificial/igual entre eles,
+   diferente do Figma. */
+.cs-token-row__labels {
+  position: relative;
+  height: 28px;
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--neutral-dark-04);
+}
+
+.cs-token-row__labels span {
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.cs-token-row__labels span:nth-child(1) { left: 0; }
+.cs-token-row__labels span:nth-child(2) { left: 21.13%; }
+.cs-token-row__labels span:nth-child(3) { left: 36.29%; }
+.cs-token-row__labels span:nth-child(4) { left: 50.16%; }
+.cs-token-row__labels span:nth-child(5) { left: 66.61%; }
+.cs-token-row__labels span:nth-child(6) { left: 84.03%; }
+
+.cs-token-row__values {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+}
+
+.cs-token-pill {
+  flex: 1;
+  min-width: 0;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--neutral-light-04);
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 20px;
+  color: var(--neutral-dark-04);
+  white-space: nowrap;
+  padding-inline: 12px;
+}
+
+.cs-token-table {
+  border-collapse: separate;
+  border-spacing: 4px;
+  table-layout: fixed;
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 16px;
+  color: var(--neutral-dark-04);
+}
+
+.cs-token-table caption,
+.cs-token-table thead th:first-child {
+  visibility: hidden;
+}
+
+.cs-token-table thead th {
+  font-weight: 300;
+  padding-bottom: 8px;
+}
+
+.cs-token-table thead th:first-child,
+.cs-token-table tbody th {
+  width: 84px;
+  font-weight: 300;
+  text-align: right;
+  padding-right: 12px;
+  white-space: nowrap;
+}
+
+.cs-token-table td {
+  background-color: var(--neutral-light-04);
+  border-radius: 4px;
+  height: 40px;
+  text-align: center;
+  padding-inline: 24px;
+  white-space: nowrap;
+}
+
+.cs-token-table td:first-of-type {
+  width: 96px;
+}
+
+/* Figma node 6154:2061: a célula "Usage" tem whitespace-nowrap igual às
+   outras (288px já é a largura necessária para caber "Arredondamento para
+   seções maiores" numa linha só) — o white-space:normal anterior forçava
+   quebra de linha, diferente do Figma. */
+.cs-token-table td:last-of-type {
+  width: 288px;
+}
+
+/* ---------- Responsividade ---------- */
+/* Faixa intermediária (entre o layout mobile empilhado e a largura cheia
+   do Figma): não há espaço para foto (719px) + texto (578px) lado a lado
+   sem sobrepor. Volta a encolher a foto apenas nessa faixa estreita.
+   O max-width é amarrado ao mesmo --sobre-mim-content-width usado pelo
+   texto (em vez de uma % fixa da largura da viewport), garantindo que
+   photo.left = padding + content-width + gap SEMPRE, para qualquer
+   largura nesta faixa — não apenas nos poucos pontos testados antes. */
+@media (max-width: 1439px) and (min-width: 1201px) {
+  .sobre-mim__photo {
+    max-width: calc(
+      100% - var(--container-padding) - var(--sobre-mim-content-width) - 40px
+    );
+  }
+}
+
+@media (max-width: 1200px) {
+  :root {
+    --container-padding: 48px;
+  }
+
+  .project-grid,
+  .project-card,
+  .timeline-card {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .sobre-mim__inner {
+    padding: 64px var(--container-padding);
+    min-height: 0;
+  }
+
+  .sobre-mim__content {
+    max-width: 100%;
+  }
+
+  .sobre-mim__photo {
+    position: static;
+    width: 100%;
+    max-width: 480px;
+    height: 400px;
+    max-height: none;
+    margin-top: 32px;
+    border-radius: var(--radius-img);
+    overflow: hidden;
+  }
+
+  .cs-layout {
+    flex-direction: column;
+    padding: 40px var(--container-padding) 64px;
+  }
+
+  .cs-sidebar {
+    position: static;
+    width: 100%;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  /* Sobrescreve a especificidade de .page-design-system/.page-design-inclusivo/
+     .page-programacao-criativa .cs-sidebar (0,2,0), que do contrário venceria
+     a regra acima (0,1,0) mesmo dentro deste media query e travaria a sidebar
+     em 254px, fixa e centralizada verticalmente em telas menores. */
+  .page-design-system .cs-sidebar,
+  .page-design-inclusivo .cs-sidebar,
+  .page-programacao-criativa .cs-sidebar {
+    width: 100%;
+    position: static;
+    top: auto;
+    left: auto;
+    transform: none;
+  }
+
+  .page-design-system .cs-content,
+  .page-design-inclusivo .cs-content,
+  .page-programacao-criativa .cs-content {
+    margin-left: 0;
+  }
+
+  .cs-sidebar__nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+  }
+
+  .cs-sidebar__contact {
+    display: none;
+  }
+
+  /* Mesmo motivo acima: .page-design-system/.page-design-inclusivo/
+     .page-programacao-criativa .cs-sidebar__contact tem especificidade maior
+     e reapareceria sem isto. */
+  .page-design-system .cs-sidebar__contact,
+  .page-design-inclusivo .cs-sidebar__contact,
+  .page-programacao-criativa .cs-sidebar__contact {
+    display: none;
+  }
+
+  .cs-content {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .site-nav__list {
+    gap: 32px;
+    font-size: 14px;
+  }
+
+  .thought-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .thought-card__thumb {
+    width: 100%;
+    height: 180px;
+  }
+}
+
+@media (max-width: 700px) {
+  :root {
+    --container-padding: 20px;
+  }
+
+  /* Os espaçamentos verticais entre seções (72/104/112/115/116px) vêm
+     direto do Figma desktop e nunca foram reduzidos pro mobile — em uma
+     tela de ~800px de altura, só esse espaço em branco entre seções já
+     consome mais de um quarto da viewport (rolagem excessiva, contra a
+     heurística de "estética e design minimalista" do Nielsen). Reduz
+     mantendo a mesma proporção entre elas. */
+  .section {
+    padding-block: 48px;
+  }
+
+  .section--muted {
+    padding-top: 48px;
+    padding-bottom: 56px;
+  }
+
+  #projetos {
+    padding-bottom: 48px;
+  }
+
+  #trajetoria {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  #contato {
+    padding-top: 48px;
+    padding-bottom: 56px;
+  }
+
+  .site-nav__list,
+  .site-header__extras .resume-link,
+  .lang-toggle {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .site-nav__list.site-nav__list--open {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    max-height: calc(100vh - var(--header-height));
+    overflow-y: auto;
+    background-color: var(--neutral-light-03);
+    padding: 24px var(--container-padding);
+    z-index: 99;
+    animation: nav-mobile-in 0.25s ease;
+  }
+
+  /* Bloco de contato repetido dentro do menu — mesmos componentes
+     (.btn--primary + .social-list/.social-btn) da seção "Vamos
+     conversar?", só sem o título/texto introdutório, já que aqui o
+     contexto já é óbvio (o usuário abriu o menu). */
+  .site-nav__extra {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    margin-top: 8px;
+    padding-top: 20px;
+    border-top: 1px solid var(--neutral-light-05);
+  }
+
+  .site-nav__extra .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  @keyframes nav-mobile-in {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ---------- Hero mobile ----------
+     A diagramação PORT/foto/FÓLIO e o efeito de scroll sticky (a hero fica
+     fixa sob o header e as seções seguintes vão cobrindo-a por cima
+     conforme a página rola — ver comentário grande em "Interação de
+     rolagem do protótipo" acima) continuam os mesmos do desktop, só
+     encolhidos pelo clamp/cqw que já existe em .hero__word e
+     --hero-wordmark-w. O único ajuste aqui é a altura: a base força
+     min-height:100vh (pensado pra a wordmark "preencher" a tela toda no
+     desktop), mas em telas estreitas --hero-wordmark-w já é limitado por
+     94vw bem antes de a altura entrar em jogo, então a wordmark nunca
+     chega a preencher esse 100vh — sobrava um vão vazio abaixo do CTA e a
+     próxima seção demorava a aparecer. Sem min-height, a .hero (que
+     continua sticky) passa a ter só a altura do próprio conteúdo, e a
+     seção seguinte cobre-a bem mais cedo ao rolar. */
+  .hero {
+    min-height: 0;
+    padding-bottom: 32px;
+  }
+
+  .hero__tagline {
+    padding-inline: 16px;
+  }
+
+  .hero__tagline-break {
+    display: inline;
+  }
+
+  /* Títulos ainda no tamanho do desktop (seções em 40px, cards em 24px) —
+     proporcionalmente grandes demais pra tela de celular comparado ao
+     resto do app já reduzido. Reescala tudo junto: seções ~24px, cards
+     ~18-19px, mantendo a mesma hierarquia relativa entre eles. */
+  .section__title {
+    font-size: 24px;
+  }
+
+  .project-card__title {
+    font-size: 20px;
+    /* "Design Inclusivo Gamificado" é mais longo que a largura do card no
+       mobile (a coluna deixou de ter os 377px do desktop) — nowrap fazia o
+       texto vazar pra fora do card. */
+    white-space: normal;
+  }
+
+  /* Mesmo motivo do card acima: a imagem quadrada (329x329 no Figma) usa
+     height fixo, mas a largura do card já ficou responsiva — sem
+     aspect-ratio a proporção quebra (fica mais alta que larga) e o
+     object-fit:cover "zoom" mais que o previsto, cortando as laterais.
+     Mais visível no card "Design Inclusivo Gamificado" (4 telas lado a
+     lado), mas vale pros três cards igualmente. */
+  .project-card__media {
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .thought-card__title {
+    font-size: 19px;
+  }
+
+  /* Cargo e empresa saíam do desktop com quase o mesmo peso visual: 24px/16px
+     mas os DOIS em font-weight 500, então a diferença de 8px não bastava
+     pra separar hierarquia — no card estreito do mobile os dois liam quase
+     como um bloco só de texto. Cargo (informação primária) fica maior E
+     bem mais pesado (700); empresa/período (secundária) encolhe mais um
+     pouco. */
+  .timeline-card__role {
+    font-size: 19px;
+    font-weight: 700;
+  }
+
+  .timeline-card__company {
+    font-size: 14px;
+  }
+
+  /* .project-card e .thought-card só ganham um fundo diferente do da seção
+     em :hover/:active (ver regras base) — sem mouse, no repouso eles ficam
+     exatamente da cor do fundo ao redor (branco sobre branco em #projetos,
+     cinza sobre cinza em .section--muted) e "somem" até o dedo tocar.
+     Sombra permanente resolve isso sem depender de hover, e de quebra dá
+     a sensação de cartão/app elevado que estava faltando. */
+  .project-card {
+    background-color: var(--neutral-light-01);
+    box-shadow: 0 8px 24px -4px rgba(25, 25, 25, 0.12);
+  }
+
+  .thought-card {
+    box-shadow: 0 8px 24px -4px rgba(25, 25, 25, 0.1);
+  }
+
+  /* Descrição do card de blog vem inteira do desktop (podia chegar a 5-6
+     linhas) — no mobile isso deixa a lista de cards comprida demais pra
+     ser escaneada rolando. Trunca em 2 linhas com reticências: dá pra
+     decidir se vale abrir "Ler mais" sem precisar ler o parágrafo todo. */
+  .thought-card__excerpt {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Setas dos cards de trajetória: só existem no mobile (ver comentário
+     na regra base), porque só aqui falta a affordance do :hover pra
+     avisar que o card tem mais conteúdo (as habilidades, no verso). */
+  .timeline-card__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 24px;
+    bottom: 28px;
+    z-index: 2;
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    background-color: var(--timeline-accent, var(--color-primary));
+    transition: transform 0.25s ease;
+  }
+
+  .timeline-card__arrow img {
+    transform: rotate(-90deg);
+    width: 24px;
+    height: 9px;
+    filter: brightness(0) invert(1);
+  }
+
+  /* Mesmos gatilhos que trocam a face do card (ver regra base
+     .timeline-card:hover/:focus-visible/.is-active) — inclui :hover pra
+     não desalinhar a seta do conteúdo em dispositivos híbridos
+     mouse+touch (notebook com tela sensível ao toque, por exemplo). */
+  .timeline-card:hover .timeline-card__arrow,
+  .timeline-card:focus-visible .timeline-card__arrow,
+  .timeline-card.is-active .timeline-card__arrow {
+    transform: rotate(180deg);
+  }
+
+  /* "Sobre mim": no desktop o texto fica alinhado à esquerda porque
+     divide a linha com a foto (posicionada absoluta ao lado). No mobile
+     as duas empilham (ver regra de 1200px que tira a foto do absolute) —
+     texto ragged-left ao lado de uma foto embaixo, ambos ocupando a
+     largura toda, ficava com aparência desalinhada. Centraliza os dois
+     (título, texto e foto) como um bloco só. */
+  .sobre-mim__content {
+    align-items: center;
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  .sobre-mim__photo {
+    margin-inline: auto;
+  }
+
+  .sobre-mim__title,
+  .contact__title {
+    font-size: 24px;
+  }
+
+  .sobre-mim__text {
+    font-size: 16px;
+  }
+
+  /* "Vamos conversar?" e o footer usam tamanhos de texto do desktop
+     (24px/20px) — grandes demais perto da escala já reduzida do resto do
+     app no mobile (títulos 28px, corpo 16px). Reduz proporcionalmente
+     pra fechar a mesma linguagem visual até o fim da página. */
+  .contact__text {
+    font-size: 16px;
+  }
+
+  .site-footer {
+    height: auto;
+    padding-block: 16px;
+  }
+
+  .site-footer__text {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  /* Hierarquia dos cases no desktop (H1 56 / H2 40 / H3 24 / eyebrow 16)
+     comprimia demais no mobile (34/26/20/16 — razão entre níveis caindo
+     de ~1.4-1.67 pra ~1.25-1.3, ficando tudo parecido em tamanho).
+     Reescala mantendo a MESMA proporção relativa entre os níveis, só que
+     numa escala compatível com o resto do app (títulos de seção da home
+     já em 24px). */
+  .cs-h1 {
+    font-size: 28px;
+  }
+
+  .cs-h2 {
+    font-size: 22px;
+  }
+
+  .cs-h3 {
+    font-size: 18px;
+  }
+
+  .cs-eyebrow {
+    font-size: 13px;
+  }
+
+  /* Textos "de destaque" que ainda vinham no tamanho do desktop — reduz na
+     mesma proporção do resto da escala já encolhida acima (cs-h1/h2/h3). */
+  .cs-lead {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .cs-learn-card__text--lg {
+    font-size: 17px;
+  }
+
+  .cs-thanks {
+    font-size: 22px;
+    margin-top: 40px;
+  }
+
+  .cs-stats-panel {
+    padding: 20px;
+  }
+
+  .cs-info-card {
+    width: 100%;
+    flex-basis: 100%;
+  }
+
+  .cs-stat-grid,
+  .cs-color-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cs-swatch-panel {
+    padding: 20px;
+    aspect-ratio: auto;
+  }
+
+  .cs-swatch-panel .cs-color-grid {
+    width: auto;
+  }
+
+  /* Sem isto, a altura do card vem do aspect-ratio 160/156 (pensado pra
+     largura de 4 colunas no desktop) — em 2 colunas o card fica raso
+     demais pro conteúdo (bloco de cor + nome + hex), e o overflow:hidden
+     de .cs-color-swatch corta o hex ao meio. Deixa a altura seguir o
+     conteúdo, como já é feito nos outros paineis (.cs-token-panel,
+     .cs-context-panel etc.) nesta mesma media query. */
+  .cs-swatch-panel .cs-color-swatch {
+    aspect-ratio: auto;
+  }
+
+  .cs-swatch-cycle__label {
+    text-align: left;
+  }
+
+  .cs-theme-cycle {
+    gap: 16px;
+  }
+
+  .cs-theme-cycle__col {
+    width: auto;
+    flex: 1 1 0;
+  }
+
+  .cs-token-panel {
+    padding: 20px;
+    aspect-ratio: auto;
+  }
+
+  /* .cs-token-row (painel "Tipografia"): no desktop são duas fileiras
+     paralelas (rótulos posicionados em % por cima, pills embaixo) — em
+     largura de celular isso só cabe forçando um min-width e rolagem
+     horizontal, que é exatamente o padrão que não queremos em nenhuma
+     imagem/painel do site (ver .cs-panel/.cs-panel--icones, sem scroll
+     algum). Em vez disso, "achata" os dois wrappers (display:contents) e
+     reorganiza os mesmos 12 elementos (6 rótulos + 6 pills) numa grade de
+     2 colunas × 6 linhas — rótulo e valor lado a lado, sem alterar o
+     HTML nem o desktop. */
+  .cs-token-row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 16px;
+    row-gap: 8px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .cs-token-row__labels,
+  .cs-token-row__values {
+    display: contents;
+  }
+
+  .cs-token-row__labels span {
+    position: static;
+    grid-column: 1;
+    align-self: center;
+  }
+
+  .cs-token-row__labels span:nth-child(1) { grid-row: 1; }
+  .cs-token-row__labels span:nth-child(2) { grid-row: 2; }
+  .cs-token-row__labels span:nth-child(3) { grid-row: 3; }
+  .cs-token-row__labels span:nth-child(4) { grid-row: 4; }
+  .cs-token-row__labels span:nth-child(5) { grid-row: 5; }
+  .cs-token-row__labels span:nth-child(6) { grid-row: 6; }
+
+  .cs-token-pill {
+    grid-column: 2;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .cs-token-row__values .cs-token-pill:nth-child(1) { grid-row: 1; }
+  .cs-token-row__values .cs-token-pill:nth-child(2) { grid-row: 2; }
+  .cs-token-row__values .cs-token-pill:nth-child(3) { grid-row: 3; }
+  .cs-token-row__values .cs-token-pill:nth-child(4) { grid-row: 4; }
+  .cs-token-row__values .cs-token-pill:nth-child(5) { grid-row: 5; }
+  .cs-token-row__values .cs-token-pill:nth-child(6) { grid-row: 6; }
+
+  /* .cs-token-table (painel "Espaçamentos e raio de canto"): mesma lógica
+     — em vez de espremer as 3 colunas (Token/Value/Usage) até caber com
+     scroll horizontal, cada linha vira um cartão empilhado. "Value" e
+     "Usage" são sempre a 1ª e 2ª <td> de cada linha (a 1ª célula já é o
+     <th scope="row"> com o nome do token), então os rótulos podem vir
+     direto do CSS (content), sem precisar de atributos novos no HTML. */
+  .cs-token-table {
+    display: block;
+    width: 100%;
+  }
+
+  .cs-token-table thead {
+    display: none;
+  }
+
+  .cs-token-table tbody {
+    display: block;
+  }
+
+  .cs-token-table tr {
+    display: block;
+    background-color: var(--neutral-light-01);
+    border-radius: 8px;
+    padding: 12px 16px;
+  }
+
+  .cs-token-table tr + tr {
+    margin-top: 8px;
+  }
+
+  .cs-token-table th[scope="row"] {
+    display: block;
+    width: auto;
+    text-align: left;
+    padding: 0 0 8px;
+    font-weight: 600;
+    color: var(--neutral-dark-02);
+  }
+
+  /* :first-of-type/:last-of-type repetidos aqui porque as regras base
+     (width:96px / width:288px, mais acima neste arquivo) têm especificidade
+     maior que ".cs-token-table td" sozinho — mesmo dentro do media query,
+     um "width:auto" menos específico não vencia essas duas, e a célula
+     "Usage" (288px fixos) vazava pra fora da tela em telas de ~320px. */
+  .cs-token-table td,
+  .cs-token-table td:first-of-type,
+  .cs-token-table td:last-of-type {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    width: auto;
+    height: auto;
+    background: none;
+    border-radius: 0;
+    padding: 6px 0;
+    text-align: left;
+    white-space: normal;
+  }
+
+  .cs-token-table td::before {
+    flex-shrink: 0;
+    color: var(--neutral-dark-07);
+  }
+
+  .cs-token-table td:nth-of-type(1)::before {
+    content: 'Value';
+  }
+
+  .cs-token-table td:nth-of-type(2)::before {
+    content: 'Usage';
+  }
+
+  .cs-sidebar__nav {
+    display: none;
+  }
+}
+
+/* ---------- Lightbox (ampliar imagens dos painéis de case) ----------
+   Tamanho padrão único para QUALQUER imagem/painel ampliado: a mesma
+   largura fixa (min(90vw, 960px)) já usada pelo clone "vivo" do painel
+   de Tipografia (.cs-token-panel), para que nenhuma imagem abra maior
+   ou menor que outra por causa da resolução original do arquivo. */
+body.lightbox-open {
+  overflow: hidden;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(25, 25, 25, 0.85);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox__viewport {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  overflow: auto;
+}
+
+.lightbox__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(90vw, 960px);
+  max-height: 85vh;
+  flex: none;
+  transition: transform 0.15s ease;
+}
+
+.lightbox__img {
+  width: 100%;
+  height: auto;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: var(--radius-card);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  transform: scale(0.96);
+  transition: transform 0.2s ease;
+}
+
+.lightbox.is-open .lightbox__img {
+  transform: scale(1);
+}
+
+/* Clone ampliado dos painéis "vivos" (.cs-swatch-panel, escala de cores /
+   theme mapping, tokens) dentro do lightbox: mesmo tratamento visual das
+   imagens (sombra + leve zoom-in na abertura), mas sem a margem que o
+   painel tem no fluxo normal da página. A largura já vem de
+   .lightbox__content (mesmo padrão de todas as imagens); aqui só o
+   necessário para o clone caber e ficar com o mesmo acabamento visual. */
+.lightbox__clone.cs-swatch-panel,
+.lightbox__clone.cs-token-panel {
+  margin-block: 0;
+  width: 100%;
+  max-height: 85vh;
+  overflow: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  transform: scale(0.96);
+  transition: transform 0.2s ease;
+  cursor: default;
+}
+
+/* Clone do recorte do gif de demo (.cs-demo-window, #construcao): amplia
+   só o recorte visível — não o gif inteiro — mantendo a proporção 241x353
+   do Figma. Sem cantos arredondados (o recorte no Figma não tem
+   border-radius, só o .cs-panel ao redor dele tem). width/height:auto +
+   max-width/max-height:100% deixam o aspect-ratio decidir se quem limita
+   o tamanho é a largura (min(90vw,960px)) ou a altura (85vh) do
+   .lightbox__content, sem distorcer nem cortar o conteúdo. */
+.lightbox__clone.cs-demo-window {
+  margin: 0 auto;
+  width: min(90vw, 960px, calc(85vh * 241 / 353));
+  height: auto;
+  aspect-ratio: 241 / 353;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  transform: scale(0.96);
+  transition: transform 0.2s ease;
+  cursor: default;
+  border-radius: 0;
+}
+
+.lightbox.is-open .lightbox__clone {
+  transform: scale(1);
+}
+
+.lightbox__close {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: var(--neutral-light-01);
+  color: var(--neutral-dark-01);
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+/* Ícone via SVG (não o glifo de texto "×"): o caractere tem viés visual
+   próprio na fonte e nunca fica perfeitamente centralizado dentro do
+   círculo mesmo com o botão centralizado por flexbox. Um "X" desenhado
+   com duas linhas é simétrico de verdade. */
+.lightbox__close svg {
+  width: 16px;
+  height: 16px;
+}
+
+.lightbox__close:hover {
+  background: var(--neutral-light-04);
+}
+
+.lightbox__close:active {
+  background: var(--neutral-light-05);
+  transform: scale(0.92);
+}
+
+/* Menu lateral de zoom: fica ao lado do conteúdo ampliado, sempre
+   presente (padrão para toda imagem/painel aberto no lightbox). */
+.lightbox__zoom-menu {
+  position: fixed;
+  top: 50%;
+  right: 24px;
+  transform: translateY(-50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: var(--neutral-light-01);
+  border-radius: var(--radius-card);
+  padding: 14px 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.lightbox__zoom-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: var(--neutral-light-03);
+  color: var(--neutral-dark-01);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.lightbox__zoom-btn:hover:not(:disabled) {
+  background: var(--neutral-light-04);
+}
+
+.lightbox__zoom-btn:active:not(:disabled) {
+  background: var(--neutral-light-05);
+  transform: scale(0.9);
+}
+
+.lightbox__zoom-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* Rótulo "100%": também funciona como botão de redefinir zoom (ver
+   script.js), por isso usa a mesma base visual dos demais controles do
+   menu (.lightbox__zoom-btn) — só que sem o fundo circular em repouso,
+   igual ao Figma, mostrando o fundo apenas no hover/click. */
+.lightbox__zoom-level {
+  width: auto;
+  height: auto;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  padding: 4px 8px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--neutral-dark-01);
+  min-width: 3ch;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.lightbox__zoom-level:hover {
+  background: var(--neutral-light-04);
+}
+
+.lightbox__zoom-level:active {
+  background: var(--neutral-light-05);
+  transform: scale(0.94);
+}
+
+@media (max-width: 640px) {
+  .lightbox__viewport {
+    padding: 16px;
+  }
+
+  .lightbox__close {
+    top: 12px;
+    right: 12px;
+  }
+
+  .lightbox__zoom-menu {
+    top: auto;
+    bottom: 16px;
+    right: 50%;
+    transform: translateX(50%);
+    flex-direction: row;
+  }
+}
