@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programação Criativa — Laura Menezes</title>
+  <meta name="description" content="Estudo de caso: pôster interativo do filme Parasita construído inteiramente em código com P5.js, explorando como decisões de design se traduzem em código." />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="page-programacao-criativa">
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="../index.html#inicio" class="site-header__brand" aria-label="Início — Laura Menezes">
+        <img src="../assets/images/avatar-laura.png" alt="Foto de perfil de Laura Menezes" class="site-header__avatar" width="48" height="48" />
+        <div class="site-header__brand-text">
+          <span class="site-header__name">Laura Menezes</span>
+          <span class="site-header__role">Designer Estratégica</span>
+        </div>
+      </a>
+
+      <nav aria-label="Navegação principal">
+        <ul class="site-nav__list" id="mobileNav">
+          <li><a href="../index.html#inicio" class="site-nav__link">Início</a></li>
+          <li><a href="../index.html#projetos" class="site-nav__link">Projetos</a></li>
+          <li><a href="../index.html#sobre" class="site-nav__link">Sobre</a></li>
+          <li><a href="../index.html#contato" class="site-nav__link">Contato</a></li>
+          <li class="site-nav__extra">
+            <a href="https://wa.me/5534996358519" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+              Entre em contato
+              <span class="btn__icon"><img src="../assets/icons/icone-whatsapp.svg" alt="" /></span>
+            </a>
+            <ul class="social-list">
+              <li>
+                <a href="mailto:lauramenesantos@gmail.com" class="social-btn social-btn--figma social-btn--gmail" aria-label="Enviar e-mail">
+                  <span class="social-btn__icon">
+                    <img src="../assets/icons/icone-mail-default.svg" alt="" class="social-btn__icon-default" />
+                    <img src="../assets/icons/icone-mail-hover.svg" alt="" class="social-btn__icon-hover" />
+                    <img src="../assets/icons/icone-mail-active.svg" alt="" class="social-btn__icon-active" />
+                  </span>
+                  <span>Gmail</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.behance.net/lauramenezes11" class="social-btn social-btn--figma social-btn--behance" aria-label="Ver Behance" target="_blank" rel="noopener noreferrer">
+                  <span class="social-btn__icon">
+                    <img src="../assets/icons/icone-behance-default.svg" alt="" class="social-btn__icon-default" />
+                    <img src="../assets/icons/icone-behance-hover.svg" alt="" class="social-btn__icon-hover" />
+                    <img src="../assets/icons/icone-behance-active.svg" alt="" class="social-btn__icon-active" />
+                  </span>
+                  <span>Behance</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/lauramenesantos" class="social-btn social-btn--figma social-btn--linkedin" aria-label="Ver LinkedIn" target="_blank" rel="noopener noreferrer">
+                  <span class="social-btn__icon">
+                    <img src="../assets/icons/icone-linkedin-default.svg" alt="" class="social-btn__icon-default" />
+                    <img src="../assets/icons/icone-linkedin-hover.svg" alt="" class="social-btn__icon-hover" />
+                    <img src="../assets/icons/icone-linkedin-active.svg" alt="" class="social-btn__icon-active" />
+                  </span>
+                  <span>Linkedin</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="site-header__extras">
+        <div class="lang-toggle" role="group" aria-label="Selecionar idioma">
+          <button type="button" class="lang-toggle__code" data-lang="pt" aria-pressed="true">PT</button>
+          <span class="lang-toggle__switch">
+            <span class="lang-toggle__flags">
+              <img src="../assets/icons/flag-br.svg" alt="" class="lang-toggle__flag" />
+              <img src="../assets/icons/flag-us.svg" alt="" class="lang-toggle__flag" />
+            </span>
+          </span>
+          <button type="button" class="lang-toggle__code lang-toggle__code--muted" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+
+        <span class="header-divider" aria-hidden="true"></span>
+
+        <a href="https://drive.google.com/file/d/1AGe-b_nQhDxEAYTrQIS7VQOFnR9d0iju/view?usp=sharing" class="resume-link" target="_blank" rel="noopener noreferrer">
+          <span class="resume-link__icon">
+            <img src="../assets/icons/icone-seta-vermais.svg" alt="" />
+          </span>
+          Currículo
+        </a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="cs-layout">
+
+      <aside class="cs-sidebar">
+        <div class="cs-sidebar__top">
+          <a href="../index.html#projetos" class="cs-sidebar__back" aria-label="Voltar para projetos">
+            <img src="../assets/icons/icone-seta-voltar.svg" alt="" />
+          </a>
+        </div>
+
+        <nav class="cs-sidebar__nav" aria-label="Navegação do estudo de caso">
+          <a href="#introducao" class="cs-sidebar__link">Introdução<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#contexto" class="cs-sidebar__link">Contexto<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#obra" class="cs-sidebar__link">A Obra<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#restricoes" class="cs-sidebar__link">Restrições<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#construcao" class="cs-sidebar__link">Construção<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#resultado" class="cs-sidebar__link">Resultado<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#aprendizados" class="cs-sidebar__link">Aprendizados<span class="cs-sidebar__link-dot"></span></a>
+        </nav>
+
+        <div class="cs-sidebar__contact">
+          <p class="cs-sidebar__contact-title">Vamos conversar?</p>
+          <p class="cs-sidebar__contact-text">Estou aberta a novas oportunidades e desafios</p>
+          <a href="https://wa.me/5534996358519" class="btn btn--outline" target="_blank" rel="noopener noreferrer">
+            Entre em contato
+            <span class="btn__icon">
+              <img src="../assets/icons/icone-whatsapp-outline-programacao-criativa.svg" alt="" class="btn__icon-default" />
+              <img src="../assets/icons/icone-whatsapp-outline-programacao-criativa-hover.svg" alt="" class="btn__icon-hover" />
+              <img src="../assets/icons/icone-whatsapp-outline-programacao-criativa-active.svg" alt="" class="btn__icon-active" />
+            </span>
+          </a>
+        </div>
+      </aside>
+
+      <article class="cs-content">
+
+        <section id="introducao">
+          <span class="cs-eyebrow">PROGRAMAÇÃO CRIATIVA - Desenvolvido em 2024</span>
+          <h1 class="cs-h1">Nem tudo o que desenhamos<br />pode ser programado.</h1>
+          <p class="cs-lead">
+            Programação criativa construída inteiramente em código com P5.js para
+            <span class="cs-highlight">compreender como decisões de design se traduzem em código.</span>
+            O projeto investiga as possibilidades e limitações técnicas a partir da abstração interativa de um
+            pôster do filme Parasita.
+          </p>
+
+          <div class="cs-panel">
+            <img src="../assets/images/cs-pc-light-01.png" alt="Ícones minimalistas de uma pessoa, uma caveira e uma barraca, elementos centrais do pôster de Parasita" loading="lazy" />
+          </div>
+
+          <div class="cs-cta-row cs-cta-row--center">
+            <a href="#resultado" class="btn btn--primary">
+              Ver resultado
+              <span class="btn__icon"><img src="../assets/icons/icone-seta-vermais-white.svg" alt="" /></span>
+            </a>
+          </div>
+        </section>
+
+        <section class="cs-section" id="contexto">
+          <button type="button" class="cs-section__header" aria-expanded="false">
+            <span class="cs-eyebrow">CONTEXTO</span>
+            <h2 class="cs-h2">O que um designer ganha<br class="cs-h2-break" /> ao entender código?</h2>
+            <span class="cs-section__chevron" aria-hidden="true"></span>
+          </button>
+          <div class="cs-section__body">
+          <p class="cs-p">
+            Designers e desenvolvedores trabalham juntos constantemente, mas a comunicação entre as áreas pode
+            falhar quando cada lado desconhece as limitações e prioridades do outro. Este projeto surgiu dessa
+            questão: como a forma de pensar Design muda quando se entende o básico de programação? Para explorar
+            isso na prática, foi feito uma programação criativa em p5.js, a partir da abstração de um pôster.
+          </p>
+
+          <div class="cs-contexto-info">
+            <div class="cs-info-grid">
+              <div class="cs-info-card">
+                <div class="cs-info-card__text">
+                  <p class="cs-info-card__label">Projeto</p>
+                  <p class="cs-info-card__value">Pôster interativa do filme Parasita</p>
+                </div>
+              </div>
+              <div class="cs-info-card">
+                <div class="cs-info-card__text cs-info-card__text--wide">
+                  <p class="cs-info-card__label">Objetivo</p>
+                  <p class="cs-info-card__value">Compreender como o design se traduz em código</p>
+                </div>
+              </div>
+              <div class="cs-info-card">
+                <div class="cs-info-card__text">
+                  <p class="cs-info-card__label">Abordagem</p>
+                  <p class="cs-info-card__value">Programação criativa com P5.js</p>
+                </div>
+              </div>
+              <div class="cs-info-card">
+                <div class="cs-info-card__text">
+                  <p class="cs-info-card__label">Situação</p>
+                  <p class="cs-info-card__value">Projeto experimental de exploração técnica</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </section>
+
+        <section class="cs-section" id="obra">
+          <button type="button" class="cs-section__header" aria-expanded="false">
+            <span class="cs-eyebrow">A OBRA</span>
+            <h2 class="cs-h2">Um filme assistido ativamente,<br class="cs-h2-break" /> um pôster escolhido com critério.</h2>
+            <span class="cs-section__chevron" aria-hidden="true"></span>
+          </button>
+          <div class="cs-section__body">
+          <p class="cs-p">
+            “Parasita” é um filme sul-coreano vencedor de diversos prêmios do Oscar, lançado em 2019 e dirigido<br />
+            por Bong Joon-ho. A obra narra a história de duas famílias, os Kim, que vivem na pobreza, e os Park,
+            que desfrutam de uma vida luxuos, combinando com maestria suspense, drama e comédia.
+          </p>
+
+          <h3 class="cs-h3">Entendendo a obra</h3>
+          <p class="cs-p">
+            O filme foi assistido com atenção, anotando os elementos narrativos mais marcantes para que as
+            interações fizessem sentido com a obra.
+          </p>
+          <div class="cs-panel cs-obra-panel">
+            <img class="cs-obra-panel__img" src="../assets/images/cs-pc-dark-01.png" alt="Anotações feitas durante a assistência ativa do filme Parasita" loading="lazy" />
+            <div class="cs-obra-panel__caption">
+              <p class="cs-obra-panel__caption-title">ANOTAÇÕES:</p>
+              <ul>
+                <li>Moravam em uma casa simples que tinha vários percevejos;</li>
+                <li>Trabalhavam de montar caixas de pizza (e eram bem ruins nisso);</li>
+                <li>Kevin da família ganhou uma pedra de um amigo que dizia trazer "riqueza material";</li>
+                <li>Kevin fingiu ser universitário para dar aulas particulares;</li>
+                <li>Géssica é boa em arte de fez um diploma falso para o irmão;</li>
+                <li>Antigamente a casa rica era de um arquiteto;</li>
+                <li>Darson é fanático por índios e gosta de fazer aulas de arte;</li>
+                <li>Kevin indica Géssica para dar arteterapia para Darson;</li>
+                <li>Géssica tira calcinha e deixa no carro da madame;</li>
+                <li>O Sr. Kim passa pêssego na governanta que tem alergia;</li>
+                <li>O marido da governanta conversa por ela por código binário, pelas lâmpadas da casa.<br />...</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 class="cs-h3">Pôster de referência</h3>
+          <p class="cs-p">
+            Após analisar o filme, foram pesquisados pôsteres que representassem sua essência por meio de
+            formas simples. O autor do pôster escolhido não foi identificado.
+          </p>
+          <div class="cs-panel">
+            <img src="../assets/images/cs-pc-dark-02.png" alt="Pôster oficial de referência do filme Parasita, com a escadaria dividindo as duas famílias" loading="lazy" />
+          </div>
+
+          <h3 class="cs-h3">Paleta de cores</h3>
+          <p class="cs-p">
+            As cores não foram escolhidas por preferência estética, foram escolhidas porque já estavam no
+            pôster e porque traduzem a tensão e a frieza que o filme transmite.
+          </p>
+          <div class="cs-panel">
+            <img src="../assets/images/cs-pc-paleta.png" alt="Cinco ícones de silhuetas de pessoas coloridas representando a paleta de cores extraída do pôster" loading="lazy" />
+          </div>
+          </div>
+        </section>
+
+        <section class="cs-section" id="restricoes">
+          <button type="button" class="cs-section__header" aria-expanded="false">
+            <span class="cs-eyebrow">RESTRIÇÕES</span>
+            <h2 class="cs-h2">Regras que guiaram o código</h2>
+            <span class="cs-section__chevron" aria-hidden="true"></span>
+          </button>
+          <div class="cs-section__body">
+          <p class="cs-p">
+            Antes de iniciar o desenvolvimento, foram definidas algumas restrições para garantir que o projeto
+            realmente explorasse o aprendizado de programação criativa e mantivesse conexão com a narrativa do
+            filme.
+          </p>
+
+          <div class="cs-learn-list">
+            <div class="cs-learn-card">
+              <p class="cs-learn-card__title">Restrição 1 - Sem imagens</p>
+              <p class="cs-learn-card__text">Nenhuma imagem poderia ser importada. Tudo precisava ser desenhado em código para que o aprendizado técnico fosse real.</p>
+            </div>
+            <div class="cs-learn-card">
+              <p class="cs-learn-card__title">Restrição 2 - Sentido narrativo</p>
+              <p class="cs-learn-card__text">As interações precisavam fazer sentido narrativo, não podiam ser apenas eram efeitos visuais, deviam ser referências ao filme.</p>
+            </div>
+            <div class="cs-learn-card">
+              <p class="cs-learn-card__title">Restrição 3 - Simplificação</p>
+              <p class="cs-learn-card__text">O que não podia ser implementado dentro das limitações técnicas precisava ser simplificado.</p>
+            </div>
+            <div class="cs-learn-card">
+              <p class="cs-learn-card__title">Restrição 4 - Sem uso de IA</p>
+              <p class="cs-learn-card__text">A IA não podia ser usada para gerar código pronto. Sendo utilizada apenas como ferramenta de aprendizado, quando surgiam dúvidas ela explicava o raciocínio.</p>
+            </div>
+          </div>
+          </div>
+        </section>
+
+        <section class="cs-section" id="construcao">
+          <button type="button" class="cs-section__header" aria-expanded="false">
+            <span class="cs-eyebrow">CONSTRUÇÃO</span>
+            <h2 class="cs-h2">Traduzindo elementos visuais<br class="cs-h2-break" /> em estruturas de código.</h2>
+            <span class="cs-section__chevron" aria-hidden="true"></span>
+          </button>
+          <div class="cs-section__body">
+          <p class="cs-p">
+            O processo foi incrementa, cada etapa adicionava um elemento ao código, testava e ajustava antes de
+            seguir. A base do pôster foi mapeada com linhas coloridas para facilitar a identificação de cada
+            elemento no código.
+          </p>
+
+          <h3 class="cs-h3">ETAPA 1 - Mapeando no papel</h3>
+          <p class="cs-p">
+            A base do pôster foi mapeada à mão antes de qualquer linha de código. Cada elemento recebeu uma cor
+            diferente para facilitar a identificação no editor. As cores foram usadas como referência nos
+            comentários do código, tornando o processo de localização de cada parte mais direto.
+          </p>
+          <div class="cs-panel">
+            <img src="../assets/images/cs-pc-etapa1.png" alt="Mapa do pôster desenhado à mão com linhas coloridas identificando cada elemento" loading="lazy" />
+          </div>
+          <div class="cs-insight-panel">
+            <p>Aprendizado técnico: Comentários no código facilitam a navegação. Nomear cada linha colorida no papel e replicar esses nomes nos comentários do código criou um mapa legível do que estava sendo construído.</p>
+            <p>Aprendizado de processo: Ir para o papel antes de abrir o editor é uma decisão de design, não de programação. O sistema de coordenadas do P5.js trabalha com posições numéricas. Saber onde cada elemento está no espaço antes de codar elimina boa parte do processo de tentativa e erro.</p>
+          </div>
+
+          <h3 class="cs-h3">ETAPA 2 - Código base</h3>
+          <p class="cs-p">
+            Estrutura inicial do canvas, proporções e fundo. Definição do sistema de coordenadas que serviria de
+            referência para tudo que viria depois.
+          </p>
+          <div class="cs-panel">
+            <img src="../assets/images/cs-pc-dark-03.png" alt="Editor de código P5.js com o esboço base do pôster: escadaria, tenda e ponto amarelo" loading="lazy" />
+          </div>
+          <div class="cs-insight-panel">
+            <p>Aprendizado técnico: Como o P5.js organiza o canvas com os eixos x e y, e como as funções setup() e draw() estruturam o ciclo de renderização.</p>
+            <p>Aprendizado de processo: Definir as proporções e o sistema de coordenadas antes evita reposicionamento em cascata depois. As posições já estavam pensadas, o código base foi escrito com referências claras, sem tentativa e erro de posicionamento.</p>
+          </div>
+
+          <h3 class="cs-h3">ETAPA 3 - Base com pessoas</h3>
+          <p class="cs-p">
+            A ideia inicial era representar os personagens como manchas abstratas, formas orgânicas que
+            sugerissem figuras humanas sem defini-las. Na prática, formas orgânicas em P5.js exigem curvas de
+            Bézier e vértices manuais, o que tornava a implementação complexa demais para o momento do projeto.
+            A decisão foi usar formas geométricas simples: círculos, retângulos e linhas.
+          </p>
+          <div class="cs-panel">
+            <img src="../assets/images/cs-pc-dark-04.png" alt="Editor de código P5.js com as famílias representadas por formas geométricas simples" loading="lazy" />
+          </div>
+          <div class="cs-insight-panel">
+            <p>Aprendizado técnico: Uso das funções ellipse(), rect() e line() para construir formas compostas, como combinar primitivos simples para representar figuras complexas.</p>
+            <p>Aprendizado de processo: A restrição técnica melhorou a decisão de design. Formas geométricas simples são mais fiéis ao estilo do pôster do que manchas orgânicas seriam, o que parecia uma limitação virou coerência visual.</p>
+          </div>
+
+          <h3 class="cs-h3">ETAPA 4 - Funcionamento do botão e lâmpada</h3>
+          <p class="cs-p">
+            Primeira interação implementada. O botão aciona a lâmpada, referência direta à cena do filme onde
+            mensagens são enviadas em código binário pela luz piscando.
+          </p>
+          <div class="cs-panel">
+            <div class="cs-demo-window" style="--crop-left: -4.61%;">
+              <img src="../assets/images/cs-pc-demo.gif" alt="Pôster interativo com o botão acionando a lâmpada da casa" loading="lazy" />
+            </div>
+          </div>
+          <div class="cs-insight-panel">
+            <p>Aprendizado técnico: Uso de variáveis para controlar propriedades visuais, como cor e tamanho, permitindo alterar a aparência dos elementos de forma dinâmica durante a execução do programa.</p>
+            <p>Aprendizado de processo: Interatividade no código exige pensar em estados: antes do clique, depois do clique e durante o clique. No design, isso já existe nos estados de componente, saber nomear e estruturar estados no código torna o handoff mais preciso.</p>
+          </div>
+
+          <h3 class="cs-h3">ETAPA 5 - Água subindo e benções caindo</h3>
+          <p class="cs-p">
+            A enchente que alaga a casa dos Kim enquanto os Park veem a chuva como bênção. Dois elementos
+            simultâneos que reagem de formas opostas à mesma condição.
+          </p>
+          <div class="cs-panel">
+            <div class="cs-demo-window" style="--crop-left: -117.52%;">
+              <img src="../assets/images/cs-pc-demo-2.gif" alt="Pôster interativo com a água subindo na casa dos Kim e bênçãos caindo sobre a casa dos Park" loading="lazy" />
+            </div>
+          </div>
+          <div class="cs-insight-panel">
+            <p>Aprendizado técnico: Uso da posição do mouse para controlar elementos em tempo real e aplicação da função random() para criar variações de opacidade, gerando um efeito visual dinâmico.</p>
+            <p>Aprendizado de processo: Pequenas alterações em variáveis como posição, transparência e interação podem transformar elementos estáticos em experiências mais vivas e responsivas.</p>
+          </div>
+
+          <h3 class="cs-h3">ETAPA 6 - Caveira e arbusto</h3>
+          <p class="cs-p">
+            O mouse divide a tela ao meio. Na metade direita, um arbusto comum. Na metade esquerda, uma
+            caveira aparece. Referência à governanta que foi enterrada no jardim e que só alguns personagens
+            sabem do fato.
+          </p>
+          <div class="cs-panel">
+            <div class="cs-demo-window" style="--crop-left: -230.76%;">
+              <img src="../assets/images/cs-pc-demo-2.gif" alt="Pôster interativo com a caveira revelada de um lado da tela e o arbusto comum do outro" loading="lazy" />
+            </div>
+          </div>
+          <div class="cs-insight-panel">
+            <p>Aprendizado técnico: Uso de mouseX para criar condicionais de exibição. Como mostrar ou ocultar elementos com base na posição do cursor.</p>
+            <p>Aprendizado de processo: Interações baseadas em posição do mouse criam camadas de descoberta. O usuário encontra algo sem ser instruído a procurar. É design de revelação progressiva aplicado ao código.</p>
+          </div>
+
+          <h3 class="cs-h3">ETAPA 7 - Pessosas andando</h3>
+          <p class="cs-p">
+            Dois movimentos que contam histórias diferentes. A pessoa no porão oscila no mesmo ponto, indo e
+            voltando sem realmente avançar, representando uma trajetória marcada por limitações e repetição.
+            Já a pessoa no andar superior percorre livremente todo o eixo x, sugerindo maior liberdade de
+            escolha e circulação. A mesma técnica de animação, mas com leituras visuais completamente distintas.
+          </p>
+          <div class="cs-panel">
+            <div class="cs-demo-window cs-demo-window--mask" style="--crop-left: -117.59%;">
+              <img src="../assets/images/cs-pc-demo.gif" alt="Pôster interativo com os membros das famílias Kim e Park em movimento pela composição" loading="lazy" />
+            </div>
+          </div>
+          <div class="cs-insight-panel">
+            <p>Aprendizado técnico: Uso de variáveis de posição e velocidade para criar movimentos distintos, um personagem se desloca continuamente pelo canvas, enquanto o outro se movimenta entre limites definidos por meio da inversão da velocidade.</p>
+            <p>Aprendizado de processo: Diferentes comportamentos visuais podem ser construídos com regras simples de programação, conectando código e narrativa em uma mesma solução.</p>
+          </div>
+
+          <h3 class="cs-h3">ETAPA 8 - Curiosidades</h3>
+          <p class="cs-p">
+            Ao digitar a palavra "PARASITA" no teclado, curiosidades sobre o filme aparecem na tela. A
+            funcionalidade exigiu entender como detectar de teclas no P5.js. A IA foi usada como professora: a
+            dúvida foi descrita, a IA ensinou o raciocínio para que o código pudesse ser escrito.
+          </p>
+          <div class="cs-panel">
+            <div class="cs-demo-window" style="--crop-left: -117.97%;">
+              <img src="../assets/images/cs-pc-demo.gif" alt="Pôster interativo exibindo uma curiosidade sobre o filme após digitar a palavra PARASITA" loading="lazy" />
+            </div>
+          </div>
+          <div class="cs-insight-panel">
+            <p>Aprendizado técnico: Captura de input de teclado com keyTyped(). Como concatenar strings a cada tecla pressionada e comparar com a palavra-alvo para disparar a ação.</p>
+            <p>Aprendizado de processo: Usar IA para aprender a lógica é diferente de usar IA para gerar uma solução. Entender o raciocínio antes de escrever o código faz diferença no que você absorve e no que consegue adaptar depois.</p>
+          </div>
+
+          <h3 class="cs-h3">ETAPA 9 - Ícones e informações</h3>
+          <p class="cs-p">
+            Com várias interações distribuídas pela obra, surgiu uma questão de UX: sem contexto, o usuário
+            poderia não descobrir o que é interativo. A solução foi adicionar um ícone "i" no canto da tela,
+            que revela um guia com as interações disponíveis, suas funções e referências ao filme.
+          </p>
+          <div class="cs-panel">
+            <div class="cs-demo-window" style="--crop-left: -229.93%;">
+              <img src="../assets/images/cs-pc-demo.gif" alt="Pôster interativo com o ícone de informações aberto, mostrando o guia das interações disponíveis" loading="lazy" />
+            </div>
+          </div>
+          <div class="cs-insight-panel">
+            <p>Aprendizado técnico: uso de textWidth() para medir o tamanho de uma string e calcular a posição x correta para centralização manual. No P5.js não existe "centralizar" automático como em CSS, cada posição é um cálculo.</p>
+            <p>Aprendizado de processo: O que é trivial no design pode ser trabalhoso no código. Centralizar um texto no Figma leva um segundo. No P5.js exige entender como o texto é renderizado e calcular sua posição manualmente. Isso muda como você especifica alinhamentos para desenvolvimento.</p>
+          </div>
+          </div>
+        </section>
+
+        <section class="cs-section" id="resultado">
+          <button type="button" class="cs-section__header" aria-expanded="false">
+            <span class="cs-eyebrow">RESULTADO</span>
+            <h2 class="cs-h2">Uma abstração que conta o filme<br class="cs-h2-break" /> através da interação.</h2>
+            <span class="cs-section__chevron" aria-hidden="true"></span>
+          </button>
+          <div class="cs-section__body">
+          <p class="cs-p">
+            À primeira vista, os elementos do pôster parecem semelhantes. Com a interação, novas camadas da
+            narrativa são reveladas, com personagens, eventos e detalhes ocultos surgindo na composição. Cada
+            interação reforça temas e símbolos de Parasita, transformando o código em uma experiência
+            explorável.
+          </p>
+          <div class="cs-panel">
+            <img src="../assets/images/cs-pc-dark-11.png" alt="Diagrama anotado do pôster final explicando cada interação: aleatoriedade, teclado, posição do mouse e rollover" loading="lazy" />
+          </div>
+
+          <div class="cs-cta-row cs-cta-row--center">
+            <a href="https://editor.p5js.org/lauramenesantos/sketches/JHw3mU3-s" class="btn btn--outline" target="_blank" rel="noopener noreferrer">
+              Ver código
+              <span class="btn__icon">
+                <img src="../assets/icons/icone-seta-vermais-outline-programacao-criativa.svg" alt="" class="btn__icon-default" />
+                <img src="../assets/icons/icone-seta-vermais-outline-programacao-criativa-hover.svg" alt="" class="btn__icon-hover" />
+                <img src="../assets/icons/icone-seta-vermais-outline-programacao-criativa-active.svg" alt="" class="btn__icon-active" />
+              </span>
+            </a>
+            <a href="https://editor.p5js.org/lauramenesantos/full/JHw3mU3-s" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+              Interagir com o pôster
+              <span class="btn__icon"><img src="../assets/icons/icone-seta-vermais-white.svg" alt="" /></span>
+            </a>
+          </div>
+          </div>
+        </section>
+
+        <section class="cs-section" id="aprendizados">
+          <button type="button" class="cs-section__header" aria-expanded="false">
+            <span class="cs-eyebrow">APRENDIZADOS</span>
+            <h2 class="cs-h2">Como este projeto mudou<br class="cs-h2-break" /> minha forma de pensar Design?</h2>
+            <span class="cs-section__chevron" aria-hidden="true"></span>
+          </button>
+          <div class="cs-section__body">
+          <div class="cs-learn-list">
+            <div class="cs-learn-card">
+              <p class="cs-learn-card__title">Design e código tem limites diferentes</p>
+              <p class="cs-learn-card__text">Animações e interações que parecem simples no Figma podem ser complexas no código, saber isso torna as conversas com desenvolvimento mais precisas e as decisões de design mais realistas.</p>
+            </div>
+            <div class="cs-learn-card">
+              <p class="cs-learn-card__title">Estados e componentes existem no código</p>
+              <p class="cs-learn-card__text">O que no design é nomenclatura de componente, no código é uma variável booleana e uma condicional. Entender essa equivalência muda como você documenta e especifica interações.</p>
+            </div>
+            <div class="cs-learn-card">
+              <p class="cs-learn-card__title">Animação é matemática</p>
+              <p class="cs-learn-card__text">Velocidade, aceleração, limite, oscilação. Cada efeito visual corresponde a uma operação numérica. Saber disso torna as especificações de motion mais concretas e menos subjetivas.</p>
+            </div>
+            <div class="cs-learn-card">
+              <p class="cs-learn-card__title">Simplificar é uma decisão, não uma derrota</p>
+              <p class="cs-learn-card__text cs-learn-card__text--narrow">Algumas restrições técnicas forçaram escolhas de design mais simples que melhorou o produto final.</p>
+            </div>
+          </div>
+
+          <p class="cs-thanks">Obrigada por ler até aqui :)</p>
+          </div>
+        </section>
+
+      </article>
+    </div>
+
+    <!-- VAMOS CONVERSAR -->
+    <section class="section" id="contato" aria-labelledby="contato-titulo">
+      <div class="container">
+        <div class="contact">
+          <h2 class="contact__title" id="contato-titulo">Vamos conversar?</h2>
+          <p class="contact__text">Gostou do meu trabalho? Estou aberta a oportunidades e adoraria conhecer novos desafios.</p>
+
+          <div class="contact__cta">
+            <a href="https://wa.me/5534996358519" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+              Entre em contato
+              <span class="btn__icon"><img src="../assets/icons/icone-whatsapp.svg" alt="" /></span>
+            </a>
+          </div>
+
+          <ul class="social-list">
+            <li>
+              <a href="mailto:lauramenesantos@gmail.com" class="social-btn social-btn--figma social-btn--gmail" aria-label="Enviar e-mail">
+                <span class="social-btn__icon">
+                  <img src="../assets/icons/icone-mail-default-programacao-criativa.svg" alt="" class="social-btn__icon-default" />
+                  <img src="../assets/icons/icone-mail-hover-programacao-criativa.svg" alt="" class="social-btn__icon-hover" />
+                  <img src="../assets/icons/icone-mail-active-programacao-criativa.svg" alt="" class="social-btn__icon-active" />
+                </span>
+                <span>Gmail</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.behance.net/lauramenezes11" class="social-btn social-btn--figma social-btn--behance" aria-label="Ver Behance" target="_blank" rel="noopener noreferrer">
+                <span class="social-btn__icon">
+                  <img src="../assets/icons/icone-behance-default-programacao-criativa.svg" alt="" class="social-btn__icon-default" />
+                  <img src="../assets/icons/icone-behance-hover-programacao-criativa.svg" alt="" class="social-btn__icon-hover" />
+                  <img src="../assets/icons/icone-behance-active-programacao-criativa.svg" alt="" class="social-btn__icon-active" />
+                </span>
+                <span>Behance</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/lauramenesantos" class="social-btn social-btn--figma social-btn--linkedin" aria-label="Ver LinkedIn" target="_blank" rel="noopener noreferrer">
+                <span class="social-btn__icon">
+                  <img src="../assets/icons/icone-linkedin-default-programacao-criativa.svg" alt="" class="social-btn__icon-default" />
+                  <img src="../assets/icons/icone-linkedin-hover-programacao-criativa.svg" alt="" class="social-btn__icon-hover" />
+                  <img src="../assets/icons/icone-linkedin-active-programacao-criativa.svg" alt="" class="social-btn__icon-active" />
+                </span>
+                <span>Linkedin</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJETOS RECOMENDADOS -->
+    <section class="section" aria-labelledby="projetos-titulo">
+      <div class="container">
+        <h2 class="section__title" id="projetos-titulo">Projetos recomendados</h2>
+
+        <div class="project-grid">
+          <a class="project-card project-card--design-system" href="../design-system/index.html">
+            <div class="project-card__hover-media" aria-hidden="true">
+              <img src="../assets/images/projeto-design-system-hover.png" alt="" loading="lazy" />
+            </div>
+            <div class="project-card__media">
+              <img src="../assets/images/projeto-design-system.png" alt="Prévia do projeto Design System" loading="lazy" />
+            </div>
+            <div class="project-card__info">
+              <h3 class="project-card__title">Design System</h3>
+              <p class="project-card__desc">Escala e padronização de um sistema de gestão de ativos industriais</p>
+            </div>
+            <div class="project-card__tags">
+              <span class="tag tag--primary">Escalabilidade</span>
+              <span class="tag tag--primary">B2B Industrial</span>
+            </div>
+            <span class="project-card__arrow" aria-hidden="true">
+              <img src="../assets/icons/icone-seta-proximo.svg" alt="" />
+            </span>
+          </a>
+
+          <a class="project-card project-card--design-inclusivo" href="../design-inclusivo/index.html">
+            <div class="project-card__hover-media" aria-hidden="true">
+              <img src="../assets/images/projeto-design-inclusivo-hover.png" alt="" loading="lazy" />
+            </div>
+            <div class="project-card__media">
+              <img src="../assets/images/projeto-design-inclusivo.png" alt="Prévia do projeto Design Inclusivo Gamificado" loading="lazy" />
+            </div>
+            <div class="project-card__info">
+              <h3 class="project-card__title">Design Inclusivo Gamificado</h3>
+              <p class="project-card__desc">Design de um aplicativo gamificado para aprendizado inclusivo de LIBRAS</p>
+            </div>
+            <div class="project-card__tags">
+              <span class="tag tag--secondary">Gamificação</span>
+              <span class="tag tag--secondary">Mobile First</span>
+            </div>
+            <span class="project-card__arrow" aria-hidden="true">
+              <img src="../assets/icons/icone-seta-proximo.svg" alt="" />
+            </span>
+          </a>
+
+          <div class="project-card project-card--programacao-criativa" aria-current="page">
+            <div class="project-card__hover-media" aria-hidden="true">
+              <img src="../assets/images/projeto-programacao-criativa-hover.png" alt="" loading="lazy" />
+            </div>
+            <div class="project-card__media">
+              <img src="../assets/images/projeto-programacao-criativa.png" alt="Prévia do projeto Programação Criativa" loading="lazy" />
+            </div>
+            <div class="project-card__info">
+              <h3 class="project-card__title">Programação Criativa</h3>
+              <p class="project-card__desc">Compreensão de como decisões de design se traduzem em código</p>
+            </div>
+            <div class="project-card__tags">
+              <span class="tag tag--accent">JavaScript</span>
+              <span class="tag tag--accent">Interatividade</span>
+            </div>
+            <span class="project-card__arrow" aria-hidden="true">
+              <img src="../assets/icons/icone-seta-proximo.svg" alt="" />
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p class="site-footer__text">lauramenesantos@gmail.com&nbsp;&nbsp;|&nbsp;(34) 9.9635-8519</p>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>
