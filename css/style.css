@@ -1531,10 +1531,10 @@ main > section {
   color: var(--neutral-dark-04);
   font-family: var(--font-body);
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 28px;
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease, font-weight 0.2s ease;
 }
 
 .cs-density-toggle__btn + .cs-density-toggle__btn {
@@ -1543,6 +1543,7 @@ main > section {
 
 .cs-density-toggle__btn:hover {
   background-color: var(--neutral-light-04);
+  font-weight: 500;
 }
 
 .cs-density-toggle__btn:active {
@@ -1551,10 +1552,10 @@ main > section {
 
 .cs-density-toggle__btn.is-active {
   color: var(--neutral-light-01);
-  font-weight: 500;
 }
 
 .cs-density-toggle__btn.is-active:hover {
+  font-weight: 500;
   opacity: 0.9;
 }
 
