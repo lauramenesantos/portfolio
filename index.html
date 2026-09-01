@@ -21,10 +21,36 @@
 
       <nav aria-label="Navegação principal">
         <ul class="site-nav__list" id="mobileNav">
-          <li><a href="#inicio" class="site-nav__link" aria-current="page">Início</a></li>
-          <li><a href="#projetos" class="site-nav__link">Projetos</a></li>
-          <li><a href="#sobre" class="site-nav__link">Sobre</a></li>
-          <li><a href="#contato" class="site-nav__link">Contato</a></li>
+          <li class="site-nav__group">
+            <a href="#inicio" class="site-nav__link" aria-current="page">Início</a>
+            <a href="#projetos" class="site-nav__link">Projetos</a>
+            <a href="#sobre" class="site-nav__link">Sobre</a>
+            <a href="#contato" class="site-nav__link">Contato</a>
+          </li>
+
+          <li class="site-nav__toggles">
+            <div class="site-nav__toggle-row">
+              <span class="site-nav__toggle-label">Escolha o idioma:</span>
+              <div class="lang-toggle" role="group" aria-label="Selecionar idioma">
+                <button type="button" class="lang-toggle__code" data-lang="pt" aria-pressed="true">PT</button>
+                <span class="lang-toggle__switch">
+                  <span class="lang-toggle__flags">
+                    <img src="assets/icons/flag-br.svg" alt="" class="lang-toggle__flag" />
+                    <img src="assets/icons/flag-us.svg" alt="" class="lang-toggle__flag" />
+                  </span>
+                </span>
+                <button type="button" class="lang-toggle__code lang-toggle__code--muted" data-lang="en" aria-pressed="false">EN</button>
+              </div>
+            </div>
+            <div class="site-nav__toggle-row">
+              <span class="site-nav__toggle-label">Escolha o modo de visualização:</span>
+              <div class="cs-density-toggle" role="group" aria-label="Densidade do texto">
+                <button type="button" class="cs-density-toggle__btn is-active" data-density="compacto" aria-pressed="true">Compacto</button>
+                <button type="button" class="cs-density-toggle__btn" data-density="completo" aria-pressed="false">Completo</button>
+              </div>
+            </div>
+          </li>
+
           <li class="site-nav__extra">
             <a href="https://wa.me/5534996358519" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
               Entre em contato
@@ -62,29 +88,6 @@
                 </a>
               </li>
             </ul>
-          </li>
-
-          <li class="site-nav__toggles">
-            <div class="site-nav__toggle-row">
-              <span class="site-nav__toggle-label">Escolha o idioma:</span>
-              <div class="lang-toggle" role="group" aria-label="Selecionar idioma">
-                <button type="button" class="lang-toggle__code" data-lang="pt" aria-pressed="true">PT</button>
-                <span class="lang-toggle__switch">
-                  <span class="lang-toggle__flags">
-                    <img src="assets/icons/flag-br.svg" alt="" class="lang-toggle__flag" />
-                    <img src="assets/icons/flag-us.svg" alt="" class="lang-toggle__flag" />
-                  </span>
-                </span>
-                <button type="button" class="lang-toggle__code lang-toggle__code--muted" data-lang="en" aria-pressed="false">EN</button>
-              </div>
-            </div>
-            <div class="site-nav__toggle-row">
-              <span class="site-nav__toggle-label">Escolha o modo de visualização:</span>
-              <div class="cs-density-toggle" role="group" aria-label="Densidade do texto">
-                <button type="button" class="cs-density-toggle__btn is-active" data-density="compacto" aria-pressed="true">Compacto</button>
-                <button type="button" class="cs-density-toggle__btn" data-density="completo" aria-pressed="false">Completo</button>
-              </div>
-            </div>
           </li>
         </ul>
       </nav>
@@ -213,7 +216,7 @@
       <div class="sobre-mim__inner">
         <div class="sobre-mim__content">
           <h2 class="sobre-mim__title" id="sobre-titulo">Sobre mim</h2>
-          <p class="sobre-mim__text">Formada em Design pela UFU, conecto as necessidades dos usuários aos objetivos de negócio. Sou apaixonada por resolver problemas reais e criar produtos digitais acessíveis, funcionais e centrados nas pessoas.</p>
+          <p class="sobre-mim__text">Tenho 24 anos e sou formada em Design pela Universidade Federal de Uberlândia.<br />Sou curiosa, criativa e estou sempre em busca de aprender algo novo.<br />Acredito que cada projeto é uma oportunidade de evoluir, experimentar e criar soluções que façam sentido para as pessoas e para os negócios.</p>
         </div>
         <div class="sobre-mim__photo">
           <img src="assets/images/sobre-mim-laura.png" alt="Foto de Laura Menezes" />

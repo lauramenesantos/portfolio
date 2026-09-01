@@ -323,6 +323,15 @@ button {
   font-size: 16px;
 }
 
+/* Agrupa Início/Projetos/Sobre/Contato num único <li> (pensado pro
+   reordenamento das seções do menu mobile abaixo) sem afetar o desktop:
+   display:contents faz o <li> "desaparecer" da árvore de caixas, então os
+   <a> dentro dele continuam sendo filhos flex diretos de .site-nav__list,
+   exatamente como eram antes de existir este wrapper. */
+.site-nav__group {
+  display: contents;
+}
+
 /* Bloco extra (botão de contato + redes sociais) só existe dentro do menu
    dropdown mobile — esta <li> não deve aparecer na barra horizontal do
    desktop, então fica escondida por padrão e só é revelada dentro do
@@ -1563,6 +1572,12 @@ main > section {
 
 .cs-density-toggle__btn.is-active {
   color: var(--neutral-light-01);
+  /* Fallback pra quando não há classe .page-* (ex.: menu mobile da Home,
+     que não pertence a nenhum case) — sem isso o texto branco ficava
+     quase invisível sobre o fundo cinza-claro padrão do botão. As regras
+     .page-design-system/.page-design-inclusivo/.page-programacao-criativa
+     abaixo sobrescrevem esta cor nas páginas de case. */
+  background-color: var(--color-primary);
 }
 
 .cs-density-toggle__btn.is-active:hover {
@@ -3294,6 +3309,16 @@ body.is-complete .cs-title-short {
     animation: nav-mobile-in 0.25s ease;
   }
 
+  /* Seção 1 do menu — Início/Projetos/Sobre/Contato, cada um centralizado
+     dentro da largura da tela, um embaixo do outro. */
+  .site-nav__group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+
   /* Bloco de contato repetido dentro do menu — mesmos componentes
      (.btn--primary + .social-list/.social-btn) da seção "Vamos
      conversar?", só sem o título/texto introdutório, já que aqui o
@@ -3330,20 +3355,22 @@ body.is-complete .cs-title-short {
   .site-nav__toggles {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    align-items: center;
+    gap: 20px;
     width: 100%;
     margin-top: 8px;
     padding-top: 20px;
     border-top: 1px solid var(--neutral-light-05);
   }
 
-  /* Empilhado (rótulo em cima, controle embaixo) em vez de lado a lado —
-     "Escolha o modo de visualização:" é longo demais pra dividir a largura
-     da tela com os 2 botões do toggle sem espremer ou sobrepor. */
+  /* Empilhado e centralizado (rótulo em cima, controle embaixo) — igual à
+     seção de links acima, "Escolha o modo de visualização:" é longo
+     demais pra dividir a largura da tela lado a lado com os 2 botões do
+     toggle sem espremer ou sobrepor. */
   .site-nav__toggle-row {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 8px;
   }
 
@@ -3364,12 +3391,17 @@ body.is-complete .cs-title-short {
     display: flex;
   }
 
-  /* .cs-density-toggle__btn tem 96px fixos no widget original (pensado
-     pra sidebar do desktop) — largo demais pra caber 2 lado a lado numa
-     linha do menu mobile sem estourar a largura da tela. Encolhe só aqui. */
+  /* .cs-density-toggle__btn tem 96px/32px fixos no widget original
+     (node 6874:1674 do Figma, pensado pra sidebar do desktop) — largo e
+     alto demais pra conversar com o resto do menu mobile (rótulos em
+     14px, links em 16px). Mantém a mesma estética de pílula (fundo
+     colorido no ativo, cantos 100% arredondados) só que num tamanho que
+     cabe confortavelmente ao lado do rótulo numa tela de celular. */
   .site-nav__toggle-row .cs-density-toggle__btn {
     width: auto;
-    padding-inline: 16px;
+    height: 28px;
+    padding-inline: 14px;
+    font-size: 14px;
   }
 
   /* Dentro de um case, todos os botões do menu mobile (CTA "Entre em
