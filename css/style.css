@@ -755,10 +755,23 @@ main > section {
   transition: background-color 0.25s ease;
 }
 
-.project-card:hover,
-.project-card:focus-visible,
-.project-card:active {
+.project-card:focus-visible {
   background-color: var(--neutral-light-03);
+}
+
+/* :active fica de fora do bloco acima de propósito — em touch, :active
+   dispara no instante do toque, bem no momento em que o link já está
+   navegando pra outra página (o card inteiro é um <a>, ver HTML). Rodar
+   essa troca de cor/crossfade (mais abaixo) bem ali, ao mesmo tempo que a
+   página começa a trocar, era a causa real do bug de renderização
+   corrompida relatado em iPhone — não tinha relação com o spotlight do
+   scroll (já testado e descartado). Só entra em telas com hover de
+   verdade, onde :active não empata com uma navegação iminente. */
+@media (hover: hover) {
+  .project-card:hover,
+  .project-card:active {
+    background-color: var(--neutral-light-03);
+  }
 }
 
 .project-card--design-system { --project-accent: var(--color-primary); }
@@ -804,10 +817,15 @@ main > section {
   transform-origin: 50% 0%;
 }
 
-.project-card:hover .project-card__hover-media,
-.project-card:focus-visible .project-card__hover-media,
-.project-card:active .project-card__hover-media {
+.project-card:focus-visible .project-card__hover-media {
   opacity: 1;
+}
+
+@media (hover: hover) {
+  .project-card:hover .project-card__hover-media,
+  .project-card:active .project-card__hover-media {
+    opacity: 1;
+  }
 }
 
 .project-card__media {
@@ -821,10 +839,15 @@ main > section {
   transition: opacity 0.25s ease;
 }
 
-.project-card:hover .project-card__media,
-.project-card:focus-visible .project-card__media,
-.project-card:active .project-card__media {
+.project-card:focus-visible .project-card__media {
   opacity: 0;
+}
+
+@media (hover: hover) {
+  .project-card:hover .project-card__media,
+  .project-card:active .project-card__media {
+    opacity: 0;
+  }
 }
 
 .project-card__media img {
@@ -860,10 +883,15 @@ main > section {
   transition: color 0.25s ease;
 }
 
-.project-card:hover .project-card__title,
-.project-card:focus-visible .project-card__title,
-.project-card:active .project-card__title {
+.project-card:focus-visible .project-card__title {
   color: #000000;
+}
+
+@media (hover: hover) {
+  .project-card:hover .project-card__title,
+  .project-card:active .project-card__title {
+    color: #000000;
+  }
 }
 
 .project-card__desc {
