@@ -3739,10 +3739,6 @@ body.is-complete .cs-title-short {
     color: #000000;
   }
 
-  .thought-card {
-    box-shadow: 0 8px 24px -4px rgba(25, 25, 25, 0.1);
-  }
-
   /* Descrição do card de blog vem inteira do desktop (podia chegar a 5-6
      linhas) — no mobile isso deixa a lista de cards comprida demais pra
      ser escaneada rolando. Trunca em 2 linhas com reticências: dá pra
