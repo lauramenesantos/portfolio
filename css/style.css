@@ -3230,7 +3230,12 @@ body.is-complete .cs-title-short {
 
   .cs-layout {
     flex-direction: column;
-    padding: 40px var(--container-padding) 64px;
+    /* padding-top 72px (não 40px): o botão de voltar é position:fixed
+       aqui (ver .cs-sidebar__back abaixo) e ocupa até y=124px na tela
+       (header 80 + 12 de respiro + 32 do próprio botão) — com 40px de
+       padding o eyebrow do case começava em ~120px e ficava tampado por
+       baixo do botão. 72px garante ~28px de folga depois dele. */
+    padding: 72px var(--container-padding) 64px;
     /* No mobile a .cs-sidebar fica com altura 0 (o botão de voltar vira
        position:fixed e nav/contact somem, ver regras abaixo) — sem zerar o
        gap aqui, os 64px herdados do desktop (pensados pra separar sidebar
