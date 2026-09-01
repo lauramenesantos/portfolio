@@ -592,6 +592,11 @@ button {
   color: var(--neutral-dark-01);
   max-width: 848px;
   margin-inline: auto;
+  /* Nunca pode quebrar linha (pedido explícito) — no mobile o font-size
+     abaixo já é calculado pra caber em 1 linha em qualquer largura de
+     tela, mas o nowrap garante que nenhuma variação de fonte/zoom force
+     uma quebra mesmo assim. */
+  white-space: nowrap;
   /* Figma: topo da tagline (734px) fica 90px ACIMA da borda inferior do
      wordmark (824px) — o espaço "extra" visto antes era o leading invisível
      da line-height:1.5 do "FÓLIO" (332/304px). Escala junto com o wordmark
@@ -3374,8 +3379,14 @@ body.is-compact .cs-title-short {
     --hero-wordmark-w: min(1053px, calc(100vw - 2 * var(--container-padding)), calc(121.15vh - 198px));
   }
 
+  /* white-space:nowrap (regra base) exige um font-size que caiba na largura
+     da tela inteira em qualquer aparelho — a fórmula baseada em
+     --hero-wordmark-w (regra base) não encolhe o suficiente pra isso, então
+     troca pra um cálculo em vw calibrado pra essa frase específica (medido
+     empiricamente; ver preview_eval). */
   .hero__tagline {
     padding-inline: 16px;
+    font-size: min(18px, 4vw);
   }
 
   .section__title-break {

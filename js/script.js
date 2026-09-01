@@ -277,31 +277,52 @@ function scrollToElement(target, duration = 500) {
  * quanto o sumário lateral das páginas de estudo de caso (.cs-sidebar__link, via .is-active).
  */
 function initActiveNavOnScroll() {
-  const sections = document.querySelectorAll('main section[id], main[id]');
+  // A .hero fica de fora: ela é position:sticky, então seu retângulo
+  // praticamente nunca deixa de cruzar a faixa central da viewport (fica
+  // "grudada" no topo enquanto as seções seguintes avançam por cima dela —
+  // ver comentário em "Interação de rolagem do protótipo"). Isso significa
+  // que o IntersectionObserver nunca dispara uma transição pra "false" nela,
+  // então "Início" nunca seria reativado ao rolar de volta pro topo. Em vez
+  // de observar a .hero, ela vira o fallback: sempre que nenhuma das seções
+  // reais abaixo estiver cruzando a faixa central, o item ativo cai pra
+  // "Início" (ver isAnySectionActive/updateActiveId abaixo).
+  const sections = document.querySelectorAll('main section[id]:not(.hero)');
   const navLinks = document.querySelectorAll('.site-nav__link');
   const sidebarLinks = document.querySelectorAll('.cs-sidebar__link');
-  if (!sections.length || (!navLinks.length && !sidebarLinks.length)) return;
+  if (!navLinks.length && !sidebarLinks.length) return;
+
+  const applyActive = (id) => {
+    navLinks.forEach((link) => {
+      const matches = link.getAttribute('href') === `#${id}`;
+      if (matches) {
+        link.setAttribute('aria-current', 'page');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
+
+    sidebarLinks.forEach((link) => {
+      const matches = link.getAttribute('href') === `#${id}`;
+      link.classList.toggle('is-active', matches);
+    });
+  };
+
+  if (!sections.length) {
+    applyActive('inicio');
+    return;
+  }
+
+  const intersecting = new Map();
+  sections.forEach((section) => intersecting.set(section.id, false));
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const id = entry.target.getAttribute('id');
-
-        navLinks.forEach((link) => {
-          const matches = link.getAttribute('href') === `#${id}`;
-          if (matches) {
-            link.setAttribute('aria-current', 'page');
-          } else {
-            link.removeAttribute('aria-current');
-          }
-        });
-
-        sidebarLinks.forEach((link) => {
-          const matches = link.getAttribute('href') === `#${id}`;
-          link.classList.toggle('is-active', matches);
-        });
+        intersecting.set(entry.target.id, entry.isIntersecting);
       });
+
+      const activeSection = [...sections].find((section) => intersecting.get(section.id));
+      applyActive(activeSection ? activeSection.id : 'inicio');
     },
     { rootMargin: '-50% 0px -50% 0px' }
   );
