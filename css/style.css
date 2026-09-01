@@ -577,15 +577,6 @@ button {
   max-width: none;
 }
 
-/* Quebra pedida especificamente pro mobile ("design é estratégia," /
-   "estética é consequência.") — no desktop o texto é bem mais largo
-   (max-width:848px) e quebra sozinho num ponto diferente, então este
-   <br> fica escondido lá e só aparece dentro do breakpoint mobile
-   abaixo. */
-.hero__tagline-break {
-  display: none;
-}
-
 .hero__tagline {
   font-family: var(--font-body);
   font-weight: 400;
@@ -668,6 +659,13 @@ main > section {
   text-align: center;
   color: var(--neutral-dark-01);
   margin-bottom: 20px;
+}
+
+/* Quebra pedida especificamente pro mobile em "O pensamento / por trás do
+   design" — no desktop o texto cabe numa linha só, então este <br> fica
+   escondido lá e só aparece dentro do breakpoint mobile abaixo. */
+.section__title-break {
+  display: none;
 }
 
 .section__intro {
@@ -3359,13 +3357,12 @@ body.is-compact .cs-title-short {
      conforme a página rola — ver comentário grande em "Interação de
      rolagem do protótipo" acima) continuam os mesmos do desktop, só
      encolhidos pelo clamp/cqw que já existe em .hero__word e
-     --hero-wordmark-w. A base mantém o min-height:100vh (herdado, não
-     sobrescrito aqui): ao entrar no site a primeira tela precisa mostrar só
-     a hero, então ela sempre preenche a tela inteira mesmo com a wordmark
-     limitada por 94vw — a folga abaixo do CTA fica por conta do
-     justify-content:flex-start (conteúdo colado no topo) em vez de reduzir
-     a altura da seção. */
+     --hero-wordmark-w. Zera o min-height:100vh herdado do desktop: no
+     mobile a hero deve ocupar só a altura do próprio conteúdo, com o início
+     de "Projetos recomendados" já visível colado embaixo do CTA — sem
+     esperar 100vh de tela vazia antes da próxima seção aparecer. */
   .hero {
+    min-height: 0;
     padding-bottom: 32px;
     /* --hero-wordmark-w (definida na regra base) usa 94vw como teto de
        largura — no mobile isso centraliza a wordmark com ~11px de margem
@@ -3381,7 +3378,7 @@ body.is-compact .cs-title-short {
     padding-inline: 16px;
   }
 
-  .hero__tagline-break {
+  .section__title-break {
     display: inline;
   }
 
@@ -3445,6 +3442,25 @@ body.is-compact .cs-title-short {
 
   .timeline-card__visual img {
     object-position: top;
+  }
+
+  /* A foto virou quadrada (regra acima) e encolhe junto com a largura do
+     card em telas estreitas — com a altura do card ainda fixa em 453px
+     (valor calibrado pro desktop), sobrava um vão vazio embaixo do texto.
+     Troca pra display:grid com as duas "faces" (.timeline-card__face)
+     empilhadas na mesma célula (grid-area 1/1, no lugar do
+     position:absolute usado no desktop pra permitir o crossfade de
+     opacidade) — assim o card mede a altura real do conteúdo, sem espaço
+     sobrando. A seta (.timeline-card__arrow) continua position:absolute e
+     fica de fora do grid normalmente. */
+  .timeline-card {
+    height: auto;
+    display: grid;
+  }
+
+  .timeline-card__face {
+    position: static;
+    grid-area: 1 / 1;
   }
 
   /* .project-card e .thought-card só ganham um fundo diferente do da seção

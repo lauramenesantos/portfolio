@@ -157,8 +157,8 @@ function initMobileNav() {
 
 /**
  * Links "Início" (logo do header e item do menu) apontam para #inicio, que
- * fica no <main> — o primeiro elemento depois da .hero (que é
- * position:sticky, ver comentário em main > section no CSS). O scroll
+ * fica na própria .hero (que é position:sticky, ver comentário em main >
+ * section no CSS). O scroll
  * nativo do navegador até uma âncora, quando o alvo é seguido de perto por
  * um elemento sticky, pode se comportar de forma inconsistente entre
  * navegadores/situações (ex.: cálculo relativo ao invés de absoluto).

@@ -94,10 +94,10 @@
     </div>
   </header>
 
-  <main>
+  <main id="inicio">
 
     <!-- HERO -->
-    <section class="hero" id="inicio">
+    <section class="hero">
       <div class="hero__wordmark">
         <span class="hero__word hero__word--top">PORT</span>
         <div class="hero__photo">
@@ -105,7 +105,7 @@
         </div>
         <span class="hero__word hero__word--bottom">FÓLIO</span>
       </div>
-      <p class="hero__tagline">design é estratégia, estética é consequência.</p>
+      <p class="hero__tagline">design é estratégia,<br class="hero__tagline-break" /> estética é consequência.</p>
       <a href="#contato" class="btn btn--outline hero__cta">
         Entre em contato
         <span class="btn__icon">
@@ -314,7 +314,7 @@
     <!-- O PENSAMENTO POR TRÁS DO DESIGN -->
     <section class="section section--muted" aria-labelledby="pensamento-titulo">
       <div class="container">
-        <h2 class="section__title" id="pensamento-titulo">O pensamento<br class="section__title-break" /> por trás do design</h2>
+        <h2 class="section__title" id="pensamento-titulo">O pensamento por trás do design</h2>
 
         <div class="thoughts-list">
           <a class="thought-card" href="https://www.linkedin.com/posts/lauramenesantos_designsystem-uxdesign-productdesign-activity-7468303891873406976-12HJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAADpCbsQBpGqixltVJ9Go3fO2ffaBtx6Ar7A" target="_blank" rel="noopener noreferrer">
