@@ -1417,6 +1417,69 @@ main > section {
   color: var(--neutral-black);
 }
 
+/* ---------- Botão "voltar ao topo" (Figma node 6907:2096) ----------
+   Fica escondido enquanto a pessoa está na hero (Home) ou na introdução
+   (cases) — ver initScrollTopButton em script.js, que mede a posição
+   estática da próxima seção (#projetos ou o primeiro .cs-section) e
+   revela o botão só depois que a página rola além dela. 40px é o
+   tamanho-base (bom o bastante pro mouse no desktop); o breakpoint mobile
+   abaixo aumenta pra 44px, o mínimo recomendado de alvo de toque
+   (iOS HIG / Material Design), já que 32px (tamanho literal do Figma)
+   fica pequeno demais pra tocar com precisão. */
+.scroll-top-btn {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--neutral-light-05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.2s ease, visibility 0s linear 0.25s;
+  z-index: 80;
+}
+
+.scroll-top-btn.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.2s ease;
+}
+
+.scroll-top-btn:hover,
+.scroll-top-btn:focus-visible {
+  background-color: var(--neutral-light-07);
+}
+
+/* Setinha desenhada só em CSS (mesmo truque de borda+rotação do
+   .cs-section__chevron) — evita precisar de um novo asset SVG numa cor
+   diferente só pra esse botão. */
+.scroll-top-btn__icon {
+  width: 8px;
+  height: 8px;
+  margin-top: 3px;
+  border-right: 2px solid var(--neutral-dark-04);
+  border-bottom: 2px solid var(--neutral-dark-04);
+  transform: rotate(-135deg);
+}
+
+@media (max-width: 700px) {
+  .scroll-top-btn {
+    width: 44px;
+    height: 44px;
+    right: 16px;
+    bottom: 16px;
+  }
+}
+
 /* ---------- Páginas de estudo de caso ---------- */
 .cs-header-crumb {
   font-family: var(--font-body);

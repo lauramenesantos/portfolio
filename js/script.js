@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCollapsibleSections();
   initProjectCardSpotlight();
   initDensityToggle();
+  initScrollTopButton();
 });
 
 /**
@@ -123,6 +124,46 @@ function initDensityToggle() {
 
   buttons.forEach((button) => {
     button.addEventListener('click', () => applyDensity(button.dataset.density));
+  });
+}
+
+/**
+ * Botão flutuante "voltar ao topo" — some enquanto a pessoa está na hero
+ * (Home) ou na introdução (páginas de case) e aparece assim que ela rola
+ * pra qualquer seção depois dessas. Em vez de observar a hero/introdução
+ * diretamente (a hero é position:sticky, então seu retângulo praticamente
+ * nunca "sai" da tela — mesmo problema já resolvido em
+ * initActiveNavOnScroll), mede a posição estática (não afetada por
+ * sticky) da seção seguinte e compara com o scroll atual.
+ */
+function initScrollTopButton() {
+  const button = document.querySelector('.scroll-top-btn');
+  if (!button) return;
+
+  button.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  const boundary = document.querySelector('#projetos, .cs-section');
+  if (!boundary) return;
+
+  let threshold = 0;
+
+  const measureThreshold = () => {
+    threshold = boundary.getBoundingClientRect().top + window.scrollY;
+  };
+
+  const updateVisibility = () => {
+    button.classList.toggle('is-visible', window.scrollY > threshold - 1);
+  };
+
+  measureThreshold();
+  updateVisibility();
+
+  window.addEventListener('scroll', updateVisibility, { passive: true });
+  window.addEventListener('resize', () => {
+    measureThreshold();
+    updateVisibility();
   });
 }
 
