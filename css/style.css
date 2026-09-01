@@ -3739,6 +3739,15 @@ body.is-complete .cs-title-short {
     color: #000000;
   }
 
+  /* Spotlight de scroll dos cards de "O pensamento por trás do design" —
+     só no Android (initThoughtCardSpotlight, script.js; ver isAndroid()).
+     Sem sombra fixa nesses cards (removida a pedido), o card em foco
+     ganha um cinza levemente mais escuro pra se destacar dos outros
+     enquanto rola. */
+  body.is-android .thought-card.is-in-view {
+    background-color: var(--neutral-light-04);
+  }
+
   /* Descrição do card de blog vem inteira do desktop (podia chegar a 5-6
      linhas) — no mobile isso deixa a lista de cards comprida demais pra
      ser escaneada rolando. Trunca em 2 linhas com reticências: dá pra

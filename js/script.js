@@ -51,9 +51,9 @@ function isIOS() {
 }
 
 /**
- * Detecta Android — usado só pra tirar a sombra fixa dos cards de projeto
- * lá (ver .project-card no CSS), já que no Android o spotlight do scroll
- * continua ativo e a sombra permanente fica redundante com ele.
+ * Detecta Android — usado pra ligar efeitos de spotlight no scroll que só
+ * fazem sentido lá (ver isIOS() acima: no iPhone esse tipo de efeito
+ * causou um bug de renderização e foi desligado).
  */
 function isAndroid() {
   return /Android/.test(navigator.userAgent);
@@ -73,6 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initCollapsibleSections();
   if (!isIOS()) {
     initProjectCardSpotlight();
+  }
+  if (isAndroid()) {
+    initThoughtCardSpotlight();
   }
   initDensityToggle();
   initScrollTopButton();
@@ -95,6 +98,40 @@ function initProjectCardSpotlight() {
   // disparar entradas repetidas (entra/sai/entra) numa mesma rolagem — um
   // pequeno atraso só aplica a classe depois que o estado ficar estável,
   // evitando trocas em sequência rápida demais.
+  const pending = new Map();
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const card = entry.target;
+        const isIntersecting = entry.isIntersecting;
+        clearTimeout(pending.get(card));
+        pending.set(
+          card,
+          setTimeout(() => {
+            card.classList.toggle('is-in-view', isIntersecting);
+            pending.delete(card);
+          }, 100)
+        );
+      });
+    },
+    { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+  );
+
+  cards.forEach((card) => observer.observe(card));
+}
+
+/**
+ * Mesmo spotlight de scroll do initProjectCardSpotlight acima, agora pros
+ * cards de "O pensamento por trás do design" — só ligado no Android (ver
+ * chamada condicional no DOMContentLoaded). O card que cruza o centro da
+ * tela ganha .is-in-view, que no CSS pinta o fundo de --neutral-light-04
+ * (#eaeaea).
+ */
+function initThoughtCardSpotlight() {
+  const cards = document.querySelectorAll('.thought-card');
+  if (!cards.length || !('IntersectionObserver' in window)) return;
+
   const pending = new Map();
 
   const observer = new IntersectionObserver(
