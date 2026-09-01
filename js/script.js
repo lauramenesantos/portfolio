@@ -59,10 +59,28 @@ function initProjectCardSpotlight() {
   const cards = document.querySelectorAll('.project-card');
   if (!cards.length || !('IntersectionObserver' in window)) return;
 
+  // rootMargin em porcentagem + momentum scroll do iOS podem fazer o
+  // observer disparar entradas repetidas (entra/sai/entra) numa mesma
+  // rolagem, batendo a classe .is-in-view várias vezes seguidas — cada
+  // troca é um novo repaint, e disparos rápidos demais são a causa mais
+  // provável do artefato visual relatado no Safari/iOS. Um pequeno atraso
+  // só aplica a classe depois que o estado ficar estável, ignorando
+  // oscilações.
+  const pending = new Map();
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        entry.target.classList.toggle('is-in-view', entry.isIntersecting);
+        const card = entry.target;
+        const isIntersecting = entry.isIntersecting;
+        clearTimeout(pending.get(card));
+        pending.set(
+          card,
+          setTimeout(() => {
+            card.classList.toggle('is-in-view', isIntersecting);
+            pending.delete(card);
+          }, 100)
+        );
       });
     },
     { rootMargin: '-45% 0px -45% 0px', threshold: 0 }

@@ -488,12 +488,6 @@ button {
   background-color: var(--neutral-light-01);
   overflow: hidden;
   text-align: center;
-  /* Mesma camada de composição isolada do "main > section" logo abaixo —
-     evita os bugs de repaint do Safari/iOS em position:sticky coberto por
-     z-index durante o scroll. */
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
   /* Hero ocupa toda a altura disponível abaixo do header (100vh − header).
      display:flex + justify-content:flex-start "sobe" o conteúdo, encostando
      no padding-top (a distância fixa até a navegação) em vez de
@@ -649,14 +643,6 @@ main > section {
   position: relative;
   z-index: 1;
   background-color: var(--neutral-light-01);
-  /* position:sticky + cobertura por z-index (ver .hero acima) tem bugs de
-     repaint bem documentados no Safari/iOS: o conteúdo que deveria cobrir
-     a hero às vezes não compõe a camada corretamente durante o scroll,
-     deixando artefatos visuais. Força cada seção pra sua própria camada
-     de composição, isolada da hero por baixo. */
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
 }
 
 .site-footer {
@@ -767,16 +753,6 @@ main > section {
   gap: 16px;
   overflow: hidden;
   transition: background-color 0.25s ease;
-  /* Isola o card na própria camada de composição da GPU — combo clássico
-     do WebKit/Safari (translateZ + backface-visibility) pra evitar
-     artefatos de repaint/ghosting em elementos com filhos posicionados
-     em absolute que animam opacity. Reforça o transition:none do
-     background-color no breakpoint mobile (ver abaixo), que ataca a
-     causa raiz do bug relatado em iPhone (título/descrição/tags do card
-     duplicados no momento da troca). */
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
 }
 
 .project-card:hover,
@@ -807,9 +783,6 @@ main > section {
   pointer-events: none;
   transition: opacity 0.25s ease;
   z-index: 1;
-  /* Avisa o navegador que opacity vai animar, garantindo camada de GPU
-     própria pro crossfade (ver comentário em .project-card). */
-  will-change: opacity;
 }
 
 .project-card__hover-media img {
@@ -835,7 +808,6 @@ main > section {
   overflow: hidden;
   background-color: var(--neutral-light-03);
   transition: opacity 0.25s ease;
-  will-change: opacity;
 }
 
 .project-card:hover .project-card__media,
@@ -1037,9 +1009,6 @@ main > section {
   gap: 16px;
   align-items: flex-start;
   transition: opacity 0.25s ease;
-  /* Mesma prevenção de ghosting no crossfade que .project-card__media/
-     __hover-media (ver comentário lá) — mesmo padrão de troca de opacity. */
-  will-change: opacity;
 }
 
 .timeline-card__face--default {
@@ -3704,14 +3673,12 @@ body.is-complete .cs-title-short {
     background-color: var(--neutral-light-01);
     box-shadow: 0 8px 24px -4px rgba(25, 25, 25, 0.12);
     /* No mobile o .is-in-view é ligado/desligado pelo scroll (ver
-       comentário abaixo), não por :hover — em iPhone (relatado tanto no
-       navegador embutido do WhatsApp quanto no Safari), animar
-       background-color (não acelerado por GPU) ao mesmo tempo do crossfade
-       de opacity de .project-card__media/__hover-media causava um
-       artefato visual de repaint: título/descrição/tags do card duplicados
-       por cima uns dos outros no momento da troca. Zerar a transição aqui
-       faz a cor de fundo trocar instantânea (sem concorrer pelo repaint
-       com o crossfade), mantendo só a animação de opacity suave. */
+       comentário abaixo), não por :hover — relatado em vários iPhones
+       (Safari e navegador embutido do WhatsApp): título/descrição/tags do
+       card ficavam duplicados/"fantasmas" no momento da troca. Zera a
+       transição do background-color e (mais abaixo) do crossfade de
+       opacity: sem transição rodando não existe estado "no meio do
+       caminho" pra corromper — a troca acontece de uma vez. */
     transition: none;
   }
 
@@ -3723,6 +3690,19 @@ body.is-complete .cs-title-short {
      título), só que disparado pela posição na rolagem em vez do mouse. */
   .project-card.is-in-view {
     background-color: var(--neutral-light-03);
+  }
+
+  /* Crossfade também instantâneo aqui (sem transition) — mesmo motivo do
+     transition:none em .project-card acima. Mesmo sem competir com o
+     repaint do background-color, uma transition de opacity disparada pelo
+     scroll pode ser interrompida no meio por uma nova entrada do
+     IntersectionObserver antes de terminar (comum no momentum scroll do
+     iOS) — no Safari/iOS isso deixava o frame anterior "congelado" por
+     cima do novo em vez de recomeçar do valor atual. Sem transition não
+     existe meio-do-caminho pra corromper: troca de uma vez. */
+  .project-card__hover-media,
+  .project-card__media {
+    transition: none;
   }
 
   .project-card.is-in-view .project-card__hover-media {
