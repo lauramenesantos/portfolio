@@ -3713,6 +3713,14 @@ body.is-complete .cs-title-short {
     box-shadow: 0 8px 24px -4px rgba(25, 25, 25, 0.12);
   }
 
+  /* No Android o spotlight do scroll continua ativo (ver isIOS() em
+     script.js), então a sombra fixa fica redundante com ele — tirada só
+     lá. No iOS ela continua sendo a única pista de que o card é tocável,
+     já que o spotlight está desligado. */
+  body.is-android .project-card {
+    box-shadow: none;
+  }
+
   /* Simula o :hover em telas de toque: enquanto o card de projeto está
      cruzando o centro vertical da tela durante o scroll, o JS
      (initProjectCardSpotlight) marca ele com .is-in-view — reaproveita
@@ -4195,10 +4203,13 @@ body.lightbox-open {
 /* Ícone via SVG (não o glifo de texto "×"): o caractere tem viés visual
    próprio na fonte e nunca fica perfeitamente centralizado dentro do
    círculo mesmo com o botão centralizado por flexbox. Um "X" desenhado
-   com duas linhas é simétrico de verdade. */
+   com duas linhas é simétrico de verdade. viewBox 20 + stroke-width 1.6
+   (em vez do 16/2 anterior) segue a mesma proporção traço/tamanho dos
+   outros ícones outline do site (ex.: icone-seta-voltar.svg), que ficava
+   bem mais grosso que o padrão. */
 .lightbox__close svg {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
 }
 
 .lightbox__close:hover {

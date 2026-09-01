@@ -50,7 +50,17 @@ function isIOS() {
   return isIPhoneOrIPad || isIPadOSAsMac;
 }
 
+/**
+ * Detecta Android — usado só pra tirar a sombra fixa dos cards de projeto
+ * lá (ver .project-card no CSS), já que no Android o spotlight do scroll
+ * continua ativo e a sombra permanente fica redundante com ele.
+ */
+function isAndroid() {
+  return /Android/.test(navigator.userAgent);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  document.body.classList.toggle('is-android', isAndroid());
   initLanguageToggle();
   initMobileNav();
   initActiveNavOnScroll();
@@ -649,8 +659,8 @@ function initLightbox() {
   overlay.className = 'lightbox';
   overlay.innerHTML = `
     <button type="button" class="lightbox__close" aria-label="Fechar imagem ampliada">
-      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M1 1L15 15M15 1L1 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M5 5L15 15M15 5L5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
       </svg>
     </button>
     <div class="lightbox__viewport">
