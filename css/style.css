@@ -331,6 +331,14 @@ button {
   display: none;
 }
 
+/* Mesma lógica acima: os toggles de idioma e densidade de texto duplicados
+   dentro do menu mobile (o header já tem o de idioma, escondido no mobile;
+   o de densidade só existe nas páginas de case, fixo na sidebar do
+   desktop) só devem aparecer dentro do dropdown mobile. */
+.site-nav__toggles {
+  display: none;
+}
+
 .site-nav__link {
   font-family: var(--font-heading);
   font-weight: 500;
@@ -1597,8 +1605,8 @@ main > section {
   }
 }
 
-/* Ativado via JS (initDensityToggle, script.js) quando "Compacta" está
-   selecionada — reaproveita as mesmas regras de display do breakpoint
+/* Ativado via JS (initDensityToggle, script.js) quando "Compacto" está
+   selecionado — reaproveita as mesmas regras de display do breakpoint
    mobile (max-width:700px), mas sem depender da largura da viewport. */
 body.is-compact .cs-title-full {
   display: none;
@@ -1606,6 +1614,19 @@ body.is-compact .cs-title-full {
 
 body.is-compact .cs-title-short {
   display: inline;
+}
+
+/* "Completo" selecionado (widget também disponível no menu mobile) — o
+   inverso do :is-compact acima, precisa vencer a regra do breakpoint
+   mobile que esconde .cs-title-full por padrão lá. Especificidade
+   (0,2,0) já é suficiente pra vencer a regra de dentro do @media, que
+   tem (0,1,0) — @media não soma especificidade própria. */
+body.is-complete .cs-title-full {
+  display: inline;
+}
+
+body.is-complete .cs-title-short {
+  display: none;
 }
 
 /* ---------- Sidebar redesenhada p/ Figma 6211:2788 (Design System) ---------- */
@@ -3291,6 +3312,64 @@ body.is-compact .cs-title-short {
   .site-nav__extra .btn {
     width: 100%;
     justify-content: center;
+  }
+
+  /* .social-list tem margin-top:24px na regra base (pensada pro contexto
+     de #contato) que aqui somava com o gap:16px do .site-nav__extra,
+     deixando os ícones Gmail/Behance/Linkedin longe demais do botão de
+     WhatsApp. Zera a margem própria e deixa só o gap do pai cuidar do
+     espaçamento. */
+  .site-nav__extra .social-list {
+    margin-top: 0;
+  }
+
+  /* Toggles de idioma (PT/EN) e densidade de texto (Compacto/Completo)
+     duplicados dentro do menu mobile — mesmos componentes usados no
+     header (idioma) e na sidebar do desktop dos cases (densidade), só que
+     aqui sempre visíveis, cada um com um rótulo explicando o que faz. */
+  .site-nav__toggles {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    margin-top: 8px;
+    padding-top: 20px;
+    border-top: 1px solid var(--neutral-light-05);
+  }
+
+  /* Empilhado (rótulo em cima, controle embaixo) em vez de lado a lado —
+     "Escolha o modo de visualização:" é longo demais pra dividir a largura
+     da tela com os 2 botões do toggle sem espremer ou sobrepor. */
+  .site-nav__toggle-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .site-nav__toggle-label {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--neutral-dark-04);
+  }
+
+  /* Vencem a regra .lang-toggle{display:none}/.cs-density-toggle{display:none}
+     de fora do menu (header escondido no mobile / widget só-desktop das
+     páginas de case) por especificidade — 2 classes contra 1. */
+  .site-nav__toggle-row .lang-toggle {
+    display: flex;
+  }
+
+  .site-nav__toggle-row .cs-density-toggle {
+    display: flex;
+  }
+
+  /* .cs-density-toggle__btn tem 96px fixos no widget original (pensado
+     pra sidebar do desktop) — largo demais pra caber 2 lado a lado numa
+     linha do menu mobile sem estourar a largura da tela. Encolhe só aqui. */
+  .site-nav__toggle-row .cs-density-toggle__btn {
+    width: auto;
+    padding-inline: 16px;
   }
 
   /* Dentro de um case, todos os botões do menu mobile (CTA "Entre em

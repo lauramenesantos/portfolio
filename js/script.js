@@ -98,21 +98,31 @@ function initCollapsibleSections() {
  * é o comportamento padrão do desktop antes deste widget existir.
  */
 function initDensityToggle() {
+  // Pode haver mais de uma instância na página (o widget da sidebar no
+  // desktop e a cópia dentro do menu hambúrguer no mobile) — todas
+  // precisam refletir a mesma densidade selecionada, então o clique em
+  // qualquer botão de qualquer instância atualiza todas juntas.
   const buttons = document.querySelectorAll('.cs-density-toggle__btn');
   if (!buttons.length) return;
 
-  buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const isCompacto = button.dataset.density === 'compacto';
-
-      buttons.forEach((btn) => {
-        const active = btn === button;
-        btn.classList.toggle('is-active', active);
-        btn.setAttribute('aria-pressed', String(active));
-      });
-
-      document.body.classList.toggle('is-compact', isCompacto);
+  const applyDensity = (density) => {
+    buttons.forEach((btn) => {
+      const active = btn.dataset.density === density;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', String(active));
     });
+
+    // "is-compact" força o texto resumido mesmo no desktop; "is-complete"
+    // força o texto completo mesmo no mobile (onde ele normalmente vem
+    // resumido por padrão, via media query). Sem nenhuma das duas classes,
+    // cada tamanho de tela usa seu próprio padrão (completo no desktop,
+    // resumido no mobile).
+    document.body.classList.toggle('is-compact', density === 'compacto');
+    document.body.classList.toggle('is-complete', density === 'completo');
+  };
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => applyDensity(button.dataset.density));
   });
 }
 
@@ -120,16 +130,27 @@ function initDensityToggle() {
  * Alterna o estado visual do seletor de idioma PT/EN.
  */
 function initLanguageToggle() {
-  const buttons = document.querySelectorAll('.lang-toggle__code');
-  if (!buttons.length) return;
+  // Pode haver mais de uma instância na página (a do header, escondida no
+  // mobile, e a duplicada dentro do menu hambúrguer) — todas precisam
+  // refletir o mesmo idioma selecionado, então o clique em qualquer botão
+  // de qualquer instância atualiza todas juntas em vez de só a instância
+  // clicada.
+  const toggles = document.querySelectorAll('.lang-toggle');
+  if (!toggles.length) return;
 
-  buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-      buttons.forEach((btn) => {
-        const isActive = btn === button;
+  const applyLang = (lang) => {
+    toggles.forEach((toggle) => {
+      toggle.querySelectorAll('.lang-toggle__code').forEach((btn) => {
+        const isActive = btn.dataset.lang === lang;
         btn.setAttribute('aria-pressed', String(isActive));
         btn.classList.toggle('lang-toggle__code--muted', !isActive);
       });
+    });
+  };
+
+  toggles.forEach((toggle) => {
+    toggle.querySelectorAll('.lang-toggle__code').forEach((btn) => {
+      btn.addEventListener('click', () => applyLang(btn.dataset.lang));
     });
   });
 }
