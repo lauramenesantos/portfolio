@@ -149,26 +149,42 @@ function initScrollTopButton() {
   if (!boundary) return;
 
   let threshold = 0;
+  const stopGap = 16; // mesma distância do bottom/right do botão no mobile
 
   const measureThreshold = () => {
     threshold = boundary.getBoundingClientRect().top + window.scrollY;
   };
 
-  const updateVisibility = () => {
-    const pastIntro = window.scrollY > threshold - 1;
-    // Some no fim da página pra não tampar o e-mail/telefone do rodapé,
-    // que fica logo abaixo do botão fixo.
-    const coveringFooter = footer && footer.getBoundingClientRect().top < window.innerHeight;
-    button.classList.toggle('is-visible', pastIntro && !coveringFooter);
+  // Perto do rodapé o botão para de acompanhar o viewport (position:fixed)
+  // e passa a ficar "parado" logo acima do rodapé (position:absolute, num
+  // ponto fixo do documento) — mesma técnica de initSidebarStop() pra
+  // sidebar dos cases. Assim ele nunca tampa o e-mail/telefone, mas
+  // continua visível e clicável enquanto o rodapé estiver na tela.
+  const update = () => {
+    button.classList.toggle('is-visible', window.scrollY > threshold - 1);
+
+    if (!footer) return;
+
+    const footerTop = footer.getBoundingClientRect().top + window.scrollY;
+    const viewportBottomDoc = window.scrollY + window.innerHeight;
+
+    if (viewportBottomDoc > footerTop) {
+      const stopTop = footerTop - stopGap - button.offsetHeight;
+      button.classList.add('is-stopped');
+      button.style.setProperty('--scroll-top-stop', `${stopTop}px`);
+    } else {
+      button.classList.remove('is-stopped');
+      button.style.removeProperty('--scroll-top-stop');
+    }
   };
 
   measureThreshold();
-  updateVisibility();
+  update();
 
-  window.addEventListener('scroll', updateVisibility, { passive: true });
+  window.addEventListener('scroll', update, { passive: true });
   window.addEventListener('resize', () => {
     measureThreshold();
-    updateVisibility();
+    update();
   });
 }
 

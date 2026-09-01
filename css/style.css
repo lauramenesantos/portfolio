@@ -1435,7 +1435,7 @@ main > section {
   padding: 0;
   border: none;
   border-radius: 50%;
-  background-color: var(--neutral-light-03);
+  background-color: var(--neutral-light-05);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1459,6 +1459,15 @@ main > section {
   background-color: var(--neutral-light-07);
 }
 
+/* Perto do rodapé (ver initScrollTopButton, script.js): sai do
+   position:fixed (que acompanha o viewport e tamparia o e-mail/telefone)
+   e fica "parado" num ponto fixo do documento, logo acima do rodapé. */
+.scroll-top-btn.is-stopped {
+  position: absolute;
+  top: var(--scroll-top-stop, auto);
+  bottom: auto;
+}
+
 /* Mesmo asset e proporção (24x9) das setas dos cards (.project-card__arrow
    img / .timeline-card__arrow img), só virada pra cima em vez de lado —
    garante a mesma espessura de traço dos outros ícones do site em vez de
@@ -1478,7 +1487,6 @@ main > section {
     height: 44px;
     right: 16px;
     bottom: 16px;
-    background-color: var(--neutral-light-05);
   }
 }
 
