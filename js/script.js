@@ -76,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   if (isAndroid()) {
     initThoughtCardSpotlight();
+    initTimelineCardSpotlight();
   }
   initDensityToggle();
   initScrollTopButton();
@@ -130,6 +131,40 @@ function initProjectCardSpotlight() {
  */
 function initThoughtCardSpotlight() {
   const cards = document.querySelectorAll('.thought-card');
+  if (!cards.length || !('IntersectionObserver' in window)) return;
+
+  const pending = new Map();
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const card = entry.target;
+        const isIntersecting = entry.isIntersecting;
+        clearTimeout(pending.get(card));
+        pending.set(
+          card,
+          setTimeout(() => {
+            card.classList.toggle('is-in-view', isIntersecting);
+            pending.delete(card);
+          }, 100)
+        );
+      });
+    },
+    { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+  );
+
+  cards.forEach((card) => observer.observe(card));
+}
+
+/**
+ * Mesmo spotlight de scroll de novo, agora pros cards de "Trajetória
+ * profissional" — só Android (ver isAndroid()). O card em foco troca de
+ * --neutral-light-01 pra --neutral-light-03 (CSS). Independente do clique
+ * que já existe pra revelar a lista de habilidades (.is-active, ver
+ * initTimelineCardToggle) — classes diferentes, sem conflito.
+ */
+function initTimelineCardSpotlight() {
+  const cards = document.querySelectorAll('.timeline-card');
   if (!cards.length || !('IntersectionObserver' in window)) return;
 
   const pending = new Map();

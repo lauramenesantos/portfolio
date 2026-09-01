@@ -3695,6 +3695,18 @@ body.is-complete .cs-title-short {
   .timeline-card {
     height: auto;
     display: grid;
+    /* Fundo próprio pro mobile (--neutral-light-01, mais claro que o
+       --neutral-light-03 do desktop) — dá pro spotlight abaixo (só
+       Android) ter pra onde escurecer sem ficar igual ao valor base. */
+    background-color: var(--neutral-light-01);
+  }
+
+  /* Spotlight de scroll — mesmo padrão de .project-card/.thought-card
+     acima, só que aqui o card em foco escurece de --neutral-light-01 pra
+     --neutral-light-03 (ver initTimelineCardSpotlight, script.js; só
+     Android). */
+  body.is-android .timeline-card.is-in-view {
+    background-color: var(--neutral-light-03);
   }
 
   .timeline-card__face {
