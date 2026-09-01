@@ -753,6 +753,13 @@ main > section {
   gap: 16px;
   overflow: hidden;
   transition: background-color 0.25s ease;
+  /* Isola o card na própria camada de composição da GPU. Sem isso, no
+     Safari/iOS o repaint do background-color (não acelerado) acontecendo
+     ao mesmo tempo do crossfade de opacity de .project-card__media/
+     __hover-media (ver abaixo) podia deixar um "fantasma" do conteúdo
+     anterior sobreposto ao novo — o bug relatado de título/descrição/tags
+     duplicados no momento da troca do card em iPhone. */
+  transform: translateZ(0);
 }
 
 .project-card:hover,
@@ -783,6 +790,9 @@ main > section {
   pointer-events: none;
   transition: opacity 0.25s ease;
   z-index: 1;
+  /* Avisa o navegador que opacity vai animar, garantindo camada de GPU
+     própria pro crossfade (ver comentário em .project-card). */
+  will-change: opacity;
 }
 
 .project-card__hover-media img {
@@ -808,6 +818,7 @@ main > section {
   overflow: hidden;
   background-color: var(--neutral-light-03);
   transition: opacity 0.25s ease;
+  will-change: opacity;
 }
 
 .project-card:hover .project-card__media,
@@ -1009,6 +1020,9 @@ main > section {
   gap: 16px;
   align-items: flex-start;
   transition: opacity 0.25s ease;
+  /* Mesma prevenção de ghosting no crossfade que .project-card__media/
+     __hover-media (ver comentário lá) — mesmo padrão de troca de opacity. */
+  will-change: opacity;
 }
 
 .timeline-card__face--default {
