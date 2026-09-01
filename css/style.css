@@ -774,7 +774,18 @@ main > section {
    (composição com as imagens extras "em leque" atrás do mockup principal). */
 .project-card__hover-media {
   position: absolute;
-  inset: 0;
+  /* Antes era "inset: 0" (as 4 bordas) junto com aspect-ratio + height:auto
+     — uma combinação ambígua/subconstrangida pra um elemento absoluto (o
+     "bottom: 0" implícito no inset entra em conflito com a altura vinda
+     do aspect-ratio). No Chrome isso "dava certo" por acidente, mas era
+     provavelmente a causa real do bug relatado em vários iPhones (Safari
+     resolve esse conflito de forma diferente, fazendo o overlay não
+     alinhar certinho com o conteúdo por baixo — daí o efeito de
+     "duplicado"). Sem bottom, a altura vem só do aspect-ratio, sem
+     ambiguidade. */
+  top: 0;
+  left: 0;
+  right: 0;
   aspect-ratio: 377 / 360;
   height: auto;
   overflow: hidden;
@@ -3672,56 +3683,17 @@ body.is-complete .cs-title-short {
   .project-card {
     background-color: var(--neutral-light-01);
     box-shadow: 0 8px 24px -4px rgba(25, 25, 25, 0.12);
-    /* No mobile o .is-in-view é ligado/desligado pelo scroll (ver
-       comentário abaixo), não por :hover — relatado em vários iPhones
-       (Safari e navegador embutido do WhatsApp): título/descrição/tags do
-       card ficavam duplicados/"fantasmas" no momento da troca. Zera a
-       transição do background-color e (mais abaixo) do crossfade de
-       opacity: sem transição rodando não existe estado "no meio do
-       caminho" pra corromper — a troca acontece de uma vez. */
-    transition: none;
   }
 
-  /* Simula o :hover em telas de toque: enquanto o card de projeto está
-     cruzando o centro vertical da tela durante o scroll, o JS
-     (initProjectCardSpotlight) marca ele com .is-in-view — reaproveita
-     exatamente as mesmas regras do :hover/:focus-visible/:active abaixo
-     (troca pra imagem "em leque", esconde o mockup default, escurece o
-     título), só que disparado pela posição na rolagem em vez do mouse. */
-  .project-card.is-in-view {
-    background-color: var(--neutral-light-03);
-  }
-
-  /* Crossfade também instantâneo aqui (sem transition) — mesmo motivo do
-     transition:none em .project-card acima. Mesmo sem competir com o
-     repaint do background-color, uma transition de opacity disparada pelo
-     scroll pode ser interrompida no meio por uma nova entrada do
-     IntersectionObserver antes de terminar (comum no momentum scroll do
-     iOS) — no Safari/iOS isso deixava o frame anterior "congelado" por
-     cima do novo em vez de recomeçar do valor atual. Sem transition não
-     existe meio-do-caminho pra corromper: troca de uma vez. */
-  .project-card__hover-media,
-  .project-card__media {
-    transition: none;
-  }
-
-  .project-card.is-in-view .project-card__hover-media {
-    opacity: 1;
-  }
-
-  .project-card.is-in-view .project-card__media {
-    opacity: 0;
-  }
-
-  /* Mesmo motivo do transition:none acima em .project-card — color
-     também não é acelerado por GPU. */
-  .project-card__title {
-    transition: none;
-  }
-
-  .project-card.is-in-view .project-card__title {
-    color: #000000;
-  }
+  /* O efeito de "spotlight" no scroll (initProjectCardSpotlight, script.js,
+     ligava/desligava .is-in-view pra simular :hover enquanto o card cruza
+     o centro da tela) foi removido daqui — mesmo com a troca de estado
+     instantânea (sem transition) e com atraso/debounce no JS, o problema
+     de título/descrição/tags do card duplicados/"fantasmas" persistiu em
+     vários iPhones (Safari e WhatsApp). A sombra permanente acima já
+     resolve sozinha o problema original (cards precisam parecer
+     tocáveis sem depender de hover), então o crossfade de imagem foi
+     abandonado no mobile em vez de continuar tentando contornar o bug. */
 
   .thought-card {
     box-shadow: 0 8px 24px -4px rgba(25, 25, 25, 0.1);
