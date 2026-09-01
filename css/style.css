@@ -3705,20 +3705,12 @@ body.is-complete .cs-title-short {
   /* .project-card e .thought-card só ganham um fundo diferente do da seção
      em :hover/:active (ver regras base) — sem mouse, no repouso eles ficam
      exatamente da cor do fundo ao redor (branco sobre branco em #projetos,
-     cinza sobre cinza em .section--muted) e "somem" até o dedo tocar.
-     Sombra permanente resolve isso sem depender de hover, e de quebra dá
-     a sensação de cartão/app elevado que estava faltando. */
+     cinza sobre cinza em .section--muted). Sem sombra fixa (pedido
+     explícito, tirada tanto do Android quanto do iOS) — o fundo branco do
+     .project-card sobre o fundo branco de #projetos ainda diferencia o
+     card pelo contraste da borda arredondada e do conteúdo dentro dele. */
   .project-card {
     background-color: var(--neutral-light-01);
-    box-shadow: 0 8px 24px -4px rgba(25, 25, 25, 0.12);
-  }
-
-  /* No Android o spotlight do scroll continua ativo (ver isIOS() em
-     script.js), então a sombra fixa fica redundante com ele — tirada só
-     lá. No iOS ela continua sendo a única pista de que o card é tocável,
-     já que o spotlight está desligado. */
-  body.is-android .project-card {
-    box-shadow: none;
   }
 
   /* Simula o :hover em telas de toque: enquanto o card de projeto está
