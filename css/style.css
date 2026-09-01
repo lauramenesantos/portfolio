@@ -3685,15 +3685,30 @@ body.is-complete .cs-title-short {
     box-shadow: 0 8px 24px -4px rgba(25, 25, 25, 0.12);
   }
 
-  /* O efeito de "spotlight" no scroll (initProjectCardSpotlight, script.js,
-     ligava/desligava .is-in-view pra simular :hover enquanto o card cruza
-     o centro da tela) foi removido daqui — mesmo com a troca de estado
-     instantânea (sem transition) e com atraso/debounce no JS, o problema
-     de título/descrição/tags do card duplicados/"fantasmas" persistiu em
-     vários iPhones (Safari e WhatsApp). A sombra permanente acima já
-     resolve sozinha o problema original (cards precisam parecer
-     tocáveis sem depender de hover), então o crossfade de imagem foi
-     abandonado no mobile em vez de continuar tentando contornar o bug. */
+  /* Simula o :hover em telas de toque: enquanto o card de projeto está
+     cruzando o centro vertical da tela durante o scroll, o JS
+     (initProjectCardSpotlight) marca ele com .is-in-view — reaproveita
+     exatamente as mesmas regras do :hover/:focus-visible/:active abaixo
+     (troca pra imagem "em leque", esconde o mockup default, escurece o
+     título), só que disparado pela posição na rolagem em vez do mouse.
+     A causa real do bug de duplicação relatado em vários iPhones era o
+     inset:0 conflitante com aspect-ratio em .project-card__hover-media
+     (ver comentário lá) — corrigido isso, o crossfade volta a ser seguro. */
+  .project-card.is-in-view {
+    background-color: var(--neutral-light-03);
+  }
+
+  .project-card.is-in-view .project-card__hover-media {
+    opacity: 1;
+  }
+
+  .project-card.is-in-view .project-card__media {
+    opacity: 0;
+  }
+
+  .project-card.is-in-view .project-card__title {
+    color: #000000;
+  }
 
   .thought-card {
     box-shadow: 0 8px 24px -4px rgba(25, 25, 25, 0.1);

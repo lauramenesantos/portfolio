@@ -42,9 +42,49 @@ document.addEventListener('DOMContentLoaded', () => {
   initLightbox();
   initSidebarStop();
   initCollapsibleSections();
+  initProjectCardSpotlight();
   initDensityToggle();
   initScrollTopButton();
 });
+
+/**
+ * "Hover simulado" dos cards de projeto pro mobile — sem mouse não existe
+ * :hover pra revelar a variante com as telas "em leque" e escurecer o
+ * título. Em vez disso, o card que estiver cruzando o centro vertical da
+ * tela durante o scroll ganha a classe is-in-view, que dispara exatamente
+ * as mesmas regras CSS do :hover (só ativas dentro do breakpoint mobile —
+ * no desktop a classe pode até ser adicionada, mas o CSS a ignora).
+ */
+function initProjectCardSpotlight() {
+  const cards = document.querySelectorAll('.project-card');
+  if (!cards.length || !('IntersectionObserver' in window)) return;
+
+  // rootMargin em porcentagem + momentum scroll do iOS podem fazer o
+  // observer disparar entradas repetidas (entra/sai/entra) numa mesma
+  // rolagem — um pequeno atraso só aplica a classe depois que o estado
+  // ficar estável, evitando trocas em sequência rápida demais.
+  const pending = new Map();
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const card = entry.target;
+        const isIntersecting = entry.isIntersecting;
+        clearTimeout(pending.get(card));
+        pending.set(
+          card,
+          setTimeout(() => {
+            card.classList.toggle('is-in-view', isIntersecting);
+            pending.delete(card);
+          }, 100)
+        );
+      });
+    },
+    { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+  );
+
+  cards.forEach((card) => observer.observe(card));
+}
 
 /**
  * Seções recolhíveis dos cases (mobile) — cada .cs-section (exceto a
