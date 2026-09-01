@@ -31,6 +31,25 @@
   window.addEventListener('load', goToTop);
 })();
 
+/**
+ * Detecta iOS (iPhone/iPad/iPod) — inclui o caso do iPadOS, que desde a
+ * versão 13 manda um user agent de desktop (Macintosh) igual ao macOS,
+ * só diferenciável pela presença de touch (maxTouchPoints > 1, que um Mac
+ * de verdade com mouse/trackpad não tem). Usado só pra desligar o
+ * "spotlight" dos cards de projeto no scroll (ver initProjectCardSpotlight)
+ * — todo navegador em iOS roda sobre o motor WebKit do sistema (Safari,
+ * Chrome, WhatsApp etc. são só uma casca por cima dele), e esse efeito
+ * causava um bug de renderização (conteúdo do card duplicado) reproduzido
+ * em vários iPhones e em mais de uma forma de implementar a troca — não é
+ * um bug de um navegador específico, é do motor do sistema.
+ */
+function isIOS() {
+  const ua = navigator.userAgent;
+  const isIPhoneOrIPad = /iPad|iPhone|iPod/.test(ua);
+  const isIPadOSAsMac = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+  return isIPhoneOrIPad || isIPadOSAsMac;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initLanguageToggle();
   initMobileNav();
@@ -42,7 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initLightbox();
   initSidebarStop();
   initCollapsibleSections();
-  initProjectCardSpotlight();
+  if (!isIOS()) {
+    initProjectCardSpotlight();
+  }
   initDensityToggle();
   initScrollTopButton();
 });
@@ -53,16 +74,17 @@ document.addEventListener('DOMContentLoaded', () => {
  * título. Em vez disso, o card que estiver cruzando o centro vertical da
  * tela durante o scroll ganha a classe is-in-view, que dispara exatamente
  * as mesmas regras CSS do :hover (só ativas dentro do breakpoint mobile —
- * no desktop a classe pode até ser adicionada, mas o CSS a ignora).
+ * no desktop a classe pode até ser adicionada, mas o CSS a ignora). Só é
+ * chamada fora do iOS — ver isIOS() e o motivo no DOMContentLoaded acima.
  */
 function initProjectCardSpotlight() {
   const cards = document.querySelectorAll('.project-card');
   if (!cards.length || !('IntersectionObserver' in window)) return;
 
-  // rootMargin em porcentagem + momentum scroll do iOS podem fazer o
-  // observer disparar entradas repetidas (entra/sai/entra) numa mesma
-  // rolagem — um pequeno atraso só aplica a classe depois que o estado
-  // ficar estável, evitando trocas em sequência rápida demais.
+  // rootMargin em porcentagem + momentum scroll podem fazer o observer
+  // disparar entradas repetidas (entra/sai/entra) numa mesma rolagem — um
+  // pequeno atraso só aplica a classe depois que o estado ficar estável,
+  // evitando trocas em sequência rápida demais.
   const pending = new Map();
 
   const observer = new IntersectionObserver(

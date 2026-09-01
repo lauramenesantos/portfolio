@@ -3688,12 +3688,13 @@ body.is-complete .cs-title-short {
   /* Simula o :hover em telas de toque: enquanto o card de projeto está
      cruzando o centro vertical da tela durante o scroll, o JS
      (initProjectCardSpotlight) marca ele com .is-in-view — reaproveita
-     exatamente as mesmas regras do :hover/:focus-visible/:active abaixo
-     (troca pra imagem "em leque", esconde o mockup default, escurece o
-     título), só que disparado pela posição na rolagem em vez do mouse.
-     A causa real do bug de duplicação relatado em vários iPhones era o
-     inset:0 conflitante com aspect-ratio em .project-card__hover-media
-     (ver comentário lá) — corrigido isso, o crossfade volta a ser seguro. */
+     exatamente as mesmas regras do :hover/:focus-visible/:active abaixo,
+     só que disparado pela posição na rolagem em vez do mouse. Depois de 3
+     tentativas de corrigir o bug de duplicação relatado em iPhone (Safari
+     e WhatsApp — ambos WebKit, então o problema é do motor de renderização
+     do iOS, não de um navegador específico) sem sucesso, o JS agora só
+     ativa esse efeito fora do iOS (ver checagem em script.js). Estas
+     regras continuam valendo pra Android/outros. */
   .project-card.is-in-view {
     background-color: var(--neutral-light-03);
   }
