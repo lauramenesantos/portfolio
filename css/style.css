@@ -1435,7 +1435,7 @@ main > section {
   padding: 0;
   border: none;
   border-radius: 50%;
-  background-color: var(--neutral-light-05);
+  background-color: var(--neutral-light-03);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1459,16 +1459,16 @@ main > section {
   background-color: var(--neutral-light-07);
 }
 
-/* Setinha desenhada só em CSS (mesmo truque de borda+rotação do
-   .cs-section__chevron) — evita precisar de um novo asset SVG numa cor
-   diferente só pra esse botão. */
+/* Mesmo asset e proporção (24x9) das setas dos cards (.project-card__arrow
+   img / .timeline-card__arrow img), só virada pra cima em vez de lado —
+   garante a mesma espessura de traço dos outros ícones do site em vez de
+   uma borda desenhada à mão. brightness(0) recolore o SVG (nativo branco)
+   pra preto, legível sobre o fundo claro do botão no desktop. */
 .scroll-top-btn__icon {
-  width: 8px;
-  height: 8px;
-  margin-top: 3px;
-  border-right: 2px solid var(--neutral-dark-04);
-  border-bottom: 2px solid var(--neutral-dark-04);
-  transform: rotate(-135deg);
+  width: 24px;
+  height: 9px;
+  transform: rotate(180deg);
+  filter: brightness(0);
 }
 
 @media (max-width: 700px) {
@@ -1477,6 +1477,13 @@ main > section {
     height: 44px;
     right: 16px;
     bottom: 16px;
+    background-color: var(--neutral-light-05);
+  }
+
+  /* No mobile o botão fica no cinza mais escuro (--neutral-light-05) —
+     invert(1) depois do brightness(0) leva o ícone a branco. */
+  .scroll-top-btn__icon {
+    filter: brightness(0) invert(1);
   }
 }
 
