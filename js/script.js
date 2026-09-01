@@ -145,6 +145,7 @@ function initScrollTopButton() {
   });
 
   const boundary = document.querySelector('#projetos, .cs-section');
+  const footer = document.querySelector('.site-footer');
   if (!boundary) return;
 
   let threshold = 0;
@@ -154,7 +155,11 @@ function initScrollTopButton() {
   };
 
   const updateVisibility = () => {
-    button.classList.toggle('is-visible', window.scrollY > threshold - 1);
+    const pastIntro = window.scrollY > threshold - 1;
+    // Some no fim da página pra não tampar o e-mail/telefone do rodapé,
+    // que fica logo abaixo do botão fixo.
+    const coveringFooter = footer && footer.getBoundingClientRect().top < window.innerHeight;
+    button.classList.toggle('is-visible', pastIntro && !coveringFooter);
   };
 
   measureThreshold();

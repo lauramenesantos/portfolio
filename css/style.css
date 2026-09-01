@@ -1462,13 +1462,14 @@ main > section {
 /* Mesmo asset e proporção (24x9) das setas dos cards (.project-card__arrow
    img / .timeline-card__arrow img), só virada pra cima em vez de lado —
    garante a mesma espessura de traço dos outros ícones do site em vez de
-   uma borda desenhada à mão. brightness(0) recolore o SVG (nativo branco)
-   pra preto, legível sobre o fundo claro do botão no desktop. */
+   uma borda desenhada à mão. brightness(0)+opacity recolore o SVG (nativo
+   branco) pra cinza escuro, igual em mobile e desktop. */
 .scroll-top-btn__icon {
   width: 24px;
   height: 9px;
   transform: rotate(180deg);
   filter: brightness(0);
+  opacity: 0.75;
 }
 
 @media (max-width: 700px) {
@@ -1478,12 +1479,6 @@ main > section {
     right: 16px;
     bottom: 16px;
     background-color: var(--neutral-light-05);
-  }
-
-  /* No mobile o botão fica no cinza mais escuro (--neutral-light-05) —
-     invert(1) depois do brightness(0) leva o ícone a branco. */
-  .scroll-top-btn__icon {
-    filter: brightness(0) invert(1);
   }
 }
 
