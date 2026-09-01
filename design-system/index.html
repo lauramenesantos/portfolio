@@ -115,6 +115,11 @@
           <a href="#aprendizados" class="cs-sidebar__link">Aprendizados<span class="cs-sidebar__link-dot"></span></a>
         </nav>
 
+        <div class="cs-density-toggle" role="group" aria-label="Densidade do texto do case">
+          <button type="button" class="cs-density-toggle__btn" data-density="compacto" aria-pressed="false">Compacto</button>
+          <button type="button" class="cs-density-toggle__btn is-active" data-density="completo" aria-pressed="true">Completo</button>
+        </div>
+
         <div class="cs-sidebar__contact">
           <p class="cs-sidebar__contact-title">Vamos conversar?</p>
           <p class="cs-sidebar__contact-text">Estou aberta a novas oportunidades e desafios</p>
@@ -129,11 +134,17 @@
 
         <section id="introducao">
           <span class="cs-eyebrow">DESIGN SYSTEM - Desenvolvido em 2026</span>
-          <h1 class="cs-h1">Quando tudo parece diferente,<br />nada parece confiável.</h1>
+          <h1 class="cs-h1">Quando tudo parece diferente,<br class="cs-h2-break" /> nada parece confiável.</h1>
           <p class="cs-lead">
-            Identificação, documentação e resolução de um problema de inconsistência visual na Physis, plataforma usada por
-            <span class="cs-highlight">Petrobras</span>, <span class="cs-highlight">Comgás</span> e <span class="cs-highlight">EMAE</span>, atualmente em processo de
-            migração gradual de mais de 100 telas para o novo padrão visual.
+            <span class="cs-title-full">
+              Identificação, documentação e resolução de um problema de inconsistência visual na Physis, plataforma usada por
+              <span class="cs-highlight">Petrobras</span>, <span class="cs-highlight">Comgás</span> e <span class="cs-highlight">EMAE</span>, atualmente em processo de
+              migração gradual de mais de 100 telas para o novo padrão visual.
+            </span>
+            <span class="cs-title-short">
+              Identifiquei e resolvi um problema de inconsistência visual na Physis, usada por
+              <span class="cs-highlight">Petrobras</span>, <span class="cs-highlight">Comgás</span> e <span class="cs-highlight">EMAE</span>.
+            </span>
           </p>
 
           <div class="cs-panel">
@@ -150,16 +161,28 @@
           <div class="cs-section__body">
           <div class="cs-impact-grid">
             <div class="cs-impact-card">
-              <p class="cs-impact-card__text">Mais de 10 desenvolvedores passaram a seguir os mesmos padrões, aumentando a consistência das entregas entre diferentes micro serviços.</p>
+              <p class="cs-impact-card__text">
+                <span class="cs-title-full">Mais de 10 desenvolvedores passaram a seguir os mesmos padrões, aumentando a consistência das entregas entre diferentes micro serviços.</span>
+                <span class="cs-title-short">Mais de 10 devs passaram a seguir os mesmos padrões entre os micro serviços.</span>
+              </p>
             </div>
             <div class="cs-impact-card">
-              <p class="cs-impact-card__text">Novas funcionalidades passam a ser construídas sobre padrões já definidos, reduzindo decisões repetitivas entre design e desenvolvimento.</p>
+              <p class="cs-impact-card__text">
+                <span class="cs-title-full">Novas funcionalidades passam a ser construídas sobre padrões já definidos, reduzindo decisões repetitivas entre design e desenvolvimento.</span>
+                <span class="cs-title-short">Novas funcionalidades já nascem sobre padrões definidos, reduzindo decisões repetitivas.</span>
+              </p>
             </div>
             <div class="cs-impact-card">
-              <p class="cs-impact-card__text">As telas migradas conversam entre si, parecendo o mesmo produto. Os usuários encontram padrões familiares, reduzindo a necessidade de reaprender a interface em cada tela.</p>
+              <p class="cs-impact-card__text">
+                <span class="cs-title-full">As telas migradas conversam entre si, parecendo o mesmo produto. Os usuários encontram padrões familiares, reduzindo a necessidade de reaprender a interface em cada tela.</span>
+                <span class="cs-title-short">Telas migradas parecem o mesmo produto — usuários não precisam reaprender a interface a cada tela.</span>
+              </p>
             </div>
             <div class="cs-impact-card">
-              <p class="cs-impact-card__text">O sistema desenvolvido cria as condições para reduzir o retrabalho e custos de manutenção à medida que a migração avança.</p>
+              <p class="cs-impact-card__text">
+                <span class="cs-title-full">O sistema desenvolvido cria as condições para reduzir o retrabalho e custos de manutenção à medida que a migração avança.</span>
+                <span class="cs-title-short">O sistema reduz retrabalho e custo de manutenção à medida que a migração avança.</span>
+              </p>
             </div>
           </div>
           </div>
@@ -168,16 +191,24 @@
         <section class="cs-section" id="contexto">
           <button type="button" class="cs-section__header" aria-expanded="false">
             <span class="cs-eyebrow">CONTEXTO</span>
-            <h2 class="cs-h2">A Physis é uma plataforma grande,<br class="cs-h2-break" /> o design não acompanhava.</h2>
+            <h2 class="cs-h2">
+              <span class="cs-title-full">A Physis é uma plataforma grande,<br />o design não acompanhava.</span>
+              <span class="cs-title-short">Uma plataforma grande, o design não acompanhava.</span>
+            </h2>
             <span class="cs-section__chevron" aria-hidden="true"></span>
           </button>
           <div class="cs-section__body">
           <p class="cs-p">
-            A Physis é uma plataforma de gestão de ativos industriais utilizada por clientes como Petrobras,
-            Comgás e EMAE. Com mais de 20 micro serviços evoluindo ao longo dos anos, foi identificado que
-            cada micro serviço havia desenvolvido sua própria interpretação da linguagem visual. Componentes
-            equivalentes apresentavam diferenças de aparência e comportamento, tornando a experiência menos
-            previsível para os usuários e a evolução do produto mais custosa para a empresa.
+            <span class="cs-title-full">
+              A Physis é uma plataforma de gestão de ativos industriais utilizada por clientes como Petrobras,
+              Comgás e EMAE. Com mais de 20 micro serviços evoluindo ao longo dos anos, foi identificado que
+              cada micro serviço havia desenvolvido sua própria interpretação da linguagem visual. Componentes
+              equivalentes apresentavam diferenças de aparência e comportamento, tornando a experiência menos
+              previsível para os usuários e a evolução do produto mais custosa para a empresa.
+            </span>
+            <span class="cs-title-short">
+              A Physis tem mais de 20 micro serviços, cada um com sua própria interpretação visual.
+            </span>
           </p>
 
           <div class="cs-context-panel">
@@ -191,9 +222,14 @@
           </div>
 
           <p class="cs-p cs-p--tight">
-            As inconsistências encontradas foram documentadas e foi proposto a criação de um Design System
-            para unificar padrões, reduzir divergências e apoiar a evolução do produto em escala. A aprovação
-            não foi imediata e exigiu alinhamento gradual com o time e a liderança.
+            <span class="cs-title-full">
+              As inconsistências encontradas foram documentadas e foi proposto a criação de um Design System
+              para unificar padrões, reduzir divergências e apoiar a evolução do produto em escala. A aprovação
+              não foi imediata e exigiu alinhamento gradual com o time e a liderança.
+            </span>
+            <span class="cs-title-short">
+              Documentei as inconsistências e propus um Design System pra unificar os padrões da plataforma.
+            </span>
           </p>
 
           <div class="cs-stats-panel">
@@ -235,15 +271,25 @@
           </button>
           <div class="cs-section__body">
           <p class="cs-p">
-            Ninguém decidiu ter um produto inconsistente. As exceções foram se acumulando pouco a pouco, até que
-            a plataforma perdeu uma linguagem comum, reduzindo a fluidez das interações e multiplicando o trabalho
-            necessário para corrigir, testar e evoluir um mesmo componente.
+            <span class="cs-title-full">
+              Ninguém decidiu ter um produto inconsistente. As exceções foram se acumulando pouco a pouco, até que
+              a plataforma perdeu uma linguagem comum, reduzindo a fluidez das interações e multiplicando o trabalho
+              necessário para corrigir, testar e evoluir um mesmo componente.
+            </span>
+            <span class="cs-title-short">
+              Ninguém decidiu ser inconsistente — as exceções se acumularam até a plataforma perder uma linguagem comum.
+            </span>
           </p>
 
           <h3 class="cs-h3">Sem escala de cores</h3>
           <p class="cs-p">
-            Cada micro serviço seguia seu próprio padrão. Um simples ajuste de contraste gerava novas cores
-            dependendo de quem implementava. No fim, variáveis como BlueNavy já nem eram mais azuis.
+            <span class="cs-title-full">
+              Cada micro serviço seguia seu próprio padrão. Um simples ajuste de contraste gerava novas cores
+              dependendo de quem implementava. No fim, variáveis como BlueNavy já nem eram mais azuis.
+            </span>
+            <span class="cs-title-short">
+              Cada micro serviço seguia seu próprio padrão — nomes como BlueNavy nem eram mais azuis.
+            </span>
           </p>
           <div class="cs-panel">
             <img src="../assets/images/cs-ds-panel-02.png" alt="Comparação de cores usadas em três interfaces diferentes" loading="lazy" />
@@ -251,8 +297,13 @@
 
           <h3 class="cs-h3">Ícones diferentes para o mesmo uso</h3>
           <p class="cs-p">
-            Cada micro serviço seguia seu próprio padrão. Um simples ajuste de contraste gerava novas cores
-            dependendo de quem implementava. No fim, variáveis como BlueNavy já nem eram mais azuis.
+            <span class="cs-title-full">
+              Cada micro serviço seguia seu próprio padrão. Um simples ajuste de contraste gerava novas cores
+              dependendo de quem implementava. No fim, variáveis como BlueNavy já nem eram mais azuis.
+            </span>
+            <span class="cs-title-short">
+              Cada micro serviço seguia seu próprio padrão — nomes como BlueNavy nem eram mais azuis.
+            </span>
           </p>
           <div class="cs-panel">
             <img src="../assets/images/cs-ds-panel-03.png" alt="Ícones diferentes usados para a mesma função em três interfaces" loading="lazy" />
@@ -260,9 +311,14 @@
 
           <h3 class="cs-h3">Tipografia sem critério</h3>
           <p class="cs-p">
-            Sem padrões tipográficos compartilhados, cada tela comunicava prioridades diferentes. O que deveria
-            chamava atenção em uma área parececia secundário em outra enfraquecendo a hierarquia visual e
-            tornando a leitura menos eficiente.
+            <span class="cs-title-full">
+              Sem padrões tipográficos compartilhados, cada tela comunicava prioridades diferentes. O que deveria
+              chamava atenção em uma área parececia secundário em outra enfraquecendo a hierarquia visual e
+              tornando a leitura menos eficiente.
+            </span>
+            <span class="cs-title-short">
+              Sem padrões tipográficos, cada tela tinha prioridades visuais diferentes.
+            </span>
           </p>
           <div class="cs-panel">
             <img src="../assets/images/cs-ds-panel-04.png" alt="Tabela comparando família, tamanho e peso tipográfico entre microserviços" loading="lazy" />
@@ -270,8 +326,13 @@
 
           <h3 class="cs-h3">Espaçamentos e bordas livres</h3>
           <p class="cs-p">
-            Sem um múltiplo base, cada componente possuía valores definidos individualmente, o que reduzia a
-            reutilização e tornava a evolução da interface mais lenta.
+            <span class="cs-title-full">
+              Sem um múltiplo base, cada componente possuía valores definidos individualmente, o que reduzia a
+              reutilização e tornava a evolução da interface mais lenta.
+            </span>
+            <span class="cs-title-short">
+              Sem um múltiplo base, cada componente tinha valores próprios — menos reutilização e evolução mais lenta.
+            </span>
           </p>
           <div class="cs-panel">
             <img src="../assets/images/cs-ds-panel-05.png" alt="Botões com espaçamentos internos diferentes entre microserviços" loading="lazy" />
@@ -279,9 +340,14 @@
 
           <h3 class="cs-h3">Campos de entrada sem padrão</h3>
           <p class="cs-p">
-            O elemento mais recorrente da interface era o mais inconsistente. Tamanhos, bordas e estados
-            variavam por tela, reduzindo a fluidez das interações e multiplicando o trabalho necessário para
-            utiliza-los.
+            <span class="cs-title-full">
+              O elemento mais recorrente da interface era o mais inconsistente. Tamanhos, bordas e estados
+              variavam por tela, reduzindo a fluidez das interações e multiplicando o trabalho necessário para
+              utiliza-los.
+            </span>
+            <span class="cs-title-short">
+              O elemento mais usado era o mais inconsistente — tamanhos, bordas e estados variavam a cada tela.
+            </span>
           </p>
           <div class="cs-panel">
             <img src="../assets/images/cs-ds-panel-06.png" alt="Campos de entrada de e-mail com estilos diferentes entre microserviços" loading="lazy" />
@@ -297,16 +363,26 @@
           </button>
           <div class="cs-section__body">
           <p class="cs-p">
-            Antes de criar os componentes, definimos as regras que estruturariam o sistema. Analisamos as
-            interfaces existentes para identificar padrões e transformamos essas decisões em tokens,
-            facilitando a manutenção e evolução da plataforma. Assim, uma alteração em um token é refletida
-            automaticamente em todos os componentes que o utilizam, sem ajustes manuais.
+            <span class="cs-title-full">
+              Antes de criar os componentes, definimos as regras que estruturariam o sistema. Analisamos as
+              interfaces existentes para identificar padrões e transformamos essas decisões em tokens,
+              facilitando a manutenção e evolução da plataforma. Assim, uma alteração em um token é refletida
+              automaticamente em todos os componentes que o utilizam, sem ajustes manuais.
+            </span>
+            <span class="cs-title-short">
+              Definimos as regras do sistema em tokens — mudar um token atualiza todos os componentes automaticamente.
+            </span>
           </p>
 
           <h3 class="cs-h3">Escala de cores</h3>
           <p class="cs-p">
-            Criada uma escala tonal completa com nomes semânticos. Se a cor mudar, o nome continua fazendo
-            sentido. Isso resolveu o problema de variáveis como BlueNavy que já tinham virado outra cor.
+            <span class="cs-title-full">
+              Criada uma escala tonal completa com nomes semânticos. Se a cor mudar, o nome continua fazendo
+              sentido. Isso resolveu o problema de variáveis como BlueNavy que já tinham virado outra cor.
+            </span>
+            <span class="cs-title-short">
+              Criei uma escala tonal com nomes semânticos — se a cor mudar, o nome continua fazendo sentido.
+            </span>
           </p>
           <div class="cs-swatch-panel">
             <div class="cs-swatch-cycle" data-cycle="palette">
@@ -346,9 +422,14 @@
 
           <h3 class="cs-h3">Theme mapping</h3>
           <p class="cs-p">
-            Além da escala, foi feito o theme mapping: cada token passou a corresponder a um contexto, claro
-            ou escuro. Antes, a troca de tema era feita manualmente pelos devs. Com o mapping, isso passará a
-            ser automático.
+            <span class="cs-title-full">
+              Além da escala, foi feito o theme mapping: cada token passou a corresponder a um contexto, claro
+              ou escuro. Antes, a troca de tema era feita manualmente pelos devs. Com o mapping, isso passará a
+              ser automático.
+            </span>
+            <span class="cs-title-short">
+              Também criei o theme mapping: cada token corresponde a um contexto claro ou escuro, tornando a troca de tema automática.
+            </span>
           </p>
           <div class="cs-swatch-panel">
             <div class="cs-theme-cycle" data-cycle="theme">
@@ -380,8 +461,13 @@
 
           <h3 class="cs-h3">Tipografia</h3>
           <p class="cs-p">
-            Variáveis de tipo com família, tamanho, peso, line-height, letter-spacing e paragraph-spacing
-            fixos. Sentence case padronizado em todos os títulos, encerrando a variação entre telas.
+            <span class="cs-title-full">
+              Variáveis de tipo com família, tamanho, peso, line-height, letter-spacing e paragraph-spacing
+              fixos. Sentence case padronizado em todos os títulos, encerrando a variação entre telas.
+            </span>
+            <span class="cs-title-short">
+              Variáveis de tipo fixas (família, tamanho, peso, espaçamento) e sentence case padronizado em todos os títulos.
+            </span>
           </p>
           <div class="cs-token-panel">
             <div class="cs-token-row">
@@ -406,8 +492,13 @@
 
           <h3 class="cs-h3">Espaçamentos e raio de canto</h3>
           <p class="cs-p">
-            Múltiplos de 4 como base em todo o sistema. Um critério simples que elimina valores soltos e sem
-            relação entre si, e facilita o desenvolvimento.
+            <span class="cs-title-full">
+              Múltiplos de 4 como base em todo o sistema. Um critério simples que elimina valores soltos e sem
+              relação entre si, e facilita o desenvolvimento.
+            </span>
+            <span class="cs-title-short">
+              Múltiplos de 4 como base — um critério simples que elimina valores soltos e facilita o desenvolvimento.
+            </span>
           </p>
           <div class="cs-token-panel">
             <table class="cs-token-table">
@@ -424,8 +515,13 @@
 
           <h3 class="cs-h3">Botões</h3>
           <p class="cs-p">
-            Três hierarquias definidas: primário, secundário e terciário. A cor azul foi mantida em todos os
-            casos para que o usuário nunca se confunda sobre o que é clicável.
+            <span class="cs-title-full">
+              Três hierarquias definidas: primário, secundário e terciário. A cor azul foi mantida em todos os
+              casos para que o usuário nunca se confunda sobre o que é clicável.
+            </span>
+            <span class="cs-title-short">
+              Três hierarquias — primário, secundário, terciário — sempre na mesma cor, pra nunca confundir o que é clicável.
+            </span>
           </p>
           <div class="cs-panel">
             <img src="../assets/images/cs-ds-panel-construcao-botoes.png" alt="Botões primário, secundário e terciário em diferentes estados" loading="lazy" />
@@ -439,8 +535,13 @@
 
           <h3 class="cs-h3">Documentação</h3>
           <p class="cs-p">
-            Todas as escolhas e regras do design system foram documentadas para garantir consistência visual,
-            reduzir o tempo de criação de novas telas e facilitar a comunicação de stakholders.
+            <span class="cs-title-full">
+              Todas as escolhas e regras do design system foram documentadas para garantir consistência visual,
+              reduzir o tempo de criação de novas telas e facilitar a comunicação de stakholders.
+            </span>
+            <span class="cs-title-short">
+              Documentei todas as regras do sistema pra garantir consistência e agilizar a criação de novas telas.
+            </span>
           </p>
           <div class="cs-panel">
             <img src="../assets/images/cs-ds-panel-construcao-doc.png" alt="Página de documentação do design system" loading="lazy" />
@@ -456,10 +557,15 @@
           </button>
           <div class="cs-section__body">
           <p class="cs-p">
-            Com o sistema criado, o próximo passo era aplicá-lo. Telas novas já nasciam usando os componentes.
-            As antigas precisavam ser reconstruídas. O desafio era que poucas das telas existentes tinha sido
-            construída com componentes, não havia como trocar uma instância e atualizar facilmente. A ideia é
-            que a migração ocorrá nos intervalos entre outras demandas, as telas vão sendo reconstruídas uma a uma.
+            <span class="cs-title-full">
+              Com o sistema criado, o próximo passo era aplicá-lo. Telas novas já nasciam usando os componentes.
+              As antigas precisavam ser reconstruídas. O desafio era que poucas das telas existentes tinha sido
+              construída com componentes, não havia como trocar uma instância e atualizar facilmente. A ideia é
+              que a migração ocorrá nos intervalos entre outras demandas, as telas vão sendo reconstruídas uma a uma.
+            </span>
+            <span class="cs-title-short">
+              Telas novas já nascem com os componentes; as antigas são reconstruídas aos poucos.
+            </span>
           </p>
           <div class="cs-panel">
             <img src="../assets/images/cs-ds-panel-migracao.png" alt="Dashboard em modo light já migrado para o novo padrão" loading="lazy" />
@@ -475,8 +581,13 @@
           </button>
           <div class="cs-section__body">
           <p class="cs-p">
-            As telas que passaram pelo processo conversam entre si e parecem parte do mesmo produto, gerando
-            mais confiança para o usuário, afinal, quando tudo parece diferente, nada parece confiável.
+            <span class="cs-title-full">
+              As telas que passaram pelo processo conversam entre si e parecem parte do mesmo produto, gerando
+              mais confiança para o usuário, afinal, quando tudo parece diferente, nada parece confiável.
+            </span>
+            <span class="cs-title-short">
+              As telas migradas conversam entre si e parecem parte do mesmo produto, gerando mais confiança pro usuário.
+            </span>
           </p>
           <div class="cs-resultado-card">
             <div class="cs-panel-group">
@@ -540,19 +651,31 @@
           <div class="cs-learn-list">
             <div class="cs-learn-card">
               <p class="cs-learn-card__title">Entender antes de propor</p>
-              <p class="cs-learn-card__text">As inconsistências eram apenas o sintoma. O problema real era a falta de recursos compartilhados entre os micro serviços. Atacar a causa importa mais do que corrigir o sintoma.</p>
+              <p class="cs-learn-card__text">
+                <span class="cs-title-full">As inconsistências eram apenas o sintoma. O problema real era a falta de recursos compartilhados entre os micro serviços. Atacar a causa importa mais do que corrigir o sintoma.</span>
+                <span class="cs-title-short">As inconsistências eram só o sintoma — faltavam recursos compartilhados.</span>
+              </p>
             </div>
             <div class="cs-learn-card">
               <p class="cs-learn-card__title">Sistema bom não se sustenta sozinho</p>
-              <p class="cs-learn-card__text">Criar o Design System foi só o começo. Mantê-lo atualizado, migrar as telas antigas e garantir que ele continue fazendo sentido conforme o produto evolui é um trabalho contínuo.</p>
+              <p class="cs-learn-card__text">
+                <span class="cs-title-full">Criar o Design System foi só o começo. Mantê-lo atualizado, migrar as telas antigas e garantir que ele continue fazendo sentido conforme o produto evolui é um trabalho contínuo.</span>
+                <span class="cs-title-short">Criar o Design System foi só o começo — mantê-lo atualizado é trabalho contínuo.</span>
+              </p>
             </div>
             <div class="cs-learn-card">
               <p class="cs-learn-card__title">Nomes importam mais do que parecem</p>
-              <p class="cs-learn-card__text">Uma variável chamada BlueNavy que já tinha virado bege é um problema real de manutenção. Nomear por intenção, não por aparência, foi uma das decisões com mais impacto prático.</p>
+              <p class="cs-learn-card__text">
+                <span class="cs-title-full">Uma variável chamada BlueNavy que já tinha virado bege é um problema real de manutenção. Nomear por intenção, não por aparência, foi uma das decisões com mais impacto prático.</span>
+                <span class="cs-title-short">BlueNavy virar bege é um problema real — nomear por intenção teve o maior impacto prático.</span>
+              </p>
             </div>
             <div class="cs-learn-card">
               <p class="cs-learn-card__title">Nem toda decisão é sua</p>
-              <p class="cs-learn-card__text">Houveram decisão vieram de instâncias superiores. Aprendi que defender uma escolha faz parte do trabalho, mas também faz parte saber operar dentro das restrições que você não controla.</p>
+              <p class="cs-learn-card__text">
+                <span class="cs-title-full">Houveram decisão vieram de instâncias superiores. Aprendi que defender uma escolha faz parte do trabalho, mas também faz parte saber operar dentro das restrições que você não controla.</span>
+                <span class="cs-title-short">Nem toda decisão foi minha. Aprendi a defender escolhas e operar dentro de restrições.</span>
+              </p>
             </div>
           </div>
 

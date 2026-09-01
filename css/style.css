@@ -588,7 +588,6 @@ button {
 
 .hero__tagline {
   font-family: var(--font-body);
-  font-style: italic;
   font-weight: 400;
   /* Antes era clamp(18px, 3vw, 32px) — baseado só na LARGURA da viewport,
      então não acompanhava o encolhimento do wordmark quando é a ALTURA da
@@ -745,6 +744,11 @@ main > section {
 .project-card--design-system { --project-accent: var(--color-primary); }
 .project-card--design-inclusivo { --project-accent: var(--color-secondary); }
 .project-card--programacao-criativa { --project-accent: var(--color-accent); }
+
+/* Dentro de um case, o próprio projeto não deve aparecer em "Projetos recomendados" (mobile + desktop) */
+.project-card[aria-current="page"] {
+  display: none;
+}
 
 /* Camada de hover/clique — reproduz a variante "Variant2" do Figma
    (composição com as imagens extras "em leque" atrás do mockup principal). */
@@ -998,17 +1002,34 @@ main > section {
   pointer-events: none;
 }
 
-.timeline-card:hover .timeline-card__face--default,
 .timeline-card:focus-visible .timeline-card__face--default,
 .timeline-card.is-active .timeline-card__face--default {
   opacity: 0;
 }
 
-.timeline-card:hover .timeline-card__face--hover,
 .timeline-card:focus-visible .timeline-card__face--hover,
 .timeline-card.is-active .timeline-card__face--hover {
   opacity: 1;
   pointer-events: auto;
+}
+
+/* :hover só entra em telas com mouse de verdade (hover:hover) — em touch,
+   navegadores móveis costumam aplicar :hover "grudado" no primeiro toque
+   (não some no segundo toque como o :active), o que competia com o
+   toggle por clique abaixo (.is-active, ver initTimelineCardToggle em
+   script.js): o card abria no 1º toque, mas o 2º toque não conseguia
+   fechar porque o :hover ainda estava "preso" mostrando o verso. Em
+   dispositivos com mouse de verdade isso não acontece, então o hover
+   nativo continua funcionando normalmente lá. */
+@media (hover: hover) {
+  .timeline-card:hover .timeline-card__face--default {
+    opacity: 0;
+  }
+
+  .timeline-card:hover .timeline-card__face--hover {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
 .timeline-card__visual {
@@ -1098,14 +1119,49 @@ main > section {
   background-color: var(--timeline-accent, var(--color-secondary));
 }
 
-/* Seta que sinaliza "toque para ver mais" nos cards de trajetória —
-   equivalente ao .project-card__arrow dos cases, mas só existe no mobile
-   (ver media query): no desktop quem revela o verso do card é o :hover,
-   que não existe em telas de toque, então o mobile precisa de um convite
-   visual explícito. Reaproveita --timeline-accent (a mesma cor da bolinha
-   da lista de skills) para diferenciar os 3 cards. */
+/* Seta que sinaliza "clique/toque pra ver mais" nos cards de trajetória —
+   mesmo padrão visual do .project-card__arrow dos cards de projeto
+   (círculo colorido + chevron), pra manter os dois tipos de card com a
+   mesma linguagem. Fica visível tanto no desktop quanto no mobile: no
+   desktop o :hover já revela o verso do card, mas a seta reforça que o
+   card é interativo mesmo antes do mouse passar por cima. Reaproveita
+   --timeline-accent (a mesma cor da bolinha da lista de skills) pra
+   diferenciar os 3 cards. */
 .timeline-card__arrow {
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 24px;
+  bottom: 28px;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  background-color: var(--timeline-accent, var(--color-primary));
+  transition: transform 0.25s ease;
+}
+
+.timeline-card__arrow img {
+  transform: rotate(-90deg);
+  width: 24px;
+  height: 9px;
+  filter: brightness(0) invert(1);
+}
+
+/* :focus-visible e .is-active funcionam em qualquer dispositivo (teclado
+   e toque, respectivamente). :hover fica isolado em (hover:hover) pelo
+   mesmo motivo do face-swap acima — em touch ele gruda no primeiro toque
+   e desalinha a seta do estado real do card no segundo toque. */
+.timeline-card:focus-visible .timeline-card__arrow,
+.timeline-card.is-active .timeline-card__arrow {
+  transform: rotate(180deg);
+}
+
+@media (hover: hover) {
+  .timeline-card:hover .timeline-card__arrow {
+    transform: rotate(180deg);
+  }
 }
 
 /* ---------- Pensamentos / blog cards ---------- */
@@ -1450,6 +1506,102 @@ main > section {
   font-weight: 300;
   color: var(--neutral-dark-01);
   margin-bottom: 24px;
+}
+
+/* ---------- Toggle "Compacto"/"Completo" (desktop, Figma node 6874:1674) ----------
+   Reaproveita o mesmo par .cs-title-full/.cs-title-short já usado pro resumo
+   automático no mobile: no desktop, "Compacto" liga .is-compact no body e
+   troca pra essas mesmas versões resumidas; "Completo" (estado padrão) volta
+   pro texto cheio, que já é o padrão do desktop. Só aparece a partir de
+   1201px — mesmo breakpoint em que a sidebar vira sticky/desktop — porque no
+   mobile o texto resumido já é automático via media query, sem precisar de
+   controle manual. Fica logo acima do card "Vamos conversar?", alinhado à
+   direita como o resto da sidebar (botão de voltar e links de navegação). */
+.cs-density-toggle {
+  display: none;
+  justify-content: flex-end;
+}
+
+.cs-density-toggle__btn {
+  width: 96px;
+  height: 32px;
+  border: none;
+  border-radius: 16px;
+  background-color: var(--neutral-light-03);
+  color: var(--neutral-dark-04);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+
+.cs-density-toggle__btn + .cs-density-toggle__btn {
+  margin-left: 4px;
+}
+
+.cs-density-toggle__btn:hover {
+  background-color: var(--neutral-light-04);
+}
+
+.cs-density-toggle__btn:active {
+  transform: scale(0.96);
+}
+
+.cs-density-toggle__btn.is-active {
+  color: var(--neutral-light-01);
+  font-weight: 500;
+}
+
+.cs-density-toggle__btn.is-active:hover {
+  opacity: 0.9;
+}
+
+/* Cor do segmento ativo segue a identidade de cada case (mesma cor de
+   .cs-sidebar__back): azul/teal, rosa ou amarelo. */
+.page-design-system .cs-density-toggle__btn.is-active {
+  background-color: var(--color-primary);
+}
+
+.page-design-inclusivo .cs-density-toggle__btn.is-active {
+  background-color: var(--color-secondary-alt);
+}
+
+.page-programacao-criativa .cs-density-toggle__btn.is-active {
+  background-color: var(--color-accent);
+}
+
+.page-design-system .cs-density-toggle__btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.page-design-inclusivo .cs-density-toggle__btn:focus-visible {
+  outline: 2px solid var(--color-secondary-alt);
+  outline-offset: 2px;
+}
+
+.page-programacao-criativa .cs-density-toggle__btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@media (min-width: 1201px) {
+  .cs-density-toggle {
+    display: flex;
+  }
+}
+
+/* Ativado via JS (initDensityToggle, script.js) quando "Compacta" está
+   selecionada — reaproveita as mesmas regras de display do breakpoint
+   mobile (max-width:700px), mas sem depender da largura da viewport. */
+body.is-compact .cs-title-full {
+  display: none;
+}
+
+body.is-compact .cs-title-short {
+  display: inline;
 }
 
 /* ---------- Sidebar redesenhada p/ Figma 6211:2788 (Design System) ---------- */
@@ -1963,7 +2115,24 @@ main > section {
   display: none;
 }
 
+/* Ver .cs-title-short no breakpoint mobile mais abaixo: no desktop só a
+   versão completa do título (.cs-title-full, sem regra própria = inline
+   normal) é mostrada. */
+.cs-title-short {
+  display: none;
+}
+
 @media (max-width: 700px) {
+  /* No desktop os 64px/76px (Programação Criativa) separam seções sempre
+     abertas, com bastante conteúdo entre um título e outro. No mobile as
+     seções nascem fechadas (acordeão) — entre dois headers recolhidos (só
+     eyebrow+h2+seta) esse mesmo valor sobra como espaço morto, então cai
+     pra 32px aqui. */
+  .cs-section,
+  .page-programacao-criativa .cs-section {
+    margin-top: 32px;
+  }
+
   .cs-section__header {
     position: relative;
     cursor: pointer;
@@ -2352,23 +2521,33 @@ main > section {
    — nessa largura o card muda para um fluxo normal (flex-wrap), em vez
    de posicionamento absoluto preso à proporção 832x468 do Figma. */
 @media (max-width: 640px) {
+  /* As 3 fotos lado a lado (30% cada) ficavam minúsculas pra enxergar
+     qualquer detalhe da inconsistência visual que elas ilustram — pedido
+     explícito pra empilhar uma embaixo da outra em vez de espremer 3 por
+     linha. */
   .cs-context-panel {
     aspect-ratio: auto;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
     align-content: flex-start;
     gap: 8px;
     padding: 16px;
   }
 
+  /* Proporção mais baixa que a original (223/159 → 223/120) — as 3 fotos
+     empilhadas precisam caber inteiras numa tela só, sem precisar rolar
+     no meio delas. object-fit:cover (herdado) corta um pouco mais de
+     cada captura, mas a diferença de estilo visual entre os 3 sistemas
+     (o que essas fotos existem pra mostrar) continua clara. */
   .cs-context-panel__img {
     position: static;
-    flex: 0 1 30%;
-    width: 30%;
+    flex: 0 0 auto;
+    width: 100%;
     min-width: 0;
     height: auto;
-    aspect-ratio: 223 / 159;
+    aspect-ratio: 223 / 120;
   }
 
   .cs-context-panel__img:nth-child(2),
@@ -2939,6 +3118,12 @@ main > section {
   .cs-layout {
     flex-direction: column;
     padding: 40px var(--container-padding) 64px;
+    /* No mobile a .cs-sidebar fica com altura 0 (o botão de voltar vira
+       position:fixed e nav/contact somem, ver regras abaixo) — sem zerar o
+       gap aqui, os 64px herdados do desktop (pensados pra separar sidebar
+       e conteúdo de verdade) viravam espaço morto entre o header e o
+       primeiro título do case. */
+    gap: 0;
   }
 
   .cs-sidebar {
@@ -2948,6 +3133,18 @@ main > section {
     align-items: flex-start;
     justify-content: space-between;
     gap: 24px;
+  }
+
+  /* A sidebar inteira vira static aqui (nav e contato saem do fluxo fixo
+     de qualquer forma nesta largura), mas o botão de voltar precisa
+     continuar acessível a qualquer momento da rolagem — sem ele, voltar
+     pra home exige rolar até o topo de novo. Fica fixo, sob o header
+     (também sticky, z-index 100). */
+  .cs-sidebar__top {
+    position: fixed;
+    top: calc(var(--header-height) + 12px);
+    left: var(--container-padding);
+    z-index: 90;
   }
 
   /* Sobrescreve a especificidade de .page-design-system/.page-design-inclusivo/
@@ -3092,6 +3289,58 @@ main > section {
     justify-content: center;
   }
 
+  /* Dentro de um case, todos os botões do menu mobile (CTA "Entre em
+     contato" + Gmail/Behance/Linkedin, ícone e texto) usam uma única cor —
+     a cor de identidade do case — em vez do ciclo teal/rosa/laranja que
+     esses mesmos componentes têm em #contato. Trava hover/focus/active de
+     volta pra cor padrão da página (já correta) e desliga o crossfade dos
+     ícones pra variante hover/active, que trocaria a cor do ícone. */
+  .page-design-system .site-nav__extra .btn--primary:hover,
+  .page-design-system .site-nav__extra .btn--primary:focus-visible,
+  .page-design-system .site-nav__extra .btn--primary:active {
+    background-color: var(--color-primary);
+  }
+
+  .page-design-inclusivo .site-nav__extra .btn--primary:hover,
+  .page-design-inclusivo .site-nav__extra .btn--primary:focus-visible,
+  .page-design-inclusivo .site-nav__extra .btn--primary:active {
+    background-color: var(--color-secondary);
+  }
+
+  .page-programacao-criativa .site-nav__extra .btn--primary:hover,
+  .page-programacao-criativa .site-nav__extra .btn--primary:focus-visible,
+  .page-programacao-criativa .site-nav__extra .btn--primary:active {
+    background-color: var(--color-tertiary);
+  }
+
+  .page-design-system .site-nav__extra .social-btn--figma,
+  .page-design-system .site-nav__extra .social-btn--figma:hover,
+  .page-design-system .site-nav__extra .social-btn--figma:focus-visible,
+  .page-design-system .site-nav__extra .social-btn--figma:active {
+    color: var(--color-primary);
+  }
+
+  .page-design-inclusivo .site-nav__extra .social-btn--figma:hover,
+  .page-design-inclusivo .site-nav__extra .social-btn--figma:focus-visible,
+  .page-design-inclusivo .site-nav__extra .social-btn--figma:active {
+    color: var(--color-secondary);
+  }
+
+  .page-programacao-criativa .site-nav__extra .social-btn--figma:hover,
+  .page-programacao-criativa .site-nav__extra .social-btn--figma:focus-visible,
+  .page-programacao-criativa .site-nav__extra .social-btn--figma:active {
+    color: var(--color-tertiary);
+  }
+
+  .page-design-system .site-nav__extra .social-btn__icon-hover,
+  .page-design-system .site-nav__extra .social-btn__icon-active,
+  .page-design-inclusivo .site-nav__extra .social-btn__icon-hover,
+  .page-design-inclusivo .site-nav__extra .social-btn__icon-active,
+  .page-programacao-criativa .site-nav__extra .social-btn__icon-hover,
+  .page-programacao-criativa .site-nav__extra .social-btn__icon-active {
+    opacity: 0;
+  }
+
   @keyframes nav-mobile-in {
     from {
       opacity: 0;
@@ -3109,17 +3358,22 @@ main > section {
      conforme a página rola — ver comentário grande em "Interação de
      rolagem do protótipo" acima) continuam os mesmos do desktop, só
      encolhidos pelo clamp/cqw que já existe em .hero__word e
-     --hero-wordmark-w. O único ajuste aqui é a altura: a base força
-     min-height:100vh (pensado pra a wordmark "preencher" a tela toda no
-     desktop), mas em telas estreitas --hero-wordmark-w já é limitado por
-     94vw bem antes de a altura entrar em jogo, então a wordmark nunca
-     chega a preencher esse 100vh — sobrava um vão vazio abaixo do CTA e a
-     próxima seção demorava a aparecer. Sem min-height, a .hero (que
-     continua sticky) passa a ter só a altura do próprio conteúdo, e a
-     seção seguinte cobre-a bem mais cedo ao rolar. */
+     --hero-wordmark-w. A base mantém o min-height:100vh (herdado, não
+     sobrescrito aqui): ao entrar no site a primeira tela precisa mostrar só
+     a hero, então ela sempre preenche a tela inteira mesmo com a wordmark
+     limitada por 94vw — a folga abaixo do CTA fica por conta do
+     justify-content:flex-start (conteúdo colado no topo) em vez de reduzir
+     a altura da seção. */
   .hero {
-    min-height: 0;
     padding-bottom: 32px;
+    /* --hero-wordmark-w (definida na regra base) usa 94vw como teto de
+       largura — no mobile isso centraliza a wordmark com ~11px de margem
+       de cada lado, enquanto o resto do conteúdo (títulos de seção, cards)
+       usa --container-padding (20px) e começa mais pra dentro. Troca o
+       termo de 94vw por um cálculo baseado em --container-padding, pra a
+       margem esquerda da wordmark bater exatamente com a margem de
+       "Projetos recomendados" e do resto da página. */
+    --hero-wordmark-w: min(1053px, calc(100vw - 2 * var(--container-padding)), calc(121.15vh - 198px));
   }
 
   .hero__tagline {
@@ -3176,6 +3430,22 @@ main > section {
     font-size: 14px;
   }
 
+  /* Mesmo problema do .project-card__media corrigido antes: a grade de
+     fotos (329x329 no Figma, quadrada) tinha height fixo em px, mas a
+     largura do card já é responsiva — sem aspect-ratio a proporção
+     quebra em telas estreitas e o object-fit:cover corta mais do que
+     devia. aspect-ratio mantém o quadrado em qualquer largura; se algum
+     dia sobrar recorte mesmo assim, object-position:top garante que ele
+     aconteça só embaixo, nunca cortando o topo da foto. */
+  .timeline-card__visual {
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .timeline-card__visual img {
+    object-position: top;
+  }
+
   /* .project-card e .thought-card só ganham um fundo diferente do da seção
      em :hover/:active (ver regras base) — sem mouse, no repouso eles ficam
      exatamente da cor do fundo ao redor (branco sobre branco em #projetos,
@@ -3185,6 +3455,28 @@ main > section {
   .project-card {
     background-color: var(--neutral-light-01);
     box-shadow: 0 8px 24px -4px rgba(25, 25, 25, 0.12);
+  }
+
+  /* Simula o :hover em telas de toque: enquanto o card de projeto está
+     cruzando o centro vertical da tela durante o scroll, o JS
+     (initProjectCardSpotlight) marca ele com .is-in-view — reaproveita
+     exatamente as mesmas regras do :hover/:focus-visible/:active abaixo
+     (troca pra imagem "em leque", esconde o mockup default, escurece o
+     título), só que disparado pela posição na rolagem em vez do mouse. */
+  .project-card.is-in-view {
+    background-color: var(--neutral-light-03);
+  }
+
+  .project-card.is-in-view .project-card__hover-media {
+    opacity: 1;
+  }
+
+  .project-card.is-in-view .project-card__media {
+    opacity: 0;
+  }
+
+  .project-card.is-in-view .project-card__title {
+    color: #000000;
   }
 
   .thought-card {
@@ -3200,41 +3492,6 @@ main > section {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-  }
-
-  /* Setas dos cards de trajetória: só existem no mobile (ver comentário
-     na regra base), porque só aqui falta a affordance do :hover pra
-     avisar que o card tem mais conteúdo (as habilidades, no verso). */
-  .timeline-card__arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    right: 24px;
-    bottom: 28px;
-    z-index: 2;
-    width: 32px;
-    height: 32px;
-    border-radius: 16px;
-    background-color: var(--timeline-accent, var(--color-primary));
-    transition: transform 0.25s ease;
-  }
-
-  .timeline-card__arrow img {
-    transform: rotate(-90deg);
-    width: 24px;
-    height: 9px;
-    filter: brightness(0) invert(1);
-  }
-
-  /* Mesmos gatilhos que trocam a face do card (ver regra base
-     .timeline-card:hover/:focus-visible/.is-active) — inclui :hover pra
-     não desalinhar a seta do conteúdo em dispositivos híbridos
-     mouse+touch (notebook com tela sensível ao toque, por exemplo). */
-  .timeline-card:hover .timeline-card__arrow,
-  .timeline-card:focus-visible .timeline-card__arrow,
-  .timeline-card.is-active .timeline-card__arrow {
-    transform: rotate(180deg);
   }
 
   /* "Sobre mim": no desktop o texto fica alinhado à esquerda porque
@@ -3286,12 +3543,30 @@ main > section {
      Reescala mantendo a MESMA proporção relativa entre os níveis, só que
      numa escala compatível com o resto do app (títulos de seção da home
      já em 24px). */
+  /* 24px deixava H1 (25px seria o limite pra 2 linhas nos 3 cases,
+     testado com o texto real) perto demais do H2 (22px) — a hierarquia
+     entre os dois quase sumia. Sobe o H1 pro teto que ainda garante 2
+     linhas e desce o H2/H3 pra abrir distância entre os três níveis de
+     novo (25 → 20 → 16, mesma proporção ~1.25 entre eles usada no
+     desktop). */
   .cs-h1 {
-    font-size: 28px;
+    font-size: 25px;
+  }
+
+  /* Citação do Design Inclusivo (h1 + <cite>): em vez de deixar a
+     atribuição ("- Diane Ackerman") disputar espaço inline com a frase
+     entre aspas — o que empurrava tudo pra 3-4 linhas com quebras
+     inconsistentes — vira sua própria linha, menor e com respiro acima,
+     como uma legenda de citação. */
+  .cs-h1__cite {
+    display: block;
+    margin-top: 8px;
+    font-size: 15px;
+    line-height: 1.4;
   }
 
   .cs-h2 {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   /* Os <br> dos títulos de seção (cs-h2) foram escolhidos a dedo pro
@@ -3306,19 +3581,36 @@ main > section {
     display: none;
   }
 
+  /* Alguns títulos de seção continuavam passando de 2 linhas mesmo com a
+     quebra manual escondida (a frase inteira é longa demais pro H2 já
+     reduzido) — pedido explícito: nenhum título de case passa de 2
+     linhas no mobile. .cs-title-full/.cs-title-short marcam duas versões
+     do mesmo texto no HTML; o mobile troca pela versão curta (reescrita
+     mantendo o sentido original), o desktop nem sabe que ela existe. */
+  .cs-title-full {
+    display: none;
+  }
+
+  .cs-title-short {
+    display: inline;
+  }
+
   .cs-h3 {
-    font-size: 18px;
+    font-size: 17px;
   }
 
   .cs-eyebrow {
     font-size: 13px;
   }
 
-  /* Textos "de destaque" que ainda vinham no tamanho do desktop — reduz na
-     mesma proporção do resto da escala já encolhida acima (cs-h1/h2/h3). */
+  /* Justificado (pedido explícito, vale pros 3 cases) + mais um passo de
+     redução pra ficar coerente com o corpo de texto (.cs-p, 16px) já
+     reduzido — o lead ainda fica um degrau acima dele, só não tão
+     grande quanto antes. */
   .cs-lead {
-    font-size: 18px;
+    font-size: 17px;
     line-height: 1.5;
+    text-align: justify;
   }
 
   .cs-learn-card__text--lg {
@@ -3361,6 +3653,19 @@ main > section {
      .cs-context-panel etc.) nesta mesma media query. */
   .cs-swatch-panel .cs-color-swatch {
     aspect-ratio: auto;
+  }
+
+  /* O painel "Escala de cores" (7 swatches em 2 colunas = 4 linhas) ficava
+     alto demais pra caber numa tela só — obrigava a rolar no meio do
+     painel pra ver o resto. Encolhe o bloco de cor (era 80px, igual ao
+     desktop) e o espaçamento da grade, tirando ~140px de altura total
+     sem cortar nome/hex de nenhum swatch. */
+  .cs-swatch-panel .cs-color-swatch__block {
+    height: 56px;
+  }
+
+  .cs-swatch-panel .cs-color-grid {
+    gap: 12px;
   }
 
   .cs-swatch-cycle__label {

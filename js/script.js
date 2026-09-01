@@ -3,6 +3,34 @@
    script.js — interações em JavaScript puro
    ========================================================= */
 
+/**
+ * Ao entrar no site (ou recarregar a página) sem um link direto pra outra
+ * seção, a primeira tela deve mostrar a hero — não uma posição de scroll
+ * deixada pelo navegador. Dois navegadores restauram scroll por conta
+ * própria em cenários assim: (1) "scroll restoration" do histórico, que
+ * reaplica a posição rolada de antes de um reload/voltar; (2) o scroll
+ * nativo até uma âncora, quando a URL já contém #inicio (ex.: depois de
+ * clicar em "Início", ver initHomeLinks() abaixo, que atualiza a URL).
+ * Desativamos a restauração automática e forçamos o topo sempre que não
+ * há um hash apontando pra outra seção específica (#projetos, #sobre etc.,
+ * esses continuam funcionando normalmente como link direto).
+ */
+(function ensureHeroIsFirstScreen() {
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  const goToTop = () => {
+    const hash = window.location.hash;
+    if (!hash || hash === '#inicio') {
+      window.scrollTo(0, 0);
+    }
+  };
+
+  goToTop();
+  window.addEventListener('load', goToTop);
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   initLanguageToggle();
   initMobileNav();
@@ -14,7 +42,33 @@ document.addEventListener('DOMContentLoaded', () => {
   initLightbox();
   initSidebarStop();
   initCollapsibleSections();
+  initProjectCardSpotlight();
+  initDensityToggle();
 });
+
+/**
+ * "Hover simulado" dos cards de projeto pro mobile — sem mouse não existe
+ * :hover pra revelar a variante com as telas "em leque" e escurecer o
+ * título. Em vez disso, o card que estiver cruzando o centro vertical da
+ * tela durante o scroll ganha a classe is-in-view, que dispara exatamente
+ * as mesmas regras CSS do :hover (só ativas dentro do breakpoint mobile —
+ * no desktop a classe pode até ser adicionada, mas o CSS a ignora).
+ */
+function initProjectCardSpotlight() {
+  const cards = document.querySelectorAll('.project-card');
+  if (!cards.length || !('IntersectionObserver' in window)) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        entry.target.classList.toggle('is-in-view', entry.isIntersecting);
+      });
+    },
+    { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+  );
+
+  cards.forEach((card) => observer.observe(card));
+}
 
 /**
  * Seções recolhíveis dos cases (mobile) — cada .cs-section (exceto a
@@ -32,6 +86,32 @@ function initCollapsibleSections() {
       const section = header.closest('.cs-section');
       const isOpen = section.classList.toggle('is-open');
       header.setAttribute('aria-expanded', String(isOpen));
+    });
+  });
+}
+
+/**
+ * Toggle "Compacto"/"Completo" da sidebar (desktop, widget do Figma node
+ * 6874:1674) — liga/desliga .is-compact no body, que reaproveita o mesmo
+ * par de spans .cs-title-full/.cs-title-short já usado pro resumo
+ * automático no mobile (ver CSS). "Completo" é o estado inicial porque já
+ * é o comportamento padrão do desktop antes deste widget existir.
+ */
+function initDensityToggle() {
+  const buttons = document.querySelectorAll('.cs-density-toggle__btn');
+  if (!buttons.length) return;
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const isCompacto = button.dataset.density === 'compacto';
+
+      buttons.forEach((btn) => {
+        const active = btn === button;
+        btn.classList.toggle('is-active', active);
+        btn.setAttribute('aria-pressed', String(active));
+      });
+
+      document.body.classList.toggle('is-compact', isCompacto);
     });
   });
 }
