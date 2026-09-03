@@ -416,6 +416,12 @@ button {
   height: 16px;
   border-radius: 50%;
   object-fit: cover;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.lang-toggle__flag--muted {
+  opacity: 0.45;
 }
 
 .header-divider {
@@ -2747,6 +2753,7 @@ body.is-complete .cs-title-short {
 .cs-cta-block {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 16px;
   width: 100%;
 }
@@ -3008,6 +3015,11 @@ body.is-complete .cs-title-short {
   transition: opacity 0.2s ease;
 }
 
+.cs-swatch-cycle {
+  width: 100%;
+  max-width: 625px;
+}
+
 .cs-swatch-cycle.is-fading .cs-swatch-cycle__label,
 .cs-swatch-cycle.is-fading [data-cycle-grid],
 .cs-theme-cycle.is-fading {
@@ -3035,8 +3047,12 @@ body.is-complete .cs-title-short {
   box-shadow: 4px 4px 8px 0 rgba(36, 36, 36, 0.25);
 }
 
+/* Sem isto, a altura do card vem do aspect-ratio 160/156 e o
+   overflow:hidden de .cs-color-swatch corta o hex ao meio quando a
+   grade não atinge a largura máxima de 625px. Deixa a altura seguir
+   o conteúdo, como já é feito no mobile. */
 .cs-swatch-panel .cs-color-swatch {
-  aspect-ratio: 160 / 156;
+  aspect-ratio: auto;
 }
 
 .cs-color-swatch__block {
@@ -3046,6 +3062,10 @@ body.is-complete .cs-title-short {
 
 .cs-color-swatch__meta {
   padding: 8px 12px 12px;
+}
+
+.cs-swatch-panel .cs-color-swatch__meta {
+  padding: 8px 12px 5px;
 }
 
 .cs-color-swatch__name {
@@ -3064,6 +3084,10 @@ body.is-complete .cs-title-short {
   color: var(--neutral-dark-04);
   margin-top: 4px;
   transition: color 0.2s ease;
+}
+
+.cs-swatch-panel .cs-color-swatch__hex {
+  margin-top: 0;
 }
 
 .cs-theme-cycle {

@@ -3,35 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programação Criativa — Laura Menezes</title>
-  <meta name="description" content="Estudo de caso: pôster interativo do filme Parasita construído inteiramente em código com P5.js, explorando como decisões de design se traduzem em código." />
+  <title data-en="Creative Coding — Laura Menezes">Programação Criativa — Laura Menezes</title>
+  <meta name="description" content="Estudo de caso: pôster interativo do filme Parasita construído inteiramente em código com P5.js, explorando como decisões de design se traduzem em código." data-en-content="Case study: an interactive poster for the movie Parasite built entirely in code with P5.js, exploring how design decisions translate into code." />
   <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body class="page-programacao-criativa">
 
   <header class="site-header">
     <div class="site-header__inner">
-      <a href="../index.html#inicio" class="site-header__brand" aria-label="Início — Laura Menezes">
-        <img src="../assets/images/avatar-laura.png" alt="Foto de perfil de Laura Menezes" class="site-header__avatar" width="48" height="48" />
+      <a href="../index.html#inicio" class="site-header__brand" aria-label="Início — Laura Menezes" data-en-aria-label="Home — Laura Menezes">
+        <img src="../assets/images/avatar-laura.png" alt="Foto de perfil de Laura Menezes" data-en-alt="Profile photo of Laura Menezes" class="site-header__avatar" width="48" height="48" />
         <div class="site-header__brand-text">
           <span class="site-header__name">Laura Menezes</span>
-          <span class="site-header__role">Designer Estratégica</span>
+          <span class="site-header__role" data-en="Strategic Designer">Designer Estratégica</span>
         </div>
       </a>
 
       <nav aria-label="Navegação principal">
         <ul class="site-nav__list" id="mobileNav">
           <li class="site-nav__group">
-            <a href="../index.html#inicio" class="site-nav__link">Início</a>
-            <a href="../index.html#projetos" class="site-nav__link">Projetos</a>
-            <a href="../index.html#sobre" class="site-nav__link">Sobre</a>
-            <a href="../index.html#contato" class="site-nav__link">Contato</a>
+            <a href="../index.html#inicio" class="site-nav__link" data-en="Home">Início</a>
+            <a href="../index.html#projetos" class="site-nav__link" data-en="Projects">Projetos</a>
+            <a href="../index.html#sobre" class="site-nav__link" data-en="About">Sobre</a>
+            <a href="../index.html#contato" class="site-nav__link" data-en="Contact">Contato</a>
           </li>
 
           <li class="site-nav__toggles">
             <div class="site-nav__toggle-row">
-              <span class="site-nav__toggle-label">Escolha o idioma:</span>
-              <div class="lang-toggle" role="group" aria-label="Selecionar idioma">
+              <span class="site-nav__toggle-label" data-en="Choose your language:">Escolha o idioma:</span>
+              <div class="lang-toggle" role="group" aria-label="Selecionar idioma" data-en-aria-label="Select language">
                 <button type="button" class="lang-toggle__code" data-lang="pt" aria-pressed="true">PT</button>
                 <span class="lang-toggle__switch">
                   <span class="lang-toggle__flags">
@@ -43,22 +43,22 @@
               </div>
             </div>
             <div class="site-nav__toggle-row">
-              <span class="site-nav__toggle-label">Escolha o modo de visualização:</span>
-              <div class="cs-density-toggle" role="group" aria-label="Densidade do texto">
-                <button type="button" class="cs-density-toggle__btn is-active" data-density="compacto" aria-pressed="true">Compacto</button>
-                <button type="button" class="cs-density-toggle__btn" data-density="completo" aria-pressed="false">Completo</button>
+              <span class="site-nav__toggle-label" data-en="Choose reading mode:">Escolha o modo de visualização:</span>
+              <div class="cs-density-toggle" role="group" aria-label="Densidade do texto" data-en-aria-label="Text density">
+                <button type="button" class="cs-density-toggle__btn is-active" data-density="compacto" aria-pressed="true" data-en="Compact">Compacto</button>
+                <button type="button" class="cs-density-toggle__btn" data-density="completo" aria-pressed="false" data-en="Full">Completo</button>
               </div>
             </div>
           </li>
 
           <li class="site-nav__extra">
             <a href="https://wa.me/5534996358519" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
-              Entre em contato
+              <span data-en="Get in touch">Entre em contato</span>
               <span class="btn__icon"><img src="../assets/icons/icone-whatsapp.svg" alt="" /></span>
             </a>
             <ul class="social-list">
               <li>
-                <a href="mailto:lauramenesantos@gmail.com" class="social-btn social-btn--figma social-btn--gmail" aria-label="Enviar e-mail">
+                <a href="mailto:lauramenesantos@gmail.com" class="social-btn social-btn--figma social-btn--gmail" aria-label="Enviar e-mail" data-en-aria-label="Send email">
                   <span class="social-btn__icon">
                     <img src="../assets/icons/icone-mail-default-programacao-criativa.svg" alt="" class="social-btn__icon-default" />
                     <img src="../assets/icons/icone-mail-hover-programacao-criativa.svg" alt="" class="social-btn__icon-hover" />
@@ -68,7 +68,7 @@
                 </a>
               </li>
               <li>
-                <a href="https://www.behance.net/lauramenezes11" class="social-btn social-btn--figma social-btn--behance" aria-label="Ver Behance" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.behance.net/lauramenezes11" class="social-btn social-btn--figma social-btn--behance" aria-label="Ver Behance" data-en-aria-label="View Behance" target="_blank" rel="noopener noreferrer">
                   <span class="social-btn__icon">
                     <img src="../assets/icons/icone-behance-default-programacao-criativa.svg" alt="" class="social-btn__icon-default" />
                     <img src="../assets/icons/icone-behance-hover-programacao-criativa.svg" alt="" class="social-btn__icon-hover" />
@@ -78,7 +78,7 @@
                 </a>
               </li>
               <li>
-                <a href="https://www.linkedin.com/in/lauramenesantos" class="social-btn social-btn--figma social-btn--linkedin" aria-label="Ver LinkedIn" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/lauramenesantos" class="social-btn social-btn--figma social-btn--linkedin" aria-label="Ver LinkedIn" data-en-aria-label="View LinkedIn" target="_blank" rel="noopener noreferrer">
                   <span class="social-btn__icon">
                     <img src="../assets/icons/icone-linkedin-default-programacao-criativa.svg" alt="" class="social-btn__icon-default" />
                     <img src="../assets/icons/icone-linkedin-hover-programacao-criativa.svg" alt="" class="social-btn__icon-hover" />
@@ -93,7 +93,7 @@
       </nav>
 
       <div class="site-header__extras">
-        <div class="lang-toggle" role="group" aria-label="Selecionar idioma">
+        <div class="lang-toggle" role="group" aria-label="Selecionar idioma" data-en-aria-label="Select language">
           <button type="button" class="lang-toggle__code" data-lang="pt" aria-pressed="true">PT</button>
           <span class="lang-toggle__switch">
             <span class="lang-toggle__flags">
@@ -110,11 +110,11 @@
           <span class="resume-link__icon">
             <img src="../assets/icons/icone-seta-vermais.svg" alt="" />
           </span>
-          Currículo
+          <span data-en="Resume">Currículo</span>
         </a>
       </div>
 
-      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileNav">
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" data-en-aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -125,31 +125,31 @@
 
       <aside class="cs-sidebar">
         <div class="cs-sidebar__top">
-          <a href="../index.html#projetos" class="cs-sidebar__back" aria-label="Voltar para projetos">
+          <a href="../index.html#projetos" class="cs-sidebar__back" aria-label="Voltar para projetos" data-en-aria-label="Back to projects">
             <img src="../assets/icons/icone-seta-voltar.svg" alt="" />
           </a>
         </div>
 
         <nav class="cs-sidebar__nav" aria-label="Navegação do estudo de caso">
-          <a href="#introducao" class="cs-sidebar__link">Introdução<span class="cs-sidebar__link-dot"></span></a>
-          <a href="#contexto" class="cs-sidebar__link">Contexto<span class="cs-sidebar__link-dot"></span></a>
-          <a href="#obra" class="cs-sidebar__link">A Obra<span class="cs-sidebar__link-dot"></span></a>
-          <a href="#restricoes" class="cs-sidebar__link">Restrições<span class="cs-sidebar__link-dot"></span></a>
-          <a href="#construcao" class="cs-sidebar__link">Construção<span class="cs-sidebar__link-dot"></span></a>
-          <a href="#resultado" class="cs-sidebar__link">Resultado<span class="cs-sidebar__link-dot"></span></a>
-          <a href="#aprendizados" class="cs-sidebar__link">Aprendizados<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#introducao" class="cs-sidebar__link" data-en="Introduction">Introdução<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#contexto" class="cs-sidebar__link" data-en="Context">Contexto<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#obra" class="cs-sidebar__link" data-en="The Film">A Obra<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#restricoes" class="cs-sidebar__link" data-en="Constraints">Restrições<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#construcao" class="cs-sidebar__link" data-en="Build">Construção<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#resultado" class="cs-sidebar__link" data-en="Result">Resultado<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#aprendizados" class="cs-sidebar__link" data-en="Learnings">Aprendizados<span class="cs-sidebar__link-dot"></span></a>
         </nav>
 
-        <div class="cs-density-toggle" role="group" aria-label="Densidade do texto do case">
-          <button type="button" class="cs-density-toggle__btn" data-density="compacto" aria-pressed="false">Compacto</button>
-          <button type="button" class="cs-density-toggle__btn is-active" data-density="completo" aria-pressed="true">Completo</button>
+        <div class="cs-density-toggle" role="group" aria-label="Densidade do texto do case" data-en-aria-label="Text density for this case study">
+          <button type="button" class="cs-density-toggle__btn" data-density="compacto" aria-pressed="false" data-en="Compact">Compacto</button>
+          <button type="button" class="cs-density-toggle__btn is-active" data-density="completo" aria-pressed="true" data-en="Full">Completo</button>
         </div>
 
         <div class="cs-sidebar__contact">
-          <p class="cs-sidebar__contact-title">Vamos conversar?</p>
-          <p class="cs-sidebar__contact-text">Estou aberta a novas oportunidades e desafios</p>
+          <p class="cs-sidebar__contact-title" data-en="Let's talk?">Vamos conversar?</p>
+          <p class="cs-sidebar__contact-text" data-en="I'm open to new opportunities and challenges">Estou aberta a novas oportunidades e desafios</p>
           <a href="https://wa.me/5534996358519" class="btn btn--outline" target="_blank" rel="noopener noreferrer">
-            Entre em contato
+            <span data-en="Get in touch">Entre em contato</span>
             <span class="btn__icon">
               <img src="../assets/icons/icone-whatsapp-outline-programacao-criativa.svg" alt="" class="btn__icon-default" />
               <img src="../assets/icons/icone-whatsapp-outline-programacao-criativa-hover.svg" alt="" class="btn__icon-hover" />
@@ -162,27 +162,27 @@
       <article class="cs-content">
 
         <section id="introducao">
-          <span class="cs-eyebrow">PROGRAMAÇÃO CRIATIVA - Desenvolvido em 2024</span>
-          <h1 class="cs-h1">Nem tudo o que desenhamos<br class="cs-h2-break" /> pode ser programado.</h1>
+          <span class="cs-eyebrow" data-en="CREATIVE CODING - Built in 2024">PROGRAMAÇÃO CRIATIVA - Desenvolvido em 2024</span>
+          <h1 class="cs-h1"><span data-en="Not everything we design">Nem tudo o que desenhamos</span><br class="cs-h2-break" /> <span data-en="can be coded.">pode ser programado.</span></h1>
           <p class="cs-lead">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="A creative-coding project built entirely in P5.js to understand how design decisions translate into code. It explores the technical possibilities and limitations through an interactive abstraction of a poster for the movie Parasite.">
               Programação criativa construída inteiramente em código com P5.js para
               <span class="cs-highlight">compreender como decisões de design se traduzem em código.</span>
               O projeto investiga as possibilidades e limitações técnicas a partir da abstração interativa de um
               pôster do filme Parasita.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="A creative-coding project in P5.js exploring how design translates into code, built from a poster for Parasite.">
               Programação criativa em P5.js pra <span class="cs-highlight">entender como design se traduz em código</span>, a partir de um pôster de Parasita.
             </span>
           </p>
 
           <div class="cs-panel">
-            <img src="../assets/images/cs-pc-light-01.png" alt="Ícones minimalistas de uma pessoa, uma caveira e uma barraca, elementos centrais do pôster de Parasita" loading="lazy" />
+            <img src="../assets/images/cs-pc-light-01.png" alt="Ícones minimalistas de uma pessoa, uma caveira e uma barraca, elementos centrais do pôster de Parasita" data-en-alt="Minimalist icons of a person, a skull, and a tent, the central elements of the Parasite poster" loading="lazy" />
           </div>
 
           <div class="cs-cta-row cs-cta-row--center">
             <a href="#resultado" class="btn btn--primary">
-              Ver resultado
+              <span data-en="See the result">Ver resultado</span>
               <span class="btn__icon"><img src="../assets/icons/icone-seta-vermais-white.svg" alt="" /></span>
             </a>
           </div>
@@ -190,19 +190,19 @@
 
         <section class="cs-section" id="contexto">
           <button type="button" class="cs-section__header" aria-expanded="false">
-            <span class="cs-eyebrow">CONTEXTO</span>
-            <h2 class="cs-h2">O que um designer ganha<br class="cs-h2-break" /> ao entender código?</h2>
+            <span class="cs-eyebrow" data-en="CONTEXT">CONTEXTO</span>
+            <h2 class="cs-h2"><span data-en="What does a designer gain">O que um designer ganha</span><br class="cs-h2-break" /> <span data-en="by understanding code?">ao entender código?</span></h2>
             <span class="cs-section__chevron" aria-hidden="true"></span>
           </button>
           <div class="cs-section__body">
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="Designers and developers work together constantly, but communication between the two can break down when each side is unaware of the other's constraints and priorities. This project grew out of that question: how does thinking about design change once you understand the basics of programming? To explore this in practice, I built a creative-coding piece in P5.js based on the abstraction of a movie poster.">
               Designers e desenvolvedores trabalham juntos constantemente, mas a comunicação entre as áreas pode
               falhar quando cada lado desconhece as limitações e prioridades do outro. Este projeto surgiu dessa
               questão: como a forma de pensar Design muda quando se entende o básico de programação? Para explorar
               isso na prática, foi feito uma programação criativa em p5.js, a partir da abstração de um pôster.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="How does thinking about design change once you understand the basics of programming? I explored this with an interactive poster built in P5.js.">
               Como pensar Design muda ao entender o básico de programação? Explorei isso com um pôster interativo em p5.js.
             </span>
           </p>
@@ -211,26 +211,26 @@
             <div class="cs-info-grid">
               <div class="cs-info-card">
                 <div class="cs-info-card__text">
-                  <p class="cs-info-card__label">Projeto</p>
-                  <p class="cs-info-card__value">Pôster interativa do filme Parasita</p>
+                  <p class="cs-info-card__label" data-en="Project">Projeto</p>
+                  <p class="cs-info-card__value" data-en="Interactive poster for the movie Parasite">Pôster interativa do filme Parasita</p>
                 </div>
               </div>
               <div class="cs-info-card">
                 <div class="cs-info-card__text cs-info-card__text--wide">
-                  <p class="cs-info-card__label">Objetivo</p>
-                  <p class="cs-info-card__value">Compreender como o design se traduz em código</p>
+                  <p class="cs-info-card__label" data-en="Goal">Objetivo</p>
+                  <p class="cs-info-card__value" data-en="Understanding how design translates into code">Compreender como o design se traduz em código</p>
                 </div>
               </div>
               <div class="cs-info-card">
                 <div class="cs-info-card__text">
-                  <p class="cs-info-card__label">Abordagem</p>
-                  <p class="cs-info-card__value">Programação criativa com P5.js</p>
+                  <p class="cs-info-card__label" data-en="Approach">Abordagem</p>
+                  <p class="cs-info-card__value" data-en="Creative coding with P5.js">Programação criativa com P5.js</p>
                 </div>
               </div>
               <div class="cs-info-card">
                 <div class="cs-info-card__text">
-                  <p class="cs-info-card__label">Situação</p>
-                  <p class="cs-info-card__value">Projeto experimental de exploração técnica</p>
+                  <p class="cs-info-card__label" data-en="Status">Situação</p>
+                  <p class="cs-info-card__value" data-en="Experimental project for technical exploration">Projeto experimental de exploração técnica</p>
                 </div>
               </div>
             </div>
@@ -240,127 +240,127 @@
 
         <section class="cs-section" id="obra">
           <button type="button" class="cs-section__header" aria-expanded="false">
-            <span class="cs-eyebrow">A OBRA</span>
+            <span class="cs-eyebrow" data-en="THE FILM">A OBRA</span>
             <h2 class="cs-h2">
-              <span class="cs-title-full">Um filme assistido ativamente,<br />um pôster escolhido com critério.</span>
-              <span class="cs-title-short">Filme assistido ativamente, pôster escolhido com critério.</span>
+              <span class="cs-title-full"><span data-en="A film watched attentively,">Um filme assistido ativamente,</span><br /><span data-en="a poster chosen with care.">um pôster escolhido com critério.</span></span>
+              <span class="cs-title-short" data-en="A film watched attentively, a poster chosen with care.">Filme assistido ativamente, pôster escolhido com critério.</span>
 </h2>
             <span class="cs-section__chevron" aria-hidden="true"></span>
           </button>
           <div class="cs-section__body">
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="Parasite is a South Korean film that won several Academy Awards, released in 2019 and directed by Bong Joon-ho. It tells the story of two families — the Kims, who live in poverty, and the Parks, who enjoy a life of luxury — masterfully blending suspense, drama, and comedy.">
               “Parasita” é um filme sul-coreano vencedor de diversos prêmios do Oscar, lançado em 2019 e dirigido
               por Bong Joon-ho. A obra narra a história de duas famílias, os Kim, que vivem na pobreza, e os Park,
               que desfrutam de uma vida luxuos, combinando com maestria suspense, drama e comédia.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="Parasite is a South Korean film that won the Oscar (2019), directed by Bong Joon-ho, about two families from opposite social classes.">
               "Parasita" é um filme sul-coreano vencedor do Oscar (2019), dirigido por Bong Joon-ho, sobre duas famílias de classes opostas.
             </span>
           </p>
 
-          <h3 class="cs-h3">Entendendo a obra</h3>
+          <h3 class="cs-h3" data-en="Understanding the film">Entendendo a obra</h3>
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="I watched the film closely, noting down the most striking narrative elements so the interactions would make sense within the story.">
               O filme foi assistido com atenção, anotando os elementos narrativos mais marcantes para que as
               interações fizessem sentido com a obra.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="I watched the film closely, noting the most striking narrative elements so the interactions would make sense.">
               O filme foi assistido com atenção, anotando os elementos narrativos mais marcantes pras interações fazerem sentido.
             </span>
           </p>
           <div class="cs-panel cs-obra-panel">
-            <img class="cs-obra-panel__img" src="../assets/images/cs-pc-dark-01.png" alt="Anotações feitas durante a assistência ativa do filme Parasita" loading="lazy" />
+            <img class="cs-obra-panel__img" src="../assets/images/cs-pc-dark-01.png" alt="Anotações feitas durante a assistência ativa do filme Parasita" data-en-alt="Notes taken while actively watching Parasite" loading="lazy" />
             <div class="cs-obra-panel__caption">
-              <p class="cs-obra-panel__caption-title">ANOTAÇÕES:</p>
+              <p class="cs-obra-panel__caption-title" data-en="NOTES:">ANOTAÇÕES:</p>
               <ul>
-                <li>Moravam em uma casa simples que tinha vários percevejos;</li>
-                <li>Trabalhavam de montar caixas de pizza (e eram bem ruins nisso);</li>
-                <li>Kevin da família ganhou uma pedra de um amigo que dizia trazer "riqueza material";</li>
-                <li>Kevin fingiu ser universitário para dar aulas particulares;</li>
-                <li>Géssica é boa em arte de fez um diploma falso para o irmão;</li>
-                <li>Antigamente a casa rica era de um arquiteto;</li>
-                <li>Darson é fanático por índios e gosta de fazer aulas de arte;</li>
-                <li>Kevin indica Géssica para dar arteterapia para Darson;</li>
-                <li>Géssica tira calcinha e deixa no carro da madame;</li>
-                <li>O Sr. Kim passa pêssego na governanta que tem alergia;</li>
-                <li>O marido da governanta conversa por ela por código binário, pelas lâmpadas da casa.<br />...</li>
+                <li data-en="They lived in a simple house full of bedbugs;">Moravam em uma casa simples que tinha vários percevejos;</li>
+                <li data-en="They worked folding pizza boxes (and were pretty bad at it);">Trabalhavam de montar caixas de pizza (e eram bem ruins nisso);</li>
+                <li data-en="Kevin, the son, received a rock from a friend who said it would bring &quot;material wealth&quot;;">Kevin da família ganhou uma pedra de um amigo que dizia trazer "riqueza material";</li>
+                <li data-en="Kevin pretended to be a college student to give private lessons;">Kevin fingiu ser universitário para dar aulas particulares;</li>
+                <li data-en="Jessica is good at art and forged a diploma for her brother;">Géssica é boa em arte de fez um diploma falso para o irmão;</li>
+                <li data-en="The rich house used to belong to an architect;">Antigamente a casa rica era de um arquiteto;</li>
+                <li data-en="Da-song is obsessed with Native Americans and likes taking art classes;">Darson é fanático por índios e gosta de fazer aulas de arte;</li>
+                <li data-en="Kevin recommends Jessica to give art therapy to Da-song;">Kevin indica Géssica para dar arteterapia para Darson;</li>
+                <li data-en="Jessica takes off her underwear and leaves it in the lady of the house's car;">Géssica tira calcinha e deixa no carro da madame;</li>
+                <li data-en="Mr. Kim rubs peach fuzz on the housekeeper, who is allergic to it;">O Sr. Kim passa pêssego na governanta que tem alergia;</li>
+                <li><span data-en="The housekeeper's husband communicates with her through binary code, using the house's lights.">O marido da governanta conversa por ela por código binário, pelas lâmpadas da casa.</span><br /><span data-en="...">...</span></li>
               </ul>
             </div>
           </div>
 
-          <h3 class="cs-h3">Pôster de referência</h3>
+          <h3 class="cs-h3" data-en="Reference poster">Pôster de referência</h3>
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="After analyzing the film, I researched posters that captured its essence through simple shapes. The author of the chosen poster wasn't identified.">
               Após analisar o filme, foram pesquisados pôsteres que representassem sua essência por meio de
               formas simples. O autor do pôster escolhido não foi identificado.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="I researched posters that captured the film's essence with simple shapes; the author of the one I chose wasn't identified.">
               Pesquisei pôsteres que representassem a essência do filme com formas simples, o autor do escolhido não foi identificado.
             </span>
           </p>
           <div class="cs-panel">
-            <img src="../assets/images/cs-pc-dark-02.png" alt="Pôster oficial de referência do filme Parasita, com a escadaria dividindo as duas famílias" loading="lazy" />
+            <img src="../assets/images/cs-pc-dark-02.png" alt="Pôster oficial de referência do filme Parasita, com a escadaria dividindo as duas famílias" data-en-alt="Official reference poster for Parasite, with the staircase dividing the two families" loading="lazy" />
           </div>
 
-          <h3 class="cs-h3">Paleta de cores</h3>
+          <h3 class="cs-h3" data-en="Color palette">Paleta de cores</h3>
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="The colors weren't chosen for aesthetic preference — they were already in the poster, and they capture the tension and coldness the film conveys.">
               As cores não foram escolhidas por preferência estética, foram escolhidas porque já estavam no
               pôster e porque traduzem a tensão e a frieza que o filme transmite.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="The colors came straight from the poster, chosen because they capture the film's tension and coldness.">
               As cores vieram do próprio pôster, escolhidas por traduzirem a tensão e frieza que o filme transmite.
             </span>
           </p>
           <div class="cs-panel">
-            <img src="../assets/images/cs-pc-paleta.png" alt="Cinco ícones de silhuetas de pessoas coloridas representando a paleta de cores extraída do pôster" loading="lazy" />
+            <img src="../assets/images/cs-pc-paleta.png" alt="Cinco ícones de silhuetas de pessoas coloridas representando a paleta de cores extraída do pôster" data-en-alt="Five colored silhouette icons representing the color palette extracted from the poster" loading="lazy" />
           </div>
           </div>
         </section>
 
         <section class="cs-section" id="restricoes">
           <button type="button" class="cs-section__header" aria-expanded="false">
-            <span class="cs-eyebrow">RESTRIÇÕES</span>
-            <h2 class="cs-h2">Regras que guiaram o código</h2>
+            <span class="cs-eyebrow" data-en="CONSTRAINTS">RESTRIÇÕES</span>
+            <h2 class="cs-h2" data-en="Rules that guided the code">Regras que guiaram o código</h2>
             <span class="cs-section__chevron" aria-hidden="true"></span>
           </button>
           <div class="cs-section__body">
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="Before starting development, I set a few constraints to make sure the project genuinely explored creative-coding learning while staying connected to the film's narrative.">
               Antes de iniciar o desenvolvimento, foram definidas algumas restrições para garantir que o projeto
               realmente explorasse o aprendizado de programação criativa e mantivesse conexão com a narrativa do
               filme.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="Before coding, I set constraints to ensure real programming learning and a strong connection to the narrative.">
               Antes de codar, defini restrições pra garantir aprendizado real de programação e conexão com a narrativa.
             </span>
           </p>
 
           <div class="cs-learn-list">
             <div class="cs-learn-card">
-              <p class="cs-learn-card__title">Restrição 1 - Sem imagens</p>
+              <p class="cs-learn-card__title" data-en="Constraint 1 - No images">Restrição 1 - Sem imagens</p>
               <p class="cs-learn-card__text">
-                <span class="cs-title-full">Nenhuma imagem poderia ser importada. Tudo precisava ser desenhado em código para que o aprendizado técnico fosse real.</span>
-                <span class="cs-title-short">Nenhuma imagem podia ser importada, tudo desenhado em código.</span>
+                <span class="cs-title-full" data-en="No images could be imported. Everything had to be drawn in code for the technical learning to be real.">Nenhuma imagem poderia ser importada. Tudo precisava ser desenhado em código para que o aprendizado técnico fosse real.</span>
+                <span class="cs-title-short" data-en="No images allowed — everything drawn in code.">Nenhuma imagem podia ser importada, tudo desenhado em código.</span>
               </p>
             </div>
             <div class="cs-learn-card">
-              <p class="cs-learn-card__title">Restrição 2 - Sentido narrativo</p>
+              <p class="cs-learn-card__title" data-en="Constraint 2 - Narrative sense">Restrição 2 - Sentido narrativo</p>
               <p class="cs-learn-card__text">
-                <span class="cs-title-full">As interações precisavam fazer sentido narrativo, não podiam ser apenas eram efeitos visuais, deviam ser referências ao filme.</span>
-                <span class="cs-title-short">As interações precisavam ter sentido narrativo, não podiam ser só efeitos visuais.</span>
+                <span class="cs-title-full" data-en="The interactions needed to make narrative sense — they couldn't just be visual effects, they had to reference the film.">As interações precisavam fazer sentido narrativo, não podiam ser apenas eram efeitos visuais, deviam ser referências ao filme.</span>
+                <span class="cs-title-short" data-en="Interactions needed narrative sense — not just visual effects.">As interações precisavam ter sentido narrativo, não podiam ser só efeitos visuais.</span>
               </p>
             </div>
             <div class="cs-learn-card">
-              <p class="cs-learn-card__title">Restrição 3 - Simplificação</p>
-              <p class="cs-learn-card__text">O que não podia ser implementado dentro das limitações técnicas precisava ser simplificado.</p>
+              <p class="cs-learn-card__title" data-en="Constraint 3 - Simplification">Restrição 3 - Simplificação</p>
+              <p class="cs-learn-card__text" data-en="Whatever couldn't be implemented within the technical limitations had to be simplified.">O que não podia ser implementado dentro das limitações técnicas precisava ser simplificado.</p>
             </div>
             <div class="cs-learn-card">
-              <p class="cs-learn-card__title">Restrição 4 - Sem uso de IA</p>
+              <p class="cs-learn-card__title" data-en="Constraint 4 - No AI-generated code">Restrição 4 - Sem uso de IA</p>
               <p class="cs-learn-card__text">
-                <span class="cs-title-full">A IA não podia ser usada para gerar código pronto. Sendo utilizada apenas como ferramenta de aprendizado, quando surgiam dúvidas ela explicava o raciocínio.</span>
-                <span class="cs-title-short">A IA não gerava código pronto, só explicava o raciocínio quando surgiam dúvidas.</span>
+                <span class="cs-title-full" data-en="AI couldn't be used to generate ready-made code. It was used only as a learning tool — when questions came up, it explained the reasoning.">A IA não podia ser usada para gerar código pronto. Sendo utilizada apenas como ferramenta de aprendizado, quando surgiam dúvidas ela explicava o raciocínio.</span>
+                <span class="cs-title-short" data-en="AI never generated code — it only explained the reasoning behind questions.">A IA não gerava código pronto, só explicava o raciocínio quando surgiam dúvidas.</span>
               </p>
             </div>
           </div>
@@ -369,255 +369,255 @@
 
         <section class="cs-section" id="construcao">
           <button type="button" class="cs-section__header" aria-expanded="false">
-            <span class="cs-eyebrow">CONSTRUÇÃO</span>
-            <h2 class="cs-h2">Traduzindo elementos visuais<br class="cs-h2-break" /> em estruturas de código.</h2>
+            <span class="cs-eyebrow" data-en="BUILD">CONSTRUÇÃO</span>
+            <h2 class="cs-h2"><span data-en="Translating visual elements">Traduzindo elementos visuais</span><br class="cs-h2-break" /> <span data-en="into code structures.">em estruturas de código.</span></h2>
             <span class="cs-section__chevron" aria-hidden="true"></span>
           </button>
           <div class="cs-section__body">
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="The process was incremental — each step added one element to the code, tested it, and adjusted before moving on. The poster's base was mapped out with colored lines to make it easier to identify each element in the code.">
               O processo foi incrementa, cada etapa adicionava um elemento ao código, testava e ajustava antes de
               seguir. A base do pôster foi mapeada com linhas coloridas para facilitar a identificação de cada
               elemento no código.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="The process was incremental: each step added one element, tested before moving forward.">
               O processo foi incremental: cada etapa somava um elemento, testado antes de seguir.
             </span>
           </p>
 
-          <h3 class="cs-h3">ETAPA 1 - Mapeando no papel</h3>
+          <h3 class="cs-h3" data-en="Step 1 - Mapping on paper">ETAPA 1 - Mapeando no papel</h3>
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="The poster's base was mapped by hand before writing a single line of code. Each element got a different color to make it easier to identify in the editor. Those colors were then used as references in the code comments, making it more straightforward to locate each part.">
               A base do pôster foi mapeada à mão antes de qualquer linha de código. Cada elemento recebeu uma cor
               diferente para facilitar a identificação no editor. As cores foram usadas como referência nos
               comentários do código, tornando o processo de localização de cada parte mais direto.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="The poster was mapped by hand before any code, one color per element, later reused in the comments.">
               O pôster foi mapeado à mão antes do código, com uma cor por elemento, usada depois nos comentários.
             </span>
           </p>
           <div class="cs-panel">
-            <img src="../assets/images/cs-pc-etapa1.png" alt="Mapa do pôster desenhado à mão com linhas coloridas identificando cada elemento" loading="lazy" />
+            <img src="../assets/images/cs-pc-etapa1.png" alt="Mapa do pôster desenhado à mão com linhas coloridas identificando cada elemento" data-en-alt="Hand-drawn map of the poster with colored lines identifying each element" loading="lazy" />
           </div>
           <div class="cs-insight-panel">
             <p>
-              <span class="cs-title-full">Aprendizado técnico: Comentários no código facilitam a navegação. Nomear cada linha colorida no papel e replicar esses nomes nos comentários do código criou um mapa legível do que estava sendo construído.</span>
-              <span class="cs-title-short">Aprendizado técnico: nomear linhas no papel e repetir nos comentários deu um mapa legível.</span>
+              <span class="cs-title-full" data-en="Technical takeaway: Code comments make navigation easier. Naming each colored line on paper and repeating those names in the code comments created a readable map of what was being built.">Aprendizado técnico: Comentários no código facilitam a navegação. Nomear cada linha colorida no papel e replicar esses nomes nos comentários do código criou um mapa legível do que estava sendo construído.</span>
+              <span class="cs-title-short" data-en="Technical takeaway: naming lines on paper and repeating them in comments made for a readable map.">Aprendizado técnico: nomear linhas no papel e repetir nos comentários deu um mapa legível.</span>
             </p>
             <p>
-              <span class="cs-title-full">Aprendizado de processo: Ir para o papel antes de abrir o editor é uma decisão de design, não de programação. O sistema de coordenadas do P5.js trabalha com posições numéricas. Saber onde cada elemento está no espaço antes de codar elimina boa parte do processo de tentativa e erro.</span>
-              <span class="cs-title-short">Aprendizado de processo: definir posições no papel antes evita tentativa e erro no código.</span>
+              <span class="cs-title-full" data-en="Process takeaway: Going to paper before opening the editor is a design decision, not a coding one. P5.js's coordinate system works with numeric positions. Knowing where each element sits in space before coding eliminates most of the trial and error.">Aprendizado de processo: Ir para o papel antes de abrir o editor é uma decisão de design, não de programação. O sistema de coordenadas do P5.js trabalha com posições numéricas. Saber onde cada elemento está no espaço antes de codar elimina boa parte do processo de tentativa e erro.</span>
+              <span class="cs-title-short" data-en="Process takeaway: defining positions on paper first avoids trial and error in the code.">Aprendizado de processo: definir posições no papel antes evita tentativa e erro no código.</span>
             </p>
           </div>
 
-          <h3 class="cs-h3">ETAPA 2 - Código base</h3>
+          <h3 class="cs-h3" data-en="Step 2 - Base code">ETAPA 2 - Código base</h3>
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="Initial structure for the canvas, proportions, and background. This set up the coordinate system that would serve as a reference for everything that followed.">
               Estrutura inicial do canvas, proporções e fundo. Definição do sistema de coordenadas que serviria de
               referência para tudo que viria depois.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="Initial canvas structure, proportions, and the coordinate system that would guide everything after.">
               Estrutura inicial do canvas, proporções e sistema de coordenadas que guiaria tudo depois.
             </span>
           </p>
           <div class="cs-panel">
-            <img src="../assets/images/cs-pc-dark-03.png" alt="Editor de código P5.js com o esboço base do pôster: escadaria, tenda e ponto amarelo" loading="lazy" />
+            <img src="../assets/images/cs-pc-dark-03.png" alt="Editor de código P5.js com o esboço base do pôster: escadaria, tenda e ponto amarelo" data-en-alt="P5.js code editor showing the base sketch of the poster: staircase, tent, and yellow dot" loading="lazy" />
           </div>
           <div class="cs-insight-panel">
             <p>
-              <span class="cs-title-full">Aprendizado técnico: Como o P5.js organiza o canvas com os eixos x e y, e como as funções setup() e draw() estruturam o ciclo de renderização.</span>
-              <span class="cs-title-short">Aprendizado técnico: como setup() e draw() estruturam o ciclo de renderização no P5.js.</span>
+              <span class="cs-title-full" data-en="Technical takeaway: How P5.js organizes the canvas along the x and y axes, and how the setup() and draw() functions structure the rendering cycle.">Aprendizado técnico: Como o P5.js organiza o canvas com os eixos x e y, e como as funções setup() e draw() estruturam o ciclo de renderização.</span>
+              <span class="cs-title-short" data-en="Technical takeaway: how setup() and draw() structure the rendering cycle in P5.js.">Aprendizado técnico: como setup() e draw() estruturam o ciclo de renderização no P5.js.</span>
             </p>
             <p>
-              <span class="cs-title-full">Aprendizado de processo: Definir as proporções e o sistema de coordenadas antes evita reposicionamento em cascata depois. As posições já estavam pensadas, o código base foi escrito com referências claras, sem tentativa e erro de posicionamento.</span>
-              <span class="cs-title-short">Aprendizado de processo: definir coordenadas antes evita reposicionar tudo depois.</span>
+              <span class="cs-title-full" data-en="Process takeaway: Defining proportions and the coordinate system upfront avoids a cascade of repositioning later. Since the positions were already planned, the base code was written with clear references, with no trial and error for placement.">Aprendizado de processo: Definir as proporções e o sistema de coordenadas antes evita reposicionamento em cascata depois. As posições já estavam pensadas, o código base foi escrito com referências claras, sem tentativa e erro de posicionamento.</span>
+              <span class="cs-title-short" data-en="Process takeaway: defining coordinates upfront avoids repositioning everything later.">Aprendizado de processo: definir coordenadas antes evita reposicionar tudo depois.</span>
             </p>
           </div>
 
-          <h3 class="cs-h3">ETAPA 3 - Base com pessoas</h3>
+          <h3 class="cs-h3" data-en="Step 3 - Base with characters">ETAPA 3 - Base com pessoas</h3>
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="The initial idea was to represent the characters as abstract blobs — organic shapes that suggested human figures without fully defining them. In practice, organic shapes in P5.js require Bézier curves and manual vertices, which made the implementation too complex for this stage of the project. The decision was to use simple geometric shapes instead: circles, rectangles, and lines.">
               A ideia inicial era representar os personagens como manchas abstratas, formas orgânicas que
               sugerissem figuras humanas sem defini-las. Na prática, formas orgânicas em P5.js exigem curvas de
               Bézier e vértices manuais, o que tornava a implementação complexa demais para o momento do projeto.
               A decisão foi usar formas geométricas simples: círculos, retângulos e linhas.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="The idea was to use organic blobs, but that required complex Bézier curves, so I opted for simple shapes instead.">
               A ideia era usar manchas orgânicas, mas isso exigia curvas de Bézier complexas, optei por formas simples.
             </span>
           </p>
           <div class="cs-panel">
-            <img src="../assets/images/cs-pc-dark-04.png" alt="Editor de código P5.js com as famílias representadas por formas geométricas simples" loading="lazy" />
+            <img src="../assets/images/cs-pc-dark-04.png" alt="Editor de código P5.js com as famílias representadas por formas geométricas simples" data-en-alt="P5.js code editor with the families represented as simple geometric shapes" loading="lazy" />
           </div>
           <div class="cs-insight-panel">
             <p>
-              <span class="cs-title-full">Aprendizado técnico: Uso das funções ellipse(), rect() e line() para construir formas compostas, como combinar primitivos simples para representar figuras complexas.</span>
-              <span class="cs-title-short">Aprendizado técnico: combinar ellipse(), rect() e line() pra representar figuras complexas.</span>
+              <span class="cs-title-full" data-en="Technical takeaway: Using the ellipse(), rect(), and line() functions to build compound shapes — combining simple primitives to represent complex figures.">Aprendizado técnico: Uso das funções ellipse(), rect() e line() para construir formas compostas, como combinar primitivos simples para representar figuras complexas.</span>
+              <span class="cs-title-short" data-en="Technical takeaway: combining ellipse(), rect(), and line() to represent complex figures.">Aprendizado técnico: combinar ellipse(), rect() e line() pra representar figuras complexas.</span>
             </p>
             <p>
-              <span class="cs-title-full">Aprendizado de processo: A restrição técnica melhorou a decisão de design. Formas geométricas simples são mais fiéis ao estilo do pôster do que manchas orgânicas seriam, o que parecia uma limitação virou coerência visual.</span>
-              <span class="cs-title-short">Aprendizado de processo: formas simples couberam melhor no estilo do pôster.</span>
+              <span class="cs-title-full" data-en="Process takeaway: The technical constraint actually improved the design decision. Simple geometric shapes are more faithful to the poster's style than organic blobs would have been — what seemed like a limitation became visual coherence.">Aprendizado de processo: A restrição técnica melhorou a decisão de design. Formas geométricas simples são mais fiéis ao estilo do pôster do que manchas orgânicas seriam, o que parecia uma limitação virou coerência visual.</span>
+              <span class="cs-title-short" data-en="Process takeaway: simple shapes fit the poster's style better.">Aprendizado de processo: formas simples couberam melhor no estilo do pôster.</span>
             </p>
           </div>
 
-          <h3 class="cs-h3">ETAPA 4 - Funcionamento do botão e lâmpada</h3>
+          <h3 class="cs-h3" data-en="Step 4 - Button and lamp interaction">ETAPA 4 - Funcionamento do botão e lâmpada</h3>
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="The first interaction I implemented. The button triggers the lamp — a direct reference to the film scene where messages are sent in binary code through a blinking light.">
               Primeira interação implementada. O botão aciona a lâmpada, referência direta à cena do filme onde
               mensagens são enviadas em código binário pela luz piscando.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="First interaction: the button triggers the lamp, referencing the film's binary code scene.">
               Primeira interação: o botão aciona a lâmpada, referência ao código binário do filme.
             </span>
           </p>
           <div class="cs-panel">
             <div class="cs-demo-window" style="--crop-left: -4.61%;">
-              <img src="../assets/images/cs-pc-demo.gif" alt="Pôster interativo com o botão acionando a lâmpada da casa" loading="lazy" />
+              <img src="../assets/images/cs-pc-demo.gif" alt="Pôster interativo com o botão acionando a lâmpada da casa" data-en-alt="Interactive poster with the button triggering the house's lamp" loading="lazy" />
             </div>
           </div>
           <div class="cs-insight-panel">
             <p>
-              <span class="cs-title-full">Aprendizado técnico: Uso de variáveis para controlar propriedades visuais, como cor e tamanho, permitindo alterar a aparência dos elementos de forma dinâmica durante a execução do programa.</span>
-              <span class="cs-title-short">Aprendizado técnico: variáveis controlam cor e tamanho dinamicamente.</span>
+              <span class="cs-title-full" data-en="Technical takeaway: Using variables to control visual properties like color and size, allowing elements to change appearance dynamically while the program runs.">Aprendizado técnico: Uso de variáveis para controlar propriedades visuais, como cor e tamanho, permitindo alterar a aparência dos elementos de forma dinâmica durante a execução do programa.</span>
+              <span class="cs-title-short" data-en="Technical takeaway: variables control color and size dynamically.">Aprendizado técnico: variáveis controlam cor e tamanho dinamicamente.</span>
             </p>
             <p>
-              <span class="cs-title-full">Aprendizado de processo: Interatividade no código exige pensar em estados: antes do clique, depois do clique e durante o clique. No design, isso já existe nos estados de componente, saber nomear e estruturar estados no código torna o handoff mais preciso.</span>
-              <span class="cs-title-short">Aprendizado de processo: pensar em estados (antes, durante, depois do clique).</span>
+              <span class="cs-title-full" data-en="Process takeaway: Interactivity in code requires thinking in states — before the click, during the click, and after it. Design already works with component states, so knowing how to name and structure states in code makes the handoff more precise.">Aprendizado de processo: Interatividade no código exige pensar em estados: antes do clique, depois do clique e durante o clique. No design, isso já existe nos estados de componente, saber nomear e estruturar estados no código torna o handoff mais preciso.</span>
+              <span class="cs-title-short" data-en="Process takeaway: thinking in states (before, during, after the click).">Aprendizado de processo: pensar em estados (antes, durante, depois do clique).</span>
             </p>
           </div>
 
-          <h3 class="cs-h3">ETAPA 5 - Água subindo e benções caindo</h3>
+          <h3 class="cs-h3" data-en="Step 5 - Rising water and falling blessings">ETAPA 5 - Água subindo e benções caindo</h3>
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="The flood that fills the Kims' house while the Parks see the rain as a blessing. Two simultaneous elements reacting in opposite ways to the same condition.">
               A enchente que alaga a casa dos Kim enquanto os Park veem a chuva como bênção. Dois elementos
               simultâneos que reagem de formas opostas à mesma condição.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="The flood fills the Kims' house while the Parks see the rain as a blessing.">
               A enchente alaga a casa dos Kim enquanto os Park veem a chuva como bênção.
             </span>
           </p>
           <div class="cs-panel">
             <div class="cs-demo-window" style="--crop-left: -117.52%;">
-              <img src="../assets/images/cs-pc-demo-2.gif" alt="Pôster interativo com a água subindo na casa dos Kim e bênçãos caindo sobre a casa dos Park" loading="lazy" />
+              <img src="../assets/images/cs-pc-demo-2.gif" alt="Pôster interativo com a água subindo na casa dos Kim e bênçãos caindo sobre a casa dos Park" data-en-alt="Interactive poster with water rising in the Kims' house and blessings falling over the Parks' house" loading="lazy" />
             </div>
           </div>
           <div class="cs-insight-panel">
             <p>
-              <span class="cs-title-full">Aprendizado técnico: Uso da posição do mouse para controlar elementos em tempo real e aplicação da função random() para criar variações de opacidade, gerando um efeito visual dinâmico.</span>
-              <span class="cs-title-short">Aprendizado técnico: posição do mouse controla elementos, random() varia a opacidade.</span>
+              <span class="cs-title-full" data-en="Technical takeaway: Using the mouse position to control elements in real time, and applying the random() function to vary opacity, creating a dynamic visual effect.">Aprendizado técnico: Uso da posição do mouse para controlar elementos em tempo real e aplicação da função random() para criar variações de opacidade, gerando um efeito visual dinâmico.</span>
+              <span class="cs-title-short" data-en="Technical takeaway: mouse position controls elements, random() varies the opacity.">Aprendizado técnico: posição do mouse controla elementos, random() varia a opacidade.</span>
             </p>
             <p>
-              <span class="cs-title-full">Aprendizado de processo: Pequenas alterações em variáveis como posição, transparência e interação podem transformar elementos estáticos em experiências mais vivas e responsivas.</span>
-              <span class="cs-title-short">Aprendizado de processo: mudanças em variáveis tornam elementos estáticos mais vivos.</span>
+              <span class="cs-title-full" data-en="Process takeaway: Small changes to variables like position, transparency, and interaction can turn static elements into livelier, more responsive experiences.">Aprendizado de processo: Pequenas alterações em variáveis como posição, transparência e interação podem transformar elementos estáticos em experiências mais vivas e responsivas.</span>
+              <span class="cs-title-short" data-en="Process takeaway: changing variables brings static elements to life.">Aprendizado de processo: mudanças em variáveis tornam elementos estáticos mais vivos.</span>
             </p>
           </div>
 
-          <h3 class="cs-h3">ETAPA 6 - Caveira e arbusto</h3>
+          <h3 class="cs-h3" data-en="Step 6 - Skull and bush">ETAPA 6 - Caveira e arbusto</h3>
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="The mouse splits the screen in half. On the right, an ordinary bush. On the left, a skull appears — a reference to the housekeeper buried in the garden, a fact only a few characters know.">
               O mouse divide a tela ao meio. Na metade direita, um arbusto comum. Na metade esquerda, uma
               caveira aparece. Referência à governanta que foi enterrada no jardim e que só alguns personagens
               sabem do fato.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="The mouse splits the screen: a bush on one side, a skull on the other, referencing the housekeeper buried in the garden.">
               O mouse divide a tela: arbusto de um lado, caveira do outro, referência à governanta enterrada no jardim.
             </span>
           </p>
           <div class="cs-panel">
             <div class="cs-demo-window" style="--crop-left: -230.76%;">
-              <img src="../assets/images/cs-pc-demo-2.gif" alt="Pôster interativo com a caveira revelada de um lado da tela e o arbusto comum do outro" loading="lazy" />
+              <img src="../assets/images/cs-pc-demo-2.gif" alt="Pôster interativo com a caveira revelada de um lado da tela e o arbusto comum do outro" data-en-alt="Interactive poster revealing the skull on one side of the screen and the ordinary bush on the other" loading="lazy" />
             </div>
           </div>
           <div class="cs-insight-panel">
             <p>
-              <span class="cs-title-full">Aprendizado técnico: Uso de mouseX para criar condicionais de exibição. Como mostrar ou ocultar elementos com base na posição do cursor.</span>
-              <span class="cs-title-short">Aprendizado técnico: mouseX cria condicionais pra mostrar ou ocultar elementos.</span>
+              <span class="cs-title-full" data-en="Technical takeaway: Using mouseX to create display conditionals — showing or hiding elements based on the cursor's position.">Aprendizado técnico: Uso de mouseX para criar condicionais de exibição. Como mostrar ou ocultar elementos com base na posição do cursor.</span>
+              <span class="cs-title-short" data-en="Technical takeaway: mouseX drives conditionals to show or hide elements.">Aprendizado técnico: mouseX cria condicionais pra mostrar ou ocultar elementos.</span>
             </p>
             <p>
-              <span class="cs-title-full">Aprendizado de processo: Interações baseadas em posição do mouse criam camadas de descoberta. O usuário encontra algo sem ser instruído a procurar. É design de revelação progressiva aplicado ao código.</span>
-              <span class="cs-title-short">Aprendizado de processo: mouse cria camadas de descoberta sem instrução.</span>
+              <span class="cs-title-full" data-en="Process takeaway: Mouse-position interactions create layers of discovery. The user finds something without being told to look for it — it's progressive-disclosure design applied to code.">Aprendizado de processo: Interações baseadas em posição do mouse criam camadas de descoberta. O usuário encontra algo sem ser instruído a procurar. É design de revelação progressiva aplicado ao código.</span>
+              <span class="cs-title-short" data-en="Process takeaway: the mouse creates layers of discovery without instruction.">Aprendizado de processo: mouse cria camadas de descoberta sem instrução.</span>
             </p>
           </div>
 
-          <h3 class="cs-h3">ETAPA 7 - Pessosas andando</h3>
+          <h3 class="cs-h3" data-en="Step 7 - People walking">ETAPA 7 - Pessosas andando</h3>
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="Two movements that tell different stories. The figure in the basement oscillates in place, going back and forth without really advancing — a trajectory marked by limitation and repetition. The figure upstairs, meanwhile, roams freely across the whole x-axis, suggesting greater freedom of choice and movement. Same animation technique, completely different visual readings.">
               Dois movimentos que contam histórias diferentes. A pessoa no porão oscila no mesmo ponto, indo e
               voltando sem realmente avançar, representando uma trajetória marcada por limitações e repetição.
               Já a pessoa no andar superior percorre livremente todo o eixo x, sugerindo maior liberdade de
               escolha e circulação. A mesma técnica de animação, mas com leituras visuais completamente distintas.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="Two movements tell different stories: one oscillates in place, the other roams freely along the x-axis.">
               Dois movimentos contam histórias diferentes: um oscila sem avançar, o outro percorre livre o eixo x.
             </span>
           </p>
           <div class="cs-panel">
             <div class="cs-demo-window cs-demo-window--mask" style="--crop-left: -117.59%;">
-              <img src="../assets/images/cs-pc-demo.gif" alt="Pôster interativo com os membros das famílias Kim e Park em movimento pela composição" loading="lazy" />
+              <img src="../assets/images/cs-pc-demo.gif" alt="Pôster interativo com os membros das famílias Kim e Park em movimento pela composição" data-en-alt="Interactive poster with members of the Kim and Park families moving through the composition" loading="lazy" />
             </div>
           </div>
           <div class="cs-insight-panel">
             <p>
-              <span class="cs-title-full">Aprendizado técnico: Uso de variáveis de posição e velocidade para criar movimentos distintos, um personagem se desloca continuamente pelo canvas, enquanto o outro se movimenta entre limites definidos por meio da inversão da velocidade.</span>
-              <span class="cs-title-short">Aprendizado técnico: posição e velocidade criam movimentos distintos.</span>
+              <span class="cs-title-full" data-en="Technical takeaway: Using position and speed variables to create distinct movements — one character moves continuously across the canvas, while the other moves within set limits by reversing its speed.">Aprendizado técnico: Uso de variáveis de posição e velocidade para criar movimentos distintos, um personagem se desloca continuamente pelo canvas, enquanto o outro se movimenta entre limites definidos por meio da inversão da velocidade.</span>
+              <span class="cs-title-short" data-en="Technical takeaway: position and speed variables create distinct movements.">Aprendizado técnico: posição e velocidade criam movimentos distintos.</span>
             </p>
             <p>
-              <span class="cs-title-full">Aprendizado de processo: Diferentes comportamentos visuais podem ser construídos com regras simples de programação, conectando código e narrativa em uma mesma solução.</span>
-              <span class="cs-title-short">Aprendizado de processo: comportamentos vêm de regras simples de código.</span>
+              <span class="cs-title-full" data-en="Process takeaway: Different visual behaviors can be built from simple programming rules, connecting code and narrative in a single solution.">Aprendizado de processo: Diferentes comportamentos visuais podem ser construídos com regras simples de programação, conectando código e narrativa em uma mesma solução.</span>
+              <span class="cs-title-short" data-en="Process takeaway: behaviors emerge from simple code rules.">Aprendizado de processo: comportamentos vêm de regras simples de código.</span>
             </p>
           </div>
 
-          <h3 class="cs-h3">ETAPA 8 - Curiosidades</h3>
+          <h3 class="cs-h3" data-en="Step 8 - Fun facts">ETAPA 8 - Curiosidades</h3>
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="Typing the word &quot;PARASITE&quot; on the keyboard makes fun facts about the film appear on screen. Building this required understanding how to detect key presses in P5.js. AI was used as a teacher here: I described the problem, and it explained the reasoning so I could write the code myself.">
               Ao digitar a palavra "PARASITA" no teclado, curiosidades sobre o filme aparecem na tela. A
               funcionalidade exigiu entender como detectar de teclas no P5.js. A IA foi usada como professora: a
               dúvida foi descrita, a IA ensinou o raciocínio para que o código pudesse ser escrito.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="Typing &quot;PARASITE&quot; reveals fun facts — AI explained the reasoning, not the ready-made code.">
               Ao digitar "PARASITA", curiosidades aparecem, a IA ensinou o raciocínio, não o código pronto.
             </span>
           </p>
           <div class="cs-panel">
             <div class="cs-demo-window" style="--crop-left: -117.97%;">
-              <img src="../assets/images/cs-pc-demo.gif" alt="Pôster interativo exibindo uma curiosidade sobre o filme após digitar a palavra PARASITA" loading="lazy" />
+              <img src="../assets/images/cs-pc-demo.gif" alt="Pôster interativo exibindo uma curiosidade sobre o filme após digitar a palavra PARASITA" data-en-alt="Interactive poster displaying a fun fact about the film after typing the word PARASITE" loading="lazy" />
             </div>
           </div>
           <div class="cs-insight-panel">
             <p>
-              <span class="cs-title-full">Aprendizado técnico: Captura de input de teclado com keyTyped(). Como concatenar strings a cada tecla pressionada e comparar com a palavra-alvo para disparar a ação.</span>
-              <span class="cs-title-short">Aprendizado técnico: keyTyped() captura teclas e compara strings com a palavra-alvo.</span>
+              <span class="cs-title-full" data-en="Technical takeaway: Capturing keyboard input with keyTyped() — concatenating strings on every keypress and comparing them to the target word to trigger the action.">Aprendizado técnico: Captura de input de teclado com keyTyped(). Como concatenar strings a cada tecla pressionada e comparar com a palavra-alvo para disparar a ação.</span>
+              <span class="cs-title-short" data-en="Technical takeaway: keyTyped() captures keys and compares strings to the target word.">Aprendizado técnico: keyTyped() captura teclas e compara strings com a palavra-alvo.</span>
             </p>
             <p>
-              <span class="cs-title-full">Aprendizado de processo: Usar IA para aprender a lógica é diferente de usar IA para gerar uma solução. Entender o raciocínio antes de escrever o código faz diferença no que você absorve e no que consegue adaptar depois.</span>
-              <span class="cs-title-short">Aprendizado de processo: usar IA pra aprender a lógica é diferente de usar IA pra gerar a solução.</span>
+              <span class="cs-title-full" data-en="Process takeaway: Using AI to learn the logic is different from using it to generate a solution. Understanding the reasoning before writing the code changes what you actually absorb and what you're able to adapt later.">Aprendizado de processo: Usar IA para aprender a lógica é diferente de usar IA para gerar uma solução. Entender o raciocínio antes de escrever o código faz diferença no que você absorve e no que consegue adaptar depois.</span>
+              <span class="cs-title-short" data-en="Process takeaway: using AI to learn the logic is different from using it to generate the solution.">Aprendizado de processo: usar IA pra aprender a lógica é diferente de usar IA pra gerar a solução.</span>
             </p>
           </div>
 
-          <h3 class="cs-h3">ETAPA 9 - Ícones e informações</h3>
+          <h3 class="cs-h3" data-en="Step 9 - Icons and information">ETAPA 9 - Ícones e informações</h3>
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="With several interactions spread across the piece, a UX question came up: without context, users might not discover what's interactive. The solution was to add an &quot;i&quot; icon in the corner of the screen that reveals a guide to the available interactions, what they do, and how they reference the film.">
               Com várias interações distribuídas pela obra, surgiu uma questão de UX: sem contexto, o usuário
               poderia não descobrir o que é interativo. A solução foi adicionar um ícone "i" no canto da tela,
               que revela um guia com as interações disponíveis, suas funções e referências ao filme.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="An &quot;i&quot; icon in the corner reveals a guide to the available interactions and their references to the film.">
               Um ícone "i" no canto da tela revela um guia com as interações disponíveis e suas referências ao filme.
             </span>
           </p>
           <div class="cs-panel">
             <div class="cs-demo-window" style="--crop-left: -229.93%;">
-              <img src="../assets/images/cs-pc-demo.gif" alt="Pôster interativo com o ícone de informações aberto, mostrando o guia das interações disponíveis" loading="lazy" />
+              <img src="../assets/images/cs-pc-demo.gif" alt="Pôster interativo com o ícone de informações aberto, mostrando o guia das interações disponíveis" data-en-alt="Interactive poster with the info icon open, showing the guide to available interactions" loading="lazy" />
             </div>
           </div>
           <div class="cs-insight-panel">
             <p>
-              <span class="cs-title-full">Aprendizado técnico: uso de textWidth() para medir o tamanho de uma string e calcular a posição x correta para centralização manual. No P5.js não existe "centralizar" automático como em CSS, cada posição é um cálculo.</span>
-              <span class="cs-title-short">Aprendizado técnico: textWidth() calcula a posição x, no P5.js não existe centralizar automático.</span>
+              <span class="cs-title-full" data-en="Technical takeaway: Using textWidth() to measure a string's size and calculate the correct x position for manual centering. P5.js has no automatic &quot;center&quot; like CSS — every position is a calculation.">Aprendizado técnico: uso de textWidth() para medir o tamanho de uma string e calcular a posição x correta para centralização manual. No P5.js não existe "centralizar" automático como em CSS, cada posição é um cálculo.</span>
+              <span class="cs-title-short" data-en="Technical takeaway: textWidth() calculates the x position — there's no automatic centering in P5.js.">Aprendizado técnico: textWidth() calcula a posição x, no P5.js não existe centralizar automático.</span>
             </p>
             <p>
-              <span class="cs-title-full">Aprendizado de processo: O que é trivial no design pode ser trabalhoso no código. Centralizar um texto no Figma leva um segundo. No P5.js exige entender como o texto é renderizado e calcular sua posição manualmente. Isso muda como você especifica alinhamentos para desenvolvimento.</span>
-              <span class="cs-title-short">Aprendizado de processo: centralizar texto exige cálculo manual no código.</span>
+              <span class="cs-title-full" data-en="Process takeaway: What's trivial in design can be laborious in code. Centering text in Figma takes a second; in P5.js it requires understanding how text is rendered and calculating its position by hand. That changes how you spec alignment for development.">Aprendizado de processo: O que é trivial no design pode ser trabalhoso no código. Centralizar um texto no Figma leva um segundo. No P5.js exige entender como o texto é renderizado e calcular sua posição manualmente. Isso muda como você especifica alinhamentos para desenvolvimento.</span>
+              <span class="cs-title-short" data-en="Process takeaway: centering text requires manual calculation in code.">Aprendizado de processo: centralizar texto exige cálculo manual no código.</span>
             </p>
           </div>
           </div>
@@ -625,29 +625,29 @@
 
         <section class="cs-section" id="resultado">
           <button type="button" class="cs-section__header" aria-expanded="false">
-            <span class="cs-eyebrow">RESULTADO</span>
-            <h2 class="cs-h2">Uma abstração que conta o filme<br class="cs-h2-break" /> através da interação.</h2>
+            <span class="cs-eyebrow" data-en="RESULT">RESULTADO</span>
+            <h2 class="cs-h2"><span data-en="An abstraction that tells the film's story">Uma abstração que conta o filme</span><br class="cs-h2-break" /> <span data-en="through interaction.">através da interação.</span></h2>
             <span class="cs-section__chevron" aria-hidden="true"></span>
           </button>
           <div class="cs-section__body">
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="At first glance, the poster's elements look simple. Through interaction, new layers of the narrative are revealed, with characters, events, and hidden details surfacing within the composition. Each interaction reinforces Parasite's themes and symbols, turning the code into an explorable experience.">
               À primeira vista, os elementos do pôster parecem semelhantes. Com a interação, novas camadas da
               narrativa são reveladas, com personagens, eventos e detalhes ocultos surgindo na composição. Cada
               interação reforça temas e símbolos de Parasita, transformando o código em uma experiência
               explorável.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="At first glance the elements look simple; interaction reveals layers of Parasite's narrative.">
               À primeira vista os elementos parecem simples; a interação revela camadas da narrativa de Parasita.
             </span>
           </p>
           <div class="cs-panel">
-            <img src="../assets/images/cs-pc-dark-11.png" alt="Diagrama anotado do pôster final explicando cada interação: aleatoriedade, teclado, posição do mouse e rollover" loading="lazy" />
+            <img src="../assets/images/cs-pc-dark-11.png" alt="Diagrama anotado do pôster final explicando cada interação: aleatoriedade, teclado, posição do mouse e rollover" data-en-alt="Annotated diagram of the final poster explaining each interaction: randomness, keyboard, mouse position, and rollover" loading="lazy" />
           </div>
 
           <div class="cs-cta-row cs-cta-row--center">
             <a href="https://editor.p5js.org/lauramenesantos/sketches/JHw3mU3-s" class="btn btn--outline" target="_blank" rel="noopener noreferrer">
-              Ver código
+              <span data-en="View the code">Ver código</span>
               <span class="btn__icon">
                 <img src="../assets/icons/icone-seta-vermais-outline-programacao-criativa.svg" alt="" class="btn__icon-default" />
                 <img src="../assets/icons/icone-seta-vermais-outline-programacao-criativa-hover.svg" alt="" class="btn__icon-hover" />
@@ -655,7 +655,7 @@
               </span>
             </a>
             <a href="https://editor.p5js.org/lauramenesantos/full/JHw3mU3-s" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
-              Interagir com o pôster
+              <span data-en="Interact with the poster">Interagir com o pôster</span>
               <span class="btn__icon"><img src="../assets/icons/icone-seta-vermais-white.svg" alt="" /></span>
             </a>
           </div>
@@ -664,46 +664,46 @@
 
         <section class="cs-section" id="aprendizados">
           <button type="button" class="cs-section__header" aria-expanded="false">
-            <span class="cs-eyebrow">APRENDIZADOS</span>
+            <span class="cs-eyebrow" data-en="LEARNINGS">APRENDIZADOS</span>
             <h2 class="cs-h2">
-              <span class="cs-title-full">Como este projeto mudou<br />minha forma de pensar Design?</span>
-              <span class="cs-title-short">Como este projeto mudou meu jeito de pensar design?</span>
+              <span class="cs-title-full"><span data-en="How did this project change">Como este projeto mudou</span><br /><span data-en="the way I think about design?">minha forma de pensar Design?</span></span>
+              <span class="cs-title-short" data-en="How did this project change the way I think about design?">Como este projeto mudou meu jeito de pensar design?</span>
             </h2>
             <span class="cs-section__chevron" aria-hidden="true"></span>
           </button>
           <div class="cs-section__body">
           <div class="cs-learn-list">
             <div class="cs-learn-card">
-              <p class="cs-learn-card__title">Design e código tem limites diferentes</p>
+              <p class="cs-learn-card__title" data-en="Design and code have different limits">Design e código tem limites diferentes</p>
               <p class="cs-learn-card__text">
-                <span class="cs-title-full">Animações e interações que parecem simples no Figma podem ser complexas no código, saber isso torna as conversas com desenvolvimento mais precisas e as decisões de design mais realistas.</span>
-                <span class="cs-title-short">Animações simples no Figma podem ser complexas no código.</span>
+                <span class="cs-title-full" data-en="Animations and interactions that look simple in Figma can be complex in code. Knowing that makes conversations with development more precise and design decisions more realistic.">Animações e interações que parecem simples no Figma podem ser complexas no código, saber isso torna as conversas com desenvolvimento mais precisas e as decisões de design mais realistas.</span>
+                <span class="cs-title-short" data-en="Animations that look simple in Figma can be complex in code.">Animações simples no Figma podem ser complexas no código.</span>
               </p>
             </div>
             <div class="cs-learn-card">
-              <p class="cs-learn-card__title">Estados e componentes existem no código</p>
+              <p class="cs-learn-card__title" data-en="States and components exist in code too">Estados e componentes existem no código</p>
               <p class="cs-learn-card__text">
-                <span class="cs-title-full">O que no design é nomenclatura de componente, no código é uma variável booleana e uma condicional. Entender essa equivalência muda como você documenta e especifica interações.</span>
-                <span class="cs-title-short">O que no design é nome de componente, no código é uma variável booleana.</span>
+                <span class="cs-title-full" data-en="What's a component name in design is a boolean variable and a conditional in code. Understanding that equivalence changes how you document and spec interactions.">O que no design é nomenclatura de componente, no código é uma variável booleana e uma condicional. Entender essa equivalência muda como você documenta e especifica interações.</span>
+                <span class="cs-title-short" data-en="What's a component name in design is a boolean variable in code.">O que no design é nome de componente, no código é uma variável booleana.</span>
               </p>
             </div>
             <div class="cs-learn-card">
-              <p class="cs-learn-card__title">Animação é matemática</p>
+              <p class="cs-learn-card__title" data-en="Animation is math">Animação é matemática</p>
               <p class="cs-learn-card__text">
-                <span class="cs-title-full">Velocidade, aceleração, limite, oscilação. Cada efeito visual corresponde a uma operação numérica. Saber disso torna as especificações de motion mais concretas e menos subjetivas.</span>
-                <span class="cs-title-short">Velocidade, aceleração, oscilação: cada efeito visual é uma operação numérica.</span>
+                <span class="cs-title-full" data-en="Speed, acceleration, limits, oscillation — every visual effect corresponds to a numeric operation. Knowing that makes motion specs more concrete and less subjective.">Velocidade, aceleração, limite, oscilação. Cada efeito visual corresponde a uma operação numérica. Saber disso torna as especificações de motion mais concretas e menos subjetivas.</span>
+                <span class="cs-title-short" data-en="Speed, acceleration, oscillation: every visual effect is a numeric operation.">Velocidade, aceleração, oscilação: cada efeito visual é uma operação numérica.</span>
               </p>
             </div>
             <div class="cs-learn-card">
-              <p class="cs-learn-card__title">Simplificar é uma decisão, não uma derrota</p>
+              <p class="cs-learn-card__title" data-en="Simplifying is a decision, not a defeat">Simplificar é uma decisão, não uma derrota</p>
               <p class="cs-learn-card__text cs-learn-card__text--narrow">
-                <span class="cs-title-full">Algumas restrições técnicas forçaram escolhas de design mais simples que melhorou o produto final.</span>
-                <span class="cs-title-short">Restrições técnicas forçaram escolhas mais simples que melhoraram o produto final.</span>
+                <span class="cs-title-full" data-en="Some technical constraints forced simpler design choices that ended up improving the final product.">Algumas restrições técnicas forçaram escolhas de design mais simples que melhorou o produto final.</span>
+                <span class="cs-title-short" data-en="Technical constraints forced simpler choices that improved the final product.">Restrições técnicas forçaram escolhas mais simples que melhoraram o produto final.</span>
               </p>
             </div>
           </div>
 
-          <p class="cs-thanks">Obrigada por ler até aqui :)</p>
+          <p class="cs-thanks" data-en="Thanks for reading this far :)">Obrigada por ler até aqui :)</p>
           </div>
         </section>
 
@@ -714,22 +714,22 @@
     <section class="section" id="contato" aria-labelledby="contato-titulo">
       <div class="container">
         <div class="contact">
-          <h2 class="contact__title" id="contato-titulo">Vamos conversar?</h2>
+          <h2 class="contact__title" id="contato-titulo" data-en="Let's talk?">Vamos conversar?</h2>
           <p class="contact__text">
-            <span class="cs-title-full">Gostou do meu trabalho? Estou aberta a oportunidades e adoraria conhecer novos desafios.</span>
-            <span class="cs-title-short">Estou aberta a oportunidades e adoraria conhecer novos desafios.</span>
+            <span class="cs-title-full" data-en="Like what you see? I'm open to opportunities and would love to take on new challenges.">Gostou do meu trabalho? Estou aberta a oportunidades e adoraria conhecer novos desafios.</span>
+            <span class="cs-title-short" data-en="I'm open to opportunities and would love to take on new challenges.">Estou aberta a oportunidades e adoraria conhecer novos desafios.</span>
           </p>
 
           <div class="contact__cta">
             <a href="https://wa.me/5534996358519" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
-              Entre em contato
+              <span data-en="Get in touch">Entre em contato</span>
               <span class="btn__icon"><img src="../assets/icons/icone-whatsapp.svg" alt="" /></span>
             </a>
           </div>
 
           <ul class="social-list">
             <li>
-              <a href="mailto:lauramenesantos@gmail.com" class="social-btn social-btn--figma social-btn--gmail" aria-label="Enviar e-mail">
+              <a href="mailto:lauramenesantos@gmail.com" class="social-btn social-btn--figma social-btn--gmail" aria-label="Enviar e-mail" data-en-aria-label="Send email">
                 <span class="social-btn__icon">
                   <img src="../assets/icons/icone-mail-default-programacao-criativa.svg" alt="" class="social-btn__icon-default" />
                   <img src="../assets/icons/icone-mail-hover-programacao-criativa.svg" alt="" class="social-btn__icon-hover" />
@@ -739,7 +739,7 @@
               </a>
             </li>
             <li>
-              <a href="https://www.behance.net/lauramenezes11" class="social-btn social-btn--figma social-btn--behance" aria-label="Ver Behance" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.behance.net/lauramenezes11" class="social-btn social-btn--figma social-btn--behance" aria-label="Ver Behance" data-en-aria-label="View Behance" target="_blank" rel="noopener noreferrer">
                 <span class="social-btn__icon">
                   <img src="../assets/icons/icone-behance-default-programacao-criativa.svg" alt="" class="social-btn__icon-default" />
                   <img src="../assets/icons/icone-behance-hover-programacao-criativa.svg" alt="" class="social-btn__icon-hover" />
@@ -749,7 +749,7 @@
               </a>
             </li>
             <li>
-              <a href="https://www.linkedin.com/in/lauramenesantos" class="social-btn social-btn--figma social-btn--linkedin" aria-label="Ver LinkedIn" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/lauramenesantos" class="social-btn social-btn--figma social-btn--linkedin" aria-label="Ver LinkedIn" data-en-aria-label="View LinkedIn" target="_blank" rel="noopener noreferrer">
                 <span class="social-btn__icon">
                   <img src="../assets/icons/icone-linkedin-default-programacao-criativa.svg" alt="" class="social-btn__icon-default" />
                   <img src="../assets/icons/icone-linkedin-hover-programacao-criativa.svg" alt="" class="social-btn__icon-hover" />
@@ -766,7 +766,7 @@
     <!-- PROJETOS RECOMENDADOS -->
     <section class="section" aria-labelledby="projetos-titulo">
       <div class="container">
-        <h2 class="section__title" id="projetos-titulo">Projetos recomendados</h2>
+        <h2 class="section__title" id="projetos-titulo" data-en="Featured projects">Projetos recomendados</h2>
 
         <div class="project-grid">
           <a class="project-card project-card--design-system" href="../design-system/index.html">
@@ -774,15 +774,15 @@
               <img src="../assets/images/projeto-design-system-hover.png" alt="" loading="lazy" />
             </div>
             <div class="project-card__media">
-              <img src="../assets/images/projeto-design-system.png" alt="Prévia do projeto Design System" loading="lazy" />
+              <img src="../assets/images/projeto-design-system.png" alt="Prévia do projeto Design System" data-en-alt="Preview of the Design System project" loading="lazy" />
             </div>
             <div class="project-card__info">
               <h3 class="project-card__title">Design System</h3>
-              <p class="project-card__desc">Escala e padronização de um sistema de gestão de ativos industriais</p>
+              <p class="project-card__desc" data-en="Scaling and standardizing a design system for an industrial asset management platform">Escala e padronização de um sistema de gestão de ativos industriais</p>
             </div>
             <div class="project-card__tags">
-              <span class="tag tag--primary">Escalabilidade</span>
-              <span class="tag tag--primary">B2B Industrial</span>
+              <span class="tag tag--primary" data-en="Scalability">Escalabilidade</span>
+              <span class="tag tag--primary" data-en="Industrial B2B">B2B Industrial</span>
             </div>
             <span class="project-card__arrow" aria-hidden="true">
               <img src="../assets/icons/icone-seta-proximo.svg" alt="" />
@@ -794,14 +794,14 @@
               <img src="../assets/images/projeto-design-inclusivo-hover.png" alt="" loading="lazy" />
             </div>
             <div class="project-card__media">
-              <img src="../assets/images/projeto-design-inclusivo.png" alt="Prévia do projeto Design Inclusivo Gamificado" loading="lazy" />
+              <img src="../assets/images/projeto-design-inclusivo.png" alt="Prévia do projeto Design Inclusivo Gamificado" data-en-alt="Preview of the Gamified Inclusive Design project" loading="lazy" />
             </div>
             <div class="project-card__info">
-              <h3 class="project-card__title">Design Inclusivo Gamificado</h3>
-              <p class="project-card__desc">Design de um aplicativo gamificado para aprendizado inclusivo de LIBRAS</p>
+              <h3 class="project-card__title" data-en="Gamified Inclusive Design">Design Inclusivo Gamificado</h3>
+              <p class="project-card__desc" data-en="Designing a gamified app for inclusive learning of Brazilian Sign Language (LIBRAS)">Design de um aplicativo gamificado para aprendizado inclusivo de LIBRAS</p>
             </div>
             <div class="project-card__tags">
-              <span class="tag tag--secondary">Gamificação</span>
+              <span class="tag tag--secondary" data-en="Gamification">Gamificação</span>
               <span class="tag tag--secondary">Mobile First</span>
             </div>
             <span class="project-card__arrow" aria-hidden="true">
@@ -814,15 +814,15 @@
               <img src="../assets/images/projeto-programacao-criativa-hover.png" alt="" loading="lazy" />
             </div>
             <div class="project-card__media">
-              <img src="../assets/images/projeto-programacao-criativa.png" alt="Prévia do projeto Programação Criativa" loading="lazy" />
+              <img src="../assets/images/projeto-programacao-criativa.png" alt="Prévia do projeto Programação Criativa" data-en-alt="Preview of the Creative Coding project" loading="lazy" />
             </div>
             <div class="project-card__info">
-              <h3 class="project-card__title">Programação Criativa</h3>
-              <p class="project-card__desc">Compreensão de como decisões de design se traduzem em código</p>
+              <h3 class="project-card__title" data-en="Creative Coding">Programação Criativa</h3>
+              <p class="project-card__desc" data-en="Understanding how design decisions translate into code">Compreensão de como decisões de design se traduzem em código</p>
             </div>
             <div class="project-card__tags">
               <span class="tag tag--accent">JavaScript</span>
-              <span class="tag tag--accent">Interatividade</span>
+              <span class="tag tag--accent" data-en="Interactivity">Interatividade</span>
             </div>
             <span class="project-card__arrow" aria-hidden="true">
               <img src="../assets/icons/icone-seta-proximo.svg" alt="" />
@@ -838,7 +838,7 @@
     <p class="site-footer__text">lauramenesantos@gmail.com&nbsp;&nbsp;|&nbsp;(34) 9.9635-8519</p>
   </footer>
 
-  <button type="button" class="scroll-top-btn" aria-label="Voltar ao topo">
+  <button type="button" class="scroll-top-btn" aria-label="Voltar ao topo" data-en-aria-label="Back to top">
     <img src="../assets/icons/icone-seta-proximo.svg" alt="" class="scroll-top-btn__icon" />
   </button>
 

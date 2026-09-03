@@ -3,62 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Design System — Laura Menezes</title>
-  <meta name="description" content="Estudo de caso: escala e padronização de um Design System para um sistema de gestão de ativos industriais." />
+  <title data-en="Design System — Laura Menezes">Design System — Laura Menezes</title>
+  <meta name="description" content="Estudo de caso: escala e padronização de um Design System para um sistema de gestão de ativos industriais." data-en-content="Case study: scaling and standardizing a design system for an industrial asset management platform." />
   <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body class="page-design-system">
 
   <header class="site-header">
     <div class="site-header__inner">
-      <a href="../index.html#inicio" class="site-header__brand" aria-label="Início — Laura Menezes">
-        <img src="../assets/images/avatar-laura.png" alt="Foto de perfil de Laura Menezes" class="site-header__avatar" width="48" height="48" />
+      <a href="../index.html#inicio" class="site-header__brand" aria-label="Início — Laura Menezes" data-en-aria-label="Home — Laura Menezes">
+        <img src="../assets/images/avatar-laura.png" alt="Foto de perfil de Laura Menezes" data-en-alt="Profile photo of Laura Menezes" class="site-header__avatar" width="48" height="48" />
         <div class="site-header__brand-text">
           <span class="site-header__name">Laura Menezes</span>
-          <span class="site-header__role">Designer Estratégica</span>
+          <span class="site-header__role" data-en="Strategic Designer">Designer Estratégica</span>
         </div>
       </a>
 
       <nav aria-label="Navegação principal">
         <ul class="site-nav__list" id="mobileNav">
           <li class="site-nav__group">
-            <a href="../index.html#inicio" class="site-nav__link">Início</a>
-            <a href="../index.html#projetos" class="site-nav__link">Projetos</a>
-            <a href="../index.html#sobre" class="site-nav__link">Sobre</a>
-            <a href="../index.html#contato" class="site-nav__link">Contato</a>
+            <a href="../index.html#inicio" class="site-nav__link" data-en="Home">Início</a>
+            <a href="../index.html#projetos" class="site-nav__link" data-en="Projects">Projetos</a>
+            <a href="../index.html#sobre" class="site-nav__link" data-en="About">Sobre</a>
+            <a href="../index.html#contato" class="site-nav__link" data-en="Contact">Contato</a>
           </li>
 
           <li class="site-nav__toggles">
             <div class="site-nav__toggle-row">
-              <span class="site-nav__toggle-label">Escolha o idioma:</span>
-              <div class="lang-toggle" role="group" aria-label="Selecionar idioma">
+              <span class="site-nav__toggle-label" data-en="Choose your language:">Escolha o idioma:</span>
+              <div class="lang-toggle" role="group" aria-label="Selecionar idioma" data-en-aria-label="Select language">
                 <button type="button" class="lang-toggle__code" data-lang="pt" aria-pressed="true">PT</button>
                 <span class="lang-toggle__switch">
                   <span class="lang-toggle__flags">
                     <img src="../assets/icons/flag-br.svg" alt="" class="lang-toggle__flag" />
-                    <img src="../assets/icons/flag-us.svg" alt="" class="lang-toggle__flag" />
+                    <img src="../assets/icons/flag-us.svg" alt="" class="lang-toggle__flag lang-toggle__flag--muted" />
                   </span>
                 </span>
                 <button type="button" class="lang-toggle__code lang-toggle__code--muted" data-lang="en" aria-pressed="false">EN</button>
               </div>
             </div>
             <div class="site-nav__toggle-row">
-              <span class="site-nav__toggle-label">Escolha o modo de visualização:</span>
-              <div class="cs-density-toggle" role="group" aria-label="Densidade do texto">
-                <button type="button" class="cs-density-toggle__btn is-active" data-density="compacto" aria-pressed="true">Compacto</button>
-                <button type="button" class="cs-density-toggle__btn" data-density="completo" aria-pressed="false">Completo</button>
+              <span class="site-nav__toggle-label" data-en="Choose reading mode:">Escolha o modo de visualização:</span>
+              <div class="cs-density-toggle" role="group" aria-label="Densidade do texto" data-en-aria-label="Text density">
+                <button type="button" class="cs-density-toggle__btn is-active" data-density="compacto" aria-pressed="true" data-en="Compact">Compacto</button>
+                <button type="button" class="cs-density-toggle__btn" data-density="completo" aria-pressed="false" data-en="Full">Completo</button>
               </div>
             </div>
           </li>
 
           <li class="site-nav__extra">
             <a href="https://wa.me/5534996358519" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
-              Entre em contato
+              <span data-en="Get in touch">Entre em contato</span>
               <span class="btn__icon"><img src="../assets/icons/icone-whatsapp.svg" alt="" /></span>
             </a>
             <ul class="social-list">
               <li>
-                <a href="mailto:lauramenesantos@gmail.com" class="social-btn social-btn--figma social-btn--gmail" aria-label="Enviar e-mail">
+                <a href="mailto:lauramenesantos@gmail.com" class="social-btn social-btn--figma social-btn--gmail" aria-label="Enviar e-mail" data-en-aria-label="Send email">
                   <span class="social-btn__icon">
                     <img src="../assets/icons/icone-mail-default.svg" alt="" class="social-btn__icon-default" />
                     <img src="../assets/icons/icone-mail-hover.svg" alt="" class="social-btn__icon-hover" />
@@ -68,7 +68,7 @@
                 </a>
               </li>
               <li>
-                <a href="https://www.behance.net/lauramenezes11" class="social-btn social-btn--figma social-btn--behance" aria-label="Ver Behance" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.behance.net/lauramenezes11" class="social-btn social-btn--figma social-btn--behance" aria-label="Ver Behance" data-en-aria-label="View Behance" target="_blank" rel="noopener noreferrer">
                   <span class="social-btn__icon">
                     <img src="../assets/icons/icone-behance-default.svg" alt="" class="social-btn__icon-default" />
                     <img src="../assets/icons/icone-behance-hover.svg" alt="" class="social-btn__icon-hover" />
@@ -78,7 +78,7 @@
                 </a>
               </li>
               <li>
-                <a href="https://www.linkedin.com/in/lauramenesantos" class="social-btn social-btn--figma social-btn--linkedin" aria-label="Ver LinkedIn" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/lauramenesantos" class="social-btn social-btn--figma social-btn--linkedin" aria-label="Ver LinkedIn" data-en-aria-label="View LinkedIn" target="_blank" rel="noopener noreferrer">
                   <span class="social-btn__icon">
                     <img src="../assets/icons/icone-linkedin-default.svg" alt="" class="social-btn__icon-default" />
                     <img src="../assets/icons/icone-linkedin-hover.svg" alt="" class="social-btn__icon-hover" />
@@ -93,12 +93,12 @@
       </nav>
 
       <div class="site-header__extras">
-        <div class="lang-toggle" role="group" aria-label="Selecionar idioma">
+        <div class="lang-toggle" role="group" aria-label="Selecionar idioma" data-en-aria-label="Select language">
           <button type="button" class="lang-toggle__code" data-lang="pt" aria-pressed="true">PT</button>
           <span class="lang-toggle__switch">
             <span class="lang-toggle__flags">
               <img src="../assets/icons/flag-br.svg" alt="" class="lang-toggle__flag" />
-              <img src="../assets/icons/flag-us.svg" alt="" class="lang-toggle__flag" />
+              <img src="../assets/icons/flag-us.svg" alt="" class="lang-toggle__flag lang-toggle__flag--muted" />
             </span>
           </span>
           <button type="button" class="lang-toggle__code lang-toggle__code--muted" data-lang="en" aria-pressed="false">EN</button>
@@ -110,11 +110,11 @@
           <span class="resume-link__icon">
             <img src="../assets/icons/icone-seta-vermais.svg" alt="" />
           </span>
-          Currículo
+          <span data-en="Resume">Currículo</span>
         </a>
       </div>
 
-      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileNav">
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" data-en-aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -125,32 +125,32 @@
 
       <aside class="cs-sidebar">
         <div class="cs-sidebar__top">
-          <a href="../index.html#projetos" class="cs-sidebar__back" aria-label="Voltar para projetos">
+          <a href="../index.html#projetos" class="cs-sidebar__back" aria-label="Voltar para projetos" data-en-aria-label="Back to projects">
             <img src="../assets/icons/icone-seta-voltar.svg" alt="" />
           </a>
         </div>
 
         <nav class="cs-sidebar__nav" aria-label="Navegação do estudo de caso">
-          <a href="#introducao" class="cs-sidebar__link">Introdução<span class="cs-sidebar__link-dot"></span></a>
-          <a href="#impacto" class="cs-sidebar__link">Impacto<span class="cs-sidebar__link-dot"></span></a>
-          <a href="#contexto" class="cs-sidebar__link">Contexto<span class="cs-sidebar__link-dot"></span></a>
-          <a href="#problema" class="cs-sidebar__link">Problema<span class="cs-sidebar__link-dot"></span></a>
-          <a href="#construcao" class="cs-sidebar__link">Construção<span class="cs-sidebar__link-dot"></span></a>
-          <a href="#migracao" class="cs-sidebar__link">Migração<span class="cs-sidebar__link-dot"></span></a>
-          <a href="#resultado" class="cs-sidebar__link">Resultado<span class="cs-sidebar__link-dot"></span></a>
-          <a href="#aprendizados" class="cs-sidebar__link">Aprendizados<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#introducao" class="cs-sidebar__link" data-en="Introduction">Introdução<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#impacto" class="cs-sidebar__link" data-en="Impact">Impacto<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#contexto" class="cs-sidebar__link" data-en="Context">Contexto<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#problema" class="cs-sidebar__link" data-en="Problem">Problema<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#construcao" class="cs-sidebar__link" data-en="Build">Construção<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#migracao" class="cs-sidebar__link" data-en="Migration">Migração<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#resultado" class="cs-sidebar__link" data-en="Result">Resultado<span class="cs-sidebar__link-dot"></span></a>
+          <a href="#aprendizados" class="cs-sidebar__link" data-en="Learnings">Aprendizados<span class="cs-sidebar__link-dot"></span></a>
         </nav>
 
-        <div class="cs-density-toggle" role="group" aria-label="Densidade do texto do case">
-          <button type="button" class="cs-density-toggle__btn" data-density="compacto" aria-pressed="false">Compacto</button>
-          <button type="button" class="cs-density-toggle__btn is-active" data-density="completo" aria-pressed="true">Completo</button>
+        <div class="cs-density-toggle" role="group" aria-label="Densidade do texto do case" data-en-aria-label="Text density for this case study">
+          <button type="button" class="cs-density-toggle__btn" data-density="compacto" aria-pressed="false" data-en="Compact">Compacto</button>
+          <button type="button" class="cs-density-toggle__btn is-active" data-density="completo" aria-pressed="true" data-en="Full">Completo</button>
         </div>
 
         <div class="cs-sidebar__contact">
-          <p class="cs-sidebar__contact-title">Vamos conversar?</p>
-          <p class="cs-sidebar__contact-text">Estou aberta a novas oportunidades e desafios</p>
+          <p class="cs-sidebar__contact-title" data-en="Let's talk?">Vamos conversar?</p>
+          <p class="cs-sidebar__contact-text" data-en="I'm open to new opportunities and challenges">Estou aberta a novas oportunidades e desafios</p>
           <a href="https://wa.me/5534996358519" class="btn btn--outline" target="_blank" rel="noopener noreferrer">
-            Entre em contato
+            <span data-en="Get in touch">Entre em contato</span>
             <span class="btn__icon"><img src="../assets/icons/icone-whatsapp-outline.svg" alt="" /></span>
           </a>
         </div>
@@ -159,55 +159,55 @@
       <article class="cs-content">
 
         <section id="introducao">
-          <span class="cs-eyebrow">DESIGN SYSTEM - Desenvolvido em 2026</span>
-          <h1 class="cs-h1">Quando tudo parece diferente,<br class="cs-h2-break" /> nada parece confiável.</h1>
+          <span class="cs-eyebrow" data-en="DESIGN SYSTEM - Built in 2026">DESIGN SYSTEM - Desenvolvido em 2026</span>
+          <h1 class="cs-h1"><span data-en="When everything looks different,">Quando tudo parece diferente,</span><br class="cs-h2-break" /> <span data-en="nothing feels trustworthy.">nada parece confiável.</span></h1>
           <p class="cs-lead">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="Identifying, documenting, and resolving a visual inconsistency problem at Physis, a platform used by Petrobras, Comgás, and EMAE, now undergoing a gradual migration of more than 100 screens to the new visual standard.">
               Identificação, documentação e resolução de um problema de inconsistência visual na Physis, plataforma usada por
               <span class="cs-highlight">Petrobras</span>, <span class="cs-highlight">Comgás</span> e <span class="cs-highlight">EMAE</span>, atualmente em processo de
               migração gradual de mais de 100 telas para o novo padrão visual.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="I identified and resolved a visual inconsistency problem at Physis, used by Petrobras, Comgás, and EMAE.">
               Identifiquei e resolvi um problema de inconsistência visual na Physis, usada por
               <span class="cs-highlight">Petrobras</span>, <span class="cs-highlight">Comgás</span> e <span class="cs-highlight">EMAE</span>.
             </span>
           </p>
 
           <div class="cs-panel">
-            <img src="../assets/images/cs-ds-panel-intro.png" alt="Mockup de componentes do design system: heading, botões e cor primária" loading="lazy" />
+            <img src="../assets/images/cs-ds-panel-intro.png" alt="Mockup de componentes do design system: heading, botões e cor primária" data-en-alt="Mockup of design system components: heading, buttons, and primary color" loading="lazy" />
           </div>
         </section>
 
         <section class="cs-section" id="impacto">
           <button type="button" class="cs-section__header" aria-expanded="false">
-            <span class="cs-eyebrow">IMPACTO</span>
-            <h2 class="cs-h2">Pequenos passos,<br class="cs-h2-break" /> grandes transformações.</h2>
+            <span class="cs-eyebrow" data-en="IMPACT">IMPACTO</span>
+            <h2 class="cs-h2"><span data-en="Small steps,">Pequenos passos,</span><br class="cs-h2-break" /> <span data-en="big transformations.">grandes transformações.</span></h2>
             <span class="cs-section__chevron" aria-hidden="true"></span>
           </button>
           <div class="cs-section__body">
           <div class="cs-impact-grid">
             <div class="cs-impact-card">
               <p class="cs-impact-card__text">
-                <span class="cs-title-full">Mais de 10 desenvolvedores passaram a seguir os mesmos padrões, aumentando a consistência das entregas entre diferentes micro serviços.</span>
-                <span class="cs-title-short">Mais de 10 devs passaram a seguir os mesmos padrões entre os micro serviços.</span>
+                <span class="cs-title-full" data-en="More than 10 developers now follow the same standards, increasing consistency across deliverables from different microservices.">Mais de 10 desenvolvedores passaram a seguir os mesmos padrões, aumentando a consistência das entregas entre diferentes micro serviços.</span>
+                <span class="cs-title-short" data-en="More than 10 devs now follow the same standards across microservices.">Mais de 10 devs passaram a seguir os mesmos padrões entre os micro serviços.</span>
               </p>
             </div>
             <div class="cs-impact-card">
               <p class="cs-impact-card__text">
-                <span class="cs-title-full">Novas funcionalidades passam a ser construídas sobre padrões já definidos, reduzindo decisões repetitivas entre design e desenvolvimento.</span>
-                <span class="cs-title-short">Novas funcionalidades já nascem sobre padrões definidos, reduzindo decisões repetitivas.</span>
+                <span class="cs-title-full" data-en="New features are now built on already-defined standards, reducing repetitive decisions between design and development.">Novas funcionalidades passam a ser construídas sobre padrões já definidos, reduzindo decisões repetitivas entre design e desenvolvimento.</span>
+                <span class="cs-title-short" data-en="New features are now born on defined standards, reducing repetitive decisions.">Novas funcionalidades já nascem sobre padrões definidos, reduzindo decisões repetitivas.</span>
               </p>
             </div>
             <div class="cs-impact-card">
               <p class="cs-impact-card__text">
-                <span class="cs-title-full">As telas migradas conversam entre si, parecendo o mesmo produto. Os usuários encontram padrões familiares, reduzindo a necessidade de reaprender a interface em cada tela.</span>
-                <span class="cs-title-short">Telas migradas parecem o mesmo produto, usuários não precisam reaprender a interface a cada tela.</span>
+                <span class="cs-title-full" data-en="Migrated screens now speak the same visual language, feeling like one product. Users find familiar patterns, reducing the need to relearn the interface on every screen.">As telas migradas conversam entre si, parecendo o mesmo produto. Os usuários encontram padrões familiares, reduzindo a necessidade de reaprender a interface em cada tela.</span>
+                <span class="cs-title-short" data-en="Migrated screens feel like one product, so users don't need to relearn the interface each time.">Telas migradas parecem o mesmo produto, usuários não precisam reaprender a interface a cada tela.</span>
               </p>
             </div>
             <div class="cs-impact-card">
               <p class="cs-impact-card__text">
-                <span class="cs-title-full">O sistema desenvolvido cria as condições para reduzir o retrabalho e custos de manutenção à medida que a migração avança.</span>
-                <span class="cs-title-short">O sistema reduz retrabalho e custo de manutenção à medida que a migração avança.</span>
+                <span class="cs-title-full" data-en="The system we built creates the conditions to reduce rework and maintenance costs as the migration progresses.">O sistema desenvolvido cria as condições para reduzir o retrabalho e custos de manutenção à medida que a migração avança.</span>
+                <span class="cs-title-short" data-en="The system reduces rework and maintenance costs as the migration progresses.">O sistema reduz retrabalho e custo de manutenção à medida que a migração avança.</span>
               </p>
             </div>
           </div>
@@ -216,44 +216,44 @@
 
         <section class="cs-section" id="contexto">
           <button type="button" class="cs-section__header" aria-expanded="false">
-            <span class="cs-eyebrow">CONTEXTO</span>
+            <span class="cs-eyebrow" data-en="CONTEXT">CONTEXTO</span>
             <h2 class="cs-h2">
-              <span class="cs-title-full">A Physis é uma plataforma grande,<br />o design não acompanhava.</span>
-              <span class="cs-title-short">Uma plataforma grande, o design não acompanhava.</span>
+              <span class="cs-title-full"><span data-en="Physis is a large platform,">A Physis é uma plataforma grande,</span><br /><span data-en="and the design hadn't kept up.">o design não acompanhava.</span></span>
+              <span class="cs-title-short" data-en="A large platform where design hadn't kept up.">Uma plataforma grande, o design não acompanhava.</span>
             </h2>
             <span class="cs-section__chevron" aria-hidden="true"></span>
           </button>
           <div class="cs-section__body">
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="Physis is an industrial asset management platform used by clients like Petrobras, Comgás, and EMAE. With more than 20 microservices evolving over the years, I found that each one had developed its own interpretation of the visual language. Equivalent components looked and behaved differently, making the experience less predictable for users and the product more expensive for the company to evolve.">
               A Physis é uma plataforma de gestão de ativos industriais utilizada por clientes como Petrobras,
               Comgás e EMAE. Com mais de 20 micro serviços evoluindo ao longo dos anos, foi identificado que
               cada micro serviço havia desenvolvido sua própria interpretação da linguagem visual. Componentes
               equivalentes apresentavam diferenças de aparência e comportamento, tornando a experiência menos
               previsível para os usuários e a evolução do produto mais custosa para a empresa.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="Physis has more than 20 microservices, each with its own visual interpretation.">
               A Physis tem mais de 20 micro serviços, cada um com sua própria interpretação visual.
             </span>
           </p>
 
           <div class="cs-context-panel">
-            <img class="cs-context-panel__img" src="../assets/images/cs-ds-panel-contexto-foto-1.png" alt="Tela do Supervisório MonitorIoT com árvore de monitoramentos, um dos três sistemas com aparência inconsistente" loading="lazy" />
-            <img class="cs-context-panel__img" src="../assets/images/cs-ds-panel-contexto-foto-2.png" alt="Tela inicial de aplicações do Physis, com visual claramente diferente do Supervisório MonitorIoT" loading="lazy" />
-            <img class="cs-context-panel__img" src="../assets/images/cs-ds-panel-contexto-foto-3.png" alt="Dashboard do microsserviço Jano, com um terceiro padrão visual distinto dos anteriores" loading="lazy" />
+            <img class="cs-context-panel__img" src="../assets/images/cs-ds-panel-contexto-foto-1.png" alt="Tela do Supervisório MonitorIoT com árvore de monitoramentos, um dos três sistemas com aparência inconsistente" data-en-alt="MonitorIoT Supervisory screen with a monitoring tree, one of three systems with an inconsistent look" loading="lazy" />
+            <img class="cs-context-panel__img" src="../assets/images/cs-ds-panel-contexto-foto-2.png" alt="Tela inicial de aplicações do Physis, com visual claramente diferente do Supervisório MonitorIoT" data-en-alt="Physis applications home screen, visually distinct from the MonitorIoT Supervisory screen" loading="lazy" />
+            <img class="cs-context-panel__img" src="../assets/images/cs-ds-panel-contexto-foto-3.png" alt="Dashboard do microsserviço Jano, com um terceiro padrão visual distinto dos anteriores" data-en-alt="Jano microservice dashboard, showing a third visual pattern distinct from the others" loading="lazy" />
             <p class="cs-context-panel__caption">
               <img src="../assets/icons/icone-seta-caption.svg" alt="" />
-              O produto cresceu sem um ecossistema visual
+              <span data-en="The product grew without a visual ecosystem">O produto cresceu sem um ecossistema visual</span>
             </p>
           </div>
 
           <p class="cs-p cs-p--tight">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="I documented the inconsistencies I found and proposed building a Design System to unify standards, reduce divergence, and support the product's evolution at scale. Approval didn't come right away — it took gradual alignment with the team and leadership.">
               As inconsistências encontradas foram documentadas e foi proposto a criação de um Design System
               para unificar padrões, reduzir divergências e apoiar a evolução do produto em escala. A aprovação
               não foi imediata e exigiu alinhamento gradual com o time e a liderança.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="I documented the inconsistencies and proposed a Design System to unify the platform's standards.">
               Documentei as inconsistências e propus um Design System pra unificar os padrões da plataforma.
             </span>
           </p>
@@ -262,26 +262,26 @@
             <div class="cs-info-grid">
               <div class="cs-info-card">
                 <div class="cs-info-card__text">
-                  <p class="cs-info-card__label">Produto</p>
-                  <p class="cs-info-card__value">Physis, gestão de ativos industriais</p>
+                  <p class="cs-info-card__label" data-en="Product">Produto</p>
+                  <p class="cs-info-card__value" data-en="Physis, industrial asset management">Physis, gestão de ativos industriais</p>
                 </div>
               </div>
               <div class="cs-info-card">
                 <div class="cs-info-card__text">
-                  <p class="cs-info-card__label">Clientes</p>
-                  <p class="cs-info-card__value">Petrobras, Comgás, EMAE e outros</p>
+                  <p class="cs-info-card__label" data-en="Clients">Clientes</p>
+                  <p class="cs-info-card__value" data-en="Petrobras, Comgás, EMAE, and others">Petrobras, Comgás, EMAE e outros</p>
                 </div>
               </div>
               <div class="cs-info-card">
                 <div class="cs-info-card__text">
-                  <p class="cs-info-card__label">Escala</p>
-                  <p class="cs-info-card__value">+10 stakeholders, +20 microserviços</p>
+                  <p class="cs-info-card__label" data-en="Scale">Escala</p>
+                  <p class="cs-info-card__value" data-en="+10 stakeholders, +20 microservices">+10 stakeholders, +20 microserviços</p>
                 </div>
               </div>
               <div class="cs-info-card">
                 <div class="cs-info-card__text">
-                  <p class="cs-info-card__label">Situação</p>
-                  <p class="cs-info-card__value">Padrões visuais inconsistentes</p>
+                  <p class="cs-info-card__label" data-en="Status">Situação</p>
+                  <p class="cs-info-card__value" data-en="Inconsistent visual standards">Padrões visuais inconsistentes</p>
                 </div>
               </div>
             </div>
@@ -291,122 +291,122 @@
 
         <section class="cs-section" id="problema">
           <button type="button" class="cs-section__header" aria-expanded="false">
-            <span class="cs-eyebrow">PROBLEMA</span>
-            <h2 class="cs-h2">Exceções que viraram regra.</h2>
+            <span class="cs-eyebrow" data-en="PROBLEM">PROBLEMA</span>
+            <h2 class="cs-h2" data-en="Exceptions that became the rule.">Exceções que viraram regra.</h2>
             <span class="cs-section__chevron" aria-hidden="true"></span>
           </button>
           <div class="cs-section__body">
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="No one set out to build an inconsistent product. Exceptions piled up little by little until the platform lost a common visual language, making interactions less fluid and multiplying the work needed to fix, test, and evolve the same component.">
               Ninguém decidiu ter um produto inconsistente. As exceções foram se acumulando pouco a pouco, até que
               a plataforma perdeu uma linguagem comum, reduzindo a fluidez das interações e multiplicando o trabalho
               necessário para corrigir, testar e evoluir um mesmo componente.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="No one chose to be inconsistent — exceptions piled up until the platform lost a common visual language.">
               Ninguém decidiu ser inconsistente, as exceções se acumularam até a plataforma perder uma linguagem comum.
             </span>
           </p>
 
-          <h3 class="cs-h3">Sem escala de cores</h3>
+          <h3 class="cs-h3" data-en="No color scale">Sem escala de cores</h3>
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="Each microservice followed its own standard. A simple contrast tweak would generate new colors depending on who implemented it. In the end, variables like BlueNavy weren't even blue anymore.">
               Cada micro serviço seguia seu próprio padrão. Um simples ajuste de contraste gerava novas cores
               dependendo de quem implementava. No fim, variáveis como BlueNavy já nem eram mais azuis.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="Each microservice followed its own standard — names like BlueNavy weren't even blue anymore.">
               Cada micro serviço seguia seu próprio padrão, nomes como BlueNavy nem eram mais azuis.
             </span>
           </p>
           <div class="cs-panel">
-            <img src="../assets/images/cs-ds-panel-02.png" alt="Comparação de cores usadas em três interfaces diferentes" loading="lazy" />
+            <img src="../assets/images/cs-ds-panel-02.png" alt="Comparação de cores usadas em três interfaces diferentes" data-en-alt="Comparison of colors used across three different interfaces" loading="lazy" />
           </div>
 
-          <h3 class="cs-h3">Ícones diferentes para o mesmo uso</h3>
+          <h3 class="cs-h3" data-en="Different icons for the same purpose">Ícones diferentes para o mesmo uso</h3>
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="Each microservice followed its own standard. A simple contrast tweak would generate new colors depending on who implemented it. In the end, variables like BlueNavy weren't even blue anymore.">
               Cada micro serviço seguia seu próprio padrão. Um simples ajuste de contraste gerava novas cores
               dependendo de quem implementava. No fim, variáveis como BlueNavy já nem eram mais azuis.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="Each microservice followed its own standard — names like BlueNavy weren't even blue anymore.">
               Cada micro serviço seguia seu próprio padrão, nomes como BlueNavy nem eram mais azuis.
             </span>
           </p>
           <div class="cs-panel">
-            <img src="../assets/images/cs-ds-panel-03.png" alt="Ícones diferentes usados para a mesma função em três interfaces" loading="lazy" />
+            <img src="../assets/images/cs-ds-panel-03.png" alt="Ícones diferentes usados para a mesma função em três interfaces" data-en-alt="Different icons used for the same function across three interfaces" loading="lazy" />
           </div>
 
-          <h3 class="cs-h3">Tipografia sem critério</h3>
+          <h3 class="cs-h3" data-en="Typography with no criteria">Tipografia sem critério</h3>
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="Without shared typographic standards, every screen communicated different priorities. What should stand out in one area looked secondary in another, weakening the visual hierarchy and making content harder to scan.">
               Sem padrões tipográficos compartilhados, cada tela comunicava prioridades diferentes. O que deveria
               chamava atenção em uma área parececia secundário em outra enfraquecendo a hierarquia visual e
               tornando a leitura menos eficiente.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="Without typographic standards, every screen had different visual priorities.">
               Sem padrões tipográficos, cada tela tinha prioridades visuais diferentes.
             </span>
           </p>
           <div class="cs-panel">
-            <img src="../assets/images/cs-ds-panel-04.png" alt="Tabela comparando família, tamanho e peso tipográfico entre microserviços" loading="lazy" />
+            <img src="../assets/images/cs-ds-panel-04.png" alt="Tabela comparando família, tamanho e peso tipográfico entre microserviços" data-en-alt="Table comparing font family, size, and weight across microservices" loading="lazy" />
           </div>
 
-          <h3 class="cs-h3">Espaçamentos e bordas livres</h3>
+          <h3 class="cs-h3" data-en="Unconstrained spacing and borders">Espaçamentos e bordas livres</h3>
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="Without a base multiple, each component had its own individually defined values, which reduced reusability and slowed down the interface's evolution.">
               Sem um múltiplo base, cada componente possuía valores definidos individualmente, o que reduzia a
               reutilização e tornava a evolução da interface mais lenta.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="Without a base multiple, every component had its own values — less reuse and slower evolution.">
               Sem um múltiplo base, cada componente tinha valores próprios, menos reutilização e evolução mais lenta.
             </span>
           </p>
           <div class="cs-panel">
-            <img src="../assets/images/cs-ds-panel-05.png" alt="Botões com espaçamentos internos diferentes entre microserviços" loading="lazy" />
+            <img src="../assets/images/cs-ds-panel-05.png" alt="Botões com espaçamentos internos diferentes entre microserviços" data-en-alt="Buttons with different internal spacing across microservices" loading="lazy" />
           </div>
 
-          <h3 class="cs-h3">Campos de entrada sem padrão</h3>
+          <h3 class="cs-h3" data-en="Inconsistent input fields">Campos de entrada sem padrão</h3>
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="The most recurring element in the interface was also the most inconsistent. Sizes, borders, and states varied by screen, reducing the fluidity of interactions and multiplying the work needed to use them.">
               O elemento mais recorrente da interface era o mais inconsistente. Tamanhos, bordas e estados
               variavam por tela, reduzindo a fluidez das interações e multiplicando o trabalho necessário para
               utiliza-los.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="The most-used element was also the most inconsistent — sizes, borders, and states varied on every screen.">
               O elemento mais usado era o mais inconsistente, tamanhos, bordas e estados variavam a cada tela.
             </span>
           </p>
           <div class="cs-panel">
-            <img src="../assets/images/cs-ds-panel-06.png" alt="Campos de entrada de e-mail com estilos diferentes entre microserviços" loading="lazy" />
+            <img src="../assets/images/cs-ds-panel-06.png" alt="Campos de entrada de e-mail com estilos diferentes entre microserviços" data-en-alt="Email input fields styled differently across microservices" loading="lazy" />
           </div>
           </div>
         </section>
 
         <section class="cs-section" id="construcao">
           <button type="button" class="cs-section__header" aria-expanded="false">
-            <span class="cs-eyebrow">CONSTRUÇÃO</span>
-            <h2 class="cs-h2">Cada decisão com um motivo.</h2>
+            <span class="cs-eyebrow" data-en="BUILD">CONSTRUÇÃO</span>
+            <h2 class="cs-h2" data-en="Every decision made for a reason.">Cada decisão com um motivo.</h2>
             <span class="cs-section__chevron" aria-hidden="true"></span>
           </button>
           <div class="cs-section__body">
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="Before creating the components, we defined the rules that would structure the system. We analyzed existing interfaces to identify patterns and turned those decisions into tokens, making the platform easier to maintain and evolve. That way, a change to a token is automatically reflected across every component that uses it, with no manual adjustments needed.">
               Antes de criar os componentes, definimos as regras que estruturariam o sistema. Analisamos as
               interfaces existentes para identificar padrões e transformamos essas decisões em tokens,
               facilitando a manutenção e evolução da plataforma. Assim, uma alteração em um token é refletida
               automaticamente em todos os componentes que o utilizam, sem ajustes manuais.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="We defined the system's rules as tokens — changing one token updates every component automatically.">
               Definimos as regras do sistema em tokens, mudar um token atualiza todos os componentes automaticamente.
             </span>
           </p>
 
-          <h3 class="cs-h3">Escala de cores</h3>
+          <h3 class="cs-h3" data-en="Color scale">Escala de cores</h3>
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="I created a full tonal scale with semantic names. If the color changes, the name still makes sense. This solved the problem of variables like BlueNavy that had already turned into a different color.">
               Criada uma escala tonal completa com nomes semânticos. Se a cor mudar, o nome continua fazendo
               sentido. Isso resolveu o problema de variáveis como BlueNavy que já tinham virado outra cor.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="I created a tonal scale with semantic names — if the color changes, the name still makes sense.">
               Criei uma escala tonal com nomes semânticos, se a cor mudar, o nome continua fazendo sentido.
             </span>
           </p>
@@ -448,12 +448,12 @@
 
           <h3 class="cs-h3">Theme mapping</h3>
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="Beyond the scale, we also built the theme mapping: every token now maps to a context, light or dark. Before, switching themes was done manually by developers. With the mapping in place, that becomes automatic.">
               Além da escala, foi feito o theme mapping: cada token passou a corresponder a um contexto, claro
               ou escuro. Antes, a troca de tema era feita manualmente pelos devs. Com o mapping, isso passará a
               ser automático.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="I also built the theme mapping: every token corresponds to a light or dark context, making theme switching automatic.">
               Também criei o theme mapping: cada token corresponde a um contexto claro ou escuro, tornando a troca de tema automática.
             </span>
           </p>
@@ -476,22 +476,22 @@
             </div>
           </div>
 
-          <h3 class="cs-h3">Ícones</h3>
-          <p class="cs-p">
+          <h3 class="cs-h3" data-en="Icons">Ícones</h3>
+          <p class="cs-p" data-en="A single icon library defined for the whole platform, used via SVG — putting an end to style variation between interfaces.">
             Uma biblioteca única definida para toda a plataforma, usada via SVG. Acabando com a variação de
             estilo de ícones entre interfaces.
           </p>
           <div class="cs-panel">
-            <img src="../assets/images/cs-ds-panel-construcao-icones.png" alt="Biblioteca de ícones padronizada em SVG: limpar, pesquisar, reiniciar, editar e adicionar" loading="lazy" />
+            <img src="../assets/images/cs-ds-panel-construcao-icones.png" alt="Biblioteca de ícones padronizada em SVG: limpar, pesquisar, reiniciar, editar e adicionar" data-en-alt="Standardized SVG icon library: clear, search, reset, edit, and add" loading="lazy" />
           </div>
 
-          <h3 class="cs-h3">Tipografia</h3>
+          <h3 class="cs-h3" data-en="Typography">Tipografia</h3>
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="Type variables with fixed family, size, weight, line-height, letter-spacing, and paragraph-spacing. Sentence case standardized across all headings, ending the variation between screens.">
               Variáveis de tipo com família, tamanho, peso, line-height, letter-spacing e paragraph-spacing
               fixos. Sentence case padronizado em todos os títulos, encerrando a variação entre telas.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="Fixed type variables (family, size, weight, spacing) and sentence case standardized across all headings.">
               Variáveis de tipo fixas (família, tamanho, peso, espaçamento) e sentence case padronizado em todos os títulos.
             </span>
           </p>
@@ -516,13 +516,13 @@
             </div>
           </div>
 
-          <h3 class="cs-h3">Espaçamentos e raio de canto</h3>
+          <h3 class="cs-h3" data-en="Spacing and corner radius">Espaçamentos e raio de canto</h3>
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="Multiples of 4 as the base across the whole system. A simple criterion that eliminates arbitrary, unrelated values and makes development easier.">
               Múltiplos de 4 como base em todo o sistema. Um critério simples que elimina valores soltos e sem
               relação entre si, e facilita o desenvolvimento.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="Multiples of 4 as the base — a simple criterion that eliminates arbitrary values and speeds up development.">
               Múltiplos de 4 como base, um critério simples que elimina valores soltos e facilita o desenvolvimento.
             </span>
           </p>
@@ -532,134 +532,134 @@
                 <tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Usage</th></tr>
               </thead>
               <tbody>
-                <tr><th scope="row">radius-0</th><td>0px</td><td>Não possui arredondamento</td></tr>
-                <tr><th scope="row">radius-1</th><td>4px</td><td>Arredondamento padrão</td></tr>
-                <tr><th scope="row">radius-2</th><td>8px</td><td>Arredondamento para seções maiores</td></tr>
+                <tr><th scope="row">radius-0</th><td>0px</td><td data-en="No rounding applied">Não possui arredondamento</td></tr>
+                <tr><th scope="row">radius-1</th><td>4px</td><td data-en="Default rounding">Arredondamento padrão</td></tr>
+                <tr><th scope="row">radius-2</th><td>8px</td><td data-en="Rounding for larger sections">Arredondamento para seções maiores</td></tr>
               </tbody>
             </table>
           </div>
 
-          <h3 class="cs-h3">Botões</h3>
+          <h3 class="cs-h3" data-en="Buttons">Botões</h3>
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="Three defined hierarchies: primary, secondary, and tertiary. Blue was kept consistent across all of them so users never have to guess what's clickable.">
               Três hierarquias definidas: primário, secundário e terciário. A cor azul foi mantida em todos os
               casos para que o usuário nunca se confunda sobre o que é clicável.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="Three hierarchies (primary, secondary, tertiary), always the same color, so it's never unclear what's clickable.">
               Três hierarquias (primário, secundário, terciário) sempre na mesma cor, pra nunca confundir o que é clicável.
             </span>
           </p>
           <div class="cs-panel">
-            <img src="../assets/images/cs-ds-panel-construcao-botoes.png" alt="Botões primário, secundário e terciário em diferentes estados" loading="lazy" />
+            <img src="../assets/images/cs-ds-panel-construcao-botoes.png" alt="Botões primário, secundário e terciário em diferentes estados" data-en-alt="Primary, secondary, and tertiary buttons in different states" loading="lazy" />
           </div>
 
-          <h3 class="cs-h3">Campos de entrada</h3>
-          <p class="cs-p">Os elementos foram padronizado, com variações, estados e comportamentos definidos.</p>
+          <h3 class="cs-h3" data-en="Input fields">Campos de entrada</h3>
+          <p class="cs-p" data-en="These elements were standardized, with defined variations, states, and behaviors.">Os elementos foram padronizado, com variações, estados e comportamentos definidos.</p>
           <div class="cs-panel">
-            <img src="../assets/images/cs-ds-panel-construcao-campos.png" alt="Campos de entrada de e-mail padronizados" loading="lazy" />
+            <img src="../assets/images/cs-ds-panel-construcao-campos.png" alt="Campos de entrada de e-mail padronizados" data-en-alt="Standardized email input fields" loading="lazy" />
           </div>
 
-          <h3 class="cs-h3">Documentação</h3>
+          <h3 class="cs-h3" data-en="Documentation">Documentação</h3>
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="Every design system choice and rule was documented to ensure visual consistency, reduce the time needed to create new screens, and improve communication with stakeholders.">
               Todas as escolhas e regras do design system foram documentadas para garantir consistência visual,
               reduzir o tempo de criação de novas telas e facilitar a comunicação de stakholders.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="I documented every rule in the system to ensure consistency and speed up the creation of new screens.">
               Documentei todas as regras do sistema pra garantir consistência e agilizar a criação de novas telas.
             </span>
           </p>
           <div class="cs-panel">
-            <img src="../assets/images/cs-ds-panel-construcao-doc.png" alt="Página de documentação do design system" loading="lazy" />
+            <img src="../assets/images/cs-ds-panel-construcao-doc.png" alt="Página de documentação do design system" data-en-alt="Design system documentation page" loading="lazy" />
           </div>
           </div>
         </section>
 
         <section class="cs-section" id="migracao">
           <button type="button" class="cs-section__header" aria-expanded="false">
-            <span class="cs-eyebrow">MIGRAÇÃO</span>
-            <h2 class="cs-h2">Mais de 100 telas,<br class="cs-h2-break" /> uma a uma reconstruída.</h2>
+            <span class="cs-eyebrow" data-en="MIGRATION">MIGRAÇÃO</span>
+            <h2 class="cs-h2"><span data-en="Over 100 screens,">Mais de 100 telas,</span><br class="cs-h2-break" /> <span data-en="rebuilt one by one.">uma a uma reconstruída.</span></h2>
             <span class="cs-section__chevron" aria-hidden="true"></span>
           </button>
           <div class="cs-section__body">
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="With the system in place, the next step was putting it to use. New screens were already being built with the components; the old ones needed to be rebuilt. The challenge was that few existing screens had been built with components, so there was no easy way to swap an instance and update it. The plan was for the migration to happen in the gaps between other demands, with screens rebuilt one at a time.">
               Com o sistema criado, o próximo passo era aplicá-lo. Telas novas já nasciam usando os componentes.
               As antigas precisavam ser reconstruídas. O desafio era que poucas das telas existentes tinha sido
               construída com componentes, não havia como trocar uma instância e atualizar facilmente. A ideia é
               que a migração ocorrá nos intervalos entre outras demandas, as telas vão sendo reconstruídas uma a uma.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="New screens are now built with the components; old ones are rebuilt gradually.">
               Telas novas já nascem com os componentes; as antigas são reconstruídas aos poucos.
             </span>
           </p>
           <div class="cs-panel">
-            <img src="../assets/images/cs-ds-panel-migracao.png" alt="Dashboard em modo light já migrado para o novo padrão" loading="lazy" />
+            <img src="../assets/images/cs-ds-panel-migracao.png" alt="Dashboard em modo light já migrado para o novo padrão" data-en-alt="Dashboard in light mode, already migrated to the new standard" loading="lazy" />
           </div>
           </div>
         </section>
 
         <section class="cs-section" id="resultado">
           <button type="button" class="cs-section__header" aria-expanded="false">
-            <span class="cs-eyebrow">RESULTADO</span>
-            <h2 class="cs-h2">Ainda em andamento,<br class="cs-h2-break" /> mas o resultado já é visível.</h2>
+            <span class="cs-eyebrow" data-en="RESULT">RESULTADO</span>
+            <h2 class="cs-h2"><span data-en="Still in progress,">Ainda em andamento,</span><br class="cs-h2-break" /> <span data-en="but the results are already visible.">mas o resultado já é visível.</span></h2>
             <span class="cs-section__chevron" aria-hidden="true"></span>
           </button>
           <div class="cs-section__body">
           <p class="cs-p">
-            <span class="cs-title-full">
+            <span class="cs-title-full" data-en="The screens that went through the process now speak the same language and feel part of the same product, building more trust with users — after all, when everything looks different, nothing feels trustworthy.">
               As telas que passaram pelo processo conversam entre si e parecem parte do mesmo produto, gerando
               mais confiança para o usuário, afinal, quando tudo parece diferente, nada parece confiável.
             </span>
-            <span class="cs-title-short">
+            <span class="cs-title-short" data-en="Migrated screens now speak the same language and feel part of the same product, building more trust with users.">
               As telas migradas conversam entre si e parecem parte do mesmo produto, gerando mais confiança pro usuário.
             </span>
           </p>
           <div class="cs-resultado-card">
             <div class="cs-panel-group">
-              <p class="cs-panel-group__label">Interfaces não migradas</p>
+              <p class="cs-panel-group__label" data-en="Not-yet-migrated interfaces">Interfaces não migradas</p>
               <div class="cs-panel-grid">
                 <div class="cs-panel">
-                  <img src="../assets/images/cs-ds-panel-resultado-nao-migrada-1.png" alt="Tela inicial de aplicações do Physis, ainda não migrada" loading="lazy" />
+                  <img src="../assets/images/cs-ds-panel-resultado-nao-migrada-1.png" alt="Tela inicial de aplicações do Physis, ainda não migrada" data-en-alt="Physis applications home screen, not yet migrated" loading="lazy" />
                 </div>
                 <div class="cs-panel">
-                  <img src="../assets/images/cs-ds-panel-resultado-nao-migrada-2.png" alt="Tela de câmeras IP do Gerência | Conexão, ainda não migrada" loading="lazy" />
+                  <img src="../assets/images/cs-ds-panel-resultado-nao-migrada-2.png" alt="Tela de câmeras IP do Gerência | Conexão, ainda não migrada" data-en-alt="IP camera screen from Gerência | Conexão, not yet migrated" loading="lazy" />
                 </div>
                 <div class="cs-panel">
-                  <img src="../assets/images/cs-ds-panel-resultado-nao-migrada-3.png" alt="Tela do Supervisório MonitorIoT com árvore de monitoramentos, ainda não migrada" loading="lazy" />
+                  <img src="../assets/images/cs-ds-panel-resultado-nao-migrada-3.png" alt="Tela do Supervisório MonitorIoT com árvore de monitoramentos, ainda não migrada" data-en-alt="MonitorIoT Supervisory screen with a monitoring tree, not yet migrated" loading="lazy" />
                 </div>
                 <div class="cs-panel">
-                  <img src="../assets/images/cs-ds-panel-resultado-nao-migrada-4.png" alt="Tela inicial de aplicações do Physis, em modo escuro, ainda não migrada" loading="lazy" />
+                  <img src="../assets/images/cs-ds-panel-resultado-nao-migrada-4.png" alt="Tela inicial de aplicações do Physis, em modo escuro, ainda não migrada" data-en-alt="Physis applications home screen, dark mode, not yet migrated" loading="lazy" />
                 </div>
                 <div class="cs-panel">
-                  <img src="../assets/images/cs-ds-panel-resultado-nao-migrada-5.png" alt="Tela de câmeras IP do Gerência | Conexão, em modo escuro, ainda não migrada" loading="lazy" />
+                  <img src="../assets/images/cs-ds-panel-resultado-nao-migrada-5.png" alt="Tela de câmeras IP do Gerência | Conexão, em modo escuro, ainda não migrada" data-en-alt="IP camera screen from Gerência | Conexão, dark mode, not yet migrated" loading="lazy" />
                 </div>
                 <div class="cs-panel">
-                  <img src="../assets/images/cs-ds-panel-resultado-nao-migrada-6.png" alt="Tela do Supervisório MonitorIoT em modo escuro, ainda não migrada" loading="lazy" />
+                  <img src="../assets/images/cs-ds-panel-resultado-nao-migrada-6.png" alt="Tela do Supervisório MonitorIoT em modo escuro, ainda não migrada" data-en-alt="MonitorIoT Supervisory screen, dark mode, not yet migrated" loading="lazy" />
                 </div>
               </div>
             </div>
 
             <div class="cs-panel-group">
-              <p class="cs-panel-group__label">Interfaces migradas</p>
+              <p class="cs-panel-group__label" data-en="Migrated interfaces">Interfaces migradas</p>
               <div class="cs-panel-grid">
                 <div class="cs-panel">
-                  <img src="../assets/images/cs-ds-panel-resultado-migrada-1.png" alt="Dashboard do microsserviço Jano já migrado para o novo padrão visual, em modo escuro" loading="lazy" />
+                  <img src="../assets/images/cs-ds-panel-resultado-migrada-1.png" alt="Dashboard do microsserviço Jano já migrado para o novo padrão visual, em modo escuro" data-en-alt="Jano microservice dashboard, migrated to the new visual standard, dark mode" loading="lazy" />
                 </div>
                 <div class="cs-panel">
-                  <img src="../assets/images/cs-ds-panel-resultado-migrada-2.png" alt="Tela de estatísticas do Gerência | Conexão Apps Mobile já migrada, em modo escuro" loading="lazy" />
+                  <img src="../assets/images/cs-ds-panel-resultado-migrada-2.png" alt="Tela de estatísticas do Gerência | Conexão Apps Mobile já migrada, em modo escuro" data-en-alt="Gerência | Conexão Apps Mobile statistics screen, migrated, dark mode" loading="lazy" />
                 </div>
                 <div class="cs-panel">
-                  <img src="../assets/images/cs-ds-panel-resultado-migrada-3.png" alt="Tela de Rotas e Manchas já migrada, em modo escuro" loading="lazy" />
+                  <img src="../assets/images/cs-ds-panel-resultado-migrada-3.png" alt="Tela de Rotas e Manchas já migrada, em modo escuro" data-en-alt="Rotas e Manchas screen, migrated, dark mode" loading="lazy" />
                 </div>
                 <div class="cs-panel">
-                  <img src="../assets/images/cs-ds-panel-resultado-migrada-4.png" alt="Dashboard do microsserviço Jano já migrado para o novo padrão visual, em modo claro" loading="lazy" />
+                  <img src="../assets/images/cs-ds-panel-resultado-migrada-4.png" alt="Dashboard do microsserviço Jano já migrado para o novo padrão visual, em modo claro" data-en-alt="Jano microservice dashboard, migrated to the new visual standard, light mode" loading="lazy" />
                 </div>
                 <div class="cs-panel">
-                  <img src="../assets/images/cs-ds-panel-resultado-migrada-5.png" alt="Tela de estatísticas do Gerência | Conexão Apps Mobile já migrada, em modo claro" loading="lazy" />
+                  <img src="../assets/images/cs-ds-panel-resultado-migrada-5.png" alt="Tela de estatísticas do Gerência | Conexão Apps Mobile já migrada, em modo claro" data-en-alt="Gerência | Conexão Apps Mobile statistics screen, migrated, light mode" loading="lazy" />
                 </div>
                 <div class="cs-panel">
-                  <img src="../assets/images/cs-ds-panel-resultado-migrada-6.png" alt="Tela de Rotas e Manchas já migrada, em modo claro" loading="lazy" />
+                  <img src="../assets/images/cs-ds-panel-resultado-migrada-6.png" alt="Tela de Rotas e Manchas já migrada, em modo claro" data-en-alt="Rotas e Manchas screen, migrated, light mode" loading="lazy" />
                 </div>
               </div>
             </div>
@@ -669,43 +669,43 @@
 
         <section class="cs-section" id="aprendizados">
           <button type="button" class="cs-section__header" aria-expanded="false">
-            <span class="cs-eyebrow">APRENDIZADOS</span>
-            <h2 class="cs-h2">O que esse projeto me ensinou<br class="cs-h2-break" /> de verdade?</h2>
+            <span class="cs-eyebrow" data-en="LEARNINGS">APRENDIZADOS</span>
+            <h2 class="cs-h2"><span data-en="What did this project really">O que esse projeto me ensinou</span><br class="cs-h2-break" /> <span data-en="teach me?">de verdade?</span></h2>
             <span class="cs-section__chevron" aria-hidden="true"></span>
           </button>
           <div class="cs-section__body">
           <div class="cs-learn-list">
             <div class="cs-learn-card">
-              <p class="cs-learn-card__title">Entender antes de propor</p>
+              <p class="cs-learn-card__title" data-en="Understand before proposing">Entender antes de propor</p>
               <p class="cs-learn-card__text">
-                <span class="cs-title-full">As inconsistências eram apenas o sintoma. O problema real era a falta de recursos compartilhados entre os micro serviços. Atacar a causa importa mais do que corrigir o sintoma.</span>
-                <span class="cs-title-short">As inconsistências eram só o sintoma, faltavam recursos compartilhados.</span>
+                <span class="cs-title-full" data-en="The inconsistencies were just the symptom. The real problem was the lack of shared resources between microservices. Tackling the root cause matters more than fixing the symptom.">As inconsistências eram apenas o sintoma. O problema real era a falta de recursos compartilhados entre os micro serviços. Atacar a causa importa mais do que corrigir o sintoma.</span>
+                <span class="cs-title-short" data-en="The inconsistencies were just the symptom — what was missing were shared resources.">As inconsistências eram só o sintoma, faltavam recursos compartilhados.</span>
               </p>
             </div>
             <div class="cs-learn-card">
-              <p class="cs-learn-card__title">Sistema bom não se sustenta sozinho</p>
+              <p class="cs-learn-card__title" data-en="A good system doesn't sustain itself">Sistema bom não se sustenta sozinho</p>
               <p class="cs-learn-card__text">
-                <span class="cs-title-full">Criar o Design System foi só o começo. Mantê-lo atualizado, migrar as telas antigas e garantir que ele continue fazendo sentido conforme o produto evolui é um trabalho contínuo.</span>
-                <span class="cs-title-short">Criar o Design System foi só o começo, mantê-lo atualizado é trabalho contínuo.</span>
+                <span class="cs-title-full" data-en="Creating the Design System was just the beginning. Keeping it updated, migrating old screens, and making sure it still makes sense as the product evolves is ongoing work.">Criar o Design System foi só o começo. Mantê-lo atualizado, migrar as telas antigas e garantir que ele continue fazendo sentido conforme o produto evolui é um trabalho contínuo.</span>
+                <span class="cs-title-short" data-en="Creating the Design System was just the beginning — keeping it updated is ongoing work.">Criar o Design System foi só o começo, mantê-lo atualizado é trabalho contínuo.</span>
               </p>
             </div>
             <div class="cs-learn-card">
-              <p class="cs-learn-card__title">Nomes importam mais do que parecem</p>
+              <p class="cs-learn-card__title" data-en="Names matter more than they seem">Nomes importam mais do que parecem</p>
               <p class="cs-learn-card__text">
-                <span class="cs-title-full">Uma variável chamada BlueNavy que já tinha virado bege é um problema real de manutenção. Nomear por intenção, não por aparência, foi uma das decisões com mais impacto prático.</span>
-                <span class="cs-title-short">BlueNavy virar bege é um problema real, nomear por intenção teve o maior impacto prático.</span>
+                <span class="cs-title-full" data-en="A variable called BlueNavy that had already turned beige is a real maintenance problem. Naming by intent, not by appearance, was one of the decisions with the most practical impact.">Uma variável chamada BlueNavy que já tinha virado bege é um problema real de manutenção. Nomear por intenção, não por aparência, foi uma das decisões com mais impacto prático.</span>
+                <span class="cs-title-short" data-en="BlueNavy turning beige is a real problem — naming by intent had the biggest practical impact.">BlueNavy virar bege é um problema real, nomear por intenção teve o maior impacto prático.</span>
               </p>
             </div>
             <div class="cs-learn-card">
-              <p class="cs-learn-card__title">Nem toda decisão é sua</p>
+              <p class="cs-learn-card__title" data-en="Not every decision is yours to make">Nem toda decisão é sua</p>
               <p class="cs-learn-card__text">
-                <span class="cs-title-full">Houveram decisão vieram de instâncias superiores. Aprendi que defender uma escolha faz parte do trabalho, mas também faz parte saber operar dentro das restrições que você não controla.</span>
-                <span class="cs-title-short">Nem toda decisão foi minha. Aprendi a defender escolhas e operar dentro de restrições.</span>
+                <span class="cs-title-full" data-en="Some decisions came from higher up. I learned that defending a choice is part of the job, but so is knowing how to operate within constraints you don't control.">Houveram decisão vieram de instâncias superiores. Aprendi que defender uma escolha faz parte do trabalho, mas também faz parte saber operar dentro das restrições que você não controla.</span>
+                <span class="cs-title-short" data-en="Not every decision was mine. I learned to defend my choices and work within constraints.">Nem toda decisão foi minha. Aprendi a defender escolhas e operar dentro de restrições.</span>
               </p>
             </div>
           </div>
 
-          <p class="cs-thanks">Obrigada por ler até aqui :)</p>
+          <p class="cs-thanks" data-en="Thanks for reading this far :)">Obrigada por ler até aqui :)</p>
           </div>
         </section>
 
@@ -716,22 +716,22 @@
     <section class="section" id="contato" aria-labelledby="contato-titulo">
       <div class="container">
         <div class="contact">
-          <h2 class="contact__title" id="contato-titulo">Vamos conversar?</h2>
+          <h2 class="contact__title" id="contato-titulo" data-en="Let's talk?">Vamos conversar?</h2>
           <p class="contact__text">
-            <span class="cs-title-full">Gostou do meu trabalho? Estou aberta a oportunidades e adoraria conhecer novos desafios.</span>
-            <span class="cs-title-short">Estou aberta a oportunidades e adoraria conhecer novos desafios.</span>
+            <span class="cs-title-full" data-en="Like what you see? I'm open to opportunities and would love to take on new challenges.">Gostou do meu trabalho? Estou aberta a oportunidades e adoraria conhecer novos desafios.</span>
+            <span class="cs-title-short" data-en="I'm open to opportunities and would love to take on new challenges.">Estou aberta a oportunidades e adoraria conhecer novos desafios.</span>
           </p>
 
           <div class="contact__cta">
             <a href="https://wa.me/5534996358519" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
-              Entre em contato
+              <span data-en="Get in touch">Entre em contato</span>
               <span class="btn__icon"><img src="../assets/icons/icone-whatsapp.svg" alt="" /></span>
             </a>
           </div>
 
           <ul class="social-list">
             <li>
-              <a href="mailto:lauramenesantos@gmail.com" class="social-btn social-btn--figma social-btn--gmail" aria-label="Enviar e-mail">
+              <a href="mailto:lauramenesantos@gmail.com" class="social-btn social-btn--figma social-btn--gmail" aria-label="Enviar e-mail" data-en-aria-label="Send email">
                 <span class="social-btn__icon">
                   <img src="../assets/icons/icone-mail-default.svg" alt="" class="social-btn__icon-default" />
                   <img src="../assets/icons/icone-mail-hover.svg" alt="" class="social-btn__icon-hover" />
@@ -741,7 +741,7 @@
               </a>
             </li>
             <li>
-              <a href="https://www.behance.net/lauramenezes11" class="social-btn social-btn--figma social-btn--behance" aria-label="Ver Behance" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.behance.net/lauramenezes11" class="social-btn social-btn--figma social-btn--behance" aria-label="Ver Behance" data-en-aria-label="View Behance" target="_blank" rel="noopener noreferrer">
                 <span class="social-btn__icon">
                   <img src="../assets/icons/icone-behance-default.svg" alt="" class="social-btn__icon-default" />
                   <img src="../assets/icons/icone-behance-hover.svg" alt="" class="social-btn__icon-hover" />
@@ -751,7 +751,7 @@
               </a>
             </li>
             <li>
-              <a href="https://www.linkedin.com/in/lauramenesantos" class="social-btn social-btn--figma social-btn--linkedin" aria-label="Ver LinkedIn" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/lauramenesantos" class="social-btn social-btn--figma social-btn--linkedin" aria-label="Ver LinkedIn" data-en-aria-label="View LinkedIn" target="_blank" rel="noopener noreferrer">
                 <span class="social-btn__icon">
                   <img src="../assets/icons/icone-linkedin-default.svg" alt="" class="social-btn__icon-default" />
                   <img src="../assets/icons/icone-linkedin-hover.svg" alt="" class="social-btn__icon-hover" />
@@ -768,7 +768,7 @@
     <!-- PROJETOS RECOMENDADOS -->
     <section class="section" aria-labelledby="projetos-titulo">
       <div class="container">
-        <h2 class="section__title" id="projetos-titulo">Projetos recomendados</h2>
+        <h2 class="section__title" id="projetos-titulo" data-en="Featured projects">Projetos recomendados</h2>
 
         <div class="project-grid">
           <div class="project-card project-card--design-system" aria-current="page">
@@ -776,15 +776,15 @@
               <img src="../assets/images/projeto-design-system-hover.png" alt="" loading="lazy" />
             </div>
             <div class="project-card__media">
-              <img src="../assets/images/projeto-design-system.png" alt="Prévia do projeto Design System" loading="lazy" />
+              <img src="../assets/images/projeto-design-system.png" alt="Prévia do projeto Design System" data-en-alt="Preview of the Design System project" loading="lazy" />
             </div>
             <div class="project-card__info">
               <h3 class="project-card__title">Design System</h3>
-              <p class="project-card__desc">Escala e padronização de um sistema de gestão de ativos industriais</p>
+              <p class="project-card__desc" data-en="Scaling and standardizing a design system for an industrial asset management platform">Escala e padronização de um sistema de gestão de ativos industriais</p>
             </div>
             <div class="project-card__tags">
-              <span class="tag tag--primary">Escalabilidade</span>
-              <span class="tag tag--primary">B2B Industrial</span>
+              <span class="tag tag--primary" data-en="Scalability">Escalabilidade</span>
+              <span class="tag tag--primary" data-en="Industrial B2B">B2B Industrial</span>
             </div>
             <span class="project-card__arrow" aria-hidden="true">
               <img src="../assets/icons/icone-seta-proximo.svg" alt="" />
@@ -796,14 +796,14 @@
               <img src="../assets/images/projeto-design-inclusivo-hover.png" alt="" loading="lazy" />
             </div>
             <div class="project-card__media">
-              <img src="../assets/images/projeto-design-inclusivo.png" alt="Prévia do projeto Design Inclusivo Gamificado" loading="lazy" />
+              <img src="../assets/images/projeto-design-inclusivo.png" alt="Prévia do projeto Design Inclusivo Gamificado" data-en-alt="Preview of the Gamified Inclusive Design project" loading="lazy" />
             </div>
             <div class="project-card__info">
-              <h3 class="project-card__title">Design Inclusivo Gamificado</h3>
-              <p class="project-card__desc">Design de um aplicativo gamificado para aprendizado inclusivo de LIBRAS</p>
+              <h3 class="project-card__title" data-en="Gamified Inclusive Design">Design Inclusivo Gamificado</h3>
+              <p class="project-card__desc" data-en="Designing a gamified app for inclusive learning of Brazilian Sign Language (LIBRAS)">Design de um aplicativo gamificado para aprendizado inclusivo de LIBRAS</p>
             </div>
             <div class="project-card__tags">
-              <span class="tag tag--secondary">Gamificação</span>
+              <span class="tag tag--secondary" data-en="Gamification">Gamificação</span>
               <span class="tag tag--secondary">Mobile First</span>
             </div>
             <span class="project-card__arrow" aria-hidden="true">
@@ -816,15 +816,15 @@
               <img src="../assets/images/projeto-programacao-criativa-hover.png" alt="" loading="lazy" />
             </div>
             <div class="project-card__media">
-              <img src="../assets/images/projeto-programacao-criativa.png" alt="Prévia do projeto Programação Criativa" loading="lazy" />
+              <img src="../assets/images/projeto-programacao-criativa.png" alt="Prévia do projeto Programação Criativa" data-en-alt="Preview of the Creative Coding project" loading="lazy" />
             </div>
             <div class="project-card__info">
-              <h3 class="project-card__title">Programação Criativa</h3>
-              <p class="project-card__desc">Compreensão de como decisões de design se traduzem em código</p>
+              <h3 class="project-card__title" data-en="Creative Coding">Programação Criativa</h3>
+              <p class="project-card__desc" data-en="Understanding how design decisions translate into code">Compreensão de como decisões de design se traduzem em código</p>
             </div>
             <div class="project-card__tags">
               <span class="tag tag--accent">JavaScript</span>
-              <span class="tag tag--accent">Interatividade</span>
+              <span class="tag tag--accent" data-en="Interactivity">Interatividade</span>
             </div>
             <span class="project-card__arrow" aria-hidden="true">
               <img src="../assets/icons/icone-seta-proximo.svg" alt="" />
@@ -840,7 +840,7 @@
     <p class="site-footer__text">lauramenesantos@gmail.com&nbsp;&nbsp;|&nbsp;(34) 9.9635-8519</p>
   </footer>
 
-  <button type="button" class="scroll-top-btn" aria-label="Voltar ao topo">
+  <button type="button" class="scroll-top-btn" aria-label="Voltar ao topo" data-en-aria-label="Back to top">
     <img src="../assets/icons/icone-seta-proximo.svg" alt="" class="scroll-top-btn__icon" />
   </button>
 

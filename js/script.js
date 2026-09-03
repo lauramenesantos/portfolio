@@ -308,8 +308,36 @@ function initScrollTopButton() {
 }
 
 /**
- * Alterna o estado visual do seletor de idioma PT/EN.
+ * Alterna o idioma do site (PT/EN): troca o texto visível e os atributos
+ * traduzíveis (alt, aria-label, title, placeholder, meta description) com
+ * base nos pares data-en / data-en-<atributo> presentes no HTML, atualiza o
+ * visual do seletor (bandeiras e código PT/EN) e guarda a escolha em
+ * localStorage para persistir entre as páginas do portfólio (index e os
+ * estudos de caso).
  */
+const LANG_STORAGE_KEY = 'laura-portfolio-lang';
+
+function translateNode(el, lang) {
+  if (el.dataset.en !== undefined) {
+    if (el.dataset.pt === undefined) {
+      el.dataset.pt = el.textContent;
+    }
+    el.textContent = lang === 'en' ? el.dataset.en : el.dataset.pt;
+  }
+
+  Array.from(el.attributes).forEach((attr) => {
+    const match = attr.name.match(/^data-en-(.+)$/);
+    if (!match) return;
+    const target = match[1];
+    const ptAttrName = `data-pt-${target}`;
+    if (!el.hasAttribute(ptAttrName)) {
+      el.setAttribute(ptAttrName, el.getAttribute(target) || '');
+    }
+    const value = lang === 'en' ? attr.value : el.getAttribute(ptAttrName);
+    el.setAttribute(target, value);
+  });
+}
+
 function initLanguageToggle() {
   // Pode haver mais de uma instância na página (a do header, escondida no
   // mobile, e a duplicada dentro do menu hambúrguer) — todas precisam
@@ -319,21 +347,54 @@ function initLanguageToggle() {
   const toggles = document.querySelectorAll('.lang-toggle');
   if (!toggles.length) return;
 
-  const applyLang = (lang) => {
+  const applyLang = (lang, { persist = true } = {}) => {
+    document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'pt-BR');
+
+    document
+      .querySelectorAll('[data-en], [data-en-alt], [data-en-aria-label], [data-en-title], [data-en-content], [data-en-placeholder], [data-en-value]')
+      .forEach((el) => translateNode(el, lang));
+
     toggles.forEach((toggle) => {
       toggle.querySelectorAll('.lang-toggle__code').forEach((btn) => {
         const isActive = btn.dataset.lang === lang;
         btn.setAttribute('aria-pressed', String(isActive));
         btn.classList.toggle('lang-toggle__code--muted', !isActive);
       });
+      toggle.querySelectorAll('.lang-toggle__flag').forEach((flag) => {
+        const isBrFlag = flag.getAttribute('src').includes('flag-br');
+        const flagLang = isBrFlag ? 'pt' : 'en';
+        flag.classList.toggle('lang-toggle__flag--muted', flagLang !== lang);
+      });
     });
+
+    if (persist) {
+      try {
+        localStorage.setItem(LANG_STORAGE_KEY, lang);
+      } catch (e) {
+        // localStorage indisponível (ex.: navegação privada) — segue sem persistir.
+      }
+    }
   };
 
   toggles.forEach((toggle) => {
     toggle.querySelectorAll('.lang-toggle__code').forEach((btn) => {
       btn.addEventListener('click', () => applyLang(btn.dataset.lang));
     });
+    toggle.querySelectorAll('.lang-toggle__flag').forEach((flag) => {
+      const flagLang = flag.getAttribute('src').includes('flag-br') ? 'pt' : 'en';
+      flag.style.cursor = 'pointer';
+      flag.addEventListener('click', () => applyLang(flagLang));
+    });
   });
+
+  let storedLang = 'pt';
+  try {
+    storedLang = localStorage.getItem(LANG_STORAGE_KEY) === 'en' ? 'en' : 'pt';
+  } catch (e) {
+    // localStorage indisponível — mantém o padrão PT.
+  }
+
+  applyLang(storedLang, { persist: false });
 }
 
 /**
